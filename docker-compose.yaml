@@ -1,11 +1,11 @@
 version: "3.8"
 services:
   frontend:
-    build: .
+    build: ./frontend
     ports:
       - "3000:3000"
     # de mi /app de nextjs local, vamos a pasarlo al workdir del container /app -> /app de nextjs generada  
     volumes:
-      - ./app:/app/app
+      - ./frontend/app:/app/app
     stdin_open: true
     tty: true
