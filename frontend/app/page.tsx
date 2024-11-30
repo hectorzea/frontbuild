@@ -27,7 +27,7 @@ export default function Home() {
             "id": "FNTB-0002",
             "title": "Initialize and connect localhost backend mongo + express simple setup",
             "status": "backlog",
-            "label": "task",
+            "label": "feature",
             "priority": "medium"
           },
         ]} columns={columns} />
