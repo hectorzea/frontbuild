@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DataTableViewOptions } from "./DataTableViewOptions"
 
-import { priorities, statuses } from "./data"
+import { priorities, statuses } from "../data"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
 
 interface DataTableToolbarProps<TData> {

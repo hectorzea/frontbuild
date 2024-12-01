@@ -1,5 +1,5 @@
-import { columns } from "@/components/shared/Columns";
-import { DataTable } from "@/components/shared/DataTable";
+import { columns } from "@/components/frontbuild/DataTable/Columns";
+import { DataTable } from "@/components/frontbuild/DataTable/DataTable";
 
 export default function Home() {
   return (
@@ -15,7 +15,14 @@ export default function Home() {
             "id": "FNTB-0001",
             "title": "Adjust folders for table in frontbuild repository",
             "status": "in progress",
-            "label": "documentation",
+            "label": "Tech-Debt",
+            "priority": "medium"
+          },
+          {
+            "id": "FNTB-0002",
+            "title": "By Depending on the label, find a color for the badge and use it.",
+            "status": "in progress",
+            "label": "feature",
             "priority": "medium"
           },
         ]} columns={columns} />
