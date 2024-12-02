@@ -1,5 +1,11 @@
 version: "3.8"
 services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
   frontend:
     build: ./frontend
     ports:
@@ -10,3 +16,18 @@ services:
       - ./frontend/components:/app/components
     stdin_open: true
     tty: true
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "80:80"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/frontbuild
+    depends_on:
+      - mongo
+    volumes: 
+      - ./backend:/app
+      - /app/node_modules
+volumes:
+  mongo-data:
+

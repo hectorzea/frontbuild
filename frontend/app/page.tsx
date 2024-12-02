@@ -1,7 +1,34 @@
+"use client"
+
 import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "@/components/frontbuild/DataTable/DataTable";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Task {
+  id: string;
+  title: string;
+  status: string;
+  label: string;
+  priority: string;
+}
 
 export default function Home() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get("http://localhost/api/tasks"); // Ajusta la URL según tu configuración
+        setTasks(response.data); // Suponiendo que la respuesta es un array de tareas
+        console.log(tasks)
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+
+    fetchTasks();
+  }, []);
   return (
     <div className="p-20">
       <h2 className="text-2xl font-bold">Welcome back!</h2>
@@ -10,31 +37,9 @@ export default function Home() {
       </p>
       <div className="mt-8">
         <h2 className="text-1xl font-bold mb-3">Frontend </h2>
-        <DataTable data={[
-          {
-            "id": "FNTB-0001",
-            "title": "Adjust folders for table in frontbuild repository",
-            "status": "done",
-            "label": "tech-debt",
-            "priority": "medium"
-          },
-          {
-            "id": "FNTB-0002",
-            "title": "By Depending on the label, find a color for the badge and use it.",
-            "status": "done",
-            "label": "feature",
-            "priority": "medium"
-          },
-          {
-            "id": "FNTB-0003",
-            "title": "Add, Edit, Delete Task",
-            "status": "in progress",
-            "label": "epic",
-            "priority": "medium"
-          },
-        ]} columns={columns} />
+        <DataTable data={tasks} columns={columns} />
       </div>
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <h2 className="text-1xl font-bold">Backend </h2>
         <DataTable data={[
           {
@@ -45,7 +50,7 @@ export default function Home() {
             "priority": "medium"
           },
         ]} columns={columns} />
-      </div>
+      </div> */}
     </div>
   );
 }
