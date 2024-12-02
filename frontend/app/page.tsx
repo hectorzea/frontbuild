@@ -25,6 +25,13 @@ export default function Home() {
             "label": "feature",
             "priority": "medium"
           },
+          {
+            "id": "FNTB-0003",
+            "title": "Add, Edit, Delete Task",
+            "status": "in progress",
+            "label": "epic",
+            "priority": "medium"
+          },
         ]} columns={columns} />
       </div>
       <div className="mt-8">

@@ -10,10 +10,6 @@ import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
 
-const getBadgeVariant = (taskType: string): any => {
-  return 'default'
-}
-
 export const columns: ColumnDef<Task>[] = [
   {
     id: "select",
