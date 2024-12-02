@@ -2,13 +2,17 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 
-import { Badge } from "@/components/ui/badge"
+import { Badge, BadgeVariant } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
 import { labels, priorities, statuses } from "../data"
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
+
+const getBadgeVariant = (taskType: string): any => {
+  return 'default'
+}
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -51,10 +55,11 @@ export const columns: ColumnDef<Task>[] = [
     ),
     cell: ({ row }) => {
       const label = labels.find((label) => label.value === row.original.label)
+      const badgeVariant: BadgeVariant = label?.value as BadgeVariant
 
       return (
         <div className="flex space-x-2">
-          {label && <Badge variant="techDebt">{label.label}</Badge>}
+          {label && <Badge variant={badgeVariant}>{label.label}</Badge>}
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("title")}
           </span>

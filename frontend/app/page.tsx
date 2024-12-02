@@ -14,14 +14,14 @@ export default function Home() {
           {
             "id": "FNTB-0001",
             "title": "Adjust folders for table in frontbuild repository",
-            "status": "in progress",
-            "label": "Tech-Debt",
+            "status": "done",
+            "label": "tech-debt",
             "priority": "medium"
           },
           {
             "id": "FNTB-0002",
             "title": "By Depending on the label, find a color for the badge and use it.",
-            "status": "in progress",
+            "status": "done",
             "label": "feature",
             "priority": "medium"
           },

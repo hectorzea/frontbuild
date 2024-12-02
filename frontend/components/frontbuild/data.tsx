@@ -19,7 +19,7 @@ export const labels = [
     label: "Feature",
   },
   {
-    value: "Tech-Debt",
+    value: "tech-debt",
     label: "Tech-Debt",
   },
   {
