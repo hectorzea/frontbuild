@@ -19,8 +19,8 @@ export default function Home() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost/api/tasks"); // Ajusta la URL según tu configuración
-        setTasks(response.data); // Suponiendo que la respuesta es un array de tareas
+        const response = await axios.get("http://localhost:8080/api/tasks"); // Ajusta la URL según tu configuración
+        setTasks(response.data); 
         console.log(tasks)
       } catch (error) {
         console.error("Error fetching tasks:", error);

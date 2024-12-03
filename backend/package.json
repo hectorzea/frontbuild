@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "start": "node dist/index.js",
-    "dev": "nodemon --watch src --exec ts-node src/index.ts",
-    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "dev": "node ./dist/server.js",
+    "start": "tsc && npm run dev"
   },
   "dependencies": {
     "cors": "^2.8.5",
