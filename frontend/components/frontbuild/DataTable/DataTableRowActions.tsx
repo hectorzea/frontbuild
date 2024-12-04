@@ -20,6 +20,7 @@ import {
 
 import { labels } from "../data"
 import { taskSchema } from "../schema"
+import { EditTaskDialog } from "../EditTask"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -42,7 +43,7 @@ export function DataTableRowActions<TData>({
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
-                <DropdownMenuItem>Edit</DropdownMenuItem>
+                <DropdownMenuItem><EditTaskDialog /></DropdownMenuItem>
                 <DropdownMenuItem>Make a copy</DropdownMenuItem>
                 <DropdownMenuItem>Favorite</DropdownMenuItem>
                 <DropdownMenuSeparator />
