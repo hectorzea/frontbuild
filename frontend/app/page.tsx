@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/tasks"); // Ajusta la URL según tu configuración
+        const response = await axios.get("http://localhost:8080/api/tasks"); 
         setTasks(response.data); 
         console.log(tasks)
       } catch (error) {
