@@ -12,39 +12,40 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-export const EditTaskDialog = () => {
+interface EditTaskDialogProps {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+
+export const EditTaskDialog: React.FC<EditTaskDialogProps> = ({ open, onOpenChange }) => {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle>Edit Task</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when youre done.
+            Make changes to the task here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
-              Name
+              Title
             </Label>
-            <Input
-              id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
-            />
+            <Input id="name" defaultValue="Sample Task Title" className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
+            <Label htmlFor="description" className="text-right">
+              Status  
             </Label>
-            <Input
-              id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
-            />
+            <Input id="description" defaultValue="Sample Task Description" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="description" className="text-right">
+              Priority
+            </Label>
+            <Input id="description" defaultValue="Sample Task Description" className="col-span-3" />
           </div>
         </div>
         <DialogFooter>
