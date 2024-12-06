@@ -1,13 +1,13 @@
-import { z } from "zod"
+import { z } from "zod";
+import { Task as TaskModel } from "../../app/src/types/api/Api"; // Aquí estás importando la interfaz generada por Swagger
 
-// We're keeping a simple non-relational schema here.
-// IRL, you will have a schema for your data models.
-export const taskSchema = z.object({
-  id: z.string(),
+// Aquí estamos creando un esquema Zod basado en la interfaz Task
+export const taskSchema: z.ZodType<TaskModel> = z.object({
+  _id: z.string().optional(), // El _id es opcional, como en la interfaz
   title: z.string(),
   status: z.string(),
   label: z.string(),
-  priority: z.string(),
-})
+  priority: z.string()
+});
 
-export type Task = z.infer<typeof taskSchema>
+export type Task = z.infer<typeof taskSchema>;

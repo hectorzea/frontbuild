@@ -4,14 +4,7 @@ import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "@/components/frontbuild/DataTable/DataTable";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-interface Task {
-  id: string;
-  title: string;
-  status: string;
-  label: string;
-  priority: string;
-}
+import { Task } from "./src/types/api/Api";
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -19,8 +12,8 @@ export default function Home() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/tasks"); 
-        setTasks(response.data); 
+        const response = await axios.get("http://localhost:8080/api/tasks");
+        setTasks(response.data);
         console.log(tasks)
       } catch (error) {
         console.error("Error fetching tasks:", error);
@@ -39,18 +32,6 @@ export default function Home() {
         <h2 className="text-1xl font-bold mb-3">Frontend </h2>
         <DataTable data={tasks} columns={columns} />
       </div>
-      {/* <div className="mt-8">
-        <h2 className="text-1xl font-bold">Backend </h2>
-        <DataTable data={[
-          {
-            "id": "FNTB-0002",
-            "title": "Initialize and connect localhost backend mongo + express simple setup",
-            "status": "backlog",
-            "label": "feature",
-            "priority": "medium"
-          },
-        ]} columns={columns} />
-      </div> */}
     </div>
   );
 }

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/src/types/api",
+    "dev": "npm run generate-types & next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -37,6 +38,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
+    "swagger-typescript-api": "^13.0.23",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

@@ -35,15 +35,19 @@ export const columns: ColumnDef<Task>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "id",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
-    ),
-    cell: ({ row }) => <div className="w-[95px]">{row.getValue("id")}</div>,
-    enableSorting: false,
-    enableHiding: false,
-  },
+  //todo generate task_id
+  // {
+  //   accessorKey: "_id",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Task" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     console.log(row)
+  //     return <div className="w-[95px]">{row.getValue("_id")}</div>
+  //   },
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
   {
     accessorKey: "title",
     header: ({ column }) => (

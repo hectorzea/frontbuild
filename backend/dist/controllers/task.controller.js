@@ -19,7 +19,6 @@ class TaskController {
         try {
             const { title, status, label, priority } = req.body;
             const newTask = new taskModel_1.default({
-                id: `FNTB-${Math.random().toString(36).substring(2, 6).toUpperCase()}`,
                 title,
                 status,
                 label,
