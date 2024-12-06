@@ -7,7 +7,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -25,7 +24,7 @@ export const EditTaskDialog: React.FC<EditTaskDialogProps> = ({ open, onOpenChan
         <DialogHeader>
           <DialogTitle>Edit Task</DialogTitle>
           <DialogDescription>
-            Make changes to the task here. Click save when you're done.
+            Make changes to the task here. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -37,7 +36,7 @@ export const EditTaskDialog: React.FC<EditTaskDialogProps> = ({ open, onOpenChan
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="description" className="text-right">
-              Status  
+              Status
             </Label>
             <Input id="description" defaultValue="Sample Task Description" className="col-span-3" />
           </div>

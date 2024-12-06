@@ -13,3 +13,7 @@ Note: remember to run mongodb container first from image, this is just for testi
 npm run dev 
 
 if you navigate to http://localhost:8080/api/tasks you should get the list of tasks
+
+# to see swagger api docs
+
+http://localhost:8080/api-docs/
