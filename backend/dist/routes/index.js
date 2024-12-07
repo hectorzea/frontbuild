@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const task_routes_1 = __importDefault(require("./task.routes"));
+const label_routes_1 = __importDefault(require("./label.routes"));
+const status_routes_1 = __importDefault(require("./status.routes"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_1 = __importDefault(require("../config/swagger"));
 class Routes {
@@ -13,6 +15,8 @@ class Routes {
             res.json(swagger_1.default); // Devuelve el archivo JSON con la especificación Swagger
         });
         app.use("/api/tasks", task_routes_1.default);
+        app.use("/api/labels", label_routes_1.default);
+        app.use("/api/status", status_routes_1.default);
     }
 }
 exports.default = Routes;

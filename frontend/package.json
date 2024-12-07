@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/src/types/api",
-    "dev": "npm run generate-types & next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

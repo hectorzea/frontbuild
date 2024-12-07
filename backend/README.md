@@ -1,6 +1,6 @@
-something
-
 to run this project locally pointing we need to activate mongodb container, for that we can run
+
+we use swagger-docjs to export types to frontend
 
 # to run a new container with mongobd locally
 
