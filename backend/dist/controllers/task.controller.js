@@ -34,8 +34,8 @@ class TaskController {
     ;
     async deleteTask(req, res) {
         try {
-            const { id } = req.body;
-            const deletedTask = await taskModel_1.default.findOneAndDelete({ id });
+            const { _id } = req.body;
+            const deletedTask = await taskModel_1.default.findOneAndDelete({ _id });
             if (!deletedTask) {
                 res.status(404).json({ message: "Task not found" });
                 return;
