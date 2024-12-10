@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Task as TaskModel } from "../../app/src/types/api/Api"; // Aquí estás importando la interfaz generada por Swagger
+import { Task as TaskModel } from "../../src/types/Api"; // Aquí estás importando la interfaz generada por Swagger
 
 // Aquí estamos creando un esquema Zod basado en la interfaz Task
 export const taskSchema: z.ZodType<TaskModel> = z.object({

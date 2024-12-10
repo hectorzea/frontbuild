@@ -12,7 +12,7 @@ services:
       - "3000:3000"
     # de mi /app de nextjs local, vamos a pasarlo al workdir del container /app -> /app de nextjs generada  
     volumes:
-      - ./frontend/app:/app/app
+      - ./frontend/pages:/app/pages
       - ./frontend/components:/app/components
       - ./frontend/hooks:/app/hooks
       - ./frontend/libs:/app/libs
