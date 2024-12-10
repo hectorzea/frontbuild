@@ -1,5 +1,3 @@
-"use client"
-
 import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "@/components/frontbuild/DataTable/DataTable";
 import { useEffect, useState } from "react";
@@ -34,3 +32,4 @@ export default function Home() {
         </div>
     );
 }
+
