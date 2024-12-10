@@ -1,12 +1,26 @@
 import "../globals.css";
-import { useEffect } from "react";
-import { setUpMocks } from "../src/mocks/browser"; // Asegúrate de la ruta correcta
+import { useEffect, useState } from "react";
+import { setUpMocks } from "../utils/setUpMocks"
 import { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    setUpMocks();
-  }, []);
+  {
+    const [isMswReady, setIsMswReady] = useState<boolean>(false);
 
-  return <Component {...pageProps} />;
+    useEffect(() => {
+      const initializeMocking = async () => {
+        if (process.env.NODE_ENV === "development") {
+          await setUpMocks();
+        }
+        setIsMswReady(true);
+      }
+      initializeMocking();
+    }, []);
+
+    if (!isMswReady) {
+      return <div>Loading...</div>;
+    }
+
+    return <Component {...pageProps} />;
+  }
 }
