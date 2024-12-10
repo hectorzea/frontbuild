@@ -16,7 +16,7 @@ export default function Home() {
                 console.error("Error fetching tasks:", error);
             }
         };
-
+        
         fetchTasks();
     }, []);
     return (

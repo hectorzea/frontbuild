@@ -1,6 +1,12 @@
 import "../globals.css";
-import type { AppProps } from 'next/app'
+import { useEffect } from "react";
+import { setUpMocks } from "../src/mocks/browser"; // Asegúrate de la ruta correcta
+import { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useEffect(() => {
+    setUpMocks();
+  }, []);
+
+  return <Component {...pageProps} />;
 }

@@ -1,4 +1,11 @@
-import { setupWorker } from 'msw'
 import { handlers } from './handlers'
- 
-export const worker = setupWorker(...handlers)
+
+export const setUpMocks = async () => {
+    if (typeof window !== 'undefined') {
+        const { setupWorker } = require("msw/browser");
+
+        const worker = setupWorker(...handlers);
+
+        await worker.start();
+    }
+}
