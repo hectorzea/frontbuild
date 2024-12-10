@@ -6,7 +6,7 @@ export interface IStatus extends Document {
     icon: string;
 }
 
-const statusSchema = new Schema<IStatus>({
+export const statusSchema = new Schema<IStatus>({
     value: { type: String, required: true },
     label: { type: String, required: true },
     icon: { type: String, required: true },

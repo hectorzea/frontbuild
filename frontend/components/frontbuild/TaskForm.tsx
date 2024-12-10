@@ -18,6 +18,7 @@ import {
 import {
     Button
 } from "@/components/ui/button"
+import { useFetchStatus } from '@/hooks/useFetchStatus';
 import {
     Select,
     SelectContent,
@@ -26,8 +27,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { useFetchStatus } from '@/hooks/useFetchStatus';
-
+import { Label, Status } from '@/src/types/api/Api';
+import { useFetchLabels } from '@/hooks/useFetchLabels';
 
 
 interface TaskFormProps {
@@ -41,8 +42,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
         defaultValues,
     });
 
-    const { statuses, loading, error } = useFetchStatus();
-    console.log(statuses, loading, error)
+    const { statuses } = useFetchStatus();
+    const { labels } = useFetchLabels();
 
 
     const onSubmit = (values: z.infer<typeof taskSchema>) => {
@@ -75,7 +76,61 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Select a verified email to display" />
+                                        <SelectValue placeholder="Select a status" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {statuses?.map((status: Status) => (
+                                            <SelectItem value={status.value} key={status.value}>
+                                                {status.label}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                            <FormDescription>Select one of the status.</FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="label"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Label</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a label" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {labels?.map((label: Label) => (
+                                            <SelectItem key={label.value} value={label.value}>
+                                                {label.label}
+                                            </SelectItem>
+                                        ))}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                            <FormDescription>Select one of the labels.</FormDescription>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                {/* <FormField
+                    control={form.control}
+                    name="priority"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Priority</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a priority" />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -88,11 +143,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <FormDescription>Select one of the status.</FormDescription>
+                            <FormDescription>Select one priority.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
-                />
+                /> */}
                 <Button type="submit">Save</Button>
             </form>
         </Form>

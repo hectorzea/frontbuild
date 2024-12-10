@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/src/types/api",
+    "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./src/types/api",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

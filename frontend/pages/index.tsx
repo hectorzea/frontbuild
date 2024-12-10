@@ -2,7 +2,7 @@ import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "@/components/frontbuild/DataTable/DataTable";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Task } from "../src/types/Api";
+import { Task } from "../src/types/api/Api";
 
 export default function Home() {
     const [tasks, setTasks] = useState<Task[]>([]);

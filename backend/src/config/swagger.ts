@@ -2,12 +2,14 @@ import swaggerJSDoc from "swagger-jsdoc";
 import mongooseToSwagger from "mongoose-to-swagger";
 import Task from "../models/taskModel";
 import Label from "../models/labelModel"
+import Status from "../models/statusModel"
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "http://localhost";
 
 const taskSchema = mongooseToSwagger(Task);
 const labelSchema = mongooseToSwagger(Label);
+const statusSchema = mongooseToSwagger(Status);
 
 const swaggerOptions: swaggerJSDoc.Options = {
     definition: {
@@ -20,7 +22,8 @@ const swaggerOptions: swaggerJSDoc.Options = {
         components: {
             schemas: {
                 Task: taskSchema,
-                Label: labelSchema
+                Label: labelSchema,
+                Status: statusSchema
             },
         },
         servers: [

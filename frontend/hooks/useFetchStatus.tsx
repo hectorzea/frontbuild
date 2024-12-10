@@ -1,7 +1,8 @@
+import { Status } from "@/src/types/api/Api";
 import { useState, useEffect } from "react";
 
 export const useFetchStatus = () => {
-    const [statuses, setStatuses] = useState<string[]>([]);
+    const [statuses, setStatuses] = useState<Status[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
