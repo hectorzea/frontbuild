@@ -30,6 +30,7 @@ import {
 import { Label, Priority, Status } from '@/src/types/api/Api';
 import { useFetchLabels } from '@/hooks/useFetchLabels';
 import { useFetchPriorities } from '@/hooks/useFetchPriorities';
+import Box from 'ui-box'
 
 
 interface TaskFormProps {
@@ -146,9 +147,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                         </FormItem>
                     )}
                 />
-                <div>
+                <Box display='flex' justifyContent='end'>
                     <Button type="submit">Save</Button>
-                </div>
+                </Box>
             </form>
         </Form>
     )
