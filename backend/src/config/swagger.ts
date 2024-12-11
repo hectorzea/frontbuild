@@ -3,6 +3,7 @@ import mongooseToSwagger from "mongoose-to-swagger";
 import Task from "../models/taskModel";
 import Label from "../models/labelModel"
 import Status from "../models/statusModel"
+import Priority from "../models/priorityModel"
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "http://localhost";
@@ -10,6 +11,7 @@ const HOST = process.env.HOST || "http://localhost";
 const taskSchema = mongooseToSwagger(Task);
 const labelSchema = mongooseToSwagger(Label);
 const statusSchema = mongooseToSwagger(Status);
+const prioritySchema = mongooseToSwagger(Priority);
 
 const swaggerOptions: swaggerJSDoc.Options = {
     definition: {
@@ -23,7 +25,8 @@ const swaggerOptions: swaggerJSDoc.Options = {
             schemas: {
                 Task: taskSchema,
                 Label: labelSchema,
-                Status: statusSchema
+                Status: statusSchema,
+                Priority: prioritySchema
             },
         },
         servers: [

@@ -27,8 +27,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Label, Status } from '@/src/types/api/Api';
+import { Label, Priority, Status } from '@/src/types/api/Api';
 import { useFetchLabels } from '@/hooks/useFetchLabels';
+import { useFetchPriorities } from '@/hooks/useFetchPriorities';
 
 
 interface TaskFormProps {
@@ -44,6 +45,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
 
     const { statuses } = useFetchStatus();
     const { labels } = useFetchLabels();
+    const { priorities } = useFetchPriorities();
 
 
     const onSubmit = (values: z.infer<typeof taskSchema>) => {
@@ -62,7 +64,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                             <FormControl>
                                 <Input placeholder="Task title" {...field} />
                             </FormControl>
-                            <FormDescription>Enter the task title.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
@@ -89,7 +90,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <FormDescription>Select one of the status.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
@@ -116,12 +116,11 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <FormDescription>Select one of the labels.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                {/* <FormField
+                <FormField
                     control={form.control}
                     name="priority"
                     render={({ field }) => (
@@ -135,20 +134,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
                                 </FormControl>
                                 <SelectContent>
                                     <SelectGroup>
-                                        {statuses?.map((status) => (
-                                            <SelectItem key={status} value={status}>
-                                                {status}
+                                        {priorities?.map((priority: Priority) => (
+                                            <SelectItem key={priority.value} value={priority.value}>
+                                                {priority.label}
                                             </SelectItem>
                                         ))}
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
-                            <FormDescription>Select one priority.</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
-                /> */}
-                <Button type="submit">Save</Button>
+                />
+                <div>
+                    <Button type="submit">Save</Button>
+                </div>
             </form>
         </Form>
     )

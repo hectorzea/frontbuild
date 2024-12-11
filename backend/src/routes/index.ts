@@ -2,6 +2,7 @@ import { Application } from "express";
 import taskRoutes from "./task.routes";
 import labelRoutes from "./label.routes";
 import statusRoutes from "./status.routes";
+import prioritiesRoutes from "./priority.routes"
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from '../config/swagger';
 
@@ -14,5 +15,6 @@ export default class Routes {
         app.use("/api/tasks", taskRoutes);
         app.use("/api/labels", labelRoutes);
         app.use("/api/status", statusRoutes);
+        app.use("/api/priorities", prioritiesRoutes);
     }
 }

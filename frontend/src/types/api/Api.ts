@@ -33,6 +33,14 @@ export interface Status {
   _id?: string;
 }
 
+/** Priority */
+export interface Priority {
+  value: string;
+  label: string;
+  icon: string;
+  _id?: string;
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
