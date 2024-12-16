@@ -71,7 +71,7 @@ export function DataTableRowActions<TData>({
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
-            <TaskDialog mode={"edit"} open={isDialogOpen} onOpenChange={setIsDialogOpen} />
+            <TaskDialog task={task} mode={"edit"} open={isDialogOpen} onOpenChange={setIsDialogOpen} />
         </>
     )
 }

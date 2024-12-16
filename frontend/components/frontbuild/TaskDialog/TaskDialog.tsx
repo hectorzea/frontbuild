@@ -8,16 +8,20 @@ import {
 } from "@/components/ui/dialog"
 import { TaskForm } from '../TaskForm'
 import { TaskMode } from './types'
+import { Task } from '../schema'
 
 
 interface TaskDialogDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   mode: TaskMode
+  task?: Task;
 }
 
 
-export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpenChange }) => {
+export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpenChange, task }) => {
+
+  console.log(task)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -28,12 +32,7 @@ export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpen
             Make changes to the task here. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
-        <TaskForm mode={mode} defaultValues={{
-          title: "",
-          status: "",
-          label: "",
-          priority: "",
-        }} />
+        <TaskForm mode={mode} defaultValues={task} />
       </DialogContent>
     </Dialog>
   )
