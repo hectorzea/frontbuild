@@ -6,26 +6,29 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { TaskForm } from './TaskForm'
+import { TaskForm } from '../TaskForm'
+import { TaskMode } from './types'
 
-interface EditTaskDialogProps {
+
+interface TaskDialogDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
+  mode: TaskMode
 }
 
 
-export const EditTaskDialog: React.FC<EditTaskDialogProps> = ({ open, onOpenChange }) => {
+export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpenChange }) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
+          <DialogTitle>{mode} Task</DialogTitle>
           <DialogDescription>
             Make changes to the task here. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
-        <TaskForm defaultValues={{
+        <TaskForm mode={mode} defaultValues={{
           title: "",
           status: "",
           label: "",

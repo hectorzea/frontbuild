@@ -9,6 +9,8 @@ import { DataTableViewOptions } from "./DataTableViewOptions"
 
 import { priorities, statuses } from "../data"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
+import { useState } from "react"
+import { TaskDialog } from "../TaskDialog/TaskDialog"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -18,6 +20,7 @@ export function DataTableToolbar<TData>({
     table,
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
+    const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
     return (
         <div className="flex items-center justify-between">
@@ -55,6 +58,8 @@ export function DataTableToolbar<TData>({
                     </Button>
                 )}
             </div>
+            <Button size={'sm'} className="mr-5" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
+            <TaskDialog mode={"add"} open={isDialogOpen} onOpenChange={setIsDialogOpen} />
             <DataTableViewOptions table={table} />
         </div>
     )

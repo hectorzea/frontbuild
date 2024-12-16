@@ -30,13 +30,16 @@ import { Label, Priority, Status } from '@/src/types/api/Api';
 import { useFetchLabels } from '@/hooks/useFetchLabels';
 import { useFetchPriorities } from '@/hooks/useFetchPriorities';
 import Box from 'ui-box'
+import { TaskMode } from './TaskDialog/types';
+import axios from 'axios';
 
 
 interface TaskFormProps {
     defaultValues?: Partial<Task>;
+    mode: TaskMode
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode }) => {
 
     const form = useForm<Task>({
         resolver: zodResolver(taskSchema),
@@ -48,8 +51,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues }) => {
     const { priorities } = useFetchPriorities();
 
 
-    const onSubmit = (values: z.infer<typeof taskSchema>) => {
-        console.log(`values -->`, values)
+    const onSubmit = async (values: z.infer<typeof taskSchema>) => {
+        try {
+            if (mode === "add") {
+                const response = await axios.post("http://localhost:8080/api/tasks/add", values);
+                if (response?.data) {
+                    console.log("Task added successfully!");
+                }
+            } else if (mode === "edit") {
+                // if (!values.id) throw new Error("Task ID is required for editing.");
+                // await axios.put(`http://localhost:8080/api/tasks/${values.id}`, values);
+                // console.log("Task updated successfully!");
+            }
+        } catch (error) {
+            console.error("Error submitting task:", error);
+        }
     }
 
     return (

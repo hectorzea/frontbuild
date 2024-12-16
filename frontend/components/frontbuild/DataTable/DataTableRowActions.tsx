@@ -20,7 +20,7 @@ import {
 
 import { labels } from "../data"
 import { taskSchema } from "../schema"
-import { EditTaskDialog } from "../EditTask"
+import { TaskDialog } from "../TaskDialog/TaskDialog"
 import { useState } from "react"
 
 interface DataTableRowActionsProps<TData> {
@@ -71,7 +71,7 @@ export function DataTableRowActions<TData>({
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
-            <EditTaskDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
+            <TaskDialog mode={"edit"} open={isDialogOpen} onOpenChange={setIsDialogOpen} />
         </>
     )
 }
