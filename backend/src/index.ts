@@ -10,7 +10,7 @@ export default class Server {
     private config(app: Application): void {
         const corsOptions: CorsOptions = {
             origin: "http://localhost:3000",
-            methods: ["GET", "POST", "DELETE"],
+            methods: ["GET", "POST", "PUT", "DELETE"],
             allowedHeaders: ["Content-Type"],
         }
         app.use(cors(corsOptions));

@@ -28,6 +28,25 @@ export default class TaskController {
     }
   };
 
+  async updateTask(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const updateTask = req.body
+
+      const updatedTask = await Task.findByIdAndUpdate(id, updateTask, {
+        new: true,
+        runValidators: true,
+      });
+
+      if (!updatedTask) {
+        res.status(404).json({ message: "Task not found" });
+      }
+      res.status(200).json({ message: "Task updated successfully", task: updatedTask });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  }
+
   async deleteTask(req: Request, res: Response) {
     try {
       const { _id } = req.body;

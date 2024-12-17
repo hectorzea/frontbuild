@@ -21,8 +21,6 @@ interface TaskDialogDialogProps {
 
 export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpenChange, task }) => {
 
-  console.log(task)
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">

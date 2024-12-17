@@ -59,9 +59,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode }) => {
                     console.log("Task added successfully!");
                 }
             } else if (mode === "edit") {
-                // if (!values.id) throw new Error("Task ID is required for editing.");
-                // await axios.put(`http://localhost:8080/api/tasks/${values.id}`, values);
-                // console.log("Task updated successfully!");
+                console.log(`values`, values)
+                if (!values._id) throw new Error("Task ID is required for editing.");
+                await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
+                console.log("Task updated successfully!");
             }
         } catch (error) {
             console.error("Error submitting task:", error);

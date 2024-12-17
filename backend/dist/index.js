@@ -14,7 +14,7 @@ class Server {
     config(app) {
         const corsOptions = {
             origin: "http://localhost:3000",
-            methods: ["GET", "POST", "DELETE"],
+            methods: ["GET", "POST", "PUT", "DELETE"],
             allowedHeaders: ["Content-Type"],
         };
         app.use((0, cors_1.default)(corsOptions));
