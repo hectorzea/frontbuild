@@ -25,6 +25,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { DataTableToolbar } from "./DataTableToolbar"
+import { DataTablePagination } from "./DataTablePagination"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -43,6 +44,12 @@ export function DataTable<TData, TValue>({
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
 
+  // const [pagination, setPagination] = React.useState({
+  //   pageIndex: 0, //initial page index
+  //   pageSize: 100, //default page size
+  // });
+
+
   const table = useReactTable({
     data,
     columns,
@@ -51,6 +58,7 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
       columnFilters,
+      // pagination
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
@@ -118,7 +126,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      {/* <DataTablePagination table={table} /> */}
+      <DataTablePagination table={table} />
     </div>
   )
 }
