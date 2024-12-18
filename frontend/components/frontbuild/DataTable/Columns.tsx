@@ -9,7 +9,7 @@ import { labels, priorities, Status, statuses } from "../data"
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-// import { getStatusIcon } from "@/lib/utils"
+import { getStatusIcon } from "@/lib/utils"
 import { Binary } from "lucide-react"
 
 export const columns: ColumnDef<Task>[] = [
@@ -81,7 +81,7 @@ export const columns: ColumnDef<Task>[] = [
 
       const rowStatus = row.original.status as Status
 
-      const Icon = rowStatus ? Binary : Binary;
+      const Icon = rowStatus ? getStatusIcon(rowStatus) : Binary;
 
       if (!status) {
         return null

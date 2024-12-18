@@ -32,11 +32,14 @@ export const labels = [
   },
 ]
 
-
-
 export const statusIconMap = {
   'in-progress': Timer,
-} as const;
+  'todo': Circle,
+  'done': CheckCircle,
+  'cancelled': CircleOff,
+  'backlog': HelpCircle
+}
+
 export type Status = keyof typeof statusIconMap;
 export type StatusIcon = typeof statusIconMap[Status];
 

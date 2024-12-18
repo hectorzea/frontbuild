@@ -18,6 +18,7 @@ const badgeVariants = cva(
         "epic": "border-transparent bg-violet-600 text-violet-600-foreground shadow hover:bg-violet-400",
         "tech-debt":"border-transparent bg-gray-600 text-gray-600-foreground shadow hover:bg-gray-400",
         "feature":"border-transparent bg-cyan-600 text-cyan-600-foreground shadow hover:bg-cyan-400",
+        "bug":"border-transparent bg-red-600 text-red-600-foreground shadow hover:bg-red-400"
       },
     },
     defaultVariants: {
