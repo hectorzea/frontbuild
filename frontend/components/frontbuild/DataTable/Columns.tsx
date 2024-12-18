@@ -5,10 +5,12 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Badge, BadgeVariant } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { labels, priorities, statuses } from "../data"
+import { labels, priorities, Status, statuses } from "../data"
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
+// import { getStatusIcon } from "@/lib/utils"
+import { Binary } from "lucide-react"
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -77,15 +79,17 @@ export const columns: ColumnDef<Task>[] = [
         (status) => status.value === row.getValue("status")
       )
 
+      const rowStatus = row.original.status as Status
+
+      const Icon = rowStatus ? Binary : Binary;
+
       if (!status) {
         return null
       }
 
       return (
         <div className="flex w-[100px] items-center">
-          {status.icon && (
-            <status.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
+          <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
           <span>{status.label}</span>
         </div>
       )

@@ -6,7 +6,7 @@ export const taskHandlers = [
             {
                 "_id": "67574211b5599f1ebce84868",
                 "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
-                "status": "in progress",
+                "status": "in-progress",
                 "label": "epic",
                 "priority": "high",
             },

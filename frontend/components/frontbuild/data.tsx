@@ -4,7 +4,7 @@ import {
   ArrowUp,
   CheckCircle,
   Circle,
-  CircleOff,  
+  CircleOff,
   HelpCircle,
   Timer,
 } from "lucide-react"
@@ -32,6 +32,14 @@ export const labels = [
   },
 ]
 
+
+
+export const statusIconMap = {
+  'in-progress': Timer,
+} as const;
+export type Status = keyof typeof statusIconMap;
+export type StatusIcon = typeof statusIconMap[Status];
+
 export const statuses = [
   {
     value: "backlog",
@@ -44,7 +52,7 @@ export const statuses = [
     icon: Circle,
   },
   {
-    value: "in progress",
+    value: "in-progress",
     label: "In Progress",
     icon: Timer,
   },
