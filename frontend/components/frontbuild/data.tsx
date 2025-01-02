@@ -32,6 +32,15 @@ export const labels = [
   },
 ]
 
+export const priorityIconMap = {
+  'high': ArrowUp,
+  'medium': ArrowRight,
+  'low': ArrowDown
+}
+
+export type Priority = keyof typeof priorityIconMap;
+export type PriorityIcon = typeof priorityIconMap[Priority]
+
 export const statusIconMap = {
   'in-progress': Timer,
   'todo': Circle,

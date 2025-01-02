@@ -5,11 +5,11 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Badge, BadgeVariant } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { labels, priorities, Status, statuses } from "../data"
+import { labels, priorities, Priority, Status, statuses } from "../data"
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-import { getStatusIcon } from "@/lib/utils"
+import { getPriorityIcon, getStatusIcon } from "@/lib/utils"
 import { Binary } from "lucide-react"
 
 export const columns: ColumnDef<Task>[] = [
@@ -108,15 +108,16 @@ export const columns: ColumnDef<Task>[] = [
         (priority) => priority.value === row.getValue("priority")
       )
 
+      const rowPriority = row.original.priority as Priority
+      const Icon = rowPriority ? getPriorityIcon(rowPriority) : Binary;
+
       if (!priority) {
         return null
       }
 
       return (
         <div className="flex items-center">
-          {priority.icon && (
-            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          )}
+          <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
           <span>{priority.label}</span>
         </div>
       )
