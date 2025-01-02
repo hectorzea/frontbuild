@@ -13,11 +13,10 @@ export default class PriorityController {
 
     async addPriority(req: Request, res: Response) {
         try {
-            const { value, label, icon } = req.body;
+            const { value, label } = req.body;
             const newPriority = new Priority({
-                value, label, icon
+                value, label,
             });
-
             await newPriority.save();
             res.status(201).json({ message: "Priority created", status: newPriority });
         } catch (error: any) {

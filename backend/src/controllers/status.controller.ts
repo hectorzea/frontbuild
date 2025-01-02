@@ -13,11 +13,10 @@ export default class StatusController {
 
     async addStatus(req: Request, res: Response) {
         try {
-            const { value, label, icon } = req.body;
+            const { value, label } = req.body;
             const newStatus = new Status({
-                value, label, icon
+                value, label
             });
-
             await newStatus.save();
             res.status(201).json({ message: "Status created", status: newStatus });
         } catch (error: any) {
