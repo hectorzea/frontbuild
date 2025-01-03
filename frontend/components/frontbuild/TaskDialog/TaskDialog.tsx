@@ -22,7 +22,7 @@ interface TaskDialogDialogProps {
 export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpenChange, task }) => {
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={onOpenChange} defaultOpen={false}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{mode} Task</DialogTitle>
@@ -30,7 +30,7 @@ export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpen
             Make changes to the task here. Click save when youre done.
           </DialogDescription>
         </DialogHeader>
-        <TaskForm mode={mode} defaultValues={task} />
+        <TaskForm mode={mode} defaultValues={task} onOpenChange={onOpenChange} />
       </DialogContent>
     </Dialog>
   )

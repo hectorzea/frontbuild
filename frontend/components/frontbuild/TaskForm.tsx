@@ -32,14 +32,16 @@ import { useFetchPriorities } from '@/hooks/useFetchPriorities';
 import Box from 'ui-box'
 import { TaskMode } from './TaskDialog/types';
 import axios from 'axios';
+import { toast } from 'sonner';
 
 
 interface TaskFormProps {
     defaultValues?: Partial<Task>;
+    onOpenChange: (open: boolean) => void
     mode: TaskMode
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode }) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenChange }) => {
 
     const form = useForm<Task>({
         resolver: zodResolver(taskSchema),
@@ -57,12 +59,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode }) => {
                 const response = await axios.post("http://localhost:8080/api/tasks/add", values);
                 if (response?.data) {
                     console.log("Task added successfully!");
+                    onOpenChange(false);
+                    toast("Event has been created.")
+
                 }
             } else if (mode === "edit") {
                 console.log(`values`, values)
                 if (!values._id) throw new Error("Task ID is required for editing.");
                 await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
-                console.log("Task updated successfully!");
+                onOpenChange(false)
+                toast("Event has been created.")
             }
         } catch (error) {
             console.error("Error submitting task:", error);

@@ -1,4 +1,12 @@
 import { http, HttpResponse } from 'msw'
+import { Task } from '../types/api/Api';
+
+type UpdateTaskRequestBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
+type UpdateTaskResponseBody = Task;
+interface UpdateTaskRequestParams {
+    id: string
+}
+
 
 export const taskHandlers = [
     http.get('http://localhost:8080/api/tasks', () => {
@@ -158,4 +166,13 @@ export const taskHandlers = [
             "priority": "high",
         })
     }),
+    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, UpdateTaskResponseBody>('http://localhost:8080/api/tasks/:id', ({ }) => {
+        return HttpResponse.json({
+            "_id": "675743bc6331e0a65f16a42a",
+            "title": "Response task",
+            "status": "in progress",
+            "label": "epic",
+            "priority": "high",
+        })
+    })
 ]

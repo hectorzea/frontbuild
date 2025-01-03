@@ -2,6 +2,7 @@ import "../globals.css";
 import { useEffect, useState } from "react";
 import { setUpMocks } from "../utils/setUpMocks"
 import { AppProps } from "next/app";
+import { Toaster } from "@/components/ui/sonner"
 
 // can this be changed to arrow functions?
 export default function App({ Component, pageProps }: AppProps) {
@@ -22,6 +23,9 @@ export default function App({ Component, pageProps }: AppProps) {
       return <div>Loading...</div>;
     }
 
-    return <Component {...pageProps} />;
+    return <>
+      <Component {...pageProps} />;
+      <Toaster />
+    </>
   }
 }
