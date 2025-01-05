@@ -1,11 +1,22 @@
 import { http, HttpResponse } from 'msw'
 import { Task } from '../types/api/Api';
 
+//request bodies
 type UpdateTaskRequestBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
+type DeleteTaskRequestBody = Pick<Task, '_id'>
+
+//responses
 type UpdateTaskResponseBody = Task;
+type DeleteTaskResponseBody = {
+    message: string;
+    task: Task
+};
+
+//params
 interface UpdateTaskRequestParams {
     id: string
 }
+
 
 
 export const taskHandlers = [
@@ -166,13 +177,26 @@ export const taskHandlers = [
             "priority": "high",
         })
     }),
-    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, UpdateTaskResponseBody>('http://localhost:8080/api/tasks/:id', ({ }) => {
+    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, UpdateTaskResponseBody>('http://localhost:8080/api/tasks/:id', async ({ }) => {
         return HttpResponse.json({
             "_id": "675743bc6331e0a65f16a42a",
             "title": "Response task",
             "status": "in progress",
             "label": "epic",
             "priority": "high",
+        })
+    }),
+    http.delete<DeleteTaskRequestBody, DeleteTaskResponseBody>('http://localhost:8080/api/tasks/delete', async ({ }) => {
+        return HttpResponse.json({
+            "message": "Task deleted successfully",
+            "task": {
+                "_id": "677aa9af04f883909a374e02",
+                "title": "Test task",
+                "status": "cancelled",
+                "label": "epic",
+                "priority": "low",
+                "__v": 0
+            }
         })
     })
 ]

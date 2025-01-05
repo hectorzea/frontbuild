@@ -22,6 +22,9 @@ import { labels } from "../data"
 import { taskSchema } from "../schema"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
 import { useState } from "react"
+import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"
+import axios from "axios"
+import { toast } from "sonner"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -31,7 +34,19 @@ export function DataTableRowActions<TData>({
     row,
 }: DataTableRowActionsProps<TData>) {
     const task = taskSchema.parse(row.original)
-    const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+    const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
+
+    const onDeleteTask = async () => {
+        try {
+            await axios.post("http://localhost:8080/api/tasks/add", { _id: task._id });
+            setConfirmationDialogOpen(false)
+            toast('Task deleted')
+        } catch (error) {
+            setConfirmationDialogOpen(false);
+            toast('Error on deleting task')
+        }
+    }
 
     return (
         <>
@@ -65,13 +80,14 @@ export function DataTableRowActions<TData>({
                         </DropdownMenuSubContent>
                     </DropdownMenuSub>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setConfirmationDialogOpen(true)}>
                         Delete
                         <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
             <TaskDialog task={task} mode={"edit"} open={isDialogOpen} onOpenChange={setIsDialogOpen} />
+            <ConfirmationDialog open={isConfirmationDialogOpen} onOpenChange={setConfirmationDialogOpen} onAccept={onDeleteTask} />
         </>
     )
 }
