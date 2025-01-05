@@ -68,7 +68,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                 if (!values._id) throw new Error("Task ID is required for editing.");
                 await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
                 onOpenChange(false)
-                toast("Event has been created.")
+                toast("Event has been updated.")
             }
         } catch (error) {
             console.error("Error submitting task:", error);
