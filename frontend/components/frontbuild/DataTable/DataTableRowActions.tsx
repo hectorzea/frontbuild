@@ -39,12 +39,13 @@ export function DataTableRowActions<TData>({
 
     const onDeleteTask = async () => {
         try {
-            await axios.post("http://localhost:8080/api/tasks/add", { _id: task._id });
+            await axios.delete("http://localhost:8080/api/tasks/delete", { data: { _id: task._id } });
             setConfirmationDialogOpen(false)
             toast('Task deleted')
         } catch (error) {
             setConfirmationDialogOpen(false);
             toast('Error on deleting task')
+            console.error(error)
         }
     }
 
