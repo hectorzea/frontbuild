@@ -54,9 +54,8 @@ const swaggerJSDocOptions = {
     apis: ['./src/routes/*.ts'],
 };
 
-const swaggerSpec = swaggerJSDoc(swaggerJSDocOptions);
+export const swaggerSpec = swaggerJSDoc(swaggerJSDocOptions);
 const outputFile = './swagger_output.json';
 const endpointsFiles = ['./src/routes/index.ts'];
 
 swaggerAutogen({ openapi: '3.0.0' })(outputFile, endpointsFiles, swaggerDoc);
-export default swaggerSpec

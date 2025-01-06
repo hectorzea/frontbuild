@@ -5,7 +5,7 @@ import statusRoutes from "./status.routes";
 import prioritiesRoutes from "./priority.routes"
 import swaggerUi from 'swagger-ui-express';
 import swaggerOutput from "../config/swagger_output.json";
-import swaggerSpec from "../config/swagger";
+import { swaggerSpec } from "../config/swagger";
 
 export default class Routes {
     constructor(app: Application) {
