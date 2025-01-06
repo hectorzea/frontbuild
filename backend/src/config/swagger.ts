@@ -4,6 +4,7 @@ import Task from "../models/taskModel";
 import Label from "../models/labelModel"
 import Status from "../models/statusModel"
 import Priority from "../models/priorityModel"
+import swaggerAutogen from "swagger-autogen";
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "http://localhost";
@@ -13,31 +14,49 @@ const labelSchema = mongooseToSwagger(Label);
 const statusSchema = mongooseToSwagger(Status);
 const prioritySchema = mongooseToSwagger(Priority);
 
-const swaggerOptions: swaggerJSDoc.Options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'FrontBuild API Documentacion',
-            version: '1.0.0',
-            description: 'FrontBuild backend api for creating task and other functionalities generated with swagger-jsdoc',
-        },
-        components: {
-            schemas: {
-                Task: taskSchema,
-                Label: labelSchema,
-                Status: statusSchema,
-                Priority: prioritySchema
-            },
-        },
-        servers: [
-            {
-                url: `${HOST}:${PORT}`,
-                description: 'Dev local server',
-            },
-        ],
+const swaggerDoc = {
+    openapi: '3.0.0',
+    info: {
+        version: '1.0.0',
+        title: 'FrontBuild API Documentacion',
+        description: 'FrontBuild backend api for creating task and other funcionalidades generated with swagger-jsdoc',
     },
-    apis: ['./src/routes*.ts'],
+    servers: [
+        {
+            url: `${HOST}:${PORT}`,
+            description: 'Dev local server',
+        },
+    ],
+    components: {
+        examples: {
+            addTaskExample: {
+                value: {
+                    title: "Example Task",
+                    status: "pending",
+                    label: "work",
+                    priority: "high",
+                }
+            }
+        },
+        schemas: {
+            Task: taskSchema,
+            Label: labelSchema,
+            Status: statusSchema,
+            Priority: prioritySchema,
+        },
+    },
+}
+
+const swaggerJSDocOptions = {
+    definition: {
+        ...swaggerDoc
+    },
+    apis: ['./src/routes/*.ts'],
 };
 
-const swaggerSpec = swaggerJSDoc(swaggerOptions);
-export default swaggerSpec;
+const swaggerSpec = swaggerJSDoc(swaggerJSDocOptions);
+const outputFile = './swagger_output.json';
+const endpointsFiles = ['./src/routes/index.ts'];
+
+swaggerAutogen({ openapi: '3.0.0' })(outputFile, endpointsFiles, swaggerDoc);
+export default swaggerSpec

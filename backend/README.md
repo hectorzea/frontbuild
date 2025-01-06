@@ -17,3 +17,9 @@ if you navigate to http://localhost:8080/api/tasks you should get the list of ta
 # to see swagger api docs
 
 http://localhost:8080/api-docs/
+
+# to generate swagger_output.json
+
+```bash
+npm run generate-swagger
+```

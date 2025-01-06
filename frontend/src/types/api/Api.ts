@@ -29,7 +29,6 @@ export interface Label {
 export interface Status {
   value: string;
   label: string;
-  icon: string;
   _id?: string;
 }
 
@@ -37,7 +36,6 @@ export interface Status {
 export interface Priority {
   value: string;
   label: string;
-  icon: string;
   _id?: string;
 }
 
@@ -256,6 +254,6 @@ export class HttpClient<SecurityDataType = unknown> {
  * @version 1.0.0
  * @baseUrl http://localhost:8080
  *
- * FrontBuild backend api for creating task and other functionalities generated with swagger-jsdoc
+ * FrontBuild backend api for creating task and other funcionalidades generated with swagger-jsdoc
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {}
