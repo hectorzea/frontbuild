@@ -8,7 +8,5 @@ export default function IndexPage() {
   const { data, isError, isLoading, isSuccess } =
     useGetTasksQuery();
 
-  console.log(data)
-
   return <App />;
 }
