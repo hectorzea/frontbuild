@@ -5,12 +5,15 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Badge, BadgeVariant } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
 
-import { labels, priorities, Priority, Status, statuses } from "../data"
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
 import { getPriorityIcon, getStatusIcon } from "@/lib/utils"
 import { Binary } from "lucide-react"
+import { useGetLabelsQuery } from "@/lib/features/label/labelApiSlice"
+import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice"
+import { useGetPriorityQuery } from "@/lib/features/priority/priorityApiSlice"
+import { Priority, Status } from "@/app/types"
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -56,7 +59,11 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Title" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label)
+
+      const { data: labels } =
+        useGetLabelsQuery();
+
+      const label = labels?.find((label) => label.value === row.original.label)
       const badgeVariant: BadgeVariant = label?.value as BadgeVariant
 
       return (
@@ -75,7 +82,10 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      const status = statuses.find(
+      const { data: statuses } =
+        useGetStatusQuery();
+
+      const status = statuses?.find(
         (status) => status.value === row.getValue("status")
       )
 
@@ -104,7 +114,11 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Priority" />
     ),
     cell: ({ row }) => {
-      const priority = priorities.find(
+
+      const { data: priorities } =
+        useGetPriorityQuery();
+
+      const priority = priorities?.find(
         (priority) => priority.value === row.getValue("priority")
       )
 

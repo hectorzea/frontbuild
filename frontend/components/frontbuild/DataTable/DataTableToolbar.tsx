@@ -6,11 +6,11 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DataTableViewOptions } from "./DataTableViewOptions"
-
-import { priorities, statuses } from "../data"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
 import { useState } from "react"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
+import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice"
+import { useGetPriorityQuery } from "@/lib/features/priority/priorityApiSlice"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -21,6 +21,15 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
+
+    const { data: statuses, isLoading: isLoadinStatuses } =
+        useGetStatusQuery();
+    const { data: priorities, isLoading: isLoadingPriorities } =
+        useGetPriorityQuery();
+
+    if (isLoadinStatuses || isLoadingPriorities) {
+        return null
+    }
 
     return (
         <div className="flex items-center justify-between">
@@ -37,16 +46,16 @@ export function DataTableToolbar<TData>({
                     <DataTableFacetedFilter
                         column={table.getColumn("status")}
                         title="Status"
-                        options={statuses}
+                        options={statuses!}
                     />
                 )}
-                {table.getColumn("priority") && (
+                {/* {table.getColumn("priority") && (
                     <DataTableFacetedFilter
                         column={table.getColumn("priority")}
                         title="Priority"
-                        options={priorities}
+                        options={priorities!}
                     />
-                )}
+                )} */}
                 {isFiltered && (
                     <Button
                         variant="ghost"

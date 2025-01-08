@@ -18,13 +18,13 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { labels } from "../data"
 import { taskSchema } from "../schema"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
 import { useState } from "react"
 import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"
 import axios from "axios"
 import { toast } from "sonner"
+import { useGetLabelsQuery } from "@/lib/features/label/labelApiSlice"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -36,6 +36,9 @@ export function DataTableRowActions<TData>({
     const task = taskSchema.parse(row.original)
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
+
+    const { data: labels } =
+        useGetLabelsQuery();
 
     const onDeleteTask = async () => {
         try {
@@ -72,7 +75,7 @@ export function DataTableRowActions<TData>({
                         <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
                         <DropdownMenuSubContent>
                             <DropdownMenuRadioGroup value={task.label}>
-                                {labels.map((label) => (
+                                {labels?.map((label) => (
                                     <DropdownMenuRadioItem key={label.value} value={label.value}>
                                         {label.label}
                                     </DropdownMenuRadioItem>

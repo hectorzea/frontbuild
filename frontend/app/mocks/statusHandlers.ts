@@ -11,7 +11,7 @@ export const statusHandlers = [
             },
             {
                 "_id": "67574211b5599f1ebce33868",
-                "value": "in progress",
+                "value": "in-progress",
                 "label": "In progress",
                 "icon": "timer",
             },

@@ -7,11 +7,9 @@ interface Quote {
     author: string;
 }
 
-interface QuotesApiResponse {
-    quotes: Quote[];
-    total: number;
-    skip: number;
-    limit: number;
+interface PriorityApiResponse {
+    value: string;
+    label: string;
 }
 
 // Define a service using a base URL and expected endpoints
@@ -26,7 +24,7 @@ export const priorityApiSlice = createApi({
         // for the argument type instead.
         //build.query<ResponseDelBackend, parametro url que queramos enviar>
         //luego cuando ejecutemos query: (parametroURl) especificado del tipo de arriba obviamente
-        getPriority: build.query<any, void>({
+        getPriority: build.query<PriorityApiResponse[], void>({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.

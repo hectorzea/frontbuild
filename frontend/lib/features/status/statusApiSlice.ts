@@ -7,11 +7,10 @@ interface Quote {
     author: string;
 }
 
-interface QuotesApiResponse {
-    quotes: Quote[];
-    total: number;
-    skip: number;
-    limit: number;
+interface StatusApiResponse {
+    value: string
+    label: string
+    icon: string
 }
 
 // Define a service using a base URL and expected endpoints
@@ -26,7 +25,7 @@ export const statusApiSlice = createApi({
         // for the argument type instead.
         //build.query<ResponseDelBackend, parametro url que queramos enviar>
         //luego cuando ejecutemos query: (parametroURl) especificado del tipo de arriba obviamente
-        getStatus: build.query<any, void>({
+        getStatus: build.query<StatusApiResponse[], void>({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.

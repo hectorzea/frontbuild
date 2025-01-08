@@ -1,4 +1,4 @@
-import { Priority, PriorityIcon, priorityIconMap, Status, StatusIcon, statusIconMap } from "@/components/frontbuild/data";
+import { Priority, PriorityIcon, priorityIconMap, Status, StatusIcon, statusIconMap } from "@/app/types/index"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
