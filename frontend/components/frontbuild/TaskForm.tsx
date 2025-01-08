@@ -17,7 +17,6 @@ import {
 import {
     Button
 } from "@/components/ui/button"
-import { useFetchStatus } from '@/hooks/useFetchStatus';
 import {
     Select,
     SelectContent,
@@ -26,13 +25,15 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Label, Priority, Status } from '@/src/types/api/Api';
-import { useFetchLabels } from '@/hooks/useFetchLabels';
-import { useFetchPriorities } from '@/hooks/useFetchPriorities';
+import { Label, Priority, Status } from '@/app/types/api/Api';
 import Box from 'ui-box'
 import { TaskMode } from './TaskDialog/types';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
+import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
+import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
+import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
 
 
 interface TaskFormProps {
@@ -48,9 +49,12 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
         defaultValues,
     });
 
-    const { statuses } = useFetchStatus();
-    const { labels } = useFetchLabels();
-    const { priorities } = useFetchPriorities();
+    const { data: labels, } =
+        useGetLabelsQuery();
+    const { data: statuses } =
+        useGetStatusQuery();
+    const { data: priorities } =
+        useGetPriorityQuery();
 
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
@@ -60,7 +64,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                 if (response?.data) {
                     console.log("Task added successfully!");
                     onOpenChange(false);
-                    toast("Event has been created.")
+                    toast("Task has been created.")
 
                 }
             } else if (mode === "edit") {
@@ -68,7 +72,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                 if (!values._id) throw new Error("Task ID is required for editing.");
                 await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
                 onOpenChange(false)
-                toast("Event has been updated.")
+                toast("Task has been updated.")
             }
         } catch (error) {
             console.error("Error submitting task:", error);

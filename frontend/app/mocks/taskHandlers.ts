@@ -17,8 +17,6 @@ interface UpdateTaskRequestParams {
     id: string
 }
 
-
-
 export const taskHandlers = [
     http.get('http://localhost:8080/api/tasks', () => {
         return HttpResponse.json([
