@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
+import { Toaster } from "sonner";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({
     <StoreProvider>
       <html lang="en">
         <body className="dark">
+          <Toaster />
           {children}
         </body>
       </html>
