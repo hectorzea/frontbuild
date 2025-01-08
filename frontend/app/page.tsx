@@ -1,12 +1,24 @@
 "use client"
-import React from 'react';
-import { App } from '.';
-import './client';
-import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
+import React, { useEffect, useState } from 'react';
+import { TaskDashboard } from '../components/frontbuild/TaskDashboard';
+import { setUpMocks } from './mocks/setupMocks';
 
 export default function IndexPage() {
-  const { data, isError, isLoading, isSuccess } =
-    useGetTasksQuery();
+  const [isMswReady, setIsMswReady] = useState<boolean>(false);
 
-  return <App />;
+  useEffect(() => {
+    const initializeMocking = async () => {
+      if (process.env.NODE_ENV === "development") {
+        await setUpMocks();
+      }
+      setIsMswReady(true);
+    };
+    initializeMocking();
+  }, []);
+
+  if (!isMswReady) {
+    return <div>Loading...</div>;
+  }
+
+  return <TaskDashboard />;
 }

@@ -25,10 +25,8 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body>
-          <div id="root">
-            {children}
-          </div>
+        <body className="dark">
+          {children}
         </body>
       </html>
     </StoreProvider>
