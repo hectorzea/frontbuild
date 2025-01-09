@@ -14,13 +14,13 @@ export const TaskDashboard = () => {
 
   return (
     <div className="p-10">
-      <h2 className="text-2xl font-bold">Welcome back!</h2>
+      <h2 className="text-2xl font-bold" data-testid={'frontbuild-title'}>Welcome back!</h2>
       <p className="text-muted-foreground">
         FrontBuild all task repository!
       </p>
       <div className="mt-8">
         <h2 className="text-1xl font-bold mb-3">Frontend </h2>
-        <DataTable data={tasks} columns={columns} />
+        <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} />
       </div>
     </div>
   );

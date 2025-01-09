@@ -60,10 +60,11 @@ export const columns: ColumnDef<Task>[] = [
     ),
     cell: ({ row }) => {
 
-      const { data: labels } =
-        useGetLabelsQuery();
+      // const { data: labels } =
+      //   useGetLabelsQuery();
 
-      const label = labels?.find((label) => label.value === row.original.label)
+      // const label = labels?.find((label) => label.value === row.original.label)
+      const label = { value: 'epic', label: 'Epic' }
       const badgeVariant: BadgeVariant = label?.value as BadgeVariant
 
       return (
@@ -82,12 +83,12 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      const { data: statuses } =
-        useGetStatusQuery();
+      // const { data: statuses } =
+      //   useGetStatusQuery();
 
-      const status = statuses?.find(
-        (status) => status.value === row.getValue("status")
-      )
+      // const status = statuses?.find(
+      //   (status) => status.value === row.getValue("status")
+      // )
 
       const rowStatus = row.original.status as Status
 
@@ -100,7 +101,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex w-[100px] items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span>{status.label}</span>
+          {/* <span>{status.label}</span> */}
         </div>
       )
     },
@@ -115,12 +116,14 @@ export const columns: ColumnDef<Task>[] = [
     ),
     cell: ({ row }) => {
 
-      const { data: priorities } =
-        useGetPriorityQuery();
+      // const { data: priorities } =
+      //   useGetPriorityQuery();
 
-      const priority = priorities?.find(
-        (priority) => priority.value === row.getValue("priority")
-      )
+      // const priority = priorities?.find(
+      //   (priority) => priority.value === row.getValue("priority")
+      // )
+
+      const priority = { value: 'high', label: 'High' }
 
       const rowPriority = row.original.priority as Priority
       const Icon = rowPriority ? getPriorityIcon(rowPriority) : Binary;

@@ -22,14 +22,14 @@ export function DataTableToolbar<TData>({
     const isFiltered = table.getState().columnFilters.length > 0
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
-    const { data: statuses, isLoading: isLoadinStatuses } =
-        useGetStatusQuery();
-    const { data: priorities, isLoading: isLoadingPriorities } =
-        useGetPriorityQuery();
+    // const { data: statuses, isLoading: isLoadinStatuses } =
+    //     useGetStatusQuery();
+    // const { data: priorities, isLoading: isLoadingPriorities } =
+    //     useGetPriorityQuery();
 
-    if (isLoadinStatuses || isLoadingPriorities) {
-        return null
-    }
+    // if (isLoadinStatuses || isLoadingPriorities) {
+    //     return null
+    // }
 
     return (
         <div className="flex items-center justify-between">
@@ -46,16 +46,16 @@ export function DataTableToolbar<TData>({
                     <DataTableFacetedFilter
                         column={table.getColumn("status")}
                         title="Status"
-                        options={statuses!}
+                        options={[]}
                     />
                 )}
-                {/* {table.getColumn("priority") && (
+                {table.getColumn("priority") && (
                     <DataTableFacetedFilter
                         column={table.getColumn("priority")}
                         title="Priority"
-                        options={priorities!}
+                        options={[]}
                     />
-                )} */}
+                )}
                 {isFiltered && (
                     <Button
                         variant="ghost"
