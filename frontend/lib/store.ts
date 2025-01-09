@@ -1,36 +1,25 @@
+import { combineReducers,combineSlices, configureStore } from '@reduxjs/toolkit'
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
-import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { tasksApiSlice } from "./features/tasks/tasksApiSlice";
-import { labelApiSlice } from "./features/label/labelApiSlice";
-import { priorityApiSlice } from "./features/priority/priorityApiSlice";
-import { statusApiSlice } from "./features/status/statusApiSlice";
 
-// `combineSlices` automatically combines the reducers using
-// their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-//podemos pasar mas slices aqui
-const rootReducer = combineSlices(tasksApiSlice, labelApiSlice, priorityApiSlice, statusApiSlice);
-// Infer the `RootState` type from the root reducer
-export type RootState = ReturnType<typeof rootReducer>;
+//importar todos los reducers
+import { tasksApiSlice } from './features/tasks/tasksApiSlice';
+import { tasksSlice } from './features/tasks/tasksSlice';
 
-// `makeStore` encapsulates the store configuration to allow
-// creating unique store instances, which is particularly important for
-// server-side rendering (SSR) scenarios. In SSR, separate store instances
-// are needed for each request to prevent cross-request state pollution.
-export const makeStore = () => {
+const rootReducer = combineSlices(tasksApiSlice, tasksSlice);
+
+export const setupStore = (preloadedState?: Partial<RootState>) => {
   return configureStore({
     reducer: rootReducer,
-    // Adding the api middleware enables caching, invalidation, polling,
-    // and other useful features of `rtk-query`.
+    preloadedState,
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat([tasksApiSlice.middleware, priorityApiSlice.middleware, statusApiSlice.middleware, labelApiSlice.middleware]);
+      return getDefaultMiddleware().concat(tasksApiSlice.middleware);
     },
-  });
-};
+  })
+}
 
-// Infer the return type of `makeStore`
-export type AppStore = ReturnType<typeof makeStore>;
-// Infer the `AppDispatch` type from the store itself
-export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']
 export type AppThunk<ThunkReturnType = void> = ThunkAction<
   ThunkReturnType,
   RootState,

@@ -25,6 +25,7 @@ import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"
 import axios from "axios"
 import { toast } from "sonner"
 import { useGetLabelsQuery } from "@/lib/features/label/labelApiSlice"
+import { Label } from "@/app/types/api/Api"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -37,8 +38,10 @@ export function DataTableRowActions<TData>({
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
 
-    const { data: labels } =
-        useGetLabelsQuery();
+    // const { data: labels } =
+    //     useGetLabelsQuery();
+
+    const labels: Label[] = [];
 
     const onDeleteTask = async () => {
         try {
