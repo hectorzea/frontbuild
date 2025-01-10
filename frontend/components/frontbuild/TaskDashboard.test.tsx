@@ -1,7 +1,7 @@
 import React from 'react'
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
-import { render, fireEvent, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { TaskDashboard } from './TaskDashboard'
 import { renderWithProviders } from '@/app/test-utils'
@@ -25,6 +25,10 @@ const server = setupServer(...handlers)
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
+
+//PROBAR siguientes casos despues
+//comentar este codigo y llenar el store de datos con tasks y poblar la tabla con los datos? caso de uso? SI, pero probar.
+// dejar el codigo
 
 test('loads and displays greeting', async () => {
     renderWithProviders(<TaskDashboard />, { preloadedState: { tasks: { tasks: [] } } })

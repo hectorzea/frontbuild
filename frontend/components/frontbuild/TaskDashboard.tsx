@@ -3,14 +3,37 @@ import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
 import React, { useEffect, useState } from 'react';
 import { DataTable } from './DataTable/DataTable';
 import { columns } from './DataTable/Columns';
+import { useDispatch } from 'react-redux';
+import { setTasks } from '@/lib/features/tasks/tasksSlice';
+import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
+import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
+import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
+import { setAppData } from '@/lib/features/app/appSlice';
 
 export const TaskDashboard = () => {
+  //probar con poblar tasks slice
+  const dispatch = useDispatch();
   const { data: tasks, isError, isLoading, isSuccess } =
     useGetTasksQuery();
+
+  const { data: labels, isSuccess: isSuccessGetLabels } =
+    useGetLabelsQuery();
+  const { data: statuses, isSuccess: isSuccessGetStatus } =
+    useGetStatusQuery();
+  const { data: priorities, isSuccess: isSuccessGetPriorities } =
+    useGetPriorityQuery();
+
+
+  useEffect(() => {
+    if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities) {
+      dispatch(setAppData({ labels, statuses, priorities }));
+    }
+  }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 
   if (isLoading) {
     return <>LoadingTable...</>
   }
+
 
   return (
     <div className="p-10">

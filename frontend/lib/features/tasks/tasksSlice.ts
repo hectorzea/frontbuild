@@ -18,8 +18,8 @@ export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<Task>) => {
-      state.tasks.push(action.payload);
+    setTasks: (state, action: PayloadAction<Task[]>) => {
+      state.tasks = action.payload
     },
   },
   selectors: {
@@ -30,6 +30,6 @@ export const tasksSlice = createSlice({
   },
 });
 
-export const { addTask } = tasksSlice.actions;
+export const { setTasks } = tasksSlice.actions;
 
 export const { selectAllTasks } = tasksSlice.selectors;
