@@ -8,7 +8,8 @@ import { setTasks } from '@/lib/features/tasks/tasksSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
 import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
 import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
-import { setAppData } from '@/lib/features/app/appSlice';
+import { selectTasks, setAppData } from '@/lib/features/app/appSlice';
+import { useAppSelector } from '@/lib/hooks';
 
 export const TaskDashboard = () => {
   //probar con poblar tasks slice
@@ -23,10 +24,14 @@ export const TaskDashboard = () => {
   const { data: priorities, isSuccess: isSuccessGetPriorities } =
     useGetPriorityQuery();
 
+  const tasksSelector = useAppSelector(selectTasks);
+
+  console.log(tasksSelector)
+
 
   useEffect(() => {
-    if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities) {
-      dispatch(setAppData({ labels, statuses, priorities }));
+    if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities && isSuccess) {
+      dispatch(setAppData({ labels, statuses, priorities, tasks }));
     }
   }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 
@@ -43,7 +48,7 @@ export const TaskDashboard = () => {
       </p>
       <div className="mt-8">
         <h2 className="text-1xl font-bold mb-3">Frontend </h2>
-        <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} />
+        <DataTable data={tasksSelector!} columns={columns} data-testid={'frontbuild-table'} />
       </div>
     </div>
   );

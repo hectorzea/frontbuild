@@ -8,12 +8,14 @@ interface AppState {
     labels: Label[] | undefined;
     statuses: Status[] | undefined;
     priorities: Priority[] | undefined;
+    tasks: Task[] | undefined;
 }
 
 const initialState: AppState = {
     labels: [],
     statuses: [],
-    priorities: []
+    priorities: [],
+    tasks: []
 };
 
 export const appSlice = createSlice({
@@ -24,12 +26,14 @@ export const appSlice = createSlice({
             state.labels = action.payload.labels;
             state.statuses = action.payload.statuses;
             state.priorities = action.payload.priorities;
+            state.tasks = action.payload.tasks;
         },
     },
     selectors: {
         selectLabels: (app) => app.labels,
         seletPriorities: (app) => app.priorities,
         selectStatuses: (app) => app.statuses,
+        selectTasks: (app) => app.tasks
     },
     extraReducers: (builder) => {
         // manejar acciones asíncronas aquí si es necesario
@@ -38,4 +42,4 @@ export const appSlice = createSlice({
 
 export const { setAppData } = appSlice.actions;
 
-export const { selectLabels, seletPriorities, selectStatuses } = appSlice.selectors;
+export const { selectLabels, seletPriorities, selectStatuses, selectTasks } = appSlice.selectors;

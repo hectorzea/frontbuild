@@ -6,33 +6,68 @@ import '@testing-library/jest-dom'
 import { TaskDashboard } from './TaskDashboard'
 import { renderWithProviders } from '@/app/test-utils'
 
-export const handlers = [
-    http.get('http://localhost:8080/api/tasks', async () => {
-        return HttpResponse.json([
-            {
-                "_id": "67574211b5599f1ebce84868",
-                "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
-                "status": "done",
-                "label": "epic",
-                "priority": "high",
-                "__v": 0
-            }])
-    }),
-]
+//caso de prueba teniendo un store distinto sin usar mock en la llamada http del servidor
 
-const server = setupServer(...handlers)
+// export const handlers = [
+//     http.get('http://localhost:8080/api/tasks', async () => {
+//         return HttpResponse.json([
+//             {
+//                 "_id": "67574211b5599f1ebce84868",
+//                 "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
+//                 "status": "done",
+//                 "label": "epic",
+//                 "priority": "high",
+//                 "__v": 0
+//             }])
+//     }),
+// ]
 
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
+// const server = setupServer(...handlers)
 
-//PROBAR siguientes casos despues
-//comentar este codigo y llenar el store de datos con tasks y poblar la tabla con los datos? caso de uso? SI, pero probar.
-// dejar el codigo
+// beforeAll(() => server.listen())
+// afterEach(() => server.resetHandlers())
+// afterAll(() => server.close())
 
-test('loads and displays greeting', async () => {
-    renderWithProviders(<TaskDashboard />, { preloadedState: { tasks: { tasks: [] } } })
+test('loads and displays greeting no tasks', async () => {
+    renderWithProviders(<TaskDashboard />, {
+        preloadedState: {
+            app: {
+                labels: [],
+                statuses: [],
+                priorities: [],
+                tasks: [
+
+                ]
+            }
+        }
+    })
 
     expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
     expect(await screen.findByText(/FrontBuild all task repository!/i)).toBeInTheDocument()
+    expect(await screen.findByText(/No results./i)).toBeInTheDocument()
+})
+
+test('loads and displays greeting tasks', async () => {
+    renderWithProviders(<TaskDashboard />, {
+        preloadedState: {
+            app: {
+                labels: [],
+                statuses: [],
+                priorities: [],
+                tasks: [
+                    {
+                        "_id": "67574211b5599f1ebce84868",
+                        "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
+                        "status": "done",
+                        "label": "epic",
+                        "priority": "high",
+                    }
+                ]
+            }
+        }
+    })
+
+    expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
+    expect(await screen.findByText(/FrontBuild all task repository!/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Exportar interfaces/i)).toBeInTheDocument()
 })
