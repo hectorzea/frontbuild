@@ -1,19 +1,15 @@
 "use client"
-
 import { ColumnDef } from "@tanstack/react-table"
-
 import { Badge, BadgeVariant } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-
 import { Task } from "../schema"
 import { DataTableColumnHeader } from "./DataTableColumnHeader"
 import { DataTableRowActions } from "./DataTableRowActions"
-import { getPriorityIcon, getStatusIcon } from "@/lib/utils"
+import { capitalizeFirstLetter, getPriorityIcon, getStatusIcon } from "@/lib/utils"
 import { Binary } from "lucide-react"
-import { useGetLabelsQuery } from "@/lib/features/label/labelApiSlice"
-import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice"
-import { useGetPriorityQuery } from "@/lib/features/priority/priorityApiSlice"
 import { Priority, Status } from "@/app/types"
+import { useAppSelector } from "@/lib/hooks"
+import { selectLabels, selectStatuses } from "@/lib/features/app/appSlice"
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -59,17 +55,11 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Title" />
     ),
     cell: ({ row }) => {
-
-      // const { data: labels } =
-      //   useGetLabelsQuery();
-
-      // const label = labels?.find((label) => label.value === row.original.label)
-      const label = { value: 'epic', label: 'Epic' }
-      const badgeVariant: BadgeVariant = label?.value as BadgeVariant
+      const badgeVariant: BadgeVariant = row.original.label as BadgeVariant
 
       return (
         <div className="flex space-x-2">
-          {label && <Badge variant={badgeVariant}>{label.label}</Badge>}
+          {<Badge variant={badgeVariant}>{capitalizeFirstLetter(row.original.label)}</Badge>}
           <span className="max-w-[500px] truncate font-medium">
             {row.getValue("title")}
           </span>
@@ -83,25 +73,15 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      // const { data: statuses } =
-      //   useGetStatusQuery();
-
-      // const status = statuses?.find(
-      //   (status) => status.value === row.getValue("status")
-      // )
 
       const rowStatus = row.original.status as Status
 
       const Icon = rowStatus ? getStatusIcon(rowStatus) : Binary;
 
-      if (!status) {
-        return null
-      }
-
       return (
         <div className="flex w-[100px] items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          {/* <span>{status.label}</span> */}
+          <span>{capitalizeFirstLetter(row.original.status)}</span>
         </div>
       )
     },
@@ -115,27 +95,13 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Priority" />
     ),
     cell: ({ row }) => {
-
-      // const { data: priorities } =
-      //   useGetPriorityQuery();
-
-      // const priority = priorities?.find(
-      //   (priority) => priority.value === row.getValue("priority")
-      // )
-
-      const priority = { value: 'high', label: 'High' }
-
       const rowPriority = row.original.priority as Priority
       const Icon = rowPriority ? getPriorityIcon(rowPriority) : Binary;
-
-      if (!priority) {
-        return null
-      }
 
       return (
         <div className="flex items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span>{priority.label}</span>
+          <span>{capitalizeFirstLetter(row.original.priority)}</span>
         </div>
       )
     },

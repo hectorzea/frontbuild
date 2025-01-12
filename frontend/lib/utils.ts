@@ -13,3 +13,7 @@ export const getStatusIcon = (status: Status): StatusIcon => {
 export const getPriorityIcon = (priority: Priority): PriorityIcon => {
   return priorityIconMap[priority];
 };
+
+export const capitalizeFirstLetter = (value: string) => {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
