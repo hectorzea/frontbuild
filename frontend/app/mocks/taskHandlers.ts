@@ -159,7 +159,7 @@ export const taskHandlers = [
             {
                 "_id": "6761dcd7b10490a3fb17cb72",
                 "title": "Correr app sin base de datos mongo / docker (msw?)",
-                "status": "in progress",
+                "status": "in-progress",
                 "label": "epic",
                 "priority": "high",
                 "__v": 0
