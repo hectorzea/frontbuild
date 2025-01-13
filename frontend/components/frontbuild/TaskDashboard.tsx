@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { DataTable } from './DataTable/DataTable';
 import { columns } from './DataTable/Columns';
 import { useDispatch } from 'react-redux';
-import { setTasks } from '@/lib/features/tasks/tasksSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
 import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
 import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';

@@ -6,27 +6,25 @@ import '@testing-library/jest-dom'
 import { TaskDashboard } from './TaskDashboard'
 import { renderWithProviders } from '@/app/test-utils'
 
-//caso de prueba teniendo un store distinto sin usar mock en la llamada http del servidor
+export const handlers = [
+    http.get('http://localhost:8080/api/tasks', async () => {
+        return HttpResponse.json([
+            {
+                "_id": "67574211b5599f1ebce84868",
+                "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
+                "status": "done",
+                "label": "epic",
+                "priority": "high",
+                "__v": 0
+            }])
+    }),
+]
 
-// export const handlers = [
-//     http.get('http://localhost:8080/api/tasks', async () => {
-//         return HttpResponse.json([
-//             {
-//                 "_id": "67574211b5599f1ebce84868",
-//                 "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
-//                 "status": "done",
-//                 "label": "epic",
-//                 "priority": "high",
-//                 "__v": 0
-//             }])
-//     }),
-// ]
+const server = setupServer(...handlers)
 
-// const server = setupServer(...handlers)
-
-// beforeAll(() => server.listen())
-// afterEach(() => server.resetHandlers())
-// afterAll(() => server.close())
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 test('loads and displays greeting no tasks', async () => {
     renderWithProviders(<TaskDashboard />, {
