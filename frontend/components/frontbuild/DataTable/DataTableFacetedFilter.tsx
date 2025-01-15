@@ -88,7 +88,9 @@ export function DataTableFacetedFilter<TData, TValue>({
                         <CommandGroup>
                             {options.map((option) => {
                                 const isSelected = selectedValues.has(option.value)
-                                const Icon = option?.value ? getStatusIcon(option?.value as Status) : Binary;
+                                //TODO: Implementar iconos de prioridad
+                                // const Icon = option?.value ? getPrio(option?.value as Status) : Binary;
+                                const Icon = Binary;
                                 return (
                                     <CommandItem
                                         key={option.value}
@@ -114,7 +116,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                                         >
                                             <Check />
                                         </div>
-                                        {option?.icon && <Icon className="mr-2 h-4 w-4 text-muted-foreground" />}
+                                        {option?.icon && <Binary className="mr-2 h-4 w-4 text-muted-foreground" />}
                                         <span>{option.label}</span>
                                         {facets?.get(option.value) && (
                                             <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">

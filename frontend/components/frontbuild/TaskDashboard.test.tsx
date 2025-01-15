@@ -18,6 +18,9 @@ export const handlers = [
                 "__v": 0
             }])
     }),
+    http.get('http://localhost:8080/api/tasks', () => {
+        return new HttpResponse('error', { status: 500 });
+    }),
 ]
 
 const server = setupServer(...handlers)
@@ -35,4 +38,29 @@ test('loads and displays greeting', async () => {
 
     expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
     expect(await screen.findByText(/FrontBuild all task repository!/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Exportar interfaces/i)).toBeInTheDocument()
 })
+
+//todo handle test case for table or render a different element for table
+//todo if table can render by somehow error or whatever no data scenarios to check
+//todo 1 this test is failing due to a row on table error due to no data
+test('handles server error', async () => {
+    server.use(
+        http.get('http://localhost:8080/api/tasks', () => {
+            return new HttpResponse('Internal Server Error', { status: 500 });
+        })
+    );
+
+    renderWithProviders(<TaskDashboard />, {
+        preloadedState: {
+            app: {
+                labels: [],
+                statuses: [],
+                priorities: [],
+            },
+        },
+    });
+
+    expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
+    expect(await screen.findByText(/Error loading tasks/i)).toBeInTheDocument();
+});

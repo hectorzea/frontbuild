@@ -10,7 +10,8 @@ import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
 import { useState } from "react"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
 import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice"
-import { useGetPriorityQuery } from "@/lib/features/priority/priorityApiSlice"
+import { useAppSelector } from "@/lib/hooks"
+import { selectStatuses, seletPriorities } from "@/lib/features/app/appSlice"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -21,15 +22,8 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
-
-    // const { data: statuses, isLoading: isLoadinStatuses } =
-    //     useGetStatusQuery();
-    // const { data: priorities, isLoading: isLoadingPriorities } =
-    //     useGetPriorityQuery();
-
-    // if (isLoadinStatuses || isLoadingPriorities) {
-    //     return null
-    // }
+    const priorities = useAppSelector(seletPriorities);
+    const statuses = useAppSelector(selectStatuses);
 
     return (
         <div className="flex items-center justify-between">
@@ -53,7 +47,7 @@ export function DataTableToolbar<TData>({
                     <DataTableFacetedFilter
                         column={table.getColumn("priority")}
                         title="Priority"
-                        options={[]}
+                        options={priorities!}
                     />
                 )}
                 {isFiltered && (
