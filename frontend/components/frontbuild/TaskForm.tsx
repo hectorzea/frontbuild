@@ -30,10 +30,11 @@ import Box from 'ui-box'
 import { TaskMode } from './TaskDialog/types';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
 import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
 import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
+import { useDispatch } from 'react-redux';
+import { addTask, modifyTask } from '@/lib/features/tasks/tasksSlice';
 
 
 interface TaskFormProps {
@@ -43,7 +44,7 @@ interface TaskFormProps {
 }
 
 export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenChange }) => {
-
+    const dispatch = useDispatch();
     const form = useForm<Task>({
         resolver: zodResolver(taskSchema),
         defaultValues,
@@ -58,6 +59,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
 
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
+        console.log(values)
+        //todo ver como mejorar esta parte del codigo
         try {
             if (mode === "add") {
                 const response = await axios.post("http://localhost:8080/api/tasks/add", values);
@@ -65,13 +68,15 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                     console.log("Task added successfully!");
                     onOpenChange(false);
                     toast("Task has been created.")
+                    dispatch(addTask(response.data?.task))
 
                 }
             } else if (mode === "edit") {
                 console.log(`values`, values)
                 if (!values._id) throw new Error("Task ID is required for editing.");
-                await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
+                const response = await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
                 onOpenChange(false)
+                dispatch(modifyTask(response.data?.task))
                 toast("Task has been updated.")
             }
         } catch (error) {

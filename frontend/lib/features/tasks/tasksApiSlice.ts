@@ -1,18 +1,6 @@
 // Need to use the React-specific entry point to import `createApi`
+import { Task } from "@/app/types/api/Api";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-interface Quote {
-  id: number;
-  quote: string;
-  author: string;
-}
-
-interface QuotesApiResponse {
-  quotes: Quote[];
-  total: number;
-  skip: number;
-  limit: number;
-}
 
 // Define a service using a base URL and expected endpoints
 export const tasksApiSlice = createApi({
@@ -26,7 +14,7 @@ export const tasksApiSlice = createApi({
     // for the argument type instead.
     //build.query<ResponseDelBackend, parametro url que queramos enviar>
     //luego cuando ejecutemos query: (parametroURl) especificado del tipo de arriba obviamente
-    getTasks: build.query<any, void>({
+    getTasks: build.query<Task[], void>({
       query: () => ``,
       // `providesTags` determines which 'tag' is attached to the
       // cached data returned by the query.

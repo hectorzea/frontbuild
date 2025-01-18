@@ -4,16 +4,17 @@ import React, { useEffect, useState } from 'react';
 import { DataTable } from './DataTable/DataTable';
 import { columns } from './DataTable/Columns';
 import { useDispatch } from 'react-redux';
-import { setTasks } from '@/lib/features/tasks/tasksSlice';
+import { selectAllTasks, setTasks } from '@/lib/features/tasks/tasksSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
 import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
 import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
 import { setAppData } from '@/lib/features/app/appSlice';
+import { useAppSelector } from '@/lib/hooks';
 
 export const TaskDashboard = () => {
-  //probar con poblar tasks slice
   const dispatch = useDispatch();
-  const { data: tasks, isError, isLoading, isSuccess } =
+  const tasks = useAppSelector(selectAllTasks);
+  const { data: tasksData, isLoading, isSuccess: isSuccessGetTasks } =
     useGetTasksQuery();
 
   const { data: labels, isSuccess: isSuccessGetLabels } =
@@ -23,10 +24,10 @@ export const TaskDashboard = () => {
   const { data: priorities, isSuccess: isSuccessGetPriorities } =
     useGetPriorityQuery();
 
-
   useEffect(() => {
-    if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities) {
+    if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities && isSuccessGetTasks) {
       dispatch(setAppData({ labels, statuses, priorities }));
+      dispatch(setTasks(tasksData));
     }
   }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 

@@ -24,8 +24,9 @@ import { useState } from "react"
 import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"
 import axios from "axios"
 import { toast } from "sonner"
-import { useGetLabelsQuery } from "@/lib/features/label/labelApiSlice"
 import { Label } from "@/app/types/api/Api"
+import { removeTask } from "@/lib/features/tasks/tasksSlice"
+import { useDispatch } from "react-redux"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -35,11 +36,9 @@ export function DataTableRowActions<TData>({
     row,
 }: DataTableRowActionsProps<TData>) {
     const task = taskSchema.parse(row.original)
+    const dispatch = useDispatch()
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
-
-    // const { data: labels } =
-    //     useGetLabelsQuery();
 
     const labels: Label[] = [];
 
@@ -47,6 +46,7 @@ export function DataTableRowActions<TData>({
         try {
             await axios.delete("http://localhost:8080/api/tasks/delete", { data: { _id: task._id } });
             setConfirmationDialogOpen(false)
+            dispatch(removeTask(task._id!))
             toast('Task deleted')
         } catch (error) {
             setConfirmationDialogOpen(false);

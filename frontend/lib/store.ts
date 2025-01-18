@@ -9,14 +9,23 @@ import { labelApiSlice } from './features/label/labelApiSlice';
 import { priorityApiSlice } from './features/priority/priorityApiSlice';
 import { statusApiSlice } from './features/status/statusApiSlice';
 
-const rootReducer = combineSlices(appSlice, tasksSlice, tasksApiSlice, labelApiSlice, priorityApiSlice, statusApiSlice);
+// const rootReducer = combineSlices(appSlice, tasksSlice, tasksApiSlice, labelApiSlice, priorityApiSlice, statusApiSlice);
+const rootReducer = combineReducers({
+  app: appSlice.reducer,
+  tasks: tasksSlice.reducer,
+  tasksApi: tasksApiSlice.reducer,
+  labelApi: labelApiSlice.reducer,
+  priorityApi: priorityApiSlice.reducer,
+  statusApi: statusApiSlice.reducer,
+});
 
 export const setupStore = (preloadedState?: Partial<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
     middleware: (getDefaultMiddleware) => {
-      return getDefaultMiddleware().concat(tasksApiSlice.middleware, labelApiSlice.middleware, priorityApiSlice.middleware, statusApiSlice.middleware);
+      // return getDefaultMiddleware().concat(tasksApiSlice.middleware, labelApiSlice.middleware, priorityApiSlice.middleware, statusApiSlice.middleware);
+      return getDefaultMiddleware().concat(tasksApiSlice.middleware, labelApiSlice.middleware, statusApiSlice.middleware, priorityApiSlice.middleware);
     },
   })
 }

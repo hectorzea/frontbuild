@@ -168,18 +168,21 @@ export const taskHandlers = [
     }),
     http.post('http://localhost:8080/api/tasks/add', () => {
         return HttpResponse.json({
-            "_id": "675743bc6331e0a65f16a42a",
-            "title": "Response task",
-            "status": "in progress",
-            "label": "epic",
-            "priority": "high",
+            message: "Task added successfully",
+            task: {
+                "_id": "675743bc4574e0a65f16a42a",
+                "title": "Response task",
+                "status": "todo",
+                "label": "epic",
+                "priority": "high",
+            }
         })
     }),
     http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, UpdateTaskResponseBody>('http://localhost:8080/api/tasks/:id', async ({ }) => {
         return HttpResponse.json({
-            "_id": "675743bc6331e0a65f16a42a",
-            "title": "Response task",
-            "status": "in progress",
+            "_id": "675743bc4574e0a65f16a42a",
+            "title": "Response task Modif",
+            "status": "todo",
             "label": "epic",
             "priority": "high",
         })

@@ -28,7 +28,7 @@ export const appSlice = createSlice({
     },
     selectors: {
         selectLabels: (app) => app.labels,
-        seletPriorities: (app) => app.priorities,
+        selectPriorities: (app) => app.priorities,
         selectStatuses: (app) => app.statuses,
     },
     extraReducers: (builder) => {
@@ -38,4 +38,4 @@ export const appSlice = createSlice({
 
 export const { setAppData } = appSlice.actions;
 
-export const { selectLabels, seletPriorities, selectStatuses } = appSlice.selectors;
+export const { selectLabels, selectPriorities, selectStatuses } = appSlice.selectors;

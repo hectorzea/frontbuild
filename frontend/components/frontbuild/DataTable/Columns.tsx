@@ -8,8 +8,6 @@ import { DataTableRowActions } from "./DataTableRowActions"
 import { capitalizeFirstLetter, getPriorityIcon, getStatusIcon } from "@/lib/utils"
 import { Binary } from "lucide-react"
 import { Priority, Status } from "@/app/types"
-import { useAppSelector } from "@/lib/hooks"
-import { selectLabels, selectStatuses } from "@/lib/features/app/appSlice"
 
 export const columns: ColumnDef<Task>[] = [
   {

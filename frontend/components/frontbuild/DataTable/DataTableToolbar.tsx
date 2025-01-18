@@ -9,9 +9,8 @@ import { DataTableViewOptions } from "./DataTableViewOptions"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
 import { useState } from "react"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
-import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice"
 import { useAppSelector } from "@/lib/hooks"
-import { selectStatuses, seletPriorities } from "@/lib/features/app/appSlice"
+import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice"
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -22,7 +21,7 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
     const isFiltered = table.getState().columnFilters.length > 0
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
-    const priorities = useAppSelector(seletPriorities);
+    const priorities = useAppSelector(selectPriorities);
     const statuses = useAppSelector(selectStatuses);
 
     return (
@@ -40,7 +39,7 @@ export function DataTableToolbar<TData>({
                     <DataTableFacetedFilter
                         column={table.getColumn("status")}
                         title="Status"
-                        options={[]}
+                        options={statuses!}
                     />
                 )}
                 {table.getColumn("priority") && (
@@ -62,7 +61,7 @@ export function DataTableToolbar<TData>({
                 )}
             </div>
             <Button size={'sm'} className="mr-5" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
-            <TaskDialog mode={"add"} open={isDialogOpen} onOpenChange={setIsDialogOpen} task={{ title: '', label: '', priority: '', status: '' }} />
+            <TaskDialog mode={"add"} open={isDialogOpen} onOpenChange={setIsDialogOpen} task={{ _id: '', title: '', label: '', priority: '', status: '' }} />
             <DataTableViewOptions table={table} />
         </div>
     )
