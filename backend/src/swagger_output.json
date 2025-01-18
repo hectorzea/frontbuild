@@ -36,8 +36,15 @@
       "post": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Add task response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponseSchema"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -183,73 +190,79 @@
       "Task": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "example": "asdjasdj123123"
+          },
           "title": {
             "type": "string",
-            "example": "Task"
+            "example": "Create Redux Store"
           },
-          "required": {
-            "type": "array",
-            "example": [
+          "status": {
+            "type": "string",
+            "example": "todo"
+          },
+          "label": {
+            "type": "string",
+            "example": "epic"
+          },
+          "priority": {
+            "type": "string",
+            "example": "high"
+          }
+        },
+        "required": [
+          "_id",
+          "title",
+          "status",
+          "label",
+          "priority"
+        ]
+      },
+      "TaskResponseSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Task added successfully"
+          },
+          "task": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "asdjasdj123123"
+              },
+              "title": {
+                "type": "string",
+                "example": "Create Redux Store"
+              },
+              "status": {
+                "type": "string",
+                "example": "todo"
+              },
+              "label": {
+                "type": "string",
+                "example": "epic"
+              },
+              "priority": {
+                "type": "string",
+                "example": "high"
+              }
+            },
+            "required": [
+              "_id",
               "title",
               "status",
               "label",
               "priority"
-            ],
-            "items": {
-              "type": "string"
-            }
-          },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "status": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "label": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "priority": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              }
-            }
+            ]
           }
-        }
+        },
+        "required": [
+          "message",
+          "task"
+        ]
       },
       "Label": {
         "type": "object",

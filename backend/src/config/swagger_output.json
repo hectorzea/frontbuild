@@ -36,8 +36,15 @@
       "post": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
+          "201": {
+            "description": "Add task response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskSuccessResponseSchema"
+                }
+              }
+            }
           }
         },
         "requestBody": {
@@ -180,233 +187,247 @@
       }
     },
     "schemas": {
+      "GeneralErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "An error has ocurred"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
       "Task": {
         "type": "object",
         "properties": {
+          "_id": {
+            "type": "string",
+            "example": "asdjasdj123123"
+          },
           "title": {
             "type": "string",
-            "example": "Task"
+            "example": "Create Redux Store"
           },
-          "required": {
-            "type": "array",
-            "example": [
+          "status": {
+            "type": "string",
+            "example": "todo"
+          },
+          "label": {
+            "type": "string",
+            "example": "epic"
+          },
+          "priority": {
+            "type": "string",
+            "example": "high"
+          }
+        },
+        "required": [
+          "title",
+          "status",
+          "label",
+          "priority"
+        ]
+      },
+      "TaskSuccessResponseSchema": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Task added successfully"
+          },
+          "task": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "asdjasdj123123"
+              },
+              "title": {
+                "type": "string",
+                "example": "Create Redux Store"
+              },
+              "status": {
+                "type": "string",
+                "example": "todo"
+              },
+              "label": {
+                "type": "string",
+                "example": "epic"
+              },
+              "priority": {
+                "type": "string",
+                "example": "high"
+              }
+            },
+            "required": [
+              "_id",
               "title",
               "status",
               "label",
               "priority"
-            ],
-            "items": {
-              "type": "string"
-            }
-          },
-          "properties": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "status": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "label": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "priority": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              }
-            }
+            ]
           }
-        }
+        },
+        "required": [
+          "message",
+          "task"
+        ]
       },
       "Label": {
         "type": "object",
         "properties": {
-          "title": {
+          "_id": {
             "type": "string",
-            "example": "Label"
+            "example": "dksl1m2ss"
           },
-          "required": {
-            "type": "array",
-            "example": [
-              "value",
-              "label"
-            ],
-            "items": {
-              "type": "string"
-            }
+          "value": {
+            "type": "string",
+            "example": "epic"
           },
-          "properties": {
+          "label": {
+            "type": "string",
+            "example": "Epic"
+          }
+        },
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "LabelSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Label added successfully"
+          },
+          "label": {
             "type": "object",
             "properties": {
+              "_id": {
+                "type": "string",
+                "example": "sdkaskd2222"
+              },
               "value": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "epic"
               },
               "label": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "Epic"
               }
-            }
+            },
+            "required": [
+              "value",
+              "label"
+            ]
           }
         }
       },
       "Status": {
         "type": "object",
         "properties": {
-          "title": {
+          "_id": {
             "type": "string",
-            "example": "Status"
+            "example": "sjsdla222"
           },
-          "required": {
-            "type": "array",
-            "example": [
-              "value",
-              "label"
-            ],
-            "items": {
-              "type": "string"
-            }
+          "value": {
+            "type": "string",
+            "example": "in-progress"
           },
-          "properties": {
+          "label": {
+            "type": "string",
+            "example": "In-progress"
+          }
+        },
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "StatusSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Status added successfully"
+          },
+          "label": {
             "type": "object",
             "properties": {
+              "_id": {
+                "type": "string",
+                "example": "sjsdla222"
+              },
               "value": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "in-progress"
               },
               "label": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "In-progress"
               }
-            }
+            },
+            "required": [
+              "value",
+              "label"
+            ]
           }
         }
       },
       "Priority": {
         "type": "object",
         "properties": {
-          "title": {
+          "_id": {
             "type": "string",
-            "example": "Priority"
+            "example": "kslak212ss"
           },
-          "required": {
-            "type": "array",
-            "example": [
-              "value",
-              "label"
-            ],
-            "items": {
-              "type": "string"
-            }
+          "value": {
+            "type": "string",
+            "example": "medium"
           },
-          "properties": {
+          "label": {
+            "type": "string",
+            "example": "Medium"
+          }
+        },
+        "required": [
+          "value",
+          "label"
+        ]
+      },
+      "PrioritySuccessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Priority added successfully"
+          },
+          "label": {
             "type": "object",
             "properties": {
+              "_id": {
+                "type": "string",
+                "example": "kslak212ss"
+              },
               "value": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "medium"
               },
               "label": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
-              },
-              "_id": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "example": "string"
-                  }
-                }
+                "type": "string",
+                "example": "Medium"
               }
-            }
+            },
+            "required": [
+              "value",
+              "label"
+            ]
           }
         }
       }
     }
-  },
-  "apis": [
-    "./src/routes/*.ts"
-  ]
+  }
 }

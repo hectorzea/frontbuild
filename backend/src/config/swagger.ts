@@ -1,6 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import mongooseToSwagger from "mongoose-to-swagger";
-import Task from "../models/taskModel";
+import Task, { ITask } from "../models/taskModel";
 import Label from "../models/labelModel"
 import Status from "../models/statusModel"
 import Priority from "../models/priorityModel"
@@ -9,7 +9,7 @@ import swaggerAutogen from "swagger-autogen";
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "http://localhost";
 
-const taskSchema = mongooseToSwagger(Task);
+const taskSchema = mongooseToSwagger(Task, { omitMongooseInternals: true });
 const labelSchema = mongooseToSwagger(Label);
 const statusSchema = mongooseToSwagger(Status);
 const prioritySchema = mongooseToSwagger(Priority);
@@ -36,13 +36,68 @@ const swaggerDoc = {
                     label: "work",
                     priority: "high",
                 }
-            }
+            },
         },
         schemas: {
-            Task: taskSchema,
-            Label: labelSchema,
-            Status: statusSchema,
-            Priority: prioritySchema,
+            GeneralErrorResponse: {
+                $error: 'An error has ocurred'
+            },
+            Task: {
+                _id: 'asdjasdj123123',
+                $title: 'Create Redux Store',
+                $status: 'todo',
+                $label: 'epic',
+                $priority: 'high'
+            },
+            TaskSuccessResponseSchema: {
+                $message: 'Task added successfully',
+                $task: {
+                    $_id: 'asdjasdj123123',
+                    $title: 'Create Redux Store',
+                    $status: 'todo',
+                    $label: 'epic',
+                    $priority: 'high'
+                }
+            },
+            Label: {
+                _id: "dksl1m2ss",
+                $value: "epic",
+                $label: "Epic"
+            },
+            LabelSuccessResponse: {
+                message: "Label added successfully",
+                label: {
+                    _id: "sdkaskd2222",
+                    $value: "epic",
+                    $label: "Epic"
+                }
+            },
+            Status: {
+                _id: "sjsdla222",
+                $value: "in-progress",
+                $label: "In-progress"
+            },
+            StatusSuccessResponse: {
+                message: "Status added successfully",
+                label: {
+                    _id: "sjsdla222",
+                    $value: "in-progress",
+                    $label: "In-progress"
+                }
+            },
+            Priority: {
+                _id: "kslak212ss",
+                $value: "medium",
+                $label: "Medium"
+            },
+            PrioritySuccessResponse: {
+                message: "Priority added successfully",
+                label: {
+                    _id: "kslak212ss",
+                    $value: "medium",
+                    $label: "Medium"
+                }
+            },
         },
     },
 }

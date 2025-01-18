@@ -1,8 +1,10 @@
 import { http, HttpResponse } from 'msw'
-import { Task } from '../types/api/Api';
+import { Task, TaskSuccessResponseSchema } from '../types/api/Api';
 
 //request bodies
-type UpdateTaskRequestBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
+type TaskRequestBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
+type AddTaskRequestBody = TaskRequestBody
+type UpdateTaskRequestBody = TaskRequestBody
 type DeleteTaskRequestBody = Pick<Task, '_id'>
 
 //responses
@@ -166,7 +168,7 @@ export const taskHandlers = [
             }
         ])
     }),
-    http.post('http://localhost:8080/api/tasks/add', () => {
+    http.post<AddTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/add', async ({ params, request }) => {
         return HttpResponse.json({
             message: "Task added successfully",
             task: {
@@ -178,16 +180,19 @@ export const taskHandlers = [
             }
         })
     }),
-    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, UpdateTaskResponseBody>('http://localhost:8080/api/tasks/:id', async ({ }) => {
+    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/:id', async ({ }) => {
         return HttpResponse.json({
-            "_id": "675743bc4574e0a65f16a42a",
-            "title": "Response task Modif",
-            "status": "todo",
-            "label": "epic",
-            "priority": "high",
+            message: "Task modified successfully",
+            task: {
+                "_id": "675743bc4574e0a65f16a42a",
+                "title": "Response task Modif",
+                "status": "todo",
+                "label": "epic",
+                "priority": "high",
+            }
         })
     }),
-    http.delete<DeleteTaskRequestBody, DeleteTaskResponseBody>('http://localhost:8080/api/tasks/delete', async ({ }) => {
+    http.delete<DeleteTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/delete', async ({request,params }) => {
         return HttpResponse.json({
             "message": "Task deleted successfully",
             "task": {

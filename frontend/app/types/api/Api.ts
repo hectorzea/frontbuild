@@ -9,34 +9,105 @@
  * ---------------------------------------------------------------
  */
 
-/** Task */
+export interface GeneralErrorResponse {
+  /** @example "An error has ocurred" */
+  error: string;
+}
+
 export interface Task {
+  /** @example "asdjasdj123123" */
+  _id?: string;
+  /** @example "Create Redux Store" */
   title: string;
+  /** @example "todo" */
   status: string;
+  /** @example "epic" */
   label: string;
+  /** @example "high" */
   priority: string;
-  _id?: string;
 }
 
-/** Label */
+export interface TaskSuccessResponseSchema {
+  /** @example "Task added successfully" */
+  message: string;
+  task: {
+    /** @example "asdjasdj123123" */
+    _id: string;
+    /** @example "Create Redux Store" */
+    title: string;
+    /** @example "todo" */
+    status: string;
+    /** @example "epic" */
+    label: string;
+    /** @example "high" */
+    priority: string;
+  };
+}
+
 export interface Label {
-  value: string;
-  label: string;
+  /** @example "dksl1m2ss" */
   _id?: string;
+  /** @example "epic" */
+  value: string;
+  /** @example "Epic" */
+  label: string;
 }
 
-/** Status */
+export interface LabelSuccessResponse {
+  /** @example "Label added successfully" */
+  message?: string;
+  label?: {
+    /** @example "sdkaskd2222" */
+    _id?: string;
+    /** @example "epic" */
+    value: string;
+    /** @example "Epic" */
+    label: string;
+  };
+}
+
 export interface Status {
-  value: string;
-  label: string;
+  /** @example "sjsdla222" */
   _id?: string;
+  /** @example "in-progress" */
+  value: string;
+  /** @example "In-progress" */
+  label: string;
 }
 
-/** Priority */
+export interface StatusSuccessResponse {
+  /** @example "Status added successfully" */
+  message?: string;
+  label?: {
+    /** @example "sjsdla222" */
+    _id?: string;
+    /** @example "in-progress" */
+    value: string;
+    /** @example "In-progress" */
+    label: string;
+  };
+}
+
 export interface Priority {
-  value: string;
-  label: string;
+  /** @example "kslak212ss" */
   _id?: string;
+  /** @example "medium" */
+  value: string;
+  /** @example "Medium" */
+  label: string;
+}
+
+export interface PrioritySuccessResponse {
+  /** @example "Priority added successfully" */
+  message?: string;
+  label?: {
+    /** @example "kslak212ss" */
+    _id?: string;
+    /** @example "medium" */
+    value: string;
+    /** @example "Medium" */
+    label: string;
+  };
 }
 
 export type QueryParamsType = Record<string | number, any>;
@@ -256,4 +327,192 @@ export class HttpClient<SecurityDataType = unknown> {
  *
  * FrontBuild backend api for creating task and other funcionalidades generated with swagger-jsdoc
  */
-export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {}
+export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  swaggerJson = {
+    /**
+     * No description
+     *
+     * @name SwaggerJsonList
+     * @request GET:/swagger.json
+     */
+    swaggerJsonList: (params: RequestParams = {}) =>
+      this.request<void, any>({
+        path: `/swagger.json`,
+        method: "GET",
+        ...params,
+      }),
+  };
+  api = {
+    /**
+     * No description
+     *
+     * @name TasksList
+     * @request GET:/api/tasks/
+     */
+    tasksList: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/tasks/`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name TasksAddCreate
+     * @request POST:/api/tasks/add
+     */
+    tasksAddCreate: (data: Task, params: RequestParams = {}) =>
+      this.request<TaskSuccessResponseSchema, any>({
+        path: `/api/tasks/add`,
+        method: "POST",
+        body: data,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name TasksUpdate
+     * @request PUT:/api/tasks/{id}
+     */
+    tasksUpdate: (id: string, params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/tasks/${id}`,
+        method: "PUT",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name TasksDeleteDelete
+     * @request DELETE:/api/tasks/delete
+     */
+    tasksDeleteDelete: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/tasks/delete`,
+        method: "DELETE",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name LabelsList
+     * @request GET:/api/labels/
+     */
+    labelsList: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/labels/`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name LabelsAddCreate
+     * @request POST:/api/labels/add
+     */
+    labelsAddCreate: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/labels/add`,
+        method: "POST",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name LabelsDeleteDelete
+     * @request DELETE:/api/labels/delete
+     */
+    labelsDeleteDelete: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/labels/delete`,
+        method: "DELETE",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name StatusList
+     * @request GET:/api/status/
+     */
+    statusList: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/status/`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name StatusAddCreate
+     * @request POST:/api/status/add
+     */
+    statusAddCreate: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/status/add`,
+        method: "POST",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name StatusDeleteDelete
+     * @request DELETE:/api/status/delete
+     */
+    statusDeleteDelete: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/status/delete`,
+        method: "DELETE",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name PrioritiesList
+     * @request GET:/api/priorities/
+     */
+    prioritiesList: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/priorities/`,
+        method: "GET",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name PrioritiesAddCreate
+     * @request POST:/api/priorities/add
+     */
+    prioritiesAddCreate: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/priorities/add`,
+        method: "POST",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @name PrioritiesDeleteDelete
+     * @request DELETE:/api/priorities/delete
+     */
+    prioritiesDeleteDelete: (params: RequestParams = {}) =>
+      this.request<any, void>({
+        path: `/api/priorities/delete`,
+        method: "DELETE",
+        ...params,
+      }),
+  };
+}

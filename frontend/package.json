@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/types/api"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -33,6 +34,7 @@
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.1.0",
     "sonner": "^1.7.1",
+    "swagger-typescript-api": "^13.0.23",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "ui-box": "^5.4.1",

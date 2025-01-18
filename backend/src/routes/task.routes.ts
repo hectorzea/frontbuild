@@ -23,6 +23,16 @@ class TaskRoutes {
                 }
             }
         }
+          #swagger.responses[201] = {
+            description: "Add task response",
+            content: {
+                "application/json": {
+                    schema:{
+                        $ref: "#/components/schemas/TaskSuccessResponseSchema"
+                    }
+                }           
+            }
+        }   
     */
     this.controller.addTask(req, res);
     });
