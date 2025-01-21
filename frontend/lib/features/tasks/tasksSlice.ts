@@ -1,6 +1,5 @@
 import { Task } from '@/app/types/api/Api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { act } from 'react';
 
 interface TasksState {
   tasks: Task[];
@@ -27,6 +26,9 @@ export const tasksSlice = createSlice({
       const task = state.tasks.find(task => task._id === action.payload?._id);
       if (task) {
         task.title = action.payload.title;
+        task.label = action.payload.label;
+        task.priority = action.payload.priority;
+        task.status = action.payload.status;
       }
     }
   },
@@ -34,7 +36,7 @@ export const tasksSlice = createSlice({
     selectAllTasks: (task) => task.tasks,
   },
   extraReducers: (builder) => {
-    // manejar acciones asíncronas aquí si es necesario
+    // handle here async actions if necessary
   },
 });
 

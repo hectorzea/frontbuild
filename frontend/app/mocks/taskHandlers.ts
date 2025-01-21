@@ -2,17 +2,10 @@ import { http, HttpResponse } from 'msw'
 import { Task, TaskSuccessResponseSchema } from '../types/api/Api';
 
 //request bodies
-type TaskRequestBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
-type AddTaskRequestBody = TaskRequestBody
-type UpdateTaskRequestBody = TaskRequestBody
+type TaskGeneralPayloadBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
+type AddTaskRequestBody = TaskGeneralPayloadBody
+type UpdateTaskRequestBody = TaskGeneralPayloadBody
 type DeleteTaskRequestBody = Pick<Task, '_id'>
-
-//responses
-type UpdateTaskResponseBody = Task;
-type DeleteTaskResponseBody = {
-    message: string;
-    task: Task
-};
 
 //params
 interface UpdateTaskRequestParams {
@@ -192,7 +185,7 @@ export const taskHandlers = [
             }
         })
     }),
-    http.delete<DeleteTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/delete', async ({request,params }) => {
+    http.delete<DeleteTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/delete', async ({ request, params }) => {
         return HttpResponse.json({
             "message": "Task deleted successfully",
             "task": {
