@@ -44,6 +44,11 @@ to explore all its uses.
 - **React**: 
   - A JavaScript library for building user interfaces, allowing you to create 
   reusable components and manage the application state efficiently.
+
+- **Redux Toolkit**: 
+  - A tool for managing the application state using Redux, simplifying state management 
+  and improving efficiency. It is used alongside React Query for making backend calls 
+  and handling data caching. 
   
 - **React Testing Library**: 
   - A tool for testing React components, focusing on user interaction and ensuring 
