@@ -1,6 +1,6 @@
 import { } from '@/app/types';
 import { Label, Priority, Status, Task } from '@/app/types/api/Api';
-import { } from '@/components/frontbuild/schema';
+import { } from '@/app/schemas';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 

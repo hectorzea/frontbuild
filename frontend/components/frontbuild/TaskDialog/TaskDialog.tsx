@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog"
 import { TaskForm } from '../TaskForm'
 import { TaskMode } from './types'
-import { Task } from '../schema'
+import { Task } from '../../../app/schemas'
 
 
 interface TaskDialogDialogProps {

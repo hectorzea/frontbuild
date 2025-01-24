@@ -18,7 +18,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { taskSchema } from "../schema"
+import { taskSchema } from "@/app/schemas"
 import { TaskDialog } from "../TaskDialog/TaskDialog"
 import { useState } from "react"
 import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"

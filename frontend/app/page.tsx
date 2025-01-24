@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { TaskDashboard } from '../components/frontbuild/TaskDashboard';
+import { TaskDashboard } from '../components/frontbuild/TaskDashboard/TaskDashboard';
 import { setUpMocks } from './mocks/setupMocks';
 
 export default function IndexPage() {

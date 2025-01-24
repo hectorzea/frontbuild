@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
 import React, { useEffect, useState } from 'react';
-import { DataTable } from './DataTable/DataTable';
-import { columns } from './DataTable/Columns';
+import { DataTable } from '../DataTable/DataTable';
+import { columns } from '../DataTable/Columns';
 import { useDispatch } from 'react-redux';
 import { selectAllTasks, setTasks } from '@/lib/features/tasks/tasksSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
@@ -14,7 +14,7 @@ import { useAppSelector } from '@/lib/hooks';
 export const TaskDashboard = () => {
   const dispatch = useDispatch();
   const tasks = useAppSelector(selectAllTasks);
-  const { data: tasksData, isLoading, isSuccess: isSuccessGetTasks } =
+  const { data: tasksData, isLoading: isLoadingTasks, isSuccess: isSuccessGetTasks, isError: isErrorGetTasks } =
     useGetTasksQuery();
 
   const { data: labels, isSuccess: isSuccessGetLabels } =
@@ -31,10 +31,9 @@ export const TaskDashboard = () => {
     }
   }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 
-  if (isLoading) {
+  if (isLoadingTasks) {
     return <>LoadingTable...</>
   }
-
 
   return (
     <div className="p-10">
@@ -44,7 +43,7 @@ export const TaskDashboard = () => {
       </p>
       <div className="mt-8">
         <h2 className="text-1xl font-bold mb-3">Frontend </h2>
-        <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} />
+        {!isErrorGetTasks ? <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} /> : <div>Error loading tasks</div>}
       </div>
     </div>
   );

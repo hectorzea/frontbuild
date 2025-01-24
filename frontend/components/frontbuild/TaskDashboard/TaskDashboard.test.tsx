@@ -34,7 +34,19 @@ afterAll(() => server.close())
 // dejar el codigo
 
 test('loads and displays greeting', async () => {
-    renderWithProviders(<TaskDashboard />, { preloadedState: { tasks: { tasks: [] } } })
+    renderWithProviders(<TaskDashboard />, {
+        preloadedState: {
+            tasks: {
+                tasks: [{
+                    "_id": "67574211b5599f1ebce84868",
+                    "title": "Exportar interfaces Label y Status para popular selects y agregar/edit task",
+                    "status": "done",
+                    "label": "epic",
+                    "priority": "high",
+                },]
+            }
+        }
+    })
 
     expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
     expect(await screen.findByText(/FrontBuild all task repository!/i)).toBeInTheDocument()
@@ -53,6 +65,9 @@ test('handles server error', async () => {
 
     renderWithProviders(<TaskDashboard />, {
         preloadedState: {
+            tasks: {
+                tasks: [],
+            },
             app: {
                 labels: [],
                 statuses: [],

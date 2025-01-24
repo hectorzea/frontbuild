@@ -1,7 +1,7 @@
 import React from 'react'
 import { z } from "zod";
 import { useForm } from 'react-hook-form';
-import { Task, taskSchema } from './schema'
+import { Task, taskSchema } from '../../app/schemas'
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Form,
