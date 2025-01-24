@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
 import React, { useEffect, useState } from 'react';
-import { DataTable } from '../DataTable/DataTable';
+import { DataTable } from '../DataTable';
 import { columns } from '../DataTable/Columns';
 import { useDispatch } from 'react-redux';
 import { selectAllTasks, setTasks } from '@/lib/features/tasks/tasksSlice';

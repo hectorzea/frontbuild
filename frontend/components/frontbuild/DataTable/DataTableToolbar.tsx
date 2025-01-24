@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { DataTableViewOptions } from "./DataTableViewOptions"
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter"
 import { useState } from "react"
-import { TaskDialog } from "../TaskDialog/TaskDialog"
+import { TaskDialog } from "../TaskDialog"
 import { useAppSelector } from "@/lib/hooks"
 import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice"
 

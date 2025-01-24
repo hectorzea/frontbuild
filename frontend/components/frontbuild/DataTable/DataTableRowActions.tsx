@@ -19,9 +19,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { taskSchema } from "@/app/schemas"
-import { TaskDialog } from "../TaskDialog/TaskDialog"
+import { TaskDialog } from "../TaskDialog"
 import { useState } from "react"
-import { ConfirmationDialog } from "../ConfirmationDialog/ConfirmationDialog"
+import { ConfirmationDialog } from "../ConfirmationDialog"
 import axios from "axios"
 import { toast } from "sonner"
 import { Label } from "@/app/types/api/Api"

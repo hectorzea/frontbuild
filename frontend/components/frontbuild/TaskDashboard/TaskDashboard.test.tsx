@@ -3,7 +3,7 @@ import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import { screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { TaskDashboard } from './TaskDashboard'
+import { TaskDashboard } from '.'
 import { renderWithProviders } from '@/app/test-utils'
 
 export const handlers = [
