@@ -27,6 +27,8 @@ import { toast } from "sonner"
 import { Label } from "@/app/types/api/Api"
 import { removeTask } from "@/lib/features/tasks/tasksSlice"
 import { useDispatch } from "react-redux"
+import { selectLabels } from "@/lib/features/app/appSlice"
+import { useAppSelector } from "@/lib/hooks"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -39,9 +41,7 @@ export function DataTableRowActions<TData>({
     const dispatch = useDispatch()
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
-
-    const labels: Label[] = [];
-
+    const labels = useAppSelector(selectLabels);
     const onDeleteTask = async () => {
         try {
             await axios.delete("http://localhost:8080/api/tasks/delete", { data: { _id: task._id } });

@@ -30,11 +30,10 @@ import Box from 'ui-box'
 import { TaskMode } from './TaskDialog/types';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';
-import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
-import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
 import { useDispatch } from 'react-redux';
 import { addTask, modifyTask } from '@/lib/features/tasks/tasksSlice';
+import { useAppSelector } from '@/lib/hooks';
+import { selectLabels, selectPriorities, selectStatuses } from '@/lib/features/app/appSlice';
 
 
 interface TaskFormProps {
@@ -50,13 +49,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
         defaultValues,
     });
 
-    const { data: labels, } =
-        useGetLabelsQuery();
-    const { data: statuses } =
-        useGetStatusQuery();
-    const { data: priorities } =
-        useGetPriorityQuery();
-
+    const labels = useAppSelector(selectLabels);
+    const statuses = useAppSelector(selectStatuses);
+    const priorities = useAppSelector(selectPriorities);
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
         console.log(values)

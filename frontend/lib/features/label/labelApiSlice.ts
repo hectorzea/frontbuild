@@ -1,6 +1,6 @@
 // Need to use the React-specific entry point to import `createApi`
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { LabelSuccessResponse } from "@/app/types/api/Api";
+import { Label } from "@/app/types/api/Api";
 
 // Define a service using a base URL and expected endpoints
 export const labelApiSlice = createApi({
@@ -14,7 +14,7 @@ export const labelApiSlice = createApi({
         // for the argument type instead.
         //build.query<ResponseDelBackend, parametro url que queramos enviar>
         //luego cuando ejecutemos query: (parametroURl) especificado del tipo de arriba obviamente
-        getLabels: build.query<LabelSuccessResponse[], void>({
+        getLabels: build.query<Label[], void>({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.

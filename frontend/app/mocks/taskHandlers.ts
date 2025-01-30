@@ -65,8 +65,8 @@ export const taskHandlers = [
             },
             {
                 "_id": "676083ce7f14e013cb7a9675",
-                "title": "generar icono en base al tipo de backend ",
-                "status": "backlog",
+                "title": "generar icono en base al 'value' de priority y status",
+                "status": "done",
                 "label": "feature",
                 "priority": "low",
                 "__v": 0
@@ -74,7 +74,7 @@ export const taskHandlers = [
             {
                 "_id": "6760846d7f14e013cb7a968f",
                 "title": "eliminar data.tsx de frontend",
-                "status": "backlog",
+                "status": "done",
                 "label": "feature",
                 "priority": "low",
                 "__v": 0
@@ -98,7 +98,7 @@ export const taskHandlers = [
             {
                 "_id": "676084d77f14e013cb7a96a1",
                 "title": "Delete Task",
-                "status": "backlog",
+                "status": "done",
                 "label": "feature",
                 "priority": "high",
                 "__v": 0
@@ -130,15 +130,7 @@ export const taskHandlers = [
             {
                 "_id": "6761c66eb3e39a0774237d5e",
                 "title": "Configurar React Testing Library + MSW",
-                "status": "backlog",
-                "label": "epic",
-                "priority": "high",
-                "__v": 0
-            },
-            {
-                "_id": "6761c693b3e39a0774237d64",
-                "title": "React testing library msw",
-                "status": "backlog",
+                "status": "done",
                 "label": "epic",
                 "priority": "high",
                 "__v": 0
@@ -152,10 +144,114 @@ export const taskHandlers = [
                 "__v": 0
             },
             {
-                "_id": "6761dcd7b10490a3fb17cb72",
-                "title": "Correr app sin base de datos mongo / docker (msw?)",
+                "_id": "67631fb98aa5de98f328b51d",
+                "title": "BE:Remover estructura de icon en status y priorities",
+                "status": "done",
+                "label": "bug",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "6770179a02905fe488244db5",
+                "title": "Agregar un nuevo font para la app",
+                "status": "backlog",
+                "label": "feature",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "677e6e49e319b2405a884519",
+                "title": "Leer documentacion de redux toolkit",
+                "status": "backlog",
+                "label": "documentation",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "677e6e6fe319b2405a88451f",
+                "title": "Ajustar responses y tipos en las llamadas de los slices",
+                "status": "done",
+                "label": "tech-debt",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "677e6f23b9adef53e4732ea3",
+                "title": "ajustar archivo de genereacion de types de api",
+                "status": "done",
+                "label": "tech-debt",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "6784f27fc1b0bf422b454b1b",
+                "title": "Ajustar responses de msw con tests",
+                "status": "todo",
+                "label": "tech-debt",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "6784f5f0c1b0bf422b454b38",
+                "title": "validar caso de error mock para test",
+                "status": "backlog",
+                "label": "tech-debt",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "678ac235a86e7049cce6461d",
+                "title": "Errores de server side rendering al principio de la app?",
+                "status": "backlog",
+                "label": "bug",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "678ac29f09440e4caedcd0d5",
+                "title": "Revisar todos los types de la app / generador",
+                "status": "backlog",
+                "label": "tech-debt",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "678ac2de09440e4caedcd0db",
+                "title": "Error de zod al guardar en production",
+                "status": "done",
+                "label": "bug",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "678b66899c031c705f623e81",
+                "title": "ajustar valores restantes del put para guardar en store (dispatch)",
+                "status": "todo",
+                "label": "bug",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "67937b60188818870d4177e4",
+                "title": "fix all imports using @/ namespaces",
+                "status": "todo",
+                "label": "tech-debt",
+                "priority": "low",
+                "__v": 0
+            },
+            {
+                "_id": "679b979e2161a7f7cc1960f4",
+                "title": "ajustar menu de labels cuando entramos a un item del menu",
+                "status": "todo",
+                "label": "bug",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "679b989d2161a7f7cc1960f6",
+                "title": "AJUSTAR LABELS / ICONS DE SVGS FALTANTES",
                 "status": "in-progress",
-                "label": "epic",
+                "label": "bug",
                 "priority": "high",
                 "__v": 0
             }

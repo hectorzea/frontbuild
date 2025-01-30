@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Column } from "@tanstack/react-table"
 import { Binary, Check, PlusCircle } from "lucide-react"
-import { cn, getStatusIcon } from "@/lib/utils"
+import { cn, getPriorityIcon, getStatusIcon } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,9 +19,12 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
-import { Status } from "@/app/types"
+import { Priority, Status } from "@/app/types"
+
+type FilterType = "status" | "priority"
 
 interface DataTableFacetedFilterProps<TData, TValue> {
+    filterType: FilterType
     column?: Column<TData, TValue>
     title?: string
     options: {
@@ -31,7 +34,19 @@ interface DataTableFacetedFilterProps<TData, TValue> {
     }[]
 }
 
+
+const getIconByKey = (key: string, filterValue: string) => {
+    if (key === "status") {
+        return getStatusIcon(filterValue as Status)
+    } else if (key === "priority") {
+        return getPriorityIcon(filterValue as Priority)
+    }
+}
+
+
+
 export function DataTableFacetedFilter<TData, TValue>({
+    filterType,
     column,
     title,
     options,
@@ -88,9 +103,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                         <CommandGroup>
                             {options.map((option) => {
                                 const isSelected = selectedValues.has(option.value)
-                                //TODO: Implementar iconos de prioridad
-                                // const Icon = option?.value ? getPrio(option?.value as Status) : Binary;
-                                const Icon = Binary;
+                                const Icon = getIconByKey(filterType, option.value) as React.FC
                                 return (
                                     <CommandItem
                                         key={option.value}
@@ -116,7 +129,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                                         >
                                             <Check />
                                         </div>
-                                        {option?.icon && <Binary className="mr-2 h-4 w-4 text-muted-foreground" />}
+                                        <Icon />
                                         <span>{option.label}</span>
                                         {facets?.get(option.value) && (
                                             <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">

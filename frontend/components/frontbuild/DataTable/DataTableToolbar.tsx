@@ -40,12 +40,14 @@ export function DataTableToolbar<TData>({
                         column={table.getColumn("status")}
                         title="Status"
                         options={statuses!}
+                        filterType="status"
                     />
                 )}
                 {table.getColumn("priority") && (
                     <DataTableFacetedFilter
                         column={table.getColumn("priority")}
                         title="Priority"
+                        filterType="priority"
                         options={priorities!}
                     />
                 )}
