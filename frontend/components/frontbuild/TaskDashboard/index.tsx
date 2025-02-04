@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { useGetTasksQuery } from '@/lib/features/tasks/tasksApiSlice';
-import React, { useEffect, useState } from 'react';
-import { DataTable } from '../DataTable';
-import { columns } from '../DataTable/Columns';
+import React, { useEffect } from 'react';
+import { DataTable } from '@/components/frontbuild/DataTable';
+import { columns } from '@/components/frontbuild/DataTable/Columns';
 import { useDispatch } from 'react-redux';
 import { selectAllTasks, setTasks } from '@/lib/features/tasks/tasksSlice';
 import { useGetLabelsQuery } from '@/lib/features/label/labelApiSlice';

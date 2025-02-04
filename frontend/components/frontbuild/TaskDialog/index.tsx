@@ -6,9 +6,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { TaskForm } from '../TaskForm'
-import { TaskMode } from './types'
-import { Task } from '../../../app/schemas'
+import { TaskForm } from '@/components/frontbuild/TaskForm'
+import { TaskMode } from '@/components/frontbuild/TaskDialog/types'
+import { Task } from '@/app/schemas'
 
 
 interface TaskDialogDialogProps {

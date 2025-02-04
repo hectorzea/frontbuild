@@ -1,7 +1,7 @@
 import React from 'react'
 import { z } from "zod";
 import { useForm } from 'react-hook-form';
-import { Task, taskSchema } from '../../app/schemas'
+import { Task, taskSchema } from '@/app/schemas'
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
     Form,
@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/select"
 import { Label, Priority, Status } from '@/app/types/api/Api';
 import Box from 'ui-box'
-import { TaskMode } from './TaskDialog/types';
+import { TaskMode } from '@/components/frontbuild/TaskDialog/types';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
