@@ -1,10 +1,11 @@
 import { http, HttpResponse } from 'msw'
 import { Task, TaskSuccessResponseSchema } from '../types/api/Api';
+import { generateMockObjectId } from '@/lib/utils';
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
 type AddTaskRequestBody = TaskGeneralPayloadBody
-type UpdateTaskRequestBody = TaskGeneralPayloadBody
+type UpdateTaskRequestBody = Task;
 type DeleteTaskRequestBody = Pick<Task, '_id'>
 
 //params
@@ -154,7 +155,7 @@ export const taskHandlers = [
             {
                 "_id": "6770179a02905fe488244db5",
                 "title": "Agregar un nuevo font para la app",
-                "status": "backlog",
+                "status": "in-progress",
                 "label": "feature",
                 "priority": "low",
                 "__v": 0
@@ -186,7 +187,7 @@ export const taskHandlers = [
             {
                 "_id": "6784f27fc1b0bf422b454b1b",
                 "title": "Ajustar responses de msw con tests",
-                "status": "todo",
+                "status": "backlog",
                 "label": "tech-debt",
                 "priority": "low",
                 "__v": 0
@@ -226,7 +227,7 @@ export const taskHandlers = [
             {
                 "_id": "678b66899c031c705f623e81",
                 "title": "ajustar valores restantes del put para guardar en store (dispatch)",
-                "status": "todo",
+                "status": "done",
                 "label": "bug",
                 "priority": "high",
                 "__v": 0
@@ -234,7 +235,7 @@ export const taskHandlers = [
             {
                 "_id": "67937b60188818870d4177e4",
                 "title": "fix all imports using @/ namespaces",
-                "status": "todo",
+                "status": "done",
                 "label": "tech-debt",
                 "priority": "low",
                 "__v": 0
@@ -242,7 +243,7 @@ export const taskHandlers = [
             {
                 "_id": "679b979e2161a7f7cc1960f4",
                 "title": "ajustar menu de labels cuando entramos a un item del menu",
-                "status": "todo",
+                "status": "done",
                 "label": "bug",
                 "priority": "high",
                 "__v": 0
@@ -250,35 +251,50 @@ export const taskHandlers = [
             {
                 "_id": "679b989d2161a7f7cc1960f6",
                 "title": "AJUSTAR LABELS / ICONS DE SVGS FALTANTES",
-                "status": "in-progress",
+                "status": "done",
                 "label": "bug",
                 "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "67ac738a30edc2ffabc1a306",
+                "title": "Finalizar EDIT with MOCK",
+                "status": "in-progress",
+                "label": "feature",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "67ac746330edc2ffabc1a308",
+                "title": "Interview Module / SSR / SSG",
+                "status": "backlog",
+                "label": "epic",
+                "priority": "high",
+                "__v": 0
+            },
+            {
+                "_id": "67ac74c930edc2ffabc1a30a",
+                "title": "Agregar subheader de info personal shadcn",
+                "status": "todo",
+                "label": "feature",
+                "priority": "medium",
                 "__v": 0
             }
         ])
     }),
     http.post<AddTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/add', async ({ params, request }) => {
+        const taskData = await request.json()
         return HttpResponse.json({
             message: "Task added successfully",
-            task: {
-                "_id": "675743bc4574e0a65f16a42a",
-                "title": "Response task",
-                "status": "todo",
-                "label": "epic",
-                "priority": "high",
-            }
+            task: { ...taskData, _id: generateMockObjectId() }
         })
     }),
-    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/:id', async ({ }) => {
+    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/:id', async ({ request, params }) => {
+        const { id } = params
+        const taskData = await request.json()
         return HttpResponse.json({
             message: "Task modified successfully",
-            task: {
-                "_id": "675743bc4574e0a65f16a42a",
-                "title": "Response task Modif",
-                "status": "todo",
-                "label": "epic",
-                "priority": "high",
-            }
+            task: { ...taskData, _id: id }
         })
     }),
     http.delete<DeleteTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/delete', async ({ request, params }) => {

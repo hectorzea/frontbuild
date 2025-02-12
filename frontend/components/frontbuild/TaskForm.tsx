@@ -54,7 +54,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
     const priorities = useAppSelector(selectPriorities);
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
-        console.log(values)
         //todo ver como mejorar esta parte del codigo
         try {
             if (mode === "add") {
@@ -67,7 +66,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
 
                 }
             } else if (mode === "edit") {
-                console.log(`values`, values)
                 if (!values._id) throw new Error("Task ID is required for editing.");
                 const response = await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
                 onOpenChange(false)
