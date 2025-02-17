@@ -37,7 +37,7 @@ class TaskRoutes {
     this.controller.addTask(req, res);
     });
     this.router.put("/:id", this.controller.updateTask);
-    this.router.delete("/delete", this.controller.deleteTask);
+    this.router.delete("/:id", this.controller.deleteTask);
   }
 }
 

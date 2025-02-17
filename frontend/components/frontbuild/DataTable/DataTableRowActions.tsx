@@ -41,9 +41,10 @@ export function DataTableRowActions<TData>({
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
     const labels = useAppSelector(selectLabels);
+    
     const onDeleteTask = async () => {
         try {
-            await axios.delete("http://localhost:8080/api/tasks/delete", { data: { _id: task._id } });
+            await axios.delete(`http://localhost:8080/api/tasks/${task._id}`);
             setConfirmationDialogOpen(false)
             dispatch(removeTask(task._id!))
             toast('Task deleted')

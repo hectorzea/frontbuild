@@ -6,10 +6,10 @@ import { generateMockObjectId } from '@/lib/utils';
 type TaskGeneralPayloadBody = Pick<Task, 'title' | 'status' | 'label' | 'priority'>;
 type AddTaskRequestBody = TaskGeneralPayloadBody
 type UpdateTaskRequestBody = Task;
-type DeleteTaskRequestBody = Pick<Task, '_id'>
+type DeleteTaskSuccessResponse = null;
 
 //params
-interface UpdateTaskRequestParams {
+interface TaskRequestParams {
     id: string
 }
 
@@ -289,7 +289,7 @@ export const taskHandlers = [
             task: { ...taskData, _id: generateMockObjectId() }
         })
     }),
-    http.put<UpdateTaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/:id', async ({ request, params }) => {
+    http.put<TaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/:id', async ({ request, params }) => {
         const { id } = params
         const taskData = await request.json()
         return HttpResponse.json({
@@ -297,17 +297,12 @@ export const taskHandlers = [
             task: { ...taskData, _id: id }
         })
     }),
-    http.delete<DeleteTaskRequestBody, TaskSuccessResponseSchema>('http://localhost:8080/api/tasks/delete', async ({ request, params }) => {
-        return HttpResponse.json({
-            "message": "Task deleted successfully",
-            "task": {
-                "_id": "677aa9af04f883909a374e02",
-                "title": "Test task",
-                "status": "cancelled",
-                "label": "epic",
-                "priority": "low",
-                "__v": 0
-            }
+    http.delete<TaskRequestParams, DeleteTaskSuccessResponse>('http://localhost:8080/api/tasks/:id', async ({ params }) => {
+        return new HttpResponse(null, {
+            status: 204,
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
     })
 ]
