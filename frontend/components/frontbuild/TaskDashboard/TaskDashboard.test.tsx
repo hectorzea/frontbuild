@@ -7,7 +7,7 @@ import { TaskDashboard } from '.'
 import { renderWithProviders } from '@/app/test-utils'
 
 export const handlers = [
-    http.get('http://localhost:8080/api/tasks', async () => {
+    http.get(`${process.env.FRONTBUILD_BACKEND_API_URL}/api/tasks`, async () => {
         return HttpResponse.json([
             {
                 "_id": "67574211b5599f1ebce84868",
@@ -17,9 +17,6 @@ export const handlers = [
                 "priority": "high",
                 "__v": 0
             }])
-    }),
-    http.get('http://localhost:8080/api/tasks', () => {
-        return new HttpResponse('error', { status: 500 });
     }),
 ]
 
@@ -58,7 +55,7 @@ test('loads and displays greeting', async () => {
 //todo 1 this test is failing due to a row on table error due to no data
 test('handles server error', async () => {
     server.use(
-        http.get('http://localhost:8080/api/tasks', () => {
+        http.get(`${process.env.FRONTBUILD_BACKEND_API_URL}/api/tasks`, () => {
             return new HttpResponse('Internal Server Error', { status: 500 });
         })
     );

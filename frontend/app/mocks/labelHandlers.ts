@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const labelHandlers = [
-    http.get('http://localhost:8080/api/labels', () => {
+    http.get(`${process.env.FRONTBUILD_BACKEND_API_URL}/api/labels`, () => {
         return HttpResponse.json([
             {
                 "_id": "6758497311466283e44f1158",
