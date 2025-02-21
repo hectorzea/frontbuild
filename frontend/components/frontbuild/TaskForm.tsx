@@ -57,7 +57,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
         //todo ver como mejorar esta parte del codigo
         try {
             if (mode === "add") {
-                const response = await axios.post("http://localhost:8080/api/tasks/add", values);
+                const response = await axios.post(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, values);
                 if (response?.data) {
                     console.log("Task added successfully!");
                     onOpenChange(false);
@@ -67,7 +67,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                 }
             } else if (mode === "edit") {
                 if (!values._id) throw new Error("Task ID is required for editing.");
-                const response = await axios.put(`http://localhost:8080/api/tasks/${values._id}`, values);
+                const response = await axios.put(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/${values._id}`, values);
                 onOpenChange(false)
                 dispatch(modifyTask(response.data?.task))
                 toast("Task has been updated.")
@@ -82,6 +82,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                     control={form.control}
+                    data-testid="task-form-title"
                     name="title"
                     render={({ field }) => (
                         <FormItem>
@@ -172,7 +173,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                     )}
                 />
                 <Box display='flex' justifyContent='end'>
-                    <Button type="submit">Save</Button>
+                    <Button data-testid='task-form-submit-button' type="submit">Save Task</Button>
                 </Box>
             </form>
         </Form>

@@ -4,7 +4,7 @@ import { Label } from "@/app/types/api/Api";
 
 // Define a service using a base URL and expected endpoints
 export const labelApiSlice = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/api/labels" }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/labels` }),
     reducerPath: "labelApi",
     // Tag types are used for caching and invalidation.
     tagTypes: ["Labels"],

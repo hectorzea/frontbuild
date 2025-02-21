@@ -44,7 +44,7 @@ export function DataTableRowActions<TData>({
     
     const onDeleteTask = async () => {
         try {
-            await axios.delete(`http://localhost:8080/api/tasks/${task._id}`);
+            await axios.delete(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/${task._id}`);
             setConfirmationDialogOpen(false)
             dispatch(removeTask(task._id!))
             toast('Task deleted')

@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const statusHandlers = [
-    http.get('http://localhost:8080/api/status', () => {
+    http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/status`, () => {
         return HttpResponse.json([
             {
                 "_id": "67574211b5599f1ebce83868",

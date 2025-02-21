@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
 export const priorityHandlers = [
-    http.get('http://localhost:8080/api/priorities', () => {
+    http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/priorities`, () => {
         return HttpResponse.json([
             {
                 label: "Low",

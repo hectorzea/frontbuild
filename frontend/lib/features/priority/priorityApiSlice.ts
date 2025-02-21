@@ -4,7 +4,7 @@ import { Label } from "@/app/types/api/Api";
 
 // Define a service using a base URL and expected endpoints
 export const priorityApiSlice = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/api/priorities" }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/priorities` }),
     reducerPath: "priorityApi",
     // Tag types are used for caching and invalidation.
     tagTypes: ["Priorities"],

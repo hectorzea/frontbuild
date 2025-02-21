@@ -25,7 +25,7 @@ export const TaskDialog: React.FC<TaskDialogDialogProps> = ({ mode, open, onOpen
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{mode} Task</DialogTitle>
+          <DialogTitle data-testid="task-dialog-title">{mode} Task</DialogTitle>
           <DialogDescription>
             Make changes to the task here. Click save when youre done.
           </DialogDescription>

@@ -62,7 +62,7 @@ export function DataTableToolbar<TData>({
                     </Button>
                 )}
             </div>
-            <Button size={'sm'} className="mr-5" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
+            <Button size={'sm'} data-testid={'add-task-button'} className="mr-5" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
             <TaskDialog mode={"add"} open={isDialogOpen} onOpenChange={setIsDialogOpen} task={{ _id: '', title: '', label: '', priority: '', status: '' }} />
             <DataTableViewOptions table={table} />
         </div>
