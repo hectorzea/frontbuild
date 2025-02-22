@@ -1,94 +1,47 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { columns } from '@/components/frontbuild/DataTable/Columns';
 import { DataTable } from './'
 import { renderWithProviders } from '@/app/test-utils';
+import { tasks } from '@/app/mocks/taskHandlers';
 
-
-const mockData = [
-    {
-        "_id": "67ac738a30edc2ffabc1a306",
-        "title": "Finalizar EDIT with MOCK",
-        "status": "in-progress",
-        "label": "feature",
-        "priority": "high",
-    },
-]
 
 test('renderiza tabla con 2 filas', () => {
-    renderWithProviders(<DataTable data={mockData} columns={columns} />, {
+    renderWithProviders(<DataTable data={tasks} columns={columns} />, {
         preloadedState: {
             tasks: {
-                tasks: mockData
+                tasks: tasks
+            }
+        }
+    })
+    //tests with 3 rows and the header
+    expect(screen.getAllByRole('row')).toHaveLength(4)
+    expect(screen.getByText('Do something with the tests')).toBeInTheDocument();
+});
+
+test('renderiza tabla sin items', () => {
+    renderWithProviders(<DataTable data={[]} columns={columns} />, {
+        preloadedState: {
+            tasks: {
+                tasks: []
             }
         }
     })
     expect(screen.getAllByRole('row')).toHaveLength(2)
-    expect(screen.getByText('Finalizar EDIT with MOCK')).toBeInTheDocument();
+    expect(screen.getByText('No results.')).toBeInTheDocument();
 });
 
-// test('renderiza tabla sin items', () => {
-//     renderWithProviders(<DataTable data={[]} columns={columns} />, {
-//         preloadedState: {
-//             tasks: {
-//                 tasks: []
-//             }
-//         }
-//     })
-//     expect(screen.getAllByRole('row')).toHaveLength(2)
-//     expect(screen.getByText('No results.')).toBeInTheDocument();
-// });
+test('filtra tareas por texto', async () => {
+    const { getByPlaceholderText } = renderWithProviders(<DataTable data={tasks} columns={columns} />, {
+        preloadedState: {
+            tasks: {
+                tasks: tasks
+            }
+        }
+    })
 
-// test('filtra tareas por texto', async () => {
-//     const { getByPlaceholderText } = renderWithProviders(<DataTable data={[{
-//         "_id": "67ac738a30edc2ffabc1a123",
-//         "title": "Finalizar EDIT with MOCK",
-//         "status": "in-progress",
-//         "label": "feature",
-//         "priority": "high",
-//     },
-//     {
-//         "_id": "67ac738a30edc2ffabc1a306",
-//         "title": "Raspar Tarea",
-//         "status": "in-progress",
-//         "label": "feature",
-//         "priority": "high",
-//     }, {
-//         "_id": "67ac738a30edc2ffabc1a306",
-//         "title": "Raspar Tarea2",
-//         "status": "in-progress",
-//         "label": "feature",
-//         "priority": "high",
-//     }]} columns={columns} />, {
-//         preloadedState: {
-//             tasks: {
-//                 tasks: [{
-//                     "_id": "67ac738a30edc2ffabc1a123",
-//                     "title": "Finalizar EDIT with MOCK",
-//                     "status": "in-progress",
-//                     "label": "feature",
-//                     "priority": "high",
-//                 },
-//                 {
-//                     "_id": "67ac738a30edc2ffabc1a306",
-//                     "title": "Raspar Tarea",
-//                     "status": "in-progress",
-//                     "label": "feature",
-//                     "priority": "high",
-//                 },
-//                 {
-//                     "_id": "67ac738a30edc2ffabc1a306",
-//                     "title": "Raspar Tarea2",
-//                     "status": "in-progress",
-//                     "label": "feature",
-//                     "priority": "high",
-//                 }]
-//             }
-//         }
-//     })
+    fireEvent.change(getByPlaceholderText('Filter tasks...'), {
+        target: { value: 'Render pipelines without a trace' }
+    })
 
-//     fireEvent.change(getByPlaceholderText('Filter tasks...'), {
-//         target: { value: 'Raspar Tarea2' }
-//     })
-
-//     expect(screen.getAllByRole('row')).toHaveLength(2) // Header + 1 fila filtrada
-// })
+    expect(screen.getAllByRole('row')).toHaveLength(2) // Header + 1 fila filtrada
+})
