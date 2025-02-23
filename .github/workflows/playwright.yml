@@ -27,29 +27,13 @@ jobs:
       working-directory: ./frontend
       run: npx playwright install --with-deps
 
-    # 5. Compila la aplicación (genera la compilación de producción)
-    - name: Build the application
-      working-directory: ./frontend
-      run: npm run build
-
-        # 6. Inicia MSW (Mock Service Worker)
-    - name: Start MSW
-      working-directory: ./frontend
-      run: |
-          npx msw init public/ --save  # Inicializa MSW (si no lo has hecho antes)
-          npx msw start public/ --port 8080 &  # Inicia MSW en el puerto 3001 (o el que prefieras)
-
-    # 7. Inicia la aplicación en segundo plano
-    - name: Start the application
-      working-directory: ./frontend
-      run: npm start &  # Inicia la aplicación en modo producción
-
-    # 9. Ejecuta las pruebas de Playwright
+    # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
+    # ENABLE_MSW = true
     - name: Run Playwright tests
       working-directory: ./frontend/ui-tests
       run: npx playwright test
 
-    # 10. Sube el reporte de Playwright como artefacto
+    # 6. Sube el reporte de Playwright como artefacto
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
