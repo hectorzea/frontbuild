@@ -10,6 +10,8 @@ export default function IndexPage() {
     const initializeMocking = async () => {
       if (process.env.NODE_ENV === "development") {
         await setUpMocks();
+      } else {
+        await setUpMocks();
       }
       setIsMswReady(true);
     };
