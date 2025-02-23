@@ -37,10 +37,6 @@ jobs:
       working-directory: ./frontend
       run: npm start &  # Inicia la aplicación en modo producción
 
-    # 7. Espera a que la aplicación esté lista
-    - name: Wait for the application to start
-      run: sleep 20  # Espera 20 segundos (ajusta según sea necesario)
-
     # 8. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
       working-directory: ./frontend/ui-tests
