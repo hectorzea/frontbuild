@@ -1,0 +1,42 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    # 1. Descarga el código del repositorio
+    - uses: actions/checkout@v4
+
+    # 2. Configura Node.js
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    # 3. Instala dependencias en /frontend
+    - name: Install dependencies
+      working-directory: ./frontend
+      run: npm ci
+
+    # 4. Instala los navegadores de Playwright
+    - name: Install Playwright Browsers
+      working-directory: ./frontend
+      run: npx playwright install --with-deps chromium
+
+    # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
+    # ENABLE_MSW = true
+    - name: Run Playwright tests
+      working-directory: ./frontend
+      run: npx playwright test
+
+    # 6. Sube el reporte de Playwright como artefacto
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: frontend/playwright-report/
+        retention-days: 30
