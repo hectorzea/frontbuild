@@ -9,22 +9,39 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
+    # 1. Descarga el código del repositorio
     - uses: actions/checkout@v4
+
+    # 2. Configura Node.js
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
+    # 3. Instala dependencias en /frontend
     - name: Install dependencies
       working-directory: ./frontend
       run: npm ci
+
+    # 4. Instala los navegadores de Playwright
     - name: Install Playwright Browsers
       working-directory: ./frontend
       run: npx playwright install --with-deps
+
+    # 5. Inicia la aplicación en segundo plano
     - name: Start the application
       working-directory: ./frontend
-      run: npm start &  # Inicia la aplicación en segundo plano
+      run: npm start &  # El "&" ejecuta el comando en segundo plano
+
+    # 6. Espera a que la aplicación esté lista
+    - name: Wait for the application to start
+      run: sleep 10  # Espera 10 segundos (ajusta este tiempo según tu aplicación)
+
+    # 7. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
       working-directory: ./frontend/ui-tests
       run: npx playwright test
+
+    # 8. Sube el reporte de Playwright como artefacto
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
