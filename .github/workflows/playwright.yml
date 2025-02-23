@@ -25,7 +25,7 @@ jobs:
     # 4. Instala los navegadores de Playwright
     - name: Install Playwright Browsers
       working-directory: ./frontend
-      run: npx playwright install --with-deps
+      run: npx playwright install --with-deps chromium
 
     # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
     # ENABLE_MSW = true
