@@ -73,6 +73,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run dev',
+    cwd: '../', 
     port: 3000,
     env: {
       ENABLE_MSW: "true",
