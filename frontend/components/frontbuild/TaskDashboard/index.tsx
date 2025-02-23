@@ -9,6 +9,7 @@ import { useGetStatusQuery } from '@/lib/features/status/statusApiSlice';
 import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
 import { setAppData } from '@/lib/features/app/appSlice';
 import { useAppSelector } from '@/lib/hooks';
+import { UserNav } from '@/components/frontbuild/UserNav';
 
 export const TaskDashboard = () => {
   const dispatch = useDispatch();
@@ -35,15 +36,29 @@ export const TaskDashboard = () => {
   }
 
   return (
-    <div className="p-10">
-      <h2 className="text-2xl font-bold" data-testid={'frontbuild-title'}>Welcome back!</h2>
-      <p className="text-muted-foreground">
-        FrontBuild all task repository!
-      </p>
-      <div className="mt-8">
-        <h2 className="text-1xl font-bold mb-3">Frontend </h2>
-        {!isErrorGetTasks ? <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} /> : <div>Error loading tasks</div>}
+    // <div className="p-10">
+    //   <h2 className="text-2xl font-bold" data-testid={'frontbuild-title'}>Welcome back!</h2>
+    //   <p className="text-muted-foreground">
+    //     FrontBuild all task repository!
+    //   </p>
+    //   <div className="mt-8">
+    //     <h2 className="text-1xl font-bold mb-3">Frontend </h2>
+    //     {!isErrorGetTasks ? <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} /> : <div>Error loading tasks</div>}
+    //   </div>
+    // </div>
+    <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="flex items-center justify-between space-y-2">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight" data-testid={'frontbuild-title'}>Welcome back!</h2>
+          <p className="text-muted-foreground">
+            Here&apos;s a list of your tasks for this month!
+          </p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <UserNav />
+        </div>
       </div>
+      <DataTable data={tasks} columns={columns} />
     </div>
   );
 };
