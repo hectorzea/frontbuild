@@ -5,6 +5,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "test:unit": "jest",
+    "test:e2e": "npx playwright test",
+    "test:all": "npm run test:unit && npm run test:e2e",
     "test:watch": "jest --watch",
     "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/types/api"
   },
