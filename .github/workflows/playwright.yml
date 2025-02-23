@@ -30,6 +30,7 @@ jobs:
     # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
     # ENABLE_MSW = true
     - name: Run Playwright tests
+      working-directory: ./frontend
       run: npx playwright test
 
     # 6. Sube el reporte de Playwright como artefacto
