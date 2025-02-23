@@ -27,21 +27,26 @@ jobs:
       working-directory: ./frontend
       run: npx playwright install --with-deps
 
-    # 5. Inicia la aplicación en segundo plano
+    # 5. Compila la aplicación (genera la compilación de producción)
+    - name: Build the application
+      working-directory: ./frontend
+      run: npm run build
+
+    # 6. Inicia la aplicación en segundo plano
     - name: Start the application
       working-directory: ./frontend
-      run: npm start &  # El "&" ejecuta el comando en segundo plano
+      run: npm start &  # Inicia la aplicación en modo producción
 
-    # 6. Espera a que la aplicación esté lista
+    # 7. Espera a que la aplicación esté lista
     - name: Wait for the application to start
-      run: sleep 10  # Espera 10 segundos (ajusta este tiempo según tu aplicación)
+      run: sleep 20  # Espera 20 segundos (ajusta según sea necesario)
 
-    # 7. Ejecuta las pruebas de Playwright
+    # 8. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
       working-directory: ./frontend/ui-tests
       run: npx playwright test
 
-    # 8. Sube el reporte de Playwright como artefacto
+    # 9. Sube el reporte de Playwright como artefacto
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
