@@ -5,7 +5,7 @@ test('App basic flow', async ({ page }) => {
 
   await expect(page).toHaveTitle(/Frontbuild/);
   // await expect(page.getByText('Error loading tasks')).toBeVisible();
-  await page.getByTestId('add-task-button').click();
+  await page.getByTestId('add-task-bsutton').click();
   // await page.getByRole('textbox', { name: 'Title' }).fill('hola2');
 
   // await page.getByRole('combobox', { name: 'Status' }).click();
