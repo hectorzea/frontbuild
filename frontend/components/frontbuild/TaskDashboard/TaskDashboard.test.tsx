@@ -1,8 +1,7 @@
 import React from 'react'
 import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
-//TODO ESLINT VALIDAR EN BUILD
-import { screen, fireEvent } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import { TaskDashboard } from '.'
 import { renderWithProviders } from '@/app/test-utils'
 import { tasks } from '@/app/mocks/taskHandlers'

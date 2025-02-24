@@ -18,7 +18,8 @@ export const statusApiSlice = createApi({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.
-            providesTags: (result, error, id) => [{ type: "Statuses" }],
+            // result, error, id
+            providesTags: () => [{ type: "Statuses" }],
         }),
     }),
 });

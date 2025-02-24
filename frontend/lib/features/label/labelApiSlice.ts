@@ -18,7 +18,8 @@ export const labelApiSlice = createApi({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.
-            providesTags: (result, error, id) => [{ type: "Labels" }],
+            //  providesTags: (result, error, id) => [{ type: "Labels" }],
+            providesTags: () => [{ type: "Labels" }],
         }),
     }),
 });

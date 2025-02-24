@@ -42,7 +42,7 @@ export const taskHandlers = [
     http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`, () => {
         return HttpResponse.json(tasks)
     }),
-    http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, async ({ params, request }) => {
+    http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, async ({ request }) => {
         const taskData = await request.json()
         return HttpResponse.json({
             message: "Task added successfully",
@@ -57,7 +57,7 @@ export const taskHandlers = [
             task: { ...taskData, _id: id }
         })
     }),
-    http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async ({ params }) => {
+    http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async ({ }) => {
         return new HttpResponse(null, {
             status: 204,
             headers: {
