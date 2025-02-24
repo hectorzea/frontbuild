@@ -35,9 +35,9 @@ export const tasksSlice = createSlice({
   selectors: {
     selectAllTasks: (task) => task.tasks,
   },
-  extraReducers: (builder) => {
-    // handle here async actions if necessary
-  },
+  // extraReducers: (builder) => {
+  //   // handle here async actions if necessary
+  // },
 });
 
 export const { setTasks, addTask, removeTask, modifyTask } = tasksSlice.actions;
