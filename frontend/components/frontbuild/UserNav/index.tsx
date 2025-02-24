@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 interface MyComponentProps {
-
+    title: string
 }
 
 export const UserNav: React.FC<MyComponentProps> = ({ }) => {

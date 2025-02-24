@@ -1,6 +1,4 @@
-import { } from '@/app/types';
-import { Label, Priority, Status, Task } from '@/app/types/api/Api';
-import { } from '@/app/schemas';
+import { Label, Priority, Status } from '@/app/types/api/Api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
@@ -31,9 +29,9 @@ export const appSlice = createSlice({
         selectPriorities: (app) => app.priorities,
         selectStatuses: (app) => app.statuses,
     },
-    extraReducers: (builder) => {
-        // manejar acciones asíncronas aquí si es necesario
-    },
+    // extraReducers: (builder) => {
+    //     // manejar acciones asíncronas aquí si es necesario
+    // },
 });
 
 export const { setAppData } = appSlice.actions;

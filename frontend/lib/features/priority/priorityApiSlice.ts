@@ -18,7 +18,7 @@ export const priorityApiSlice = createApi({
             query: () => ``,
             // `providesTags` determines which 'tag' is attached to the
             // cached data returned by the query.
-            providesTags: (result, error, id) => [{ type: "Priorities" }],
+            providesTags: () => [{ type: "Priorities" }],
         }),
     }),
 });
