@@ -15,11 +15,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-interface MyComponentProps {
-    title: string
-}
-
-export const UserNav: React.FC<MyComponentProps> = ({ }) => {
+export const UserNav: React.FC = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
