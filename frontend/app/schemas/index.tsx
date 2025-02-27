@@ -4,8 +4,8 @@ import { Task as TaskModel } from "@/app/types/api/Api"; // Aquí estás importa
 // Aquí estamos creando un esquema Zod basado en la interfaz Task
 export const taskSchema: z.ZodType<TaskModel> = z.object({
   _id: z.string().optional(), // El _id es opcional, como en la interfaz
-  title: z.string().min(5, "at least 5 chars"),
-  status: z.string(),
+  title: z.string().nonempty({ message: "Title is required" }),
+  status: z.enum(['todo', 'in-progress', 'done', 'cancelled', 'backlog'], { message: "Invalid status" }),
   label: z.string(),
   priority: z.string()
 });
