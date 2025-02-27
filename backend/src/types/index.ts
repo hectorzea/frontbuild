@@ -5,3 +5,17 @@ export enum StatusOptions {
     CANCELLED = 'cancelled',
     BACKLOG = 'backlog',
 }
+
+export enum LabelOptions {
+    BUG = 'bug',
+    FEATURE = 'feature',
+    TECH_DEBT = 'tech-debt',
+    EPIC = 'epic',
+    DOCUMENTATION = 'documentation',
+}
+
+export enum PriorityOptions {
+    low = 'low',
+    high = 'high',
+    medium = 'medium',
+}

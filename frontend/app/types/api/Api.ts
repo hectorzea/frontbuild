@@ -118,6 +118,20 @@ export enum StatusOptions {
   Backlog = "backlog",
 }
 
+export enum PriorityOptions {
+  Low = "low",
+  High = "high",
+  Medium = "medium",
+}
+
+export enum LabelOptions {
+  Bug = "bug",
+  Feature = "feature",
+  TechDebt = "tech-debt",
+  Epic = "epic",
+  Documentation = "documentation",
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 

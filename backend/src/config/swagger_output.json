@@ -435,6 +435,24 @@
           "cancelled",
           "backlog"
         ]
+      },
+      "PriorityOptions": {
+        "type": "string",
+        "enum": [
+          "low",
+          "high",
+          "medium"
+        ]
+      },
+      "LabelOptions": {
+        "type": "string",
+        "enum": [
+          "bug",
+          "feature",
+          "tech-debt",
+          "epic",
+          "documentation"
+        ]
       }
     }
   }
