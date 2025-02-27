@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
 jobs:
-  frontbuild-ui-tests:
+  ui-tests:
     name: Frontend UI Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
