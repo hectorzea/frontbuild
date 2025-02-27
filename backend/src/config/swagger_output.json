@@ -72,9 +72,7 @@
             "description": ""
           }
         }
-      }
-    },
-    "/api/tasks/delete": {
+      },
       "delete": {
         "description": "",
         "responses": {
@@ -427,6 +425,16 @@
             ]
           }
         }
+      },
+      "StatusOptions": {
+        "type": "string",
+        "enum": [
+          "todo",
+          "in-progress",
+          "done",
+          "cancelled",
+          "backlog"
+        ]
       }
     }
   }

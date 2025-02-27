@@ -1,5 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerAutogen from "swagger-autogen";
+import { StatusOptions } from "../types";
 
 const PORT = process.env.PORT || 8080;
 const HOST = process.env.HOST || "http://localhost";
@@ -88,6 +89,9 @@ const swaggerDoc = {
                     $label: "Medium"
                 }
             },
+            StatusOptions: {
+                '@enum': Object.values(StatusOptions)
+            }
         },
     },
 }
