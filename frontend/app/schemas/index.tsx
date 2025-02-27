@@ -1,13 +1,12 @@
 import { z } from "zod";
-import { Task as TaskModel } from "@/app/types/api/Api"; // Aquí estás importando la interfaz generada por Swagger
+import { LabelOptions, PriorityOptions, StatusOptions, Task as TaskModel } from "@/app/types/api/Api";
 
-// Aquí estamos creando un esquema Zod basado en la interfaz Task
 export const taskSchema: z.ZodType<TaskModel> = z.object({
-  _id: z.string().optional(), // El _id es opcional, como en la interfaz
+  _id: z.string().optional(),
   title: z.string().nonempty({ message: "Title is required" }),
-  status: z.enum(['todo', 'in-progress', 'done', 'cancelled', 'backlog'], { message: "Invalid status" }),
-  label: z.string(),
-  priority: z.string()
+  status: z.nativeEnum(StatusOptions, { message: "Invalid status" }),
+  label: z.nativeEnum(LabelOptions, { message: "Invalid label" }),
+  priority: z.nativeEnum(PriorityOptions, { message: "Invalid priority" }),
 });
 
 export type Task = z.infer<typeof taskSchema>;
