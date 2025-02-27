@@ -110,6 +110,28 @@ export interface PrioritySuccessResponse {
   };
 }
 
+export enum StatusOptions {
+  Todo = "todo",
+  InProgress = "in-progress",
+  Done = "done",
+  Cancelled = "cancelled",
+  Backlog = "backlog",
+}
+
+export enum PriorityOptions {
+  Low = "low",
+  High = "high",
+  Medium = "medium",
+}
+
+export enum LabelOptions {
+  Bug = "bug",
+  Feature = "feature",
+  TechDebt = "tech-debt",
+  Epic = "epic",
+  Documentation = "documentation",
+}
+
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
@@ -388,12 +410,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     /**
      * No description
      *
-     * @name TasksDeleteDelete
-     * @request DELETE:/api/tasks/delete
+     * @name TasksDelete
+     * @request DELETE:/api/tasks/{id}
      */
-    tasksDeleteDelete: (params: RequestParams = {}) =>
+    tasksDelete: (id: string, params: RequestParams = {}) =>
       this.request<any, void>({
-        path: `/api/tasks/delete`,
+        path: `/api/tasks/${id}`,
         method: "DELETE",
         ...params,
       }),
