@@ -27,11 +27,14 @@ jobs:
       working-directory: ./frontend
       run: npx playwright install --with-deps chromium
 
-    # 5. Configura la variable de entorno TEST_API_URL
+    # 5. Define las variables de entorno para Playwright
     - name: Set up environment variables
-      working-directory: ./frontend
+      env:
+        TEST_API_URL: https://api-test.frontbuild.com
+        ENABLE_MSW: "true"
       run: |
-        echo "TEST_API_URL=https://api-test.frontbuild.com" >> .env.test
+        echo "TEST_API_URL=${TEST_API_URL}" >> .env.test
+        echo "ENABLE_MSW=${ENABLE_MSW}" >> .env.test
 
     # 6. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
