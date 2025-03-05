@@ -27,13 +27,18 @@ jobs:
       working-directory: ./frontend
       run: npx playwright install --with-deps chromium
 
-    # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
-    # ENABLE_MSW = true
+    # 5. Configura la variable de entorno TEST_API_URL
+    - name: Set up environment variables
+      working-directory: ./frontend
+      run: |
+        echo "TEST_API_URL=https://api-test.frontbuild.com" >> .env.test
+
+    # 6. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
       working-directory: ./frontend
       run: npx playwright test
 
-    # 6. Sube el reporte de Playwright como artefacto
+    # 7. Sube el reporte de Playwright como artefacto
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
