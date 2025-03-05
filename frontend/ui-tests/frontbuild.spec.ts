@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test('App basic flow', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('/');
 
   await expect(page).toHaveTitle(/Frontbuild/);
 
   await page.getByTestId('add-task-button').click();
   await page.getByRole('textbox', { name: 'Title' }).fill('New task created for ui tests');
-  
+
   await page.getByRole('combobox', { name: 'Status' }).click();
   await page.getByRole('option', { name: 'In progress' }).click();
 
