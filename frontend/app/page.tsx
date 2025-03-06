@@ -8,7 +8,7 @@ export default function IndexPage() {
 
   useEffect(() => {
     const initializeMocking = async () => {
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production") {
         await setUpMocks();
       }
       setIsMswReady(true);
