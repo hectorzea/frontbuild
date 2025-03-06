@@ -25,8 +25,6 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: process.env.TEST_API_URL,
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -73,5 +71,6 @@ export default defineConfig({
   webServer: {
     command: 'npm run dev',
     port: 3000,
+    reuseExistingServer: !process.env.CI,
   },
 });
