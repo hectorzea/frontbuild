@@ -27,8 +27,7 @@ jobs:
       working-directory: ./frontend
       run: npx playwright install --with-deps chromium
 
-    # 5. Ejecuta las pruebas de Playwright // webServer execution npm run dev in localhost:3000 with 
-    # ENABLE_MSW = true
+    # 5. Ejecuta las pruebas de Playwright
     - name: Run Playwright tests
       working-directory: ./frontend
       run: npx playwright test
