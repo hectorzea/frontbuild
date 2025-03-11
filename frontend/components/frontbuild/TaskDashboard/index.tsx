@@ -49,9 +49,6 @@ export const TaskDashboard = () => {
         </div>
       </div>
       {!isErrorGetTasks ? <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} /> : <div>Error loading tasks</div>}
-      <h1>API URL: {process.env.NEXT_PUBLIC_TEST_API_URL}</h1>
-      <p>Enable Mocks: {process.env.NEXT_PUBLIC_ENABLE_MSW}</p>
-      <p>FRONTBUILD_API_URL:{process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}</p>
     </div>
   );
 };
