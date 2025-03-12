@@ -1,5 +1,4 @@
 import { Metadata } from "next"
-import Image from "next/image"
 
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
@@ -43,7 +42,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
                 <div className="space-y-0.5">
                     <h2 className="text-2xl font-bold tracking-tight">Hector Zea</h2>
                     <p className="text-muted-foreground">
-                        I like to build things with code. I'm a software engineer based in Berlin, Germany.
+                        I like to build things with code. Im a software engineer based in Berlin, Germany.
                     </p>
                 </div>
                 <Separator className="my-6" />
