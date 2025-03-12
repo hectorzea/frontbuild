@@ -1,9 +1,9 @@
 interface IInterviewsDashboard {
-
+    title: string
 }
 
-export const InterviewsDashboard: React.FC<IInterviewsDashboard> = ({ }) => {
+export const InterviewsDashboard: React.FC<IInterviewsDashboard> = ({ title }) => {
     return (
-        <>holas</>
+        <>{title}</>
     )
 }

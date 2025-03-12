@@ -5,7 +5,7 @@ export default async function InterviewsPage() {
         <>
             <Box marginBottom={'10px'} >Aqui encontraras todo sobre mi...</Box>
             <Box>
-                Si deseas ver mis entrevistas ve a "Interviews"
+                Si deseas ver mis entrevistas ve a &quot;Interviews&quot;
             </Box>
         </>
     );
