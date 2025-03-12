@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
 
 export const metadata: Metadata = {
-    title: "Forms",
-    description: "Advanced form example using react-hook-form and Zod.",
+    title: "Frontbuild",
+    description: "Page for crafting software",
 }
 
 const sidebarNavItems = [
@@ -22,8 +22,16 @@ const sidebarNavItems = [
         href: "/profile/skills",
     },
     {
+        title: "Testing",
+        href: "/profile/testing",
+    },
+    {
         title: "Education",
         href: "/profile/education",
+    },
+    {
+        title: "Crafting Software",
+        href: "/profile/crafting-software",
     },
     {
         title: "Tasks",
