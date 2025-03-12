@@ -72,6 +72,9 @@ export default defineConfig({
   webServer: {
     command: 'npm run dev',
     port: 3000,
+    env: {
+      NEXT_PUBLIC_ENABLE_MSW: "true",
+    },
     reuseExistingServer: !process.env.CI,
   },
 });
