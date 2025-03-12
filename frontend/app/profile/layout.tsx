@@ -25,10 +25,10 @@ const sidebarNavItems = [
         title: "Education",
         href: "/profile/education",
     },
-    // {
-    //     title: "Tasks",
-    //     href: "/",
-    // },
+    {
+        title: "Tasks",
+        href: "/",
+    },
 ]
 
 interface SettingsLayoutProps {
