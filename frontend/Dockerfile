@@ -1,6 +1,7 @@
 FROM node
 
 ENV NODE_ENV=production
+ENV NEXT_PUBLIC_ENABLE_MSW=true
 
 WORKDIR /app
 
