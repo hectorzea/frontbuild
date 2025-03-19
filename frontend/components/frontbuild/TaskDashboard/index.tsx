@@ -40,7 +40,7 @@ export const TaskDashboard = () => {
       <div className="flex items-center justify-between space-y-2">
         <div>
           <h2 className="text-2xl font-bold tracking-tight" data-testid={'frontbuild-title'}>FrontBuild</h2>
-          <p className="text-muted-foreground">
+          <p className="text-2xl">
             All of the tasks regarding this repo lays here.
           </p>
         </div>
