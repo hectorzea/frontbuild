@@ -1,24 +1,17 @@
-// import { getInterviewById, getInterviews } from '@/lib/data';
-// import { notFound } from 'next/navigation';
-
-export default async function InterviewPage() {
-
-
-    // const interview = await getInterviewById(id);
-
-    // // Si no se encuentra la entrevista, mostrar un 404
-    // if (!interview) {
-    //     notFound();
-    // }
-
-    return (
-        <article>
-            SSS
-        </article>
-    );
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+    return [{ slug: "test" }, { slug: "test" }];
 }
 
-// // Generar rutas estáticas en tiempo de compilación
-export async function generateStaticParams() {
-
+// Multiple versions of this page will be statically generated
+// using the `params` returned by `generateStaticParams`
+export default async function Page({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}) {
+    const { slug } = await params
+    console.log(slug)
+    return <div>{slug}</div>
+    // ...
 }
