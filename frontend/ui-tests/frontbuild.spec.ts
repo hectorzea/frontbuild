@@ -1,5 +1,12 @@
 import { test, expect } from '@playwright/test';
 
+test('Home page should match snapshot', async ({ page }) => {
+  await page.goto('/');  // Cambia la URL si es necesario
+  await expect(page.getByText('Do something with the tests')).toBeVisible();
+  const screenshot = await page.screenshot();  // Toma una captura de pantalla
+  expect(screenshot).toMatchSnapshot('home-page.png');  // Compara con el snapshot
+});
+
 test('App basic flow', async ({ page }) => {
   await page.goto('/');
 
