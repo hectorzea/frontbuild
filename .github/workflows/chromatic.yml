@@ -28,5 +28,6 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: ./frontend/out  # Usa la carpeta de salida generada por `next build`
           workingDir: ./frontend
+          storybookBuildDir: ./frontend/out  # Usa la carpeta de salida generada por `next build`
+    
