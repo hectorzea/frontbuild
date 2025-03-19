@@ -29,5 +29,5 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: ./frontend
-          storybookBuildDir: ./frontend/out  # Usa la carpeta de salida generada por `next build`
+          storybookBuildDir: ./out  # Usa la carpeta de salida generada por `next build`
     
