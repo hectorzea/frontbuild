@@ -19,9 +19,6 @@ export default async function InterviewPage() {
 }
 
 // // Generar rutas estáticas en tiempo de compilación
-// export async function generateStaticParams() {
-//     const interviews = await getInterviews();
-//     return interviews.map((interview) => ({
-//         id: interview.id,
-//     }));
-// }
+export async function generateStaticParams() {
+
+}
