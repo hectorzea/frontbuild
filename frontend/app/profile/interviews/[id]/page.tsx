@@ -1,14 +1,15 @@
 export async function generateStaticParams() {
-    return [{ slug: "test" }, { slug: "test" }];
+    return [{ id: "1" }];
 }
 
 export default async function Page({
     params,
 }: {
-    params: Promise<{ slug: string }>
+    params: Promise<{ id: string }>
 }) {
-    const { slug } = await params
-    console.log(slug)
-    return <div>{slug}</div>
+    const { id } = await params
+    return <div>{id}</div>
     // ...
 }
+
+
