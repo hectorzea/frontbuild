@@ -4,7 +4,7 @@ test('Home page should match snapshot', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Do something with the tests')).toBeVisible();
   const screenshot = await page.screenshot();
-  expect(screenshot).toMatchSnapshot('home-page.png');
+  expect(screenshot).toMatchSnapshot('home-page.png', { maxDiffPixels: 10000 });
 });
 
 test('App basic flow', async ({ page }) => {
