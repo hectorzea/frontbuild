@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
 test('Home page should match snapshot', async ({ page }) => {
-  await page.goto('/');  // Cambia la URL si es necesario
+  await page.goto('/');
   await expect(page.getByText('Do something with the tests')).toBeVisible();
-  const screenshot = await page.screenshot();  // Toma una captura de pantalla
-  expect(screenshot).toMatchSnapshot('home-page-chromium-darwin.png');  // Compara con el snapshot
+  const screenshot = await page.screenshot();
+  expect(screenshot).toMatchSnapshot('home-page.png');
 });
 
 test('App basic flow', async ({ page }) => {
