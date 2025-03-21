@@ -10,6 +10,7 @@ import { useGetPriorityQuery } from '@/lib/features/priority/priorityApiSlice';
 import { setAppData } from '@/lib/features/app/appSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { UserNav } from '@/components/frontbuild/UserNav';
+import { Loading } from '@/components/frontbuild/Loading';
 
 export const TaskDashboard = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export const TaskDashboard = () => {
   }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 
   if (isLoadingTasks) {
-    return <>LoadingTable...</>
+    return <div className='flex justify-center items-center h-screen'><Loading /></div>;
   }
 
   return (

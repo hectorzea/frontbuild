@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { TaskDashboard } from '../components/frontbuild/TaskDashboard';
 import { setUpMocks } from '@/app/mocks/setupMocks';
+import { Loading } from '@/components/frontbuild/Loading';
 
 export default function IndexPage() {
   const [isMswReady, setIsMswReady] = useState<boolean>(false);
+
 
   useEffect(() => {
     const initializeMocking = async () => {
@@ -17,7 +19,7 @@ export default function IndexPage() {
   }, []);
 
   if (!isMswReady) {
-    return <div>Loading...</div>;
+    return <div className='flex justify-center items-center h-screen'><Loading /></div>;
   }
 
   return <TaskDashboard />;
