@@ -5,12 +5,7 @@ import { screen } from '@testing-library/react'
 import { TaskDashboard } from '.'
 import { renderWithProviders } from '@/app/test-utils'
 import { tasks } from '@/app/mocks/taskHandlers'
-
-export const handlers = [
-    http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`, async () => {
-        return HttpResponse.json(tasks)
-    }),
-]
+import { handlers } from '@/app/mocks/handlers'
 
 const server = setupServer(...handlers)
 
