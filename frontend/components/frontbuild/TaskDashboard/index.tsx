@@ -31,7 +31,7 @@ export const TaskDashboard = () => {
       dispatch(setAppData({ labels, statuses, priorities }));
       dispatch(setTasks(tasksData));
     }
-  }, [isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
+  }, [isSuccessGetLabels, isSuccessGetTasks, isSuccessGetStatus, tasksData, isSuccessGetPriorities, labels, statuses, priorities, dispatch]);
 
   if (isLoadingTasks) {
     return <div className='flex justify-center items-center h-screen'><Loading /></div>;
