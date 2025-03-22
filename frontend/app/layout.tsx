@@ -3,6 +3,7 @@ import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,13 +27,24 @@ export default function RootLayout({
 }>) {
   return (
     <StoreProvider>
-      <html lang="en">
-        <body className={`dark ${geistSans.className} ${geistMono.className}`}>
-          <Toaster />
-          {children}
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body className={`${geistSans.className} ${geistMono.className}`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+
+            <Toaster />
+            {children}
+
+          </ThemeProvider>
         </body>
       </html>
-    </StoreProvider>
+    </StoreProvider >
+
   );
 }
 

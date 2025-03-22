@@ -11,6 +11,7 @@ import { setAppData } from '@/lib/features/app/appSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { UserNav } from '@/components/frontbuild/UserNav';
 import { Loading } from '@/components/frontbuild/Loading';
+import { ModeToggle } from '../ModeToggle';
 
 export const TaskDashboard = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export const TaskDashboard = () => {
   }
 
   return (
-    <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+    <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
       <div className="flex items-center justify-between space-y-2">
         <div>
           <h2 className="text-2xl font-bold tracking-tight" data-testid={'frontbuild-title'}>FrontBuild</h2>
@@ -47,6 +48,7 @@ export const TaskDashboard = () => {
         </div>
         <div className="flex items-center space-x-2">
           <UserNav />
+          <ModeToggle />
         </div>
       </div>
       {!isErrorGetTasks ? <DataTable data={tasks} columns={columns} data-testid={'frontbuild-table'} /> : <div>Error loading tasks</div>}
