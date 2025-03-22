@@ -20,7 +20,7 @@ export const UserNav: React.FC = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button variant="ghost" className="relative h-8 w-8 rounded-full" data-testid="user-nav-trigger">
                     <Avatar className="h-9 w-9">
                         <AvatarFallback>HZ</AvatarFallback>
                     </Avatar>
@@ -37,7 +37,7 @@ export const UserNav: React.FC = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem onClick={() => { router.push('/profile') }}>
+                    <DropdownMenuItem data-testid={'profile-navigation-button'} onClick={() => { router.push('/profile') }}>
                         Profile
                         <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                     </DropdownMenuItem>
