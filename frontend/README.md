@@ -23,3 +23,7 @@ NOTE: remember that for generating the new API types you need to be running the 
 npm run generate-types
 ```
 
+## Update Snapshots
+```
+npx playwright test --update-snapshots
+````
