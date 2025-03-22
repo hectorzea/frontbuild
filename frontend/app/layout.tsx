@@ -26,25 +26,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en" suppressHydrationWarning>
-        <head />
-        <body className={`${geistSans.className} ${geistMono.className}`}>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body className={`${geistSans.className} ${geistMono.className}`}>
+        <StoreProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-
             <Toaster />
             {children}
-
           </ThemeProvider>
-        </body>
-      </html>
-    </StoreProvider >
-
+        </StoreProvider>
+      </body>
+    </html>
   );
 }
 
