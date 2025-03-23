@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import "./globals.css";
 import { StoreProvider } from "./StoreProvider";
 import { Geist, Geist_Mono } from "next/font/google";
