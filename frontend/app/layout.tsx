@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import { StoreProvider } from "./StoreProvider";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
