@@ -19,7 +19,7 @@ type MenuItem = {
     href?: string
 }
 
-const MenuItemComponent: React.FC<{ item: MenuItem; depth?: number, pathname?: string, setOpen: (flag: boolean) => void }> = ({ item, depth = 0, pathname, setOpen }) => {
+const MenuItemComponent: React.FC<{ item: MenuItem; pathname?: string, setOpen: (flag: boolean) => void }> = ({ item, pathname, setOpen }) => {
     return <Link
         key={item.href}
         href={item.href!}
