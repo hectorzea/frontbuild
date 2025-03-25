@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { useMediaQuery } from "usehooks-ts"
+import { useEffect, useState } from "react"
+import { HamburgerMenu } from "@/components/frontbuild/MobileMenu"
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
     items: {
@@ -14,10 +17,17 @@ interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
-    const pathname = usePathname()
 
-    return (
-        <nav
+    const pathname = usePathname()
+    const isMobile = useMediaQuery('(max-width: 768px)')
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => { setIsMounted(true); }, []);
+
+    if (!isMounted) { return null; }
+
+    return isMobile ?
+        <HamburgerMenu menuItems={items} /> : <nav
             className={cn(
                 "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
                 className
@@ -40,5 +50,4 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
                 </Link>
             ))}
         </nav>
-    )
 }
