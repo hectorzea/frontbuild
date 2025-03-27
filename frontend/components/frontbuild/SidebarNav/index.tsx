@@ -1,13 +1,8 @@
 "use client"
-
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { useMediaQuery } from "usehooks-ts"
-import { useEffect, useState } from "react"
-import { HamburgerMenu } from "@/components/frontbuild/MobileMenu"
 import React from "react"
 
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
@@ -19,36 +14,27 @@ interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
 
 export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
     const pathname = usePathname()
-    const isMobile = useMediaQuery('(max-width: 768px)')
-    const [isMounted, setIsMounted] = useState(false);
-
-    useEffect(() => { setIsMounted(true); }, []);
-
-    //TODO LOADING HERE
-    if (!isMounted) { return null; }
-
-    return isMobile ?
-        <HamburgerMenu menuItems={items} /> : <nav
-            className={cn(
-                "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
-                className
-            )}
-            {...props}
-        >
-            {items.map((item) => (
-                <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                        buttonVariants({ variant: "ghost" }),
-                        pathname === item.href
-                            ? "bg-muted hover:bg-muted"
-                            : "hover:bg-transparent hover:underline",
-                        "justify-start"
-                    )}
-                >
-                    {item.title}
-                </Link>
-            ))}
-        </nav>
+    return <nav
+        className={cn(
+            "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
+            className
+        )}
+        {...props}
+    >
+        {items.map((item) => (
+            <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    pathname === item.href
+                        ? "bg-muted hover:bg-muted"
+                        : "hover:bg-transparent hover:underline",
+                    "justify-start"
+                )}
+            >
+                {item.title}
+            </Link>
+        ))}
+    </nav>
 }

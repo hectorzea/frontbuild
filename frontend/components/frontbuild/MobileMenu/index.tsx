@@ -48,9 +48,8 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ menuItems, }) => {
     return (
         <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="w-[100%]">
+                <Button size="sm" className="md:hidden">
                     <Menu className="h-5 w-5" />
-                    <span className="sr-only">Toggle menu</span>
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="w-[100%]">
