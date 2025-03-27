@@ -2,7 +2,7 @@ import { Metadata } from "next"
 
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
-import { HamburgerMenu } from "@/components/frontbuild/MobileMenu"
+import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
 
 export const metadata: Metadata = {
     title: "Frontbuild",
