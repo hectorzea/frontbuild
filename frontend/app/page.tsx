@@ -7,7 +7,6 @@ import { Loading } from '@/components/frontbuild/Loading';
 export default function IndexPage() {
   const [isMswReady, setIsMswReady] = useState<boolean>(false);
 
-
   useEffect(() => {
     const initializeMocking = async () => {
       if (process.env.NEXT_PUBLIC_ENABLE_MSW === "true") {

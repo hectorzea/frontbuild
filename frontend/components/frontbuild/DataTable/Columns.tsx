@@ -58,7 +58,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           {<Badge variant={badgeVariant}>{capitalizeFirstLetter(row.original.label)}</Badge>}
-          <span className="max-w-[500px] truncate font-medium">
+          <span className="max-w-[500px] truncate text-xs sm:text-sm">
             {row.getValue("title")}
           </span>
         </div>
@@ -79,7 +79,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex w-[100px] items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span>{capitalizeFirstLetter(row.original.status)}</span>
+          <span className="text-xs sm:text-sm">{capitalizeFirstLetter(row.original.status)}</span>
         </div>
       )
     },
@@ -99,7 +99,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span>{capitalizeFirstLetter(row.original.priority)}</span>
+          <span className="text-xs sm:text-sm">{capitalizeFirstLetter(row.original.priority)}</span>
         </div>
       )
     },

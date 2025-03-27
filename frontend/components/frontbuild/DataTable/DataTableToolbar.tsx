@@ -25,32 +25,34 @@ export function DataTableToolbar<TData>({
     const statuses = useAppSelector(selectStatuses);
 
     return (
-        <div className="flex items-center justify-between">
-            <div className="flex flex-1 items-center space-x-2">
+        <div>
+            <div className="flex flex-col flex-1 items-center sm:flex-row space-x-1 sm:space-x-2">
                 <Input
                     placeholder="Filter tasks..."
                     value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn("title")?.setFilterValue(event.target.value)
                     }
-                    className="h-8 w-[150px] lg:w-[250px]"
+                    className="h-8 w-[100%] sm:w-[150px] lg:w-[250px]"
                 />
-                {table.getColumn("status") && (
-                    <DataTableFacetedFilter
-                        column={table.getColumn("status")}
-                        title="Status"
-                        options={statuses!}
-                        filterType="status"
-                    />
-                )}
-                {table.getColumn("priority") && (
-                    <DataTableFacetedFilter
-                        column={table.getColumn("priority")}
-                        title="Priority"
-                        filterType="priority"
-                        options={priorities!}
-                    />
-                )}
+                <div className="flex w-full justify-between sm:justify-start space-x-2">
+                    {table.getColumn("status") && (
+                        <DataTableFacetedFilter
+                            column={table.getColumn("status")}
+                            title="Status"
+                            options={statuses!}
+                            filterType="status"
+                        />
+                    )}
+                    {table.getColumn("priority") && (
+                        <DataTableFacetedFilter
+                            column={table.getColumn("priority")}
+                            title="Priority"
+                            filterType="priority"
+                            options={priorities!}
+                        />
+                    )}
+                </div>
                 {isFiltered && (
                     <Button
                         variant="ghost"
@@ -61,10 +63,10 @@ export function DataTableToolbar<TData>({
                         <X />
                     </Button>
                 )}
+                <Button size={'sm'} data-testid={'add-task-button'} className="w-full sm:w-auto mt-2 sm:mt-0" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
+                <DataTableViewOptions table={table} />
             </div>
-            <Button size={'sm'} data-testid={'add-task-button'} className="mr-5" onClick={() => setIsDialogOpen(true)}>Add Task</Button>
             <TaskDialog mode={"add"} open={isDialogOpen} onOpenChange={setIsDialogOpen} task={{ _id: '', title: '', label: '', priority: '', status: '' }} />
-            <DataTableViewOptions table={table} />
         </div>
     )
 }
