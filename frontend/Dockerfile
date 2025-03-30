@@ -11,7 +11,7 @@ RUN npm install
 
 COPY . .
 
-RUN if [ "$NODE_ENV" = "production" ]; then rm -rf /app/public/mockServiceWorker.js; fi
+RUN if [ "$NEXT_PUBLIC_ENABLE_MSW" = "false" ]; then rm -rf /app/public/mockServiceWorker.js; fi
 
 RUN npm run build
 
