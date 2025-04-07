@@ -1,6 +1,6 @@
 import { BookCheck, Brain, Bug, Computer, Cuboid, HardHat } from "lucide-react";
 
-export default async function InterviewsPage() {
+export default function ProfileIndexPage() {
     return (
         <div>
             <div className="flex flex-col sm:flex-row gap-10 mt-0 sm:mt-10">
