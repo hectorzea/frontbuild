@@ -32,24 +32,6 @@ export default async function InterviewsPage() {
                     <p className="text-center">I like to help to solve any frontend problems that may appear in the daily basis.</p>
                 </div>
             </div>
-
-
-
-            {/* <div className="flex flex-wrap space-y-20 space-x-10">
-
-                <div className="flex flex-col items-center w-96 space-y-2">
-                    <BookCheck width={100} height={100} />
-                    <p className="text-center">I'm always curious to understand and learn new things, i like to code and to build things working in team</p>
-                </div>
-                <div className="flex flex-col items-center w-96 space-y-2">
-                    <HardHat width={100} height={100} />
-                    <p className="text-center">I'm always curious to understand and learn new things, i like to code and to build things working in team</p>
-                </div>
-                <div className="flex flex-col items-center w-96 space-y-2">
-                    <Bug width={100} height={100} />
-                    <p className="text-center">I'm always curious to understand and learn new things, i like to code and to build things working in team</p>
-                </div>
-            </div> */}
         </div>
     );
 }

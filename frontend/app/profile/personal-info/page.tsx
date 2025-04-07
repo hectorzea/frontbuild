@@ -15,12 +15,6 @@ export default async function PersonalInfoPage() {
             </div>
             <div>
                 <h3 className="text-2xl font-semibold">
-                    Phone
-                </h3>
-                <h3 className="pb-2 text-muted-foreground">+49 176 7162 5146</h3>
-            </div>
-            <div>
-                <h3 className="text-2xl font-semibold">
                     Nationality
                 </h3>
                 <h3 className="pb-2 text-muted-foreground">Argentina</h3>
