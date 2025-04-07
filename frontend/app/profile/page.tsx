@@ -10,7 +10,7 @@ export default async function InterviewsPage() {
                 </div>
                 <div className="flex flex-col items-center w-96 space-y-4">
                     <Cuboid width={100} height={100} />
-                    <p className="text-center">I'm always curious to understand and learn new things, i like to code and to build things working in team</p>
+                    <p className="text-center">I&apos;m always curious to understand and learn new things, i like to code and to build things working in team</p>
                 </div>
                 <div className="flex flex-col items-center w-96 space-y-4">
                     <Computer width={100} height={100} />
@@ -18,7 +18,7 @@ export default async function InterviewsPage() {
                 </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-10 mt-0 sm:mt-20">
+            <div className="flex flex-col sm:flex-row gap-10 mt-10 sm:mt-0 sm:mt-20">
                 <div className="flex flex-col items-center w-96 space-y-4">
                     <BookCheck width={100} height={100} />
                     <p className="text-center">I enjoy researching all aspects of testing and frontend best practices.</p>
