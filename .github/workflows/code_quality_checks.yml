@@ -30,6 +30,10 @@ jobs:
           node-version: '18.x'
       - name: Install Dependencies
         run: npm install
+      - name: Set environment variables
+        run: |
+          echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
       - name: Run Tests with Coverage
         run: npm test -- --coverage
       - name: Upload Coverage to Codecov
