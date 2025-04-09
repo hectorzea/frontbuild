@@ -99,7 +99,7 @@ test('Loads <TaskForm /> and check for main elements', async () => {
     await userEvent.type(screen.getByTestId('task-form-title'), 'Hello!')
     expect(screen.getByTestId('task-form-title')).toHaveValue('Hello!')
 
-
+    //   taskHandlers.ts                         |   70.58 |      100 |     100 |   70.58 | 46-51,53-59,61-67  
     // await userEvent.click(screen.getByTestId('task-form-status'));
     // await userEvent.click(screen.getByTestId('status-item-todo'));
 
