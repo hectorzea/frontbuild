@@ -82,13 +82,12 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                     control={form.control}
-                    data-testid="task-form-title"
                     name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input placeholder="Task title" {...field} />
+                                <Input placeholder="Task title" {...field} data-testid="task-form-title" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -102,14 +101,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                             <FormLabel>Status</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                    <SelectTrigger>
+                                    <SelectTrigger data-testid="task-form-status">
                                         <SelectValue placeholder="Select a status" />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
                                     <SelectGroup>
                                         {statuses?.map((status: Status) => (
-                                            <SelectItem value={status.value} key={status.value}>
+                                            <SelectItem value={status.value} key={status.value} data-testid={`status-item-${status.value}`}>
                                                 {status.label}
                                             </SelectItem>
                                         ))}
@@ -127,7 +126,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                         <FormItem>
                             <FormLabel>Label</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
+                                <FormControl data-testid="task-form-label">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a label" />
                                     </SelectTrigger>
@@ -135,7 +134,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                                 <SelectContent>
                                     <SelectGroup>
                                         {labels?.map((label: Label) => (
-                                            <SelectItem key={label.value} value={label.value}>
+                                            <SelectItem key={label.value} value={label.value} data-testid={`label-item-${label.value}`}>
                                                 {label.label}
                                             </SelectItem>
                                         ))}
@@ -153,7 +152,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                         <FormItem>
                             <FormLabel>Priority</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
+                                <FormControl data-testid="task-form-priority">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a priority" />
                                     </SelectTrigger>
@@ -161,7 +160,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                                 <SelectContent>
                                     <SelectGroup>
                                         {priorities?.map((priority: Priority) => (
-                                            <SelectItem key={priority.value} value={priority.value}>
+                                            <SelectItem key={priority.value} value={priority.value} data-testid={`priority-item-${priority.value}`}>
                                                 {priority.label}
                                             </SelectItem>
                                         ))}
