@@ -12,11 +12,18 @@ const config: Config = {
   testEnvironment: 'jest-fixed-jsdom',
   //configuracion de archhivos a ejecutar antes de cada prueba
   setupFilesAfterEnv: ['<rootDir>/app/setupTests.ts'],
-  testPathIgnorePatterns: ["<rootDir>/ui-tests/", "<rootDir>/app/types"],
+  collectCoverageFrom: [
+    '<rootDir>/components/**/*.{ts,tsx}',
+    '!<rootDir>/components/ui/**/*',
+    '!<rootDir>/components/ThemeProvider.tsx',
+    '<rootDir>/lib/**/*.{ts,tsx}',
+    '<rootDir>/app/**/*.{ts,tsx}',// Incluye todos los archivos js, jsx, ts y tsx dentro de la carpeta app
+    '!<rootDir>/app/types/**/*', // Excluye la carpeta app/types
+  ],
+  testPathIgnorePatterns: ["<rootDir>/ui-tests/"],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1', // Configura el alias @ para que apunte a la raíz del proyecto
   },
 }
 
-// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 export default createJestConfig(config)
