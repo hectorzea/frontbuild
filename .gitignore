@@ -15,6 +15,7 @@
 /frontend/build/
 /frontend/.swc/
 /frontend/.DS_Store
+/.github/.DS_Store
 
 # misc
 .DS_Store
