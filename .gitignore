@@ -10,7 +10,7 @@
 /frontend/playwright-report/
 /frontend/blob-report/
 /frontend/playwright/.cache/
-/frontend/coverage/
+/frontend/coverage/*
 /frontend/out/
 /frontend/build/
 /frontend/.swc/
