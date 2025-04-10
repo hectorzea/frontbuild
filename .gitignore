@@ -15,6 +15,10 @@
 /frontend/build/
 /frontend/.swc/
 
+# misc
+.DS_Store
+*.pem
+
 # env files (can opt-in for committing if needed)
 .env*
 
