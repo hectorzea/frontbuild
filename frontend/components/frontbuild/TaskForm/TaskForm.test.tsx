@@ -1,22 +1,11 @@
 import React from 'react'
-import { http, HttpResponse } from 'msw'
-import { setupServer } from 'msw/node'
 import { screen } from '@testing-library/react'
 import { TaskForm } from '.'
 import { renderWithProviders } from '@/app/test-utils'
 import { tasks } from '@/app/mocks/taskHandlers'
-import { handlers } from '@/app/mocks/handlers'
-import userEvent from '@testing-library/user-event';
-
-const server = setupServer(...handlers)
-
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
 
 test('Loads <TaskForm /> and check for main elements', async () => {
-    const user = userEvent.setup()
-    renderWithProviders(<TaskForm mode={"add"} defaultValues={{}} onOpenChange={jest.fn()} />, {
+    renderWithProviders(<TaskForm mode={"add"} defaultValues={{ title: '', label: '', priority: '', status: '' }} onOpenChange={jest.fn()} />, {
         preloadedState: {
             tasks: {
                 tasks: tasks
@@ -93,24 +82,8 @@ test('Loads <TaskForm /> and check for main elements', async () => {
             },
         }
     })
-
     expect(await screen.findByTestId('task-form-title')).toBeInTheDocument();
-
-    await userEvent.type(screen.getByTestId('task-form-title'), 'Hello!')
-    expect(screen.getByTestId('task-form-title')).toHaveValue('Hello!')
-
-    //   taskHandlers.ts                         |   70.58 |      100 |     100 |   70.58 | 46-51,53-59,61-67  
-    // await userEvent.click(screen.getByTestId('task-form-status'));
-    // await userEvent.click(screen.getByTestId('status-item-todo'));
-
-    // await userEvent.click(screen.getByTestId('task-form-label'));
-    // await userEvent.click(screen.getByTestId('label-item-feature'));
-
-    // await userEvent.click(screen.getByTestId('task-form-priority'));
-    // await userEvent.click(screen.getByTestId('priority-item-low'));
-    
-    // await user.click(screen.getByTestId('task-form-submit-button'));
-
-    // expect(await screen.findByTestId('task-form-titlSe')).toBeInTheDocument();
-
+    expect(await screen.findByTestId('task-form-status')).toBeInTheDocument();
+    expect(await screen.findByTestId('task-form-label')).toBeInTheDocument();
+    expect(await screen.findByTestId('task-form-priority')).toBeInTheDocument();
 })

@@ -28,12 +28,12 @@ import {
 import { Label, Priority, Status } from '@/app/types/api/Api';
 import Box from 'ui-box'
 import { TaskMode } from '@/components/frontbuild/TaskDialog/types';
-import axios from 'axios';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import { addTask, modifyTask } from '@/lib/features/tasks/tasksSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { selectLabels, selectPriorities, selectStatuses } from '@/lib/features/app/appSlice';
+import { updateTaskApi, addTaskApi } from '@/lib/features/tasks/api';
 
 
 interface TaskFormProps {
@@ -54,28 +54,24 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
     const priorities = useAppSelector(selectPriorities);
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
-        //todo ver como mejorar esta parte del codigo
         try {
-            if (mode === "add") {
-                const response = await axios.post(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, values);
-                if (response?.data) {
-                    console.log("Task added successfully!");
-                    onOpenChange(false);
-                    toast("Task has been created.")
-                    dispatch(addTask(response.data?.task))
-
-                }
-            } else if (mode === "edit") {
-                if (!values._id) throw new Error("Task ID is required for editing.");
-                const response = await axios.put(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/${values._id}`, values);
-                onOpenChange(false)
-                dispatch(modifyTask(response.data?.task))
-                toast("Task has been updated.")
+            let task;
+            if (mode === 'add') {
+                task = await addTaskApi(values);
+                dispatch(addTask(task));
+                toast('Task has been created.');
+            } else if (mode === 'edit') {
+                if (!values._id) throw new Error('Task ID is required for editing.');
+                task = await updateTaskApi(values);
+                dispatch(modifyTask(task));
+                toast('Task has been updated.');
             }
+            onOpenChange(false);
         } catch (error) {
-            console.error("Error submitting task:", error);
+            console.error('Error submitting task:', error);
+            toast.error('Failed to save task.');
         }
-    }
+    };
 
     return (
         <Form {...form}>

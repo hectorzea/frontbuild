@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.58% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>48/68</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.58% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>48/68</span>
+                <span class='fraction'>68/68</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -176,28 +176,28 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { http, HttpResponse } from 'msw'
 import { Task, TaskSuccessResponseSchema } from '../types/api/Api';
@@ -244,28 +244,28 @@ export const taskHandlers = [
         return HttpResponse.json(tasks)
     }),
     http.post&lt;AddTaskRequestBody, TaskSuccessResponseSchema&gt;(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, async ({ request }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        const taskData = await request.json()</span>
-<span class="cstat-no" title="statement not covered" >        return HttpResponse.json({</span>
-<span class="cstat-no" title="statement not covered" >            message: "Task added successfully",</span>
-<span class="cstat-no" title="statement not covered" >            task: { ...taskData, _id: generateMockObjectId() }</span>
-<span class="cstat-no" title="statement not covered" >        })</span>
-<span class="cstat-no" title="statement not covered" >    }),</span>
+        const taskData = await request.json()
+        return HttpResponse.json({
+            message: "Task added successfully",
+            task: { ...taskData, _id: generateMockObjectId() }
+        })
+    }),
     http.put&lt;TaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema&gt;(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async ({ request, params }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        const { id } = params</span>
-<span class="cstat-no" title="statement not covered" >        const taskData = await request.json()</span>
-<span class="cstat-no" title="statement not covered" >        return HttpResponse.json({</span>
-<span class="cstat-no" title="statement not covered" >            message: "Task modified successfully",</span>
-<span class="cstat-no" title="statement not covered" >            task: { ...taskData, _id: id }</span>
-<span class="cstat-no" title="statement not covered" >        })</span>
-<span class="cstat-no" title="statement not covered" >    }),</span>
+        const { id } = params
+        const taskData = await request.json()
+        return HttpResponse.json({
+            message: "Task modified successfully",
+            task: { ...taskData, _id: id }
+        })
+    }),
     http.delete&lt;TaskRequestParams, DeleteTaskSuccessResponse&gt;(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async ({ }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        return new HttpResponse(null, {</span>
-<span class="cstat-no" title="statement not covered" >            status: 204,</span>
-<span class="cstat-no" title="statement not covered" >            headers: {</span>
-<span class="cstat-no" title="statement not covered" >                'Content-Type': 'application/json'</span>
-<span class="cstat-no" title="statement not covered" >            },</span>
-<span class="cstat-no" title="statement not covered" >        })</span>
-<span class="cstat-no" title="statement not covered" >    })</span>
+        return new HttpResponse(null, {
+            status: 204,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+    })
 ]
 &nbsp;</pre></td></tr></table></pre>
 
@@ -274,7 +274,7 @@ export const taskHandlers = [
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-09T18:18:07.172Z
+                at 2025-04-10T12:18:04.659Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
