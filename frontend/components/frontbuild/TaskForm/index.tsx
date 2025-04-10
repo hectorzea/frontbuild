@@ -28,12 +28,12 @@ import {
 import { Label, Priority, Status } from '@/app/types/api/Api';
 import Box from 'ui-box'
 import { TaskMode } from '@/components/frontbuild/TaskDialog/types';
-import axios from 'axios';
 import { toast } from 'sonner';
 import { useDispatch } from 'react-redux';
 import { addTask, modifyTask } from '@/lib/features/tasks/tasksSlice';
 import { useAppSelector } from '@/lib/hooks';
 import { selectLabels, selectPriorities, selectStatuses } from '@/lib/features/app/appSlice';
+import { updateTaskApi, addTaskApi } from '@/lib/features/tasks/api';
 
 
 interface TaskFormProps {
@@ -54,41 +54,36 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
     const priorities = useAppSelector(selectPriorities);
 
     const onSubmit = async (values: z.infer<typeof taskSchema>) => {
-        //todo ver como mejorar esta parte del codigo
         try {
-            if (mode === "add") {
-                const response = await axios.post(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`, values);
-                if (response?.data) {
-                    console.log("Task added successfully!");
-                    onOpenChange(false);
-                    toast("Task has been created.")
-                    dispatch(addTask(response.data?.task))
-
-                }
-            } else if (mode === "edit") {
-                if (!values._id) throw new Error("Task ID is required for editing.");
-                const response = await axios.put(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/${values._id}`, values);
-                onOpenChange(false)
-                dispatch(modifyTask(response.data?.task))
-                toast("Task has been updated.")
+            let task;
+            if (mode === 'add') {
+                task = await addTaskApi(values);
+                dispatch(addTask(task));
+                toast('Task has been created.');
+            } else if (mode === 'edit') {
+                if (!values._id) throw new Error('Task ID is required for editing.');
+                task = await updateTaskApi(values);
+                dispatch(modifyTask(task));
+                toast('Task has been updated.');
             }
+            onOpenChange(false);
         } catch (error) {
-            console.error("Error submitting task:", error);
+            console.error('Error submitting task:', error);
+            toast.error('Failed to save task.');
         }
-    }
+    };
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                     control={form.control}
-                    data-testid="task-form-title"
                     name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Title</FormLabel>
                             <FormControl>
-                                <Input placeholder="Task title" {...field} />
+                                <Input placeholder="Task title" {...field} data-testid="task-form-title" />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -102,14 +97,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                             <FormLabel>Status</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
-                                    <SelectTrigger>
+                                    <SelectTrigger data-testid="task-form-status">
                                         <SelectValue placeholder="Select a status" />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
                                     <SelectGroup>
                                         {statuses?.map((status: Status) => (
-                                            <SelectItem value={status.value} key={status.value}>
+                                            <SelectItem value={status.value} key={status.value} data-testid={`status-item-${status.value}`}>
                                                 {status.label}
                                             </SelectItem>
                                         ))}
@@ -127,7 +122,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                         <FormItem>
                             <FormLabel>Label</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
+                                <FormControl data-testid="task-form-label">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a label" />
                                     </SelectTrigger>
@@ -135,7 +130,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                                 <SelectContent>
                                     <SelectGroup>
                                         {labels?.map((label: Label) => (
-                                            <SelectItem key={label.value} value={label.value}>
+                                            <SelectItem key={label.value} value={label.value} data-testid={`label-item-${label.value}`}>
                                                 {label.label}
                                             </SelectItem>
                                         ))}
@@ -153,7 +148,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                         <FormItem>
                             <FormLabel>Priority</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
+                                <FormControl data-testid="task-form-priority">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a priority" />
                                     </SelectTrigger>
@@ -161,7 +156,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ defaultValues, mode, onOpenC
                                 <SelectContent>
                                     <SelectGroup>
                                         {priorities?.map((priority: Priority) => (
-                                            <SelectItem key={priority.value} value={priority.value}>
+                                            <SelectItem key={priority.value} value={priority.value} data-testid={`priority-item-${priority.value}`}>
                                                 {priority.label}
                                             </SelectItem>
                                         ))}

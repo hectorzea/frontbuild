@@ -22,12 +22,12 @@ import { taskSchema } from "@/app/schemas"
 import { TaskDialog } from "@/components/frontbuild/TaskDialog"
 import { useState } from "react"
 import { ConfirmationDialog } from "@/components/frontbuild/ConfirmationDialog"
-import axios from "axios"
 import { toast } from "sonner"
 import { removeTask } from "@/lib/features/tasks/tasksSlice"
 import { useDispatch } from "react-redux"
 import { selectLabels } from "@/lib/features/app/appSlice"
 import { useAppSelector } from "@/lib/hooks"
+import { deleteTaskApi } from "@/lib/features/tasks/api"
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
@@ -41,19 +41,20 @@ export function DataTableRowActions<TData>({
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
     const [isConfirmationDialogOpen, setConfirmationDialogOpen] = useState<boolean>(false)
     const labels = useAppSelector(selectLabels);
-    
+
     const onDeleteTask = async () => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/${task._id}`);
-            setConfirmationDialogOpen(false)
-            dispatch(removeTask(task._id!))
-            toast('Task deleted')
+            await deleteTaskApi(task._id!);
+            setConfirmationDialogOpen(false);
+            dispatch(removeTask(task._id!));
+            toast("Task deleted");
         } catch (error) {
             setConfirmationDialogOpen(false);
-            toast('Error on deleting task')
-            console.error(error)
+            toast("Error on deleting task");
+            console.error(error);
         }
-    }
+    };
+
 
     return (
         <>
