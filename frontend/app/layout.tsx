@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={`${geistSans.className} ${geistMono.className}`}>
+      <body className={`${geistSans.className} ${geistMono.className}`} data-testid="body-frontbuild">
         <StoreProvider>
           <ThemeProvider
             attribute="class"
