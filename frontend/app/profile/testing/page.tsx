@@ -1,4 +1,4 @@
-export default async function TestingPage() {
+export default function TestingPage() {
     return (
         <>
             <ol className="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400">

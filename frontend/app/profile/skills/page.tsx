@@ -1,8 +1,7 @@
 
 import Box from "ui-box";
 
-export default async function SkillsPage() {
-
+export default function SkillsPage() {
     return (
         <>
             <Box>
