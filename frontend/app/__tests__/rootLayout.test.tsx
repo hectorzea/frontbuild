@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import LayoutContainer from '@/app/layout'
+import RootLayout from '@/app/layout'
 
 describe('Layout page', () => {
     it('renders a layout', () => {
-        render(<LayoutContainer >test</LayoutContainer>)
+        render(<RootLayout >test</RootLayout>)
         expect(screen.getByTestId('body-frontbuild')).toBeInTheDocument();
     })
 })

@@ -40,14 +40,14 @@ const sidebarNavItems = [
     },
 ]
 
-interface SettingsLayoutProps {
+interface ProfileLayoutProps {
     children: React.ReactNode
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default function ProfileLayout({ children }: ProfileLayoutProps) {
     return (
         <>
-            <div className="p-10 pb-16">
+            <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
                 <div className="flex items-center justify-between space-x-2">
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight">Hector Zea</h2>
