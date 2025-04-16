@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
 import { ModeToggle } from "../ModeToggle"
-import { Separator } from "@/components/ui/separator"
 
 type MenuItem = {
     title: string
