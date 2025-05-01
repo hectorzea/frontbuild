@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import { ModeToggle } from "../ModeToggle"
 
 type MenuItem = {
     title: string
@@ -54,7 +55,12 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ menuItems, }) => {
             </SheetTrigger>
             <SheetContent side="left" className="w-[100%]">
                 <SheetHeader>
-                    <SheetTitle>Frontbuild</SheetTitle>
+                    <SheetTitle>
+                        <p className="text-left px-4"> Frontbuild</p>
+                    </SheetTitle>
+                    <div className="flex items-start px-4">
+                        <ModeToggle />
+                    </div>
                     <nav className="flex flex-col space-y-4">
                         {menuItems.map((item) => (
                             <MenuItemComponent key={item.title} item={item} pathname={pathname} setOpen={setOpen} />
