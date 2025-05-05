@@ -1,9 +1,11 @@
+import { getT } from '@/app/i18n/index';
 export default async function EducationPage() {
+    const { t } = await getT('education');
     return (
         <>
             <div>
                 <h3 className="text-2xl font-semibold">
-                    University
+                    {t('college')}
                 </h3>
                 <h3 className="pb-2 text-muted-foreground">I.U.T Dr. Federico Rivero Palacios</h3>
             </div>

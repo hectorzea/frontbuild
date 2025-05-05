@@ -1,0 +1,5 @@
+{
+    "h1": "Hola",
+    "welcomeMessage": "Hola, {{name}}!",
+    "intro":"I like to build things with code. Im a software engineer based in Berlin, Germany."
+  }
