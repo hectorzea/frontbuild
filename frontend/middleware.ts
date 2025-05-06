@@ -31,5 +31,7 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(newUrl);
     }
 
+    //todo logica de referer?
+
     return NextResponse.next({ headers })
 }

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import SkillsPage from '@/app/profile/skills/page'
+import SkillsPage from '@/app/[lang]/profile/skills/page'
 
 describe('TestingPage', () => {
   it('renders TestingPage component', () => {

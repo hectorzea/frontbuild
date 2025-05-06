@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import ProfileIndexPage from '@/app/profile/page'
+import ProfileIndexPage from '@/app/[lang]/profile/page';
 
 describe('Page', () => {
   it('renders a heading', () => {
