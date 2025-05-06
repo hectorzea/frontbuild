@@ -10,10 +10,6 @@ export const metadata: Metadata = {
 }
 
 const sidebarNavItems = [
-    // {
-    //     title: "Interviews",
-    //     href: "/profile/interviews",
-    // },
     {
         title: "Personal Info",
         href: "/profile/personal-info",
@@ -35,8 +31,8 @@ const sidebarNavItems = [
         href: "/profile/crafting-software",
     },
     {
-        title: "Tasks",
-        href: "/",
+        title: "Projects",
+        href: "/projects",
     },
 ]
 

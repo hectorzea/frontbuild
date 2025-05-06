@@ -1,9 +1,10 @@
-import { getT } from '@/app/i18n/index';
+import { redirect } from 'next/navigation';
 export default async function Index() {
-    const { t } = await getT('common');
-    return (
-        <div>
-            {t('accept')}
-        </div>
-    );
+    redirect('/profile');
+    // const { t } = await getT('common');
+    // return (
+    //     <div>
+    //         {t('accept')}
+    //     </div>
+    // );
 }
