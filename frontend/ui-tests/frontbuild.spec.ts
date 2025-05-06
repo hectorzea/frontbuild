@@ -8,7 +8,7 @@ test('Home page should match snapshot', async ({ page }) => {
 });
 
 test('App basic flow', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/projects/tasks');
 
   await expect(page).toHaveTitle(/Frontbuild/);
 

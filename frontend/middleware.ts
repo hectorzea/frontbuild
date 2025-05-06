@@ -5,7 +5,7 @@ import { fallbackLng, languages, cookieName, headerName } from "@/app/i18n/setti
 acceptLanguage.languages(languages);
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)']
+    matcher: ['/((?!_next|api|mockServiceWorker\\.js|favicon\\.ico|sw\\.js).*)',]
 }
 
 export function middleware(request: NextRequest) {
@@ -17,7 +17,6 @@ export function middleware(request: NextRequest) {
     const langInPath = languages.find((loc: string) => request.nextUrl.pathname.startsWith(`/${loc}`))
     const headers = new Headers(request.headers)
     headers.set(headerName, langInPath || lng)
-    console.log('langInPath', langInPath)
 
     // Lógica de redirección:
     // Si el idioma detectado NO está en el path (`!lngInPath`)
@@ -30,8 +29,6 @@ export function middleware(request: NextRequest) {
         const newUrl = new URL(`/${lng}${request.nextUrl.pathname}${request.nextUrl.search}`, request.url);
         return NextResponse.redirect(newUrl);
     }
-
-    //todo logica de referer?
 
     return NextResponse.next({ headers })
 }
