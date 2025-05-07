@@ -1,13 +1,9 @@
-import { Metadata } from "next"
-
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
 import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
+import { languages } from "@/app/i18n/settings"
+import { getT } from "@/app/i18n"
 
-export const metadata: Metadata = {
-    title: "Frontbuild",
-    description: "Page for crafting software",
-}
 
 const sidebarNavItems = [
     {
@@ -40,7 +36,12 @@ interface ProfileLayoutProps {
     children: React.ReactNode
 }
 
-export default function ProfileLayout({ children }: ProfileLayoutProps) {
+export async function generateStaticParams() {
+    return languages.map((lng) => ({ lng }))
+}
+
+export default async function ProfileLayout({ children }: ProfileLayoutProps) {
+    const { t } = await getT('profile');
     return (
         <>
             <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
@@ -48,7 +49,7 @@ export default function ProfileLayout({ children }: ProfileLayoutProps) {
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight">Hector Zea</h2>
                         <p className="text-muted-foreground">
-                            I like to build things with code. Im a software engineer based in Berlin, Germany.
+                            {t('info')}
                         </p>
                     </div>
                     <HamburgerMenu menuItems={sidebarNavItems} />
