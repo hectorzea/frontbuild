@@ -41,7 +41,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ProfileLayout({ children }: ProfileLayoutProps) {
-    const { t } = await getT('profile');
+    const { t } = await getT("profile");
     return (
         <>
             <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
