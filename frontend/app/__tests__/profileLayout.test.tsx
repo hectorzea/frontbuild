@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import ProfileLayout from '@/app/profile/layout'
+import ProfileLayout from '@/app/[lang]/profile/layout';
 
 const mockUsePathname = jest.fn();
 
@@ -10,8 +10,9 @@ jest.mock('next/navigation', () => ({
 }));
 
 describe('ProfileLayout page', () => {
-    it('renders a profile layout', () => {
-        render(<ProfileLayout >test</ProfileLayout>)
+    it('renders a profile layout', async () => {
+        const jsx = await ProfileLayout({ children: <div>test</div> });
+        render(jsx)
         expect(screen.getByTestId('frontbuild-profile-layout')).toBeInTheDocument();
     })
 })
