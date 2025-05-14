@@ -12,8 +12,10 @@ import { useAppSelector } from '@/lib/hooks';
 import { UserNav } from '@/components/frontbuild/UserNav';
 import { Loading } from '@/components/frontbuild/Loading';
 import { ModeToggle } from '../ModeToggle';
+import { useT } from '@/app/i18n/client';
 
 export const TaskDashboard = () => {
+  const { t } = useT('tasks');
   const dispatch = useDispatch();
   const tasks = useAppSelector(selectAllTasks);
   const { data: tasksData, isLoading: isLoadingTasks, isSuccess: isSuccessGetTasks, isError: isErrorGetTasks } =
@@ -41,9 +43,9 @@ export const TaskDashboard = () => {
     <div className="h-full flex-1 flex-col space-y-4 p-4 sm:p-8 md:flex">
       <div className="flex items-center justify-between space-y-2">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight" data-testid={'frontbuild-title'}>FrontBuild</h2>
+          <h2 className="text-2xl font-bold tracking-tight" data-testid={'frontbuild-title'}>{t('title')}</h2>
           <p className="text-sm text-muted-foreground sm:text-base">
-            All of the tasks regarding this repo lays here.
+            {t('subtitle')}
           </p>
         </div>
         <div className="flex items-center space-x-2">
