@@ -57,7 +57,7 @@ export const taskHandlers = [
             task: { ...taskData, _id: id }
         })
     }),
-    http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async ({ }) => {
+    http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`, async () => {
         return new HttpResponse(null, {
             status: 204,
             headers: {

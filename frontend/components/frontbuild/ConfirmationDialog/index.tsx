@@ -17,7 +17,6 @@ interface AlertDialogProps {
 
 
 export const ConfirmationDialog: React.FC<AlertDialogProps> = ({ open, onOpenChange, onAccept }) => {
-
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
