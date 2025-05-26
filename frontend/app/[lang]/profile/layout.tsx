@@ -36,6 +36,7 @@ interface ProfileLayoutProps {
     children: React.ReactNode
 }
 
+// TODO averiguar como funciona el generateStaticParams
 // export async function generateStaticParams() {
 //     return languages.map((lng) => ({ lng }))
 // }
