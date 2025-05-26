@@ -8,7 +8,8 @@ export default async function ProfileIndexPage() {
             <div className="flex flex-col sm:flex-row gap-10 mt-0 sm:mt-10">
                 <div className="flex flex-col items-center max-w-xs sm:max-w-md space-y-4">
                     <Brain width={100} height={100} />
-                    <p className="text-center max-w-xs sm:max-w-md">{t('adaptable')}</p>
+                    {/* <p className="text-center max-w-xs sm:max-w-md">{t('adaptable')}</p> */}
+                    TEST
                 </div>
                 <div className="flex flex-col items-center max-w-xs sm:max-w-md space-y-4">
                     <Cuboid width={100} height={100} />
