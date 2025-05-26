@@ -1,7 +1,6 @@
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
 import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
-// import { languages } from "@/app/i18n/settings"
 import { getT } from "@/app/i18n"
 
 
@@ -35,11 +34,6 @@ const sidebarNavItems = [
 interface ProfileLayoutProps {
     children: React.ReactNode
 }
-
-// TODO averiguar como funciona el generateStaticParams
-// export async function generateStaticParams() {
-//     return languages.map((lng) => ({ lng }))
-// }
 
 export default async function ProfileLayout({ children }: ProfileLayoutProps) {
     const { t } = await getT("profile");
