@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
 import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
-// import { languages } from "@/app/i18n/settings"
-// import { getT } from "@/app/i18n"
+import { languages } from "@/app/i18n/settings"
+import { getT } from "@/app/i18n"
 
 
 const sidebarNavItems = [
@@ -41,7 +41,7 @@ interface ProfileLayoutProps {
 // }
 
 export default async function ProfileLayout({ children }: ProfileLayoutProps) {
-    // const { t } = await getT("profile");
+    const { t } = await getT("profile");
     return (
         <>
             <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
@@ -49,8 +49,7 @@ export default async function ProfileLayout({ children }: ProfileLayoutProps) {
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight">Hector Zea</h2>
                         <p className="text-muted-foreground">
-                            {/* {t('info')} */}
-                            test
+                            {t('info')}
                         </p>
                     </div>
                     <HamburgerMenu menuItems={sidebarNavItems} />
