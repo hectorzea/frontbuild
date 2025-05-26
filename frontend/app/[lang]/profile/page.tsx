@@ -1,8 +1,8 @@
-import { getT } from "@/app/i18n";
+// import { getT } from "@/app/i18n";
 import { BookCheck, Brain, Bug, Computer, Cuboid, HardHat } from "lucide-react";
 
 export default async function ProfileIndexPage() {
-    const { t } = await getT('profile');
+    // const { t } = await getT('profile');
     return (
         <div>
             <div className="flex flex-col sm:flex-row gap-10 mt-0 sm:mt-10">
