@@ -21,5 +21,5 @@ export default function IndexPage() {
     return <div className='flex justify-center items-center h-screen'><Loading /></div>;
   }
 
-  return <TaskDashboard />;
+  return <TaskDashboard title={'jaja'}/>;
 }

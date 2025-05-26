@@ -1,26 +1,9 @@
-// import { Locale } from "next-intl";
-// import { setRequestLocale } from "next-intl/server";
-// import { use } from "react";
-
-import { useTranslations } from "next-intl";
-
-// type Props = {
-//     params: Promise<{ locale: Locale }>;
-// };
-
 export default function EducationPage() {
-    // const { locale } = use(params);
-
-    // // Enable static rendering
-    // setRequestLocale(locale);
-
-    const t = useTranslations('HomePage');
-
     return (
         <>
             <div>
                 <h3 className="text-2xl font-semibold">
-                    {t('title')}
+                    University
                 </h3>
                 <h3 className="pb-2 text-muted-foreground">I.U.T Dr. Federico Rivero Palacios</h3>
             </div>
