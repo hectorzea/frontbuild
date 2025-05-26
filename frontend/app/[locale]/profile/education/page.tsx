@@ -1,4 +1,11 @@
-export default async function EducationPage() {
+
+
+export default function EducationPage() {
+    // const { locale } = use(params);
+
+    // // Enable static rendering
+    // setRequestLocale(locale);
+
     return (
         <>
             <div>
