@@ -4,37 +4,37 @@ import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
 
 
 const sidebarNavItems = [
-    // {
-    //     title: "Personal Info",
-    //     href: "/profile/personal-info",
-    // },
-    // {
-    //     title: "My Skills",
-    //     href: "/profile/skills",
-    // },
-    // {
-    //     title: "Testing",
-    //     href: "/profile/testing",
-    // },
+    {
+        title: "Personal Info",
+        href: "/profile/personal-info",
+    },
+    {
+        title: "My Skills",
+        href: "/profile/skills",
+    },
+    {
+        title: "Testing",
+        href: "/profile/testing",
+    },
     {
         title: "Education",
         href: "/profile/education",
     },
-    // {
-    //     title: "Crafting Software",
-    //     href: "/profile/crafting-software",
-    // },
-    // {
-    //     title: "Projects",
-    //     href: "/projects",
-    // },
+    {
+        title: "Crafting Software",
+        href: "/profile/crafting-software",
+    },
+    {
+        title: "Projects",
+        href: "/projects",
+    },
 ]
 
 interface ProfileLayoutProps {
     children: React.ReactNode
 }
 
-export default async function ProfileLayout({ children }: ProfileLayoutProps) {
+export default function ProfileLayout({ children }: ProfileLayoutProps) {
     return (
         <>
             <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">

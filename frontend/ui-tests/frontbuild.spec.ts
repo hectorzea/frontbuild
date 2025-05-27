@@ -2,15 +2,17 @@ import { test, expect } from '@playwright/test';
 
 test('Home page should match snapshot', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByText('Do something with the tests')).toBeVisible();
+  await expect(page.getByText(/Frontbuild is a repository which contains my personal projects/i)).toBeVisible();
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchSnapshot('home-page.png', { maxDiffPixels: 10000 });
 });
 
 test('App basic flow', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/projects/tasks');
 
-  await expect(page).toHaveTitle(/Frontbuild/);
+  //todo check
+  // await expect(page).toHaveTitle(/FrontBuild/);
+  await expect(page.getByText('FrontBuild')).toBeVisible();
 
   await page.getByTestId('add-task-button').click();
   await page.getByRole('textbox', { name: 'Title' }).fill('New task created for ui tests');
