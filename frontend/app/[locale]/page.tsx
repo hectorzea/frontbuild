@@ -6,7 +6,7 @@ export default function HomePage() {
     return (
         <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
             <p>{t('title')}</p>
-            <Link href={`/profile`} className="text-blue-500 hover:underline">{t('profile')}</Link>
+            <Link href={`/profile/skills`} className="text-blue-500 hover:underline">{t('profile')}</Link>
         </div>
     );
 }
