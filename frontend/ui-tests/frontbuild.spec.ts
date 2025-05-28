@@ -11,7 +11,7 @@ test('App basic flow', async ({ page }) => {
   await page.goto('/projects/tasks');
 
   //todo check
-  // await expect(page).toHaveTitle(/FrontBuild/);
+  await expect(page).toHaveTitle(/FrontBuild/i);
   await expect(page.getByText('FrontBuild')).toBeVisible();
 
   await page.getByTestId('add-task-button').click();
