@@ -15,9 +15,9 @@ import IndexPage from '@/app/page'; // Importa el componente IndexPage
 // }));
 
 describe('IndexPage', () => {
-  beforeEach(() => {
-    jest.clearAllMocks(); // Limpia los mocks antes de cada test
-  });
+  // beforeEach(() => {
+  //   jest.clearAllMocks(); // Limpia los mocks antes de cada test
+  // });
 
   it('is rendering correctly', () => {
     render(<IndexPage />);
