@@ -11,8 +11,8 @@ test('App basic flow', async ({ page }) => {
   await page.goto('/projects/tasks');
 
   //todo check
-  await expect(page).toHaveTitle(/FrontBuild/i);
-  await expect(page.getByText('FrontBuild')).toBeVisible();
+  await expect(page).toHaveTitle('Frontbuild');
+  await expect(page.getByText(/frontbuild is a repository/i)).toBeVisible();
 
   await page.getByTestId('add-task-button').click();
   await page.getByRole('textbox', { name: 'Title' }).fill('New task created for ui tests');
