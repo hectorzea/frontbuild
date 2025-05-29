@@ -30,8 +30,8 @@ export default function PersonalInfoPage() {
                     Portfolio / Website / LinkedIn
                 </h3>
                 <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
-                    <li><a className={'font-medium text-blue-600 dark:text-blue-500 hover:underline '} rel="noreferrer" href="https://www.linkedin.com/in/hectorazea" target="_blank" >LinkedIN</a></li>
-                    <li><a className={'font-medium text-blue-600 dark:text-blue-500 hover:underline '} rel="noreferrer" href="https://github.com/hectorzea" target="_blank" >GitHub</a></li>
+                    <li><a data-testid="linkedin-navigation-link" className={'font-medium text-blue-600 dark:text-blue-500 hover:underline'} rel="noreferrer" href="https://www.linkedin.com/in/hectorazea" target="_blank" >LinkedIN</a></li>
+                    <li><a data-testid="github-navigation-link" className={'font-medium text-blue-600 dark:text-blue-500 hover:underline'} rel="noreferrer" href="https://github.com/hectorzea" target="_blank" >GitHub</a></li>
                 </ul>
             </div>
         </>
