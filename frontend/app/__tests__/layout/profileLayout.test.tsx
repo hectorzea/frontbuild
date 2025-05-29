@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import ProfileLayout from '@/app/profile/layout'
+import ProfileLayout from '@/app/[locale]/profile/layout'
 
 const mockUsePathname = jest.fn();
 

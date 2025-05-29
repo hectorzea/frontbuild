@@ -1,4 +1,4 @@
-export default async function EducationPage() {
+export default function EducationPage() {
     return (
         <>
             <div>
