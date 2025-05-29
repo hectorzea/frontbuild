@@ -63,7 +63,7 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
           <ModeToggle />
         </div>
       </div>
-      {!isMswReady ? <>error msw</> : <Tabla />}
+      {/* {!isMswReady ? <>error msw</> : <Tabla />} */}
     </div>
   );
 };
