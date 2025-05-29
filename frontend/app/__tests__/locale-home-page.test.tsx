@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react'
 import HomePage from '@/app/[locale]/page'
-import en from '@/i18n/messages/en.json';
 
 describe('Page', () => {
     it('renders a heading', () => {
