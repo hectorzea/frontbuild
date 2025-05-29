@@ -2,5 +2,9 @@
   "HomePage": {
     "title": "Frontbuild es un repositorio que contiene mis proyectos personales y una visión general de mi trayectoria como desarrollador.",
     "profile": "Ir a mi perfil"
+  },
+  "ProfileLayout": {
+    "title": "Hector Zea",
+    "description": "Me gusta construir aplicaciones web con codigo de calidad. Soy un ingeniero de software basado en Berlin, Alemania."
   }
 }
