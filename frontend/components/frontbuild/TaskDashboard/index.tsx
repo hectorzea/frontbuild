@@ -3,7 +3,6 @@ import { UserNav } from '@/components/frontbuild/UserNav';
 // import { Loading } from '@/components/frontbuild/Loading';
 import { ModeToggle } from '../ModeToggle';
 // import { setUpMocks } from '@/app/mocks/setupMocks';
-// import Tabla from './Tabla';
 
 type TaskDashboardProps = {
   title: string;
@@ -62,7 +61,6 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
           <ModeToggle />
         </div>
       </div>
-      {/* {!isMswReady ? <>error msw</> : <Tabla />} */}
     </div>
   );
 };
