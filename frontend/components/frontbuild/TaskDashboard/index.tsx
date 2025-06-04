@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useState } from 'react';
 import { UserNav } from '@/components/frontbuild/UserNav';
-import { Loading } from '@/components/frontbuild/Loading';
+// import { Loading } from '@/components/frontbuild/Loading';
 import { ModeToggle } from '../ModeToggle';
-import { setUpMocks } from '@/app/mocks/setupMocks';
-import Tabla from './Tabla';
+// import { setUpMocks } from '@/app/mocks/setupMocks';
+// import Tabla from './Tabla';
 
 type TaskDashboardProps = {
   title: string;
