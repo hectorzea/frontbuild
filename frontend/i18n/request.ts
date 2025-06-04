@@ -11,7 +11,6 @@ export default getRequestConfig(async ({requestLocale}) => {
  
   return {
     locale,
-    //TODO CHECK
     messages: (await import(`./messages/${locale}.json`)).default
   };
 });

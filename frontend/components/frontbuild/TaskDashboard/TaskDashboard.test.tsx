@@ -14,7 +14,7 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('Loads <TaskDashboard /> and check for main elements', async () => {
-    renderWithProviders(<TaskDashboard title={'Hola'} />, {
+    renderWithProviders(<TaskDashboard title={'Frontbuild App'} />, {
         preloadedState: {
             tasks: {
                 tasks: tasks
@@ -23,7 +23,7 @@ test('Loads <TaskDashboard /> and check for main elements', async () => {
     })
 
     expect(await screen.findByTestId('frontbuild-title')).toBeInTheDocument();
-    expect(await screen.findByText(/Hola/i)).toBeInTheDocument()
+    expect(await screen.findByText(/Frontbuild App/i)).toBeInTheDocument()
     // expect(await screen.findByText(/All of the tasks regarding this repo lays here./i)).toBeInTheDocument()
     // expect(await screen.findByText(/Render pipelines without a trace/i)).toBeInTheDocument()
 })

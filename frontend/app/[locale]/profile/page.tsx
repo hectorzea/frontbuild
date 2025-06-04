@@ -6,7 +6,7 @@ export default function ProfileIndexPage() {
             <div className="flex flex-col sm:flex-row gap-10 mt-0 sm:mt-10">
                 <div className="flex flex-col items-center max-w-xs sm:max-w-md space-y-4">
                     <Brain width={100} height={100} />
-                    <p className="text-center max-w-xs sm:max-w-md">TODO add translations here</p>
+                    <p className="text-center max-w-xs sm:max-w-md">I am a highly adaptable problem-solver with a strong technical skillset, capable of quickly learning and contributing in new environments.</p>
                 </div>
                 <div className="flex flex-col items-center max-w-xs sm:max-w-md space-y-4">
                     <Cuboid width={100} height={100} />
