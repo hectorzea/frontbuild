@@ -47,6 +47,8 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
   //   return <div className='flex justify-center items-center h-screen'><Loading /></div>;
   // }
 
+  //step 1, conditionally render mock service worker on client but not on server
+
   return (
     <div className="h-full flex-1 flex-col space-y-4 p-4 sm:p-8 md:flex">
       <div className="flex items-center justify-between space-y-2">
