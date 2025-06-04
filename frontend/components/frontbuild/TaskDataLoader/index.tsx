@@ -1,7 +1,8 @@
 "use client"
 import { useMsw } from '@/hooks/useMsw';
 import React from 'react'
-import { Loading } from '../Loading';
+import { Loading } from '@/components/frontbuild/Loading';
+import { useFrontbuildApi } from '@/hooks/useFrontbuildApi';
 
 type TaskDataLoaderProps = {
     children?: React.ReactNode;
@@ -9,9 +10,10 @@ type TaskDataLoaderProps = {
 
 const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
 
-    const isMswReady = useMsw();
+    const mswLoaded = useMsw();
+    const generalDataLoaded = useFrontbuildApi(mswLoaded); 
 
-    if (!isMswReady) {
+    if (!mswLoaded || !generalDataLoaded) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <Loading />
