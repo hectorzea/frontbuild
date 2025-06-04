@@ -22,17 +22,17 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
   // const { data: priorities, isSuccess: isSuccessGetPriorities } =
   //   useGetPriorityQuery();
 
-  const [isMswReady, setIsMswReady] = useState<boolean>(false);
+  // const [isMswReady, setIsMswReady] = useState<boolean>(false);
 
-  useEffect(() => {
-    const initializeMocking = async () => {
-      if (process.env.NEXT_PUBLIC_ENABLE_MSW === "true") {
-        await setUpMocks();
-      }
-      setIsMswReady(true);
-    };
-    initializeMocking();
-  }, []);
+  // useEffect(() => {
+  //   const initializeMocking = async () => {
+  //     if (process.env.NEXT_PUBLIC_ENABLE_MSW === "true") {
+  //       await setUpMocks();
+  //     }
+  //     setIsMswReady(true);
+  //   };
+  //   initializeMocking();
+  // }, []);
 
   // useEffect(() => {
   //   if (isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities && isSuccessGetTasks) {
@@ -45,9 +45,9 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
   //   return <div className='flex justify-center items-center h-screen'><Loading /></div>;
   // }
 
-  if (!isMswReady) {
-    return <div className='flex justify-center items-center h-screen'><Loading /></div>;
-  }
+  // if (!isMswReady) {
+  //   return <div className='flex justify-center items-center h-screen'><Loading /></div>;
+  // }
 
   return (
     <div className="h-full flex-1 flex-col space-y-4 p-4 sm:p-8 md:flex">
@@ -63,7 +63,7 @@ export const TaskDashboard = ({ title }: TaskDashboardProps) => {
           <ModeToggle />
         </div>
       </div>
-      {!isMswReady ? <>error msw</> : <Tabla />}
+      {/* {!isMswReady ? <>error msw</> : <Tabla />} */}
     </div>
   );
 };
