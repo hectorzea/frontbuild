@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "Frontbuild is a repository which contains my personal projects and an overview of my career as developer.",
+    "profile": "Go to my profile"
+  },
+  "ProfileLayout": {
+    "title": "Hector Zea",
+    "description": "I like to build things with code. Im a software engineer based in Berlin, Germany."
+  }
+}

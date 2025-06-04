@@ -1,19 +1,10 @@
-import { Metadata } from "next"
-
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/frontbuild/SidebarNav"
 import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu"
+import { useTranslations } from "next-intl"
 
-export const metadata: Metadata = {
-    title: "Frontbuild",
-    description: "Page for crafting software",
-}
 
 const sidebarNavItems = [
-    // {
-    //     title: "Interviews",
-    //     href: "/profile/interviews",
-    // },
     {
         title: "Personal Info",
         href: "/profile/personal-info",
@@ -35,8 +26,8 @@ const sidebarNavItems = [
         href: "/profile/crafting-software",
     },
     {
-        title: "Tasks",
-        href: "/",
+        title: "Projects",
+        href: "/projects",
     },
 ]
 
@@ -45,14 +36,15 @@ interface ProfileLayoutProps {
 }
 
 export default function ProfileLayout({ children }: ProfileLayoutProps) {
+    const t = useTranslations('ProfileLayout');
     return (
         <>
             <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
                 <div className="flex items-center justify-between space-x-2">
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight">Hector Zea</h2>
+                        <h2 className="text-2xl font-bold tracking-tight">{t('title')}</h2>
                         <p className="text-muted-foreground">
-                            I like to build things with code. Im a software engineer based in Berlin, Germany.
+                            {t('description')}
                         </p>
                     </div>
                     <HamburgerMenu menuItems={sidebarNavItems} />

@@ -1,8 +1,8 @@
-export default async function EducationPage() {
+export default function EducationPage() {
     return (
         <>
             <div>
-                <h3 className="text-2xl font-semibold">
+                <h3 className="text-2xl font-semibold" data-testid="education-title">
                     University
                 </h3>
                 <h3 className="pb-2 text-muted-foreground">I.U.T Dr. Federico Rivero Palacios</h3>
