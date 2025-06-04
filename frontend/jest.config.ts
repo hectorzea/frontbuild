@@ -24,6 +24,9 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1', // Configura el alias @ para que apunte a la raíz del proyecto
   },
+  coveragePathIgnorePatterns: [
+    '<rootDir>/app/[locale]/layout.tsx', // Excluye el archivo layout.tsx de la cobertura
+  ]
 }
 
 export default createJestConfig(config)
