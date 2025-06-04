@@ -1,4 +1,7 @@
+import { useTranslations } from "next-intl";
+
 export default function CraftingSoftwarePage() {
+    const t = useTranslations('CraftingSoftware');
     return (
         <>
             <ol className="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400">
@@ -8,8 +11,8 @@ export default function CraftingSoftwarePage() {
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5" />
                         </svg>
                     </span>
-                    <h3 className="font-medium leading-tight">Understanding the business</h3>
-                    <p className="text-sm">By understanding the business we ensure that technical quality goes aligned with company objectives</p>
+                    <h3 className="font-medium leading-tight">{t('business.title')}</h3>
+                    <p className="text-sm">{t('business.description')}</p>
                 </li>
                 <li className="mb-10 ms-6">
                     <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
@@ -19,7 +22,7 @@ export default function CraftingSoftwarePage() {
                     </span>
                     <h3 className="font-medium leading-tight">Integrating into the organization</h3>
                     <p className="text-sm">
-                    Understanding the organization&apos;s inner workings via an agile project management framework to grasp its current and upcoming objectives. (Agile Scrum Mostly)</p>
+                        Understanding the organization&apos;s inner workings via an agile project management framework to grasp its current and upcoming objectives. (Agile Scrum Mostly)</p>
                 </li>
                 <li className="mb-10 ms-6">
                     <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
