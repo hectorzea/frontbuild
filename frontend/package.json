@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "update:snapshots": "jest --updateSnapshot",
     "test": "jest",
     "test:unit": "jest",
     "test:e2e": "npx playwright test",

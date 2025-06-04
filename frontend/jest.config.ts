@@ -24,6 +24,7 @@ const config: Config = {
     '!<rootDir>/components/ui/**/*',
     '!<rootDir>/components/ThemeProvider.tsx',
   ],
+  testPathIgnorePatterns: ["<rootDir>/ui-tests/"],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1', // Configura el alias @ para que apunte a la raíz del proyecto
   },
