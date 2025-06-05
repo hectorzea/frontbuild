@@ -1,6 +1,15 @@
 import { screen } from '@testing-library/react'
 import TasksPage from '@/app/[locale]/projects/tasks/page'
 import { renderWithProviders } from '@/app/test-utils'
+import { setupServer } from 'msw/node'
+
+import { handlers } from '@/app/mocks/handlers'
+import { http, HttpResponse } from 'msw'
+const server = setupServer(...handlers)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 describe('TasksPage', () => {
     it('renders TasksPage Page', () => {
@@ -14,5 +23,20 @@ describe('TasksPage', () => {
         expect(screen.getByTestId('frontbuild-title')).toBeInTheDocument();
         expect(screen.getByTestId('user-nav-trigger')).toBeInTheDocument();
         expect(screen.getByTestId('theme-mode-toggle-button')).toBeInTheDocument();
+    })
+    it('renders loading state', async () => {
+        server.use(
+            http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`, () => {
+                return new HttpResponse('Internal Server Error', { status: 500 });
+            })
+        );
+        renderWithProviders(<TasksPage />, {
+            preloadedState: {
+                tasks: {
+                    tasks: []
+                }
+            }
+        })
+        expect(await screen.findByTestId('loading-svg')).toBeInTheDocument();
     })
 })
