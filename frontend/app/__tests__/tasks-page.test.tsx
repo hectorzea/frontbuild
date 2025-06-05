@@ -24,7 +24,7 @@ describe('TasksPage', () => {
         expect(screen.getByTestId('user-nav-trigger')).toBeInTheDocument();
         expect(screen.getByTestId('theme-mode-toggle-button')).toBeInTheDocument();
     })
-    it('renders loading state', async () => {
+    it('Renders <Loading> when backend Error', async () => {
         server.use(
             http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`, () => {
                 return new HttpResponse('Internal Server Error', { status: 500 });
