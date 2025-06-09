@@ -9,6 +9,7 @@ jest.mock('@/app/mocks/setupMocks', () => ({
 
 describe('useMsw', () => {
     it('should initialize with isMswReady in false', async () => {
+        process.env.NEXT_PUBLIC_ENABLE_MSW = 'true';
         const { result } = renderHook(() => useMsw());
         await waitFor(() => {
             expect(result.current).toBe(true);
