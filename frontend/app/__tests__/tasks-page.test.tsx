@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react'
 import TasksPage from '@/app/[locale]/projects/tasks/page'
 import { renderWithProviders } from '@/app/test-utils'
 import { setupServer } from 'msw/node'
-import * as SetupMocks from '@/app/mocks/setupMocks'; // Importa setUpMocksclear
 
 import { handlers } from '@/app/mocks/handlers'
 import { http, HttpResponse } from 'msw'
