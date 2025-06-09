@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import TasksPage from '@/app/[locale]/projects/tasks/page'
 import { renderWithProviders } from '@/app/test-utils'
 import { setupServer } from 'msw/node'
@@ -12,7 +12,7 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 describe('TasksPage', () => {
-    it('renders TasksPage Page', () => {
+    it('renders TasksPage Page', async () => {
         renderWithProviders(<TasksPage />, {
             preloadedState: {
                 tasks: {
@@ -20,9 +20,12 @@ describe('TasksPage', () => {
                 }
             }
         })
-        expect(screen.getByTestId('frontbuild-title')).toBeInTheDocument();
-        expect(screen.getByTestId('user-nav-trigger')).toBeInTheDocument();
-        expect(screen.getByTestId('theme-mode-toggle-button')).toBeInTheDocument();
+
+        await waitFor(() => {
+            expect(screen.getByTestId('frontbuild-title')).toBeInTheDocument();
+            expect(screen.getByTestId('user-nav-trigger')).toBeInTheDocument();
+            expect(screen.getByTestId('theme-mode-toggle-button')).toBeInTheDocument();
+        })
     })
     it('Renders <Loading> when backend Error', async () => {
         server.use(
@@ -38,5 +41,6 @@ describe('TasksPage', () => {
             }
         })
         expect(await screen.findByTestId('loading-svg')).toBeInTheDocument();
+        expect(screen.getByText('An error has ocurred while loading tasks from the API.')).toBeInTheDocument();
     })
 })

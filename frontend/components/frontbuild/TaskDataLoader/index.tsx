@@ -11,12 +11,21 @@ type TaskDataLoaderProps = {
 const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
 
     const mswLoaded = useMsw();
-    const generalDataLoaded = useFrontbuildApi(mswLoaded); 
+    const { apiHasError } = useFrontbuildApi(mswLoaded);
 
-    if (!mswLoaded || !generalDataLoaded) {
+    if (!mswLoaded) {
         return (
             <div className="flex h-screen items-center justify-center">
                 <Loading />
+            </div>
+        );
+    }
+
+    if (apiHasError) {
+        return (
+            <div className="flex flex-col h-screen items-center justify-center gap-y-2">
+                <Loading />
+                An error has ocurred while loading tasks from the API.
             </div>
         );
     }

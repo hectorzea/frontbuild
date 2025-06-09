@@ -9,34 +9,33 @@ import { useDispatch } from "react-redux";
 
 export const useFrontbuildApi = (mswLoaded: boolean) => {
     const dispatch = useDispatch();
-    const [apiLoaded, setApiLoaded] = useState<boolean>(true);
     const {
         data: tasksData,
         isSuccess: isSuccessGetTasks,
         isError: isErrorGetTasks,
     } = useGetTasksQuery(undefined, { skip: !mswLoaded });
 
-    const { data: labels, isSuccess: isSuccessGetLabels } =
+    const { data: labels, isSuccess: isSuccessGetLabels, isError: isErrorGetLabels, } =
         useGetLabelsQuery(undefined, { skip: !mswLoaded });
-
-    const { data: statuses, isSuccess: isSuccessGetStatus } =
+    const { data: statuses, isSuccess: isSuccessGetStatus, isError: isErrorGetStatuses, } =
         useGetStatusQuery(undefined, { skip: !mswLoaded });
-    const { data: priorities, isSuccess: isSuccessGetPriorities } =
+    const { data: priorities, isSuccess: isSuccessGetPriorities, isError: isErrorGetPriorities } =
         useGetPriorityQuery(undefined, { skip: !mswLoaded });
 
+    const apiHasError = isErrorGetTasks || isErrorGetLabels || isErrorGetStatuses || isErrorGetPriorities;
+    const apiSuccess = isSuccessGetTasks && isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities;
+
     useEffect(() => {
-        if (isSuccessGetTasks && isSuccessGetLabels && isSuccessGetStatus && isSuccessGetPriorities) {
+        if (apiSuccess) {
             console.log('Api loaded successfully...');
-            setApiLoaded(true);
             dispatch(setAppData({ labels, statuses, priorities }));
             dispatch(setTasks(tasksData));
         }
-        if (isErrorGetTasks) {
+        if (apiHasError) {
             console.error('Error loading tasks from API');
-            setApiLoaded(false);
         }
     }, [isSuccessGetTasks, isSuccessGetLabels, isSuccessGetStatus, isSuccessGetPriorities, isErrorGetTasks]);
 
 
-    return apiLoaded
+    return { apiHasError }
 }
