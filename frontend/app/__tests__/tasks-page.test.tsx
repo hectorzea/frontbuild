@@ -2,6 +2,7 @@ import { screen, waitFor } from '@testing-library/react'
 import TasksPage from '@/app/[locale]/projects/tasks/page'
 import { renderWithProviders } from '@/app/test-utils'
 import { setupServer } from 'msw/node'
+import * as SetupMocks from '@/app/mocks/setupMocks'; // Importa setUpMocksclear
 
 import { handlers } from '@/app/mocks/handlers'
 import { http, HttpResponse } from 'msw'
@@ -12,6 +13,10 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 describe('TasksPage', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+    
     it('renders TasksPage Page', async () => {
         renderWithProviders(<TasksPage />, {
             preloadedState: {
@@ -20,7 +25,6 @@ describe('TasksPage', () => {
                 }
             }
         })
-
         await waitFor(() => {
             expect(screen.getByTestId('frontbuild-title')).toBeInTheDocument();
             expect(screen.getByTestId('user-nav-trigger')).toBeInTheDocument();
