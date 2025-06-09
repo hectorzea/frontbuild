@@ -29,7 +29,7 @@ const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
             </div>
         );
     }
-
+    console.log('TaskDataLoader final');
     return (
         <>{children}</>
     )
