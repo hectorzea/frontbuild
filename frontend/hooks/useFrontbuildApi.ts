@@ -4,7 +4,7 @@ import { useGetPriorityQuery } from "@/lib/features/priority/priorityApiSlice";
 import { useGetStatusQuery } from "@/lib/features/status/statusApiSlice";
 import { useGetTasksQuery } from "@/lib/features/tasks/tasksApiSlice";
 import { setTasks } from "@/lib/features/tasks/tasksSlice";
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch } from "react-redux";
 
 export const useFrontbuildApi = (mswLoaded: boolean) => {
