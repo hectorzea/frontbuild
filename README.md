@@ -1,6 +1,6 @@
 # Frontbuild
 
-[https://frontbuild.vercel.app/profile](https://frontbuild.vercel.app/en)
+[https://frontbuild.vercel.app](https://frontbuild.vercel.app/en)
 
 ## Description
 
