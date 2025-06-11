@@ -7,9 +7,9 @@ export default function ProjectsPage() {
             <p className="text-xl my-3">Una lista de todos mis proyectos</p>
             <div className="flex flex-col md:flex-row gap-6">
                 <ProjectCard />
+                {/* <ProjectCard />
                 <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
+                <ProjectCard /> */}
             </div>
         </div>
     );
