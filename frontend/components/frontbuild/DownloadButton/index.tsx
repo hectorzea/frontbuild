@@ -6,7 +6,7 @@ import React from 'react'
 const DownloadCVButton = () => {
     const downloadCV = () => {
         const link = document.createElement('a');
-        link.href = '/cv.pdf'; // Adjust the path to your CV file
+        link.href = '/files/CV.pdf'; // Adjust the path to your CV file
         link.download = 'CV_Hector_Zea.pdf'; // The name of the downloaded file
         document.body.appendChild(link);
         link.click();
