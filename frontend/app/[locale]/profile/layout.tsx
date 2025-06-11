@@ -6,24 +6,24 @@ import { useTranslations } from "next-intl"
 
 const sidebarNavItems = [
     {
-        title: "Personal Info",
+        title: "About me",
         href: "/profile/personal-info",
-    },
-    {
-        title: "My Skills",
-        href: "/profile/skills",
-    },
-    {
-        title: "Testing",
-        href: "/profile/testing",
     },
     {
         title: "Education",
         href: "/profile/education",
     },
     {
-        title: "Crafting Software",
+        title: "Professional History",
+        href: "/profile/skills",
+    },
+    {
+        title: " My Method: Agile Scrum",
         href: "/profile/crafting-software",
+    },
+    {
+        title: "Testing, My Way",
+        href: "/profile/testing",
     },
     {
         title: "Projects",
