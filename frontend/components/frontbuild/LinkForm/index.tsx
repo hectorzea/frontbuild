@@ -81,8 +81,8 @@ export function InputForm() {
                         control={form.control}
                         name="linkedInJobUrl"
                         render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>LinkedIN Job URL</FormLabel>
+                            <FormItem className="mt-2">
+                                <FormLabel>Please, enter linkedIN job URL to initiate the lint</FormLabel>
                                 <FormControl>
                                     <Input placeholder="https://www.linkedin.com/jobs/view/123456789/" {...field} />
                                 </FormControl>
@@ -90,54 +90,55 @@ export function InputForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className="mt-4">Submit</Button>
                 </form>
             </Form>
-            <div>
-                <div>Company: {data?.companyName}</div>
-                <h3 className="text-2xl font-semibold">
-                    General Information
-                </h3>
-                <div>Job Title: {data?.jobTitle}</div>
-                <div>Years of Experience: {data?.yearsOfExperience}</div>
-                <div className="">
-                    Hard Skills
-                </div>
-                <ul className="max-w-md space-y-1 list-disc list-inside text-muted-foreground">
-                    {data?.hardSkills?.map((skill: string, index: number) => (
-                        <li key={index}>{skill}</li>
-                    ))}
-                </ul>
-                <div className="">
-                    Soft Skills
-                </div>
-                <ul className="max-w-md space-y-1 list-disc list-inside text-muted-foreground">
-                    {data?.softSkills?.map((skill: string, index: number) => (
-                        <li key={index}>{skill}</li>
-                    ))}
-                </ul>
-                <div>Salary Range: {data?.salaryRange}</div>
-                <div>Job Description: {data?.jobDescription}</div>
-                <h3 className="text-2xl font-semibold">
-                    Location / Work Model
-                </h3>
-                <div>Work Environment: {data?.workEnvironment}</div>
-                <div>Location: {data?.location}</div>
-                <div>Allow Relocation: {data?.allowRelocation ? 'yes' : 'no'}</div>
-                <h3 className="text-2xl font-semibold">
-                    Considerations about the job
-                </h3>
-                <div>{data?.considerations}</div>
-                <h3 className="text-2xl font-semibold">
-                    Recruitment Process Steps
-                </h3>
-                <ul className="max-w-md space-y-1 list-disc list-inside text-muted-foreground">
-                    {data?.recruitmentProcessSteps?.map((skill: string, index: number) => (
-                        <li key={index}>{skill}</li>
-                    ))}
-                </ul>
-                <div>Job Link: {data?.jobLink}</div>
-            </div>
+            {data ?
+                <div className="mt-4">
+                    <h3 className="text-2xl font-semibold mb-3">
+                        General Information
+                    </h3>
+                    <div>Company: {data?.companyName}</div>
+                    <div>Job Title: {data?.jobTitle}</div>
+                    <div>Job Description: {data?.jobDescription}</div>
+                    <div>Years of Experience: {data?.yearsOfExperience}</div>
+                    <div className="mt-3">
+                        Hard Skills
+                    </div>
+                    <ul className="max-w-md space-y-1 list-disc list-inside">
+                        {data?.hardSkills?.map((skill: string, index: number) => (
+                            <li key={index}>{skill}</li>
+                        ))}
+                    </ul>
+                    <div className="mt-3">
+                        Soft Skills
+                    </div>
+                    <ul className="max-w-md space-y-1 list-disc list-inside">
+                        {data?.softSkills?.map((skill: string, index: number) => (
+                            <li key={index}>{skill}</li>
+                        ))}
+                    </ul>
+                    <div className="mt-3">Salary Range: {data?.salaryRange}</div>
+                    <h3 className="text-2xl font-semibold mt-3">
+                        Location / Work Model
+                    </h3>
+                    <div>Work Environment: {data?.workEnvironment}</div>
+                    <div>Location: {data?.location}</div>
+                    <div>Allow Relocation: {data?.allowRelocation ? 'yes' : 'no'}</div>
+                    <h3 className="text-2xl font-semibold mt-3">
+                        Recruitment Process Steps
+                    </h3>
+                    <ul className="max-w-md space-y-1 list-disc list-inside text-muted-foreground">
+                        {data?.recruitmentProcessSteps?.map((skill: string, index: number) => (
+                            <li key={index}>{skill}</li>
+                        ))}
+                    </ul>
+                    <div className="mt-3">Job Link: {data?.jobLink}</div>
+                    <h3 className="text-2xl font-semibold mt-3">
+                        Considerations about the job
+                    </h3>
+                    <div>{data?.considerations}</div>
+                </div> : <div className="mt-4">No data submitted yet</div>}
         </>
     )
 }
