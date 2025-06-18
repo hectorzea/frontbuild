@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input"
 import { GoogleGenAI } from "@google/genai"
 import axios from "axios"
 import { useState } from "react"
+import Link from "next/link"
+import { ArrowBigRight } from "lucide-react"
 
 const FormSchema = z.object({
     linkedInJobUrl: z.string().min(2, {
@@ -96,9 +98,20 @@ export function InputForm() {
             {data ?
                 <div className="mt-4">
                     <h3 className="text-2xl font-semibold mb-3">
-                        General Information
+                        Job Information
                     </h3>
-                    <div>Company: {data?.companyName}</div>
+                    <div className="flex flex-row gap-2 items-center justify-between">
+                        <div>Company: {data?.companyName}</div>
+                        <Button size={'sm'} data-testid={'download-cv-button'} className="">
+                            <Link
+                                href={data?.jobLink}
+                                target="_blank"
+                                aria-label="Go to job"
+                            >Apply
+                            </Link>
+                            <ArrowBigRight />
+                        </Button>
+                    </div>
                     <div>Job Title: {data?.jobTitle}</div>
                     <div>Job Description: {data?.jobDescription}</div>
                     <div>Years of Experience: {data?.yearsOfExperience}</div>
@@ -133,7 +146,6 @@ export function InputForm() {
                             <li key={index}>{skill}</li>
                         ))}
                     </ul>
-                    <div className="mt-3">Job Link: {data?.jobLink}</div>
                     <h3 className="text-2xl font-semibold mt-3">
                         Considerations about the job
                     </h3>
