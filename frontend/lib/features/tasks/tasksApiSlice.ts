@@ -4,7 +4,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Define a service using a base URL and expected endpoints
 export const tasksApiSlice = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks` }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
+  }),
   reducerPath: "tasksApi",
   // Tag types are used for caching and invalidation.
   tagTypes: ["Tasks"],

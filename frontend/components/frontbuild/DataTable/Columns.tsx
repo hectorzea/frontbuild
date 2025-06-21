@@ -1,13 +1,17 @@
-"use client"
-import { ColumnDef } from "@tanstack/react-table"
-import { Badge, BadgeVariant } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Task } from "@/app/schemas"
-import { DataTableColumnHeader } from "./DataTableColumnHeader"
-import { DataTableRowActions } from "./DataTableRowActions"
-import { capitalizeFirstLetter, getPriorityIcon, getStatusIcon } from "@/lib/utils"
-import { Binary } from "lucide-react"
-import { Priority, Status } from "@/app/types"
+"use client";
+import { ColumnDef } from "@tanstack/react-table";
+import { Badge, BadgeVariant } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Task } from "@/app/schemas";
+import { DataTableColumnHeader } from "./DataTableColumnHeader";
+import { DataTableRowActions } from "./DataTableRowActions";
+import {
+  capitalizeFirstLetter,
+  getPriorityIcon,
+  getStatusIcon,
+} from "@/lib/utils";
+import { Binary } from "lucide-react";
+import { Priority, Status } from "@/app/types";
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -53,16 +57,20 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Title" />
     ),
     cell: ({ row }) => {
-      const badgeVariant: BadgeVariant = row.original.label as BadgeVariant
+      const badgeVariant: BadgeVariant = row.original.label as BadgeVariant;
 
       return (
         <div className="flex space-x-2">
-          {<Badge variant={badgeVariant}>{capitalizeFirstLetter(row.original.label)}</Badge>}
+          {
+            <Badge variant={badgeVariant}>
+              {capitalizeFirstLetter(row.original.label)}
+            </Badge>
+          }
           <span className="max-w-[500px] truncate text-xs sm:text-sm">
             {row.getValue("title")}
           </span>
         </div>
-      )
+      );
     },
   },
   {
@@ -71,20 +79,21 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-
-      const rowStatus = row.original.status as Status
+      const rowStatus = row.original.status as Status;
 
       const Icon = rowStatus ? getStatusIcon(rowStatus) : Binary;
 
       return (
         <div className="flex w-[100px] items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span className="text-xs sm:text-sm">{capitalizeFirstLetter(row.original.status)}</span>
+          <span className="text-xs sm:text-sm">
+            {capitalizeFirstLetter(row.original.status)}
+          </span>
         </div>
-      )
+      );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
@@ -93,22 +102,24 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Priority" />
     ),
     cell: ({ row }) => {
-      const rowPriority = row.original.priority as Priority
+      const rowPriority = row.original.priority as Priority;
       const Icon = rowPriority ? getPriorityIcon(rowPriority) : Binary;
 
       return (
         <div className="flex items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-          <span className="text-xs sm:text-sm">{capitalizeFirstLetter(row.original.priority)}</span>
+          <span className="text-xs sm:text-sm">
+            {capitalizeFirstLetter(row.original.priority)}
+          </span>
         </div>
-      )
+      );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
-]
+];

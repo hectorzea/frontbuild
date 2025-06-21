@@ -1,7 +1,7 @@
 // app/page.test.tsx
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import IndexPage from '@/app/page'; // Importa el componente IndexPage
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import IndexPage from "@/app/page"; // Importa el componente IndexPage
 // import * as SetupMocks from '@/app/mocks/setupMocks'; // Importa setUpMocksclear
 
 // // Mock de setUpMocks
@@ -14,16 +14,15 @@ import IndexPage from '@/app/page'; // Importa el componente IndexPage
 //   TaskDashboard: () => <div data-testid="task-dashboard">Task Dashboard</div>,
 // }));
 
-describe('IndexPage', () => {
+describe("IndexPage", () => {
   // beforeEach(() => {
   //   jest.clearAllMocks(); // Limpia los mocks antes de cada test
   // });
 
-  it('is rendering correctly', () => {
+  it("is rendering correctly", () => {
     render(<IndexPage />);
-    expect(screen.getByTestId('frontbuild-home-page')).toBeInTheDocument();
+    expect(screen.getByTestId("frontbuild-home-page")).toBeInTheDocument();
   });
-
 
   // it('should call setUpMocks when NEXT_PUBLIC_ENABLE_MSW is "true"', async () => {
   //   process.env.NEXT_PUBLIC_ENABLE_MSW = 'true';
