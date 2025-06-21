@@ -13,17 +13,19 @@ pnpm dev
 # or
 bun dev
 ```
+
 ## Generate Swagger Api Types
 
-You can use the following command to generate the types coming from the frontbuild 
+You can use the following command to generate the types coming from the frontbuild
 
-NOTE: remember that for generating the new API types you need to be running the BE server in localhost:8080 
+NOTE: remember that for generating the new API types you need to be running the BE server in localhost:8080
 
 ```bash
 npm run generate-types
 ```
 
 ## Update Snapshots
+
 ```
 npx playwright test --update-snapshots
-````
+```
