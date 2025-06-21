@@ -1,5 +1,10 @@
 import { z } from "zod";
-import { LabelOptions, PriorityOptions, StatusOptions, Task as TaskModel } from "@/app/types/api/Api";
+import {
+  LabelOptions,
+  PriorityOptions,
+  StatusOptions,
+  Task as TaskModel,
+} from "@/app/types/api/Api";
 
 export const taskSchema: z.ZodType<TaskModel> = z.object({
   _id: z.string().optional(),
