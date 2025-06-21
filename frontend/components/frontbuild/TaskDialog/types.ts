@@ -1,1 +1,1 @@
-export type TaskMode = "edit" | "add"
+export type TaskMode = "edit" | "add";

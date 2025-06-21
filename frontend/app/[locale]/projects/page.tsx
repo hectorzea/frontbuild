@@ -1,16 +1,16 @@
 import ProjectCard from "@/components/frontbuild/Card";
 
 export default function ProjectsPage() {
-    return (
-        <div className="flex flex-col p-5" data-testid="projects-page">
-            <h1 className="text-2xl">Proyectos</h1>
-            <p className="text-xl my-3">Una lista de todos mis proyectos</p>
-            <div className="flex flex-col md:flex-row gap-6">
-                <ProjectCard />
-                {/* <ProjectCard />
+  return (
+    <div className="flex flex-col p-5" data-testid="projects-page">
+      <h1 className="text-2xl">Proyectos</h1>
+      <p className="text-xl my-3">Una lista de todos mis proyectos</p>
+      <div className="flex flex-col md:flex-row gap-6">
+        <ProjectCard />
+        {/* <ProjectCard />
                 <ProjectCard />
                 <ProjectCard /> */}
-            </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 }
