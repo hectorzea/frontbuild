@@ -1,33 +1,33 @@
-import type { Config } from 'jest'
-import nextJest from 'next/jest.js'
+import type { Config } from "jest";
+import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-})
+  dir: "./",
+});
 
 // Add any custom config to be passed to Jest
 const config: Config = {
-  coverageProvider: 'v8',
-  testEnvironment: 'jest-fixed-jsdom',
+  coverageProvider: "v8",
+  testEnvironment: "jest-fixed-jsdom",
   //configuracion de archhivos a ejecutar antes de cada prueba
-  setupFilesAfterEnv: ['<rootDir>/app/setupTests.ts'],
+  setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   coveragePathIgnorePatterns: [
-    '<rootDir>/app/[locale]/layout.tsx', // Excluye el archivo layout.tsx de la cobertura
+    "<rootDir>/app/[locale]/layout.tsx", // Excluye el archivo layout.tsx de la cobertura
   ],
   collectCoverageFrom: [
-    '<rootDir>/components/**/*.{ts,tsx}',
-    '<rootDir>/lib/**/*.{ts,tsx}',
-    '<rootDir>/app/**/*.{ts,tsx}',// Incluye todos los archivos js, jsx, ts y tsx dentro de la carpeta app
-    '!<rootDir>/app/types/**/*', // Excluye la carpeta app/types
-    '!<rootDir>/app/[locale]/layout.tsx',
-    '!<rootDir>/components/ui/**/*',
-    '!<rootDir>/components/ThemeProvider.tsx',
+    "<rootDir>/components/**/*.{ts,tsx}",
+    "<rootDir>/lib/**/*.{ts,tsx}",
+    "<rootDir>/app/**/*.{ts,tsx}", // Incluye todos los archivos js, jsx, ts y tsx dentro de la carpeta app
+    "!<rootDir>/app/types/**/*", // Excluye la carpeta app/types
+    "!<rootDir>/app/[locale]/layout.tsx",
+    "!<rootDir>/components/ui/**/*",
+    "!<rootDir>/components/ThemeProvider.tsx",
   ],
   testPathIgnorePatterns: ["<rootDir>/ui-tests/"],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/$1', // Configura el alias @ para que apunte a la raíz del proyecto
+    "^@/(.*)$": "<rootDir>/$1", // Configura el alias @ para que apunte a la raíz del proyecto
   },
-}
+};
 
-export default createJestConfig(config)
+export default createJestConfig(config);
