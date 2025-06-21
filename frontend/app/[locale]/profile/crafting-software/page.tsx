@@ -1,4 +1,7 @@
+import { useTranslations } from "next-intl";
+
 export default function CraftingSoftwarePage() {
+  const t = useTranslations("CraftingSoftware");
   return (
     <>
       <ol className="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400">
@@ -20,13 +23,8 @@ export default function CraftingSoftwarePage() {
               />
             </svg>
           </span>
-          <h3 className="font-medium leading-tight">
-            Understanding the business
-          </h3>
-          <p className="text-sm">
-            By understanding the business we ensure that technical quality goes
-            aligned with company objectives
-          </p>
+          <h3 className="font-medium leading-tight">{t("title")}</h3>
+          <p className="text-sm">{t("description")}</p>
         </li>
         <li className="mb-10 ms-6">
           <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-gray-700">
