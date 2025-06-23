@@ -26,7 +26,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function InputForm() {
+export function JobCheckForm() {
   const [data, setData] = useState<JobOffer | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -81,7 +81,7 @@ export function InputForm() {
             type="submit"
             className="mt-4"
             disabled={loading}
-            data-testid="submit-button"
+            data-testid="submit-button-job-check-form"
           >
             Submit
           </Button>
