@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export default function HomePage() {
+  //todo, check the best way to have a button + link shadcn practices
   const t = useTranslations("HomePage");
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
