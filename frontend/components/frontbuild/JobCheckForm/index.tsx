@@ -70,6 +70,7 @@ export function JobCheckForm() {
                 <FormControl>
                   <Input
                     placeholder="https://www.linkedin.com/jobs/view/123456789/"
+                    data-testid="job-check-input-field"
                     {...field}
                   />
                 </FormControl>
@@ -201,7 +202,9 @@ export function JobCheckForm() {
           <div>Match %: {data?.matchPercentage}</div>
         </div>
       ) : (
-        <div className="mt-4">No data submitted yet</div>
+        <div data-testid="no-data-job-check-container" className="mt-4">
+          No data submitted yet
+        </div>
       )}
     </>
   );
