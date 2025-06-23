@@ -52,7 +52,7 @@ export const taskHandlers = [
         message: "Task added successfully",
         task: { ...taskData, _id: generateMockObjectId() },
       });
-    },
+    }
   ),
   http.put<TaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`,
@@ -63,7 +63,7 @@ export const taskHandlers = [
         message: "Task modified successfully",
         task: { ...taskData, _id: id },
       });
-    },
+    }
   ),
   http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`,
@@ -74,6 +74,6 @@ export const taskHandlers = [
           "Content-Type": "application/json",
         },
       });
-    },
+    }
   ),
 ];

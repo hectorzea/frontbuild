@@ -19,6 +19,7 @@ import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { JobOffer } from "@/app/types";
+import { useMsw } from "@/hooks/useMsw";
 
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
@@ -27,6 +28,7 @@ const FormSchema = z.object({
 });
 
 export function JobCheckForm() {
+  const mswLoaded = useMsw();
   const [data, setData] = useState<JobOffer | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -41,7 +43,7 @@ export function JobCheckForm() {
       console.log("Calling API...");
       setLoading(true);
       const jobResponse = await axios.post(
-        `http://localhost:3000/ai/process-job`,
+        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
         { linkedinJobUrl: data.linkedInJobUrl }
       );
       setData(jobResponse.data);
@@ -51,7 +53,7 @@ export function JobCheckForm() {
     }
   }
 
-  if (loading) {
+  if (loading || !mswLoaded) {
     return <Loading />;
   }
 
@@ -124,7 +126,7 @@ export function JobCheckForm() {
               </Button>
             </div>
           </div>
-          <div>Job Title: {data?.jobTitle}</div>
+          <div data-testid="job-title">Job Title: {data?.jobTitle}</div>
           <div>Job Description: {data?.jobDescription}</div>
           <div>Years of Experience: {data?.yearsOfExperience}</div>
           <Separator className="my-4" />
