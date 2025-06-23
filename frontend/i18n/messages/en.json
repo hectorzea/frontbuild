@@ -6,5 +6,9 @@
   "ProfileLayout": {
     "title": "Hector Zea",
     "description": "I like to build things with code. Im a software engineer based in Berlin, Germany."
+  },
+  "CraftingSoftware": {
+    "title": "Understanding the business",
+    "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
   }
 }
