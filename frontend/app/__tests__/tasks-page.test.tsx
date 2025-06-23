@@ -28,7 +28,7 @@ describe("TasksPage", () => {
       expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
       expect(screen.getByTestId("user-nav-trigger")).toBeInTheDocument();
       expect(
-        screen.getByTestId("theme-mode-toggle-button"),
+        screen.getByTestId("theme-mode-toggle-button")
       ).toBeInTheDocument();
     });
   });
@@ -38,8 +38,8 @@ describe("TasksPage", () => {
         `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
-        },
-      ),
+        }
+      )
     );
     renderWithProviders(<TasksPage />, {
       preloadedState: {
@@ -50,9 +50,7 @@ describe("TasksPage", () => {
     });
     expect(await screen.findByTestId("loading-svg")).toBeInTheDocument();
     expect(
-      screen.getByText(
-        "An error has ocurred while loading tasks from the API.",
-      ),
+      screen.getByText("An error has ocurred while loading tasks from the API.")
     ).toBeInTheDocument();
   });
 });

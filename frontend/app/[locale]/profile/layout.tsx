@@ -3,7 +3,16 @@ import { SidebarNav } from "@/components/frontbuild/SidebarNav";
 import { HamburgerMenu } from "@/components/frontbuild/HamburgerMenu";
 import { useTranslations } from "next-intl";
 
-const sidebarNavItems = [
+type SidebarNavItem = {
+  title: string;
+  href: string;
+};
+
+interface ProfileLayoutProps {
+  children: React.ReactNode;
+}
+
+const sidebarNavItems: SidebarNavItem[] = [
   {
     title: "Personal Info",
     href: "/profile/personal-info",
@@ -29,10 +38,6 @@ const sidebarNavItems = [
     href: "/projects",
   },
 ];
-
-interface ProfileLayoutProps {
-  children: React.ReactNode;
-}
 
 export default function ProfileLayout({ children }: ProfileLayoutProps) {
   const t = useTranslations("ProfileLayout");
