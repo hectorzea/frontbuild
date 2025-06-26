@@ -103,7 +103,7 @@ export function JobCheckForm() {
                 className=""
               >
                 <Link
-                  href={data?.jobLink}
+                  href={data?.jobLink || "#"}
                   target="_blank"
                   aria-label="Go to job"
                 >
