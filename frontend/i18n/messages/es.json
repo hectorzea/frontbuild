@@ -1,7 +1,9 @@
 {
   "HomePage": {
     "title": "Frontbuild es un repositorio que contiene mis proyectos personales y una visión general de mi trayectoria como desarrollador.",
-    "profile": "Ir a mi perfil"
+    "profile": "Ir a mi perfil",
+    "cv": "cv_es_hz",
+    "cvLinkName": "Descargar CV"
   },
   "ProfileLayout": {
     "title": "Hector Zea",
