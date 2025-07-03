@@ -50,6 +50,7 @@ export function JobCheckForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
+      setData(null);
     }
   }
 
