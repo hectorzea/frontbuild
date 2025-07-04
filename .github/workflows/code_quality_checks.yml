@@ -1,9 +1,11 @@
-name: Code Quality Checks
-
-on: [push, pull_request]
-
+name: Lint Checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
-  code-coverage-codecov:
+  code-coverage:
     runs-on: ubuntu-latest
     defaults:
       run:

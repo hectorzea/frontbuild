@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { JobCheckForm } from ".";
 import userEvent from "@testing-library/user-event";
 import { setupServer } from "msw/node";
@@ -10,7 +10,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test("render <JobCheckForm/> component", async () => {
+test("Render <JobCheckForm /> and check match on a job offer", async () => {
   const user = userEvent.setup();
   render(<JobCheckForm />);
 
@@ -26,5 +26,8 @@ test("render <JobCheckForm/> component", async () => {
 
   await user.click(screen.getByTestId("submit-button-job-check-form"));
 
-  expect(screen.getByTestId("job-title")).toBeInTheDocument();
+  //async call action to the backend, so we need to wait for the result a bit
+  await waitFor(() => {
+    expect(screen.getByTestId("job-title")).toBeInTheDocument();
+  });
 });
