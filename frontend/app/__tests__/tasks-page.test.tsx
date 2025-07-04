@@ -4,7 +4,7 @@ import { renderWithProviders } from "@/app/test-utils";
 import { setupServer } from "msw/node";
 
 import { handlers } from "@/app/mocks/handlers";
-import { http, HttpResponse } from "msw";
+// import { http, HttpResponse } from "msw";
 const server = setupServer(...handlers);
 
 beforeAll(() => server.listen());
