@@ -19,7 +19,6 @@ const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
       </div>
     );
   }
-
   if (apiHasError) {
     return (
       <div className="flex flex-col h-screen items-center justify-center gap-y-2">
@@ -28,7 +27,6 @@ const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
       </div>
     );
   }
-  console.log("TaskDataLoader final");
   return <>{children}</>;
 };
 
