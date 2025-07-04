@@ -49,6 +49,7 @@ describe("TasksPage", () => {
       },
     });
 
+    //async call action to the backend, so we need to wait for the result a bit
     await waitFor(() => {
       expect(
         screen.getByText(

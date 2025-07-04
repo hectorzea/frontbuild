@@ -26,6 +26,7 @@ test("Render <JobCheckForm /> and check match on a job offer", async () => {
 
   await user.click(screen.getByTestId("submit-button-job-check-form"));
 
+  //async call action to the backend, so we need to wait for the result a bit
   await waitFor(() => {
     expect(screen.getByTestId("job-title")).toBeInTheDocument();
   });
