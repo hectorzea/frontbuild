@@ -50,6 +50,7 @@ export function JobCheckForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
+      setData(null);
     }
   }
 
@@ -103,7 +104,7 @@ export function JobCheckForm() {
                 className=""
               >
                 <Link
-                  href={data?.jobLink}
+                  href={data?.jobLink || "#"}
                   target="_blank"
                   aria-label="Go to job"
                 >

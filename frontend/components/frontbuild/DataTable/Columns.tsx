@@ -13,6 +13,10 @@ import {
 import { Binary } from "lucide-react";
 import { Priority, Status } from "@/app/types";
 
+export interface ColumnMeta {
+  columnClasses: string;
+}
+
 export const columns: ColumnDef<Task>[] = [
   {
     id: "select",
@@ -74,6 +78,7 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
+    meta: { columnClasses: "hidden md:table-cell" } as ColumnMeta,
     accessorKey: "status",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
@@ -97,6 +102,8 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
+    //todo adjust correct table values for mobile
+    meta: { columnClasses: "hidden md:table-cell" } as ColumnMeta,
     accessorKey: "priority",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Priority" />
