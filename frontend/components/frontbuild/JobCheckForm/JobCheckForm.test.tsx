@@ -11,6 +11,7 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 test("renderiza tabla con 2 filas", async () => {
+  process.env.NEXT_PUBLIC_ENABLE_MSW = "true";
   const user = userEvent.setup();
   render(<JobCheckForm />);
 
