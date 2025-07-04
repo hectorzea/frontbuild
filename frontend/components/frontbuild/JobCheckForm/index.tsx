@@ -40,7 +40,7 @@ export function JobCheckForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      console.log("Calling API...");
+      console.log(`Calling API with mswLoaded in ${mswLoaded}`);
       setLoading(true);
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
@@ -53,7 +53,7 @@ export function JobCheckForm() {
     }
   }
 
-  if (loading || !mswLoaded) {
+  if (loading) {
     return <Loading />;
   }
 

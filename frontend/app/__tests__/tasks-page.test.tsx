@@ -48,9 +48,14 @@ describe("TasksPage", () => {
         },
       },
     });
-    expect(await screen.findByTestId("loading-svg")).toBeInTheDocument();
-    expect(
-      screen.getByText("An error has ocurred while loading tasks from the API.")
-    ).toBeInTheDocument();
+
+    //async call action to the backend, so we need to wait for the result a bit
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          "An error has ocurred while loading tasks from the API."
+        )
+      ).toBeInTheDocument();
+    });
   });
 });

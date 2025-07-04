@@ -18,7 +18,7 @@ const ProjectCard = () => {
         <div className="flex flex-col gap-6">
           <p className="text-sm">
             A simple task generator using the best practices of redux toolkit +
-            jest asdadasdadasdasd asd asda sd asdadasdasd asdasdasda d
+            jest
           </p>
           <div>
             Stack Used
