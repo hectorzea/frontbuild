@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { useMsw } from "../useMsw";
-import * as SetupMocks from "@/app/mocks/setupMocks"; // Importa setUpMocksclear
+import * as SetupMocks from "@/app/mocks/setupMocks";
 
 // Mock de setUpMocks
 jest.mock("@/app/mocks/setupMocks", () => ({

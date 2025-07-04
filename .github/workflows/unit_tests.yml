@@ -1,36 +1,34 @@
 name: Unit Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [main]
   pull_request:
-    branches: [ main, master ]
+    branches: [main]
 jobs:
   unit-tests:
-    timeout-minutes: 30
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
-    # 1. Descarga el código del repositorio
-    - uses: actions/checkout@v4
+      # 1. Descarga el código del repositorio
+      - uses: actions/checkout@v4
 
-    # 2. Configura Node.js
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+      # 2. Configura Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
 
-    # 3. Instala dependencias en /frontend
-    - name: Install dependencies
-      working-directory: ./frontend
-      run: npm ci
+      # 3. Instala dependencias en /frontend
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Set environment variables
-      run: |
-        echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
-        echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
-        echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW }}" >> $GITHUB_ENV
-      working-directory: ./frontend
+      - name: Set environment variables
+        run: |
+          echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW }}" >> $GITHUB_ENV
 
-    # 4. Ejecuta el linter
-    - name: Run Unit Tests
-      working-directory: ./frontend
-      run: npm run test
-
+      # 4. Ejecuta el linter
+      - name: Run Unit Tests
+        run: npm run test
