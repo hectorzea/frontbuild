@@ -53,7 +53,7 @@ export function JobCheckForm() {
     }
   }
 
-  if (loading || !mswLoaded) {
+  if (loading) {
     return <Loading />;
   }
 
