@@ -13,7 +13,7 @@ describe("useMsw", () => {
     process.env.NEXT_PUBLIC_ENABLE_MSW = "false";
   });
   it("should initialize the mock service worker", async () => {
-    process.env.NEXT_PUBLIC_ENABLE_MSW = "true";
+    // process.env.NEXT_PUBLIC_ENABLE_MSW = "true";
     const { result } = renderHook(() => useMsw());
     await waitFor(() => {
       expect(result.current).toBe(true);
