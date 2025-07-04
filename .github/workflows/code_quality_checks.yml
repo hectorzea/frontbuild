@@ -15,7 +15,7 @@ jobs:
           node-version: "18.x"
       - name: Install Dependencies
         run: npm install
-      - name: Set environment variables
+      - name: Set environment variabless
         run: |
           echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
