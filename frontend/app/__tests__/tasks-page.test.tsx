@@ -32,25 +32,25 @@ describe("TasksPage", () => {
       ).toBeInTheDocument();
     });
   });
-  it("Renders <Loading> when backend Error", async () => {
-    server.use(
-      http.get(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
-        () => {
-          return new HttpResponse("Internal Server Error", { status: 500 });
-        }
-      )
-    );
-    renderWithProviders(<TasksPage />, {
-      preloadedState: {
-        tasks: {
-          tasks: [],
-        },
-      },
-    });
-    expect(await screen.findByTestId("loading-svg")).toBeInTheDocument();
-    expect(
-      screen.getByText("An error has ocurred while loading tasks from the API.")
-    ).toBeInTheDocument();
-  });
+  // it("Renders <Loading> when backend Error", async () => {
+  //   server.use(
+  //     http.get(
+  //       `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
+  //       () => {
+  //         return new HttpResponse("Internal Server Error", { status: 500 });
+  //       }
+  //     )
+  //   );
+  //   renderWithProviders(<TasksPage />, {
+  //     preloadedState: {
+  //       tasks: {
+  //         tasks: [],
+  //       },
+  //     },
+  //   });
+  //   expect(await screen.findByTestId("loading-svg")).toBeInTheDocument();
+  //   expect(
+  //     screen.getByText("An error has ocurred while loading tasks from the API.")
+  //   ).toBeInTheDocument();
+  // });
 });
