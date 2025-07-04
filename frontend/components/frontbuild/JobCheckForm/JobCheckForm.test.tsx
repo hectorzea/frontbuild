@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { JobCheckForm } from ".";
 import userEvent from "@testing-library/user-event";
 import { setupServer } from "msw/node";
@@ -26,5 +26,7 @@ test("Render <JobCheckForm /> and check match on a job offer", async () => {
 
   await user.click(screen.getByTestId("submit-button-job-check-form"));
 
-  expect(screen.getByTestId("job-title")).toBeInTheDocument();
+  await waitFor(() => {
+    expect(screen.getByTestId("job-title")).toBeInTheDocument();
+  });
 });
