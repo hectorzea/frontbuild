@@ -24,7 +24,7 @@ test("renderiza tabla con 2 filas", async () => {
 
   await user.type(input, "wwww.linkedin.com/jobs/view/123456789/");
 
-  // await user.click(screen.getByTestId("submit-button-job-check-form"));
+  await user.click(screen.getByTestId("submit-button-job-check-form"));
 
-  // expect(screen.getByTestId("job-title")).toBeInTheDocument();
+  expect(screen.getByTestId("job-title")).toBeInTheDocument();
 });
