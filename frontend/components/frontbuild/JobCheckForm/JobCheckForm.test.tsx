@@ -10,7 +10,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test("renderiza tabla con 2 filas", async () => {
+test("Render <JobCheckForm /> and check match on a job offer", async () => {
   const user = userEvent.setup();
   render(<JobCheckForm />);
 
