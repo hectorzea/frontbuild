@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
   const t = useTranslations("HomePage");
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
+      <Image
+        src={"/files/cat.gif"}
+        width={"160"}
+        height={"100"}
+        alt="nyan-cat"
+      ></Image>
       <p>{t("title")}</p>
       <Button
         asChild
