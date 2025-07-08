@@ -12,6 +12,7 @@ export default function HomePage() {
         width={"160"}
         height={"100"}
         alt="nyan-cat"
+        unoptimized
       ></Image>
       <p>{t("title")}</p>
       <Button
