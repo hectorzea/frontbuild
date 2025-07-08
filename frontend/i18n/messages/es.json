@@ -11,6 +11,6 @@
   },
   "Tasks": {
     "title": "Easy Task Creator",
-    "subtitle": "Task creator using tanstack react-table and react-hook-form with zod schema validation."
+    "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
   }
 }
