@@ -9,21 +9,24 @@ import { columns } from "../DataTable/Columns";
 
 type TaskDashboardProps = {
   title: string;
+  subtitle: string;
 };
 
-export const TaskDashboard = ({ title }: TaskDashboardProps) => {
+export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
   const tasks = useAppSelector(selectAllTasks);
   return (
     <div className="h-full flex-1 flex-col space-y-4 p-4 sm:p-8 md:flex">
       <div className="flex items-center justify-between space-y-2">
-        <div>
+        <div className="flex flex-col space-y-3">
           <h2
             className="text-2xl font-bold tracking-tight"
             data-testid={"frontbuild-title"}
           >
-            FrontBuild
+            {title}
           </h2>
-          <p className="text-sm text-muted-foreground sm:text-base">{title}</p>
+          <p className="text-sm text-muted-foreground sm:text-base">
+            {subtitle}
+          </p>
         </div>
         <div className="flex items-center space-x-2">
           <UserNav />

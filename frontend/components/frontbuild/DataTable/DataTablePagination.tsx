@@ -7,13 +7,13 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -23,13 +23,14 @@ export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center justify-between px-2">
-      <div className="flex-1 text-xs text-muted-foreground sm:text-sm">
+    <div className="flex items-center justify-center px-2">
+      <div className="hidden md:flex flex-1 text-xs text-muted-foreground sm:text-sm">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
-        <div className="flex items-center space-x-2">
+        {/* cambiar paginacion de tabla */}
+        {/* <div className="flex items-center space-x-2">
           <p className="text-xs font-medium sm:text-sm">Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
@@ -48,7 +49,7 @@ export function DataTablePagination<TData>({
               ))}
             </SelectContent>
           </Select>
-        </div>
+        </div> */}
         <div className="flex w-[100px] items-center justify-center text-xs sm:text-sm font-medium">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}

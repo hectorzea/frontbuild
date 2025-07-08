@@ -8,5 +8,9 @@
   "ProfileLayout": {
     "title": "Hector Zea",
     "description": "Me gusta construir aplicaciones web con codigo de calidad. Soy un ingeniero de software basado en Berlin, Alemania."
+  },
+  "Tasks": {
+    "title": "Easy Task Creator",
+    "subtitle": "Task creator using tanstack react-table and react-hook-form with zod schema validation."
   }
 }

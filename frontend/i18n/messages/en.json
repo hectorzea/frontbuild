@@ -12,5 +12,9 @@
   "CraftingSoftware": {
     "title": "Understanding the business",
     "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+  },
+  "Tasks":{
+    "title": "Easy Task Creator",
+    "subtitle": "Task creator using tanstack react-table and react-hook-form with zod schema validation."
   }
 }
