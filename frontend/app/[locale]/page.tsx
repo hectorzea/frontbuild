@@ -13,7 +13,7 @@ export default function HomePage() {
         height={"100"}
         alt="nyan-cat"
         unoptimized
-      ></Image>
+      />
       <p>{t("title")}</p>
       <Button
         asChild
