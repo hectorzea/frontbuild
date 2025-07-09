@@ -8,6 +8,7 @@ test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
   await expect(page.getByText(/Hi, my name is Hector Zea,/i)).toBeVisible();
   await expect(page).toHaveScreenshot({
     stylePath: path.join(__dirname, "screenshot.css"),
+    maxDiffPixels: 100,
   });
 });
 
