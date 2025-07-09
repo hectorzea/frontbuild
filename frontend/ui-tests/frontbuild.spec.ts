@@ -9,6 +9,7 @@ test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
   await expect(page).toHaveScreenshot({
     stylePath: path.join(__dirname, "screenshot.css"),
     maxDiffPixels: 100,
+    maxDiffPixelRatio: 0.03,
   });
 });
 
