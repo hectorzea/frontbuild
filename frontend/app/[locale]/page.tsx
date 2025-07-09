@@ -8,6 +8,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
       <Image
+        className="home-image"
         src={"/files/cat.gif"}
         width={"160"}
         height={"100"}

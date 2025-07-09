@@ -1,12 +1,14 @@
 import { test, expect } from "@playwright/test";
+import path from "path";
 
 test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
   page,
 }) => {
   await page.goto("/");
   await expect(page.getByText(/Hi, my name is Hector Zea,/i)).toBeVisible();
-  const screenshot = await page.screenshot();
-  expect(screenshot).toMatchSnapshot("home-page.png", { maxDiffPixels: 10000 });
+  await expect(page).toHaveScreenshot({
+    stylePath: path.join(__dirname, "screenshot.css"),
+  });
 });
 
 test("Fronbuild Flow // Tasks", async ({ page }) => {
