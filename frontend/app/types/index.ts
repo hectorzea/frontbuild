@@ -55,3 +55,12 @@ export interface HardSkills {
   testing: string[];
   extras: string[];
 }
+
+export interface Project {
+  title: string;
+  subtitle: string;
+  stack: string[];
+  testingApproach: string[];
+  motivation: string;
+  link: string;
+}
