@@ -6,8 +6,8 @@ describe("Page", () => {
     render(<HomePage />);
     expect(
       screen.getByText(
-        "Frontbuild is a repository which contains my personal projects and an overview of my career as developer.",
-      ),
+        "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications."
+      )
     ).toBeInTheDocument();
     expect(screen.getByText("Go to my profile")).toBeInTheDocument();
   });

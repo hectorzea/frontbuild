@@ -1,10 +1,16 @@
 {
   "HomePage": {
-    "title": "Frontbuild es un repositorio que contiene mis proyectos personales y una visión general de mi trayectoria como desarrollador.",
-    "profile": "Ir a mi perfil"
+    "title": "Hola, mi nombre es Hector Zea, este es mi portafolio personal, soy un ingeniero de software enfocado en construir aplicaciones web.",
+    "profile": "Ir a mi perfil",
+    "cv": "cv_es_hz",
+    "cvLinkName": "Descargar CV"
   },
   "ProfileLayout": {
     "title": "Hector Zea",
     "description": "Me gusta construir aplicaciones web con codigo de calidad. Soy un ingeniero de software basado en Berlin, Alemania."
+  },
+  "Tasks": {
+    "title": "Easy Task Creator",
+    "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
   }
 }

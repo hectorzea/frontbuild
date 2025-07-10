@@ -7,50 +7,48 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import { Project } from "@/app/types";
 
-const ProjectCard = () => {
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { title, subtitle, stack, testingApproach, motivation, link } = project;
   return (
-    <Card className="bg-neutral-900">
+    <Card className="max-w-md">
       <CardHeader>
-        <CardTitle>Task Generator</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-6">
-          <p className="text-sm">
-            A simple task generator using the best practices of redux toolkit +
-            jest
-          </p>
+          <p className="text-sm">{subtitle}</p>
           <div>
             Stack Used
             <ul className="list-disc pl-5 text-sm">
-              <li>Next.js</li>
-              <li>Redux Toolkit</li>
-              <li>Jest</li>
-              <li>Tailwind CSS</li>
+              {stack.map((s, index) => (
+                <li key={index}>{s}</li>
+              ))}
             </ul>
           </div>
           <div>
             Testing Approach
             <ul className="list-disc pl-5 text-sm">
-              <li>Next.js</li>
-              <li>Redux Toolkit</li>
-              <li>Jest</li>
-              <li>Tailwind CSS</li>
+              {testingApproach.map((t, index) => (
+                <li key={index}>{t}</li>
+              ))}
             </ul>
           </div>
           <div>
             Motivation of the project
-            <p className="text-sm">
-              Having an simple app but robust with CI/CD, applying testing
-              pyramid principles and using server components / client components
-            </p>
+            <p className="text-sm">{motivation}</p>
           </div>
         </div>
       </CardContent>
       <CardFooter>
         <Link
-          className="text-white hover:text-gray-300 transition-colors duration-200"
-          href={`/projects/tasks`}
+          className="hover:text-gray-300 transition-colors duration-200"
+          href={link}
         >
           Go to project
         </Link>

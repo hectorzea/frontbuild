@@ -50,6 +50,7 @@ export function JobCheckForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
+      setData(null);
     }
   }
 
@@ -103,7 +104,7 @@ export function JobCheckForm() {
                 className=""
               >
                 <Link
-                  href={data?.jobLink}
+                  href={data?.jobLink || "#"}
                   target="_blank"
                   aria-label="Go to job"
                 >
@@ -204,8 +205,10 @@ export function JobCheckForm() {
           <div>Match %: {data?.matchPercentage}</div>
         </div>
       ) : (
-        <div data-testid="no-data-job-check-container" className="mt-4">
-          No data submitted yet
+        <div data-testid="no-data-job-check-container">
+          <p className="text-sm">
+            Please, enter a LinkedIn job URL to initiate the lint.
+          </p>
         </div>
       )}
     </>

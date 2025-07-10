@@ -4,10 +4,10 @@ import { useTranslations } from "next-intl";
 import TaskDataLoader from "@/components/frontbuild/TaskDataLoader";
 
 export default function IndexPage() {
-  const t = useTranslations("HomePage");
+  const t = useTranslations("Tasks");
   return (
     <TaskDataLoader>
-      <TaskDashboard title={t("title")} />
+      <TaskDashboard title={t("title")} subtitle={t("subtitle")} />
     </TaskDataLoader>
   );
 }

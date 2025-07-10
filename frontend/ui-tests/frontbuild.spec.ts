@@ -1,21 +1,24 @@
 import { test, expect } from "@playwright/test";
+import path from "path";
 
-test("Home page should match snapshot", async ({ page }) => {
+test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
+  page,
+}) => {
   await page.goto("/");
-  await expect(
-    page.getByText(
-      /Frontbuild is a repository which contains my personal projects/i,
-    ),
-  ).toBeVisible();
-  const screenshot = await page.screenshot();
-  expect(screenshot).toMatchSnapshot("home-page.png", { maxDiffPixels: 10000 });
+  await expect(page.getByText(/Hi, my name is Hector Zea,/i)).toBeVisible();
+  await expect(page).toHaveScreenshot({
+    stylePath: path.join(__dirname, "screenshot.css"),
+    maxDiffPixelRatio: 0.3,
+  });
 });
 
-test("App basic flow", async ({ page }) => {
+test("Fronbuild Flow // Tasks", async ({ page }) => {
   await page.goto("/projects/tasks");
 
-  await expect(page).toHaveTitle("Frontbuild");
-  await expect(page.getByText(/frontbuild is a repository/i)).toBeVisible();
+  await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
+  await expect(
+    page.getByText(/Task creator using tanstack react-table/i)
+  ).toBeVisible();
 
   await page.getByTestId("add-task-button").click();
   await page

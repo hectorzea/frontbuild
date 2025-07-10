@@ -29,7 +29,7 @@ export default defineConfig({
     trace: "on-first-retry",
   },
   snapshotPathTemplate:
-    "{testDir}/__snapshots__/{testFilePath}/{arg}-{projectName}{ext}", // Define un patrón consistente
+    "{testDir}/__snapshots__/{testFilePath}/{arg}-{projectName}{ext}",
   projects: [
     {
       name: "chromium",

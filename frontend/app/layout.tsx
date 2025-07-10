@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Metadata } from "next";
+import { ModeToggle } from "@/components/frontbuild/ModeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Toaster />
+            <ModeToggle />
             {children}
           </ThemeProvider>
         </StoreProvider>
