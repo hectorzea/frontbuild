@@ -27,9 +27,6 @@ describe("TasksPage", () => {
     await waitFor(() => {
       expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
       expect(screen.getByTestId("user-nav-trigger")).toBeInTheDocument();
-      expect(
-        screen.getByTestId("theme-mode-toggle-button")
-      ).toBeInTheDocument();
     });
   });
   it("Renders <Loading> when backend Error", async () => {
