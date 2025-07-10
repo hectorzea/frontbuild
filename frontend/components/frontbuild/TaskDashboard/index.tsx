@@ -1,7 +1,5 @@
 "use client";
 import { UserNav } from "@/components/frontbuild/UserNav";
-
-import { ModeToggle } from "../ModeToggle";
 import { selectAllTasks } from "@/lib/features/tasks/tasksSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { DataTable } from "../DataTable";
@@ -30,7 +28,6 @@ export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
         </div>
         <div className="flex items-center space-x-2">
           <UserNav />
-          <ModeToggle />
         </div>
       </div>
       <DataTable

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const ProjectCard = () => {
   return (
-    <Card className="bg-neutral-900">
+    <Card className="max-w-md">
       <CardHeader>
         <CardTitle>Task Generator</CardTitle>
       </CardHeader>
