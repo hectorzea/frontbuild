@@ -205,7 +205,7 @@ export function JobCheckForm() {
           <div>Match %: {data?.matchPercentage}</div>
         </div>
       ) : (
-        <div data-testid="text-sm no-data-job-check-container">
+        <div data-testid="no-data-job-check-container">
           <p className="text-sm">
             Please, enter a LinkedIn job URL to initiate the lint.
           </p>
