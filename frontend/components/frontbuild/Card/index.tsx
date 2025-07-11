@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Project } from "@/app/types";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
   project: Project;
@@ -46,12 +48,16 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
       </CardContent>
       <CardFooter>
-        <Link
-          className="hover:text-gray-300 transition-colors duration-200"
-          href={link}
+        <Button
+          variant={"link"}
+          asChild
+          className="hover:text-gray-300 hover:no-underline transition-colors duration-200 p-0"
         >
-          Go to project
-        </Link>
+          <Link href={link} className="">
+            Go to project
+            <ArrowRight size={"20"} />
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );
