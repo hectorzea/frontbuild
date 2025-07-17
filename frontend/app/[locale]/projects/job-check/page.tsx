@@ -1,4 +1,3 @@
-"use client";
 import { JobCheckForm } from "@/components/frontbuild/JobCheckForm";
 import React from "react";
 
