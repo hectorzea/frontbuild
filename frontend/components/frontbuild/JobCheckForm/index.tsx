@@ -60,38 +60,44 @@ export function JobCheckForm() {
 
   return (
     <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="linkedInJobUrl"
-            render={({ field }) => (
-              <FormItem className="mt-2">
-                <FormLabel>
-                  Please, enter linkedIN job URL to initiate the lint
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="https://www.linkedin.com/jobs/view/123456789/"
-                    data-testid="job-check-input-field"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            className="mt-4"
-            disabled={loading}
-            data-testid="submit-button-job-check-form"
-          >
-            Submit
-          </Button>
-        </form>
-      </Form>
-      <Separator className="my-4" />
+      {data ? (
+        <></>
+      ) : (
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="linkedInJobUrl"
+              render={({ field }) => (
+                <FormItem className="mt-2">
+                  <FormLabel>
+                    Please, enter linkedIN job URL to initiate the lint
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="https://www.linkedin.com/jobs/view/123456789/"
+                      data-testid="job-check-input-field"
+                      {...field}
+                      className="max-w-md"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="flex ">
+              <Button
+                type="submit"
+                className="mt-4 w-full"
+                disabled={loading}
+                data-testid="submit-button-job-check-form"
+              >
+                Submit
+              </Button>
+            </div>
+          </form>
+        </Form>
+      )}
       {data ? (
         <div className="mt-4">
           <h2 className="text-2xl font-semibold mb-3">Job Information</h2>
@@ -205,11 +211,7 @@ export function JobCheckForm() {
           <div>Match %: {data?.matchPercentage}</div>
         </div>
       ) : (
-        <div data-testid="no-data-job-check-container">
-          <p className="text-sm">
-            Please, enter a LinkedIn job URL to initiate the lint.
-          </p>
-        </div>
+        <></>
       )}
     </>
   );

@@ -1,7 +1,7 @@
 export default function TestingPage() {
   return (
     <>
-      <ol className="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400">
+      <ol className="relative border-s border-gray-200">
         <li className="mb-10 ms-6">
           <span className="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900">
             <svg
@@ -20,9 +20,7 @@ export default function TestingPage() {
               />
             </svg>
           </span>
-          <h3 className="font-medium leading-tight">
-            What to test in a Frontend Application?
-          </h3>
+          <h3>What to test in a Frontend Application?</h3>
           <p className="text-sm">
             First, we need to understand which component we want to apply a good
             quality of tests and what type of tests we want to cover (e.g: unit
