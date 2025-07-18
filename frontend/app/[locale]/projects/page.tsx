@@ -24,12 +24,21 @@ const projects = [
       "Sometimes job descriptions are too long and have a lot of unnecessary information, this tool helps to filter the job description and return just the useful details",
     link: "/projects/job-check",
   },
+  {
+    title: "Hearthstone Card Finder",
+    subtitle: "Simple card finder for Hearthstone using the official API",
+    stack: ["Next.js", "Jest", "Tailwind CSS"],
+    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
+    motivation:
+      "Some of the pages that uses HS API are not very well designed, this tool helps to find cards and see their details in a simple way",
+    link: "/projects/hs-card-finder",
+  },
 ];
 
 export default function ProjectsPage() {
   return (
     <div className="flex flex-col p-5" data-testid="projects-page">
-      <div className="flex items-center my-5">
+      <div className="flex items-center my-3">
         <Button
           variant={"link"}
           asChild
@@ -37,7 +46,7 @@ export default function ProjectsPage() {
         >
           <Link href={"/profile/skills"}>
             <ArrowLeft size={"20"} />
-            Go back to my profile
+            <p className="text-lg">Go back to my profile</p>
           </Link>
         </Button>
       </div>

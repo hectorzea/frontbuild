@@ -22,29 +22,27 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-6">
-          <p className="text-sm">{subtitle}</p>
-          <div>
-            Stack Used
-            <ul className="list-disc pl-5 text-sm">
-              {stack.map((s, index) => (
-                <li key={index}>{s}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            Testing Approach
-            <ul className="list-disc pl-5 text-sm">
-              {testingApproach.map((t, index) => (
-                <li key={index}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            Motivation of the project
-            <p className="text-sm">{motivation}</p>
-          </div>
+      <CardContent className="flex flex-col gap-6 h-[400px] md:h-[460px] overflow-auto">
+        <p className="text-sm">{subtitle}</p>
+        <div>
+          Stack Used
+          <ul className="list-disc pl-5 text-sm">
+            {stack.map((s, index) => (
+              <li key={index}>{s}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          Testing Approach
+          <ul className="list-disc pl-5 text-sm">
+            {testingApproach.map((t, index) => (
+              <li key={index}>{t}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          Motivation of the project
+          <p className="text-sm">{motivation}</p>
         </div>
       </CardContent>
       <CardFooter>
