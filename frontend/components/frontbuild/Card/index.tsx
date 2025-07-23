@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Project } from "@/app/types";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,38 +22,40 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-6">
-          <p className="text-sm">{subtitle}</p>
-          <div>
-            Stack Used
-            <ul className="list-disc pl-5 text-sm">
-              {stack.map((s, index) => (
-                <li key={index}>{s}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            Testing Approach
-            <ul className="list-disc pl-5 text-sm">
-              {testingApproach.map((t, index) => (
-                <li key={index}>{t}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            Motivation of the project
-            <p className="text-sm">{motivation}</p>
-          </div>
+      <CardContent className="flex flex-col gap-6 h-[400px] md:h-[460px] overflow-auto">
+        <p className="text-sm">{subtitle}</p>
+        <div>
+          Stack Used
+          <ul className="list-disc pl-5 text-sm">
+            {stack.map((s, index) => (
+              <li key={index}>{s}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          Testing Approach
+          <ul className="list-disc pl-5 text-sm">
+            {testingApproach.map((t, index) => (
+              <li key={index}>{t}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          Motivation of the project
+          <p className="text-sm">{motivation}</p>
         </div>
       </CardContent>
       <CardFooter>
-        <Link
-          className="hover:text-gray-300 transition-colors duration-200"
-          href={link}
+        <Button
+          variant={"link"}
+          asChild
+          className="hover:text-gray-300 hover:no-underline transition-colors duration-200 p-0"
         >
-          Go to project
-        </Link>
+          <Link href={link} className="">
+            Go to project
+            <ArrowRight size={"20"} />
+          </Link>
+        </Button>
       </CardFooter>
     </Card>
   );

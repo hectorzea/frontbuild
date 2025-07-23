@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const useMsw = () => {
   const [isMswReady, setIsMswReady] = useState<boolean>(false);
-
+  //TESTSS
   useEffect(() => {
     const initializeMocking = async () => {
       if (process.env.NEXT_PUBLIC_ENABLE_MSW === "true") {

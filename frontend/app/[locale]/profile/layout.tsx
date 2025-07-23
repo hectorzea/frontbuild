@@ -47,7 +47,7 @@ export default function ProfileLayout({ children }: ProfileLayoutProps) {
         <div className="flex items-center justify-between space-x-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">{t("title")}</h2>
-            <p className="text-muted-foreground">{t("description")}</p>
+            <p>{t("description")}</p>
           </div>
           <HamburgerMenu menuItems={sidebarNavItems} />
         </div>
