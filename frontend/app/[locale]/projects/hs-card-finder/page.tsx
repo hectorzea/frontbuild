@@ -3,7 +3,7 @@ import React from "react";
 export default function CardFinder() {
   return (
     <div data-testid="hs-card-finder-page" className="flex flex-col p-4">
-      <p>Job linter</p>
+      <p>HS CARD FINDER</p>
     </div>
   );
 }
