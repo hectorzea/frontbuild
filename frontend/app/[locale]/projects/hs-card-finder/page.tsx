@@ -1,9 +1,12 @@
+import { HearthstoneCardFinderForm } from "@/components/frontbuild/HearthstoneCardFinderForm";
 import React from "react";
 
-export default function HearthstoneCardFinder() {
+export default function HearthstoneCardFinderPage() {
   return (
-    <div data-testid="hs-card-finder-page" className="flex flex-col p-4">
-      <p>HS CARD FINDER</p>
+    <div data-testid="hs-card-finder-page" className="flex flex-col">
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <HearthstoneCardFinderForm />
+      </div>
     </div>
   );
 }
