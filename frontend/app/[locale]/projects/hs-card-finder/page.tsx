@@ -1,4 +1,4 @@
-import { HearthstoneCardFinderForm } from "@/components/frontbuild/HearthstoneCardFinderForm";
+import { HearthstoneCardFinderForm } from "@/components/frontbuild/HearthstoneCardSearchForm";
 import React from "react";
 
 export default function HearthstoneCardFinderPage() {

@@ -18,6 +18,7 @@ import axios from "axios";
 import { useState } from "react";
 import { HearthstoneCardInfo } from "@/app/types";
 import { useMsw } from "@/hooks/useMsw";
+import { BrushCleaningIcon } from "lucide-react";
 
 const FormSchema = z.object({
   cardName: z.string().min(2, {
@@ -60,14 +61,43 @@ export function HearthstoneCardFinderForm() {
   return (
     <>
       {data ? (
-        <div className="flex flex-col">
-          <p>Your card</p>
+        <div className="flex flex-col gap-4">
+          <p className="text-center">Your card</p>
           <Image
             src={data.img}
-            width={500}
-            height={500}
+            width={200}
+            height={200}
             alt="Picture of the author"
           />
+          {data.tokens?.length > 0 && (
+            <div className="flex flex-col">
+              <p className="text-center">Tokens</p>
+              <div className="flex justify-space-between">
+                {data.tokens?.map((t) => (
+                  <Image
+                    key={t.cardId}
+                    src={t.img}
+                    width={200}
+                    height={200}
+                    alt="Picture of the author"
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          <Button
+            size={"sm"}
+            onClick={() => {
+              setData(null);
+              setLoading(false);
+              form.reset();
+            }}
+            disabled={loading}
+            data-testid="submit-button"
+          >
+            Reset Seach
+            <BrushCleaningIcon />
+          </Button>
         </div>
       ) : (
         <Form {...form}>

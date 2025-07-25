@@ -71,6 +71,7 @@ export interface HearthstoneCardInfo {
   howToGetDiamond: string;
   img: string;
   locale: string;
+  tokens: HearthstoneCardInfo[];
 }
 
 export interface HardSkills {
