@@ -26,7 +26,7 @@ const FormSchema = z.object({
   }),
 });
 
-export function HearthstoneCardFinderForm() {
+export function HearthstoneCardSearchForm() {
   const mswLoaded = useMsw();
   const [data, setData] = useState<HearthstoneCardInfo | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -111,7 +111,7 @@ export function HearthstoneCardFinderForm() {
                   <FormControl>
                     <Input
                       placeholder="Ragnaros the Firelord"
-                      data-testid="job-check-input-field"
+                      data-testid="card-search-input-field"
                       {...field}
                       className="max-w-md"
                     />
@@ -125,7 +125,7 @@ export function HearthstoneCardFinderForm() {
                 type="submit"
                 className="mt-4 w-full"
                 disabled={loading}
-                data-testid="submit-button-job-check-form"
+                data-testid="submit-button-card-search-form"
               >
                 Submit
               </Button>

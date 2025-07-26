@@ -50,28 +50,17 @@ export interface JobOffer {
 
 export interface HearthstoneCardInfo {
   cardId: string;
-  dbfId: number;
   name: string;
-  cardSet: string;
   type: string;
   faction: string;
+  cardSet: string;
   rarity: string;
-  cost: number;
-  attack: number;
-  health: number;
-  text: string;
-  flavor: string;
-  artist: string;
-  collectible: boolean;
-  elite: boolean;
   race: string;
-  playerClass: string;
-  howToGet: string;
-  howToGetGold: string;
-  howToGetDiamond: string;
   img: string;
   locale: string;
   tokens: HearthstoneCardInfo[];
+  discover: string[];
+  mechanics: CardMechanic[];
 }
 
 export interface HardSkills {
@@ -89,4 +78,8 @@ export interface Project {
   testingApproach: string[];
   motivation: string;
   link: string;
+}
+
+interface CardMechanic {
+  name: string;
 }

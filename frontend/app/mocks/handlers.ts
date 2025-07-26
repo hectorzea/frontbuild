@@ -3,6 +3,7 @@ import { taskHandlers } from "./taskHandlers";
 import { labelHandlers } from "./labelHandlers";
 import { priorityHandlers } from "./priorityHandlers";
 import { jobCheckHandlers } from "./jobCheckHandlers";
+import { hearthstoneApiHandlers } from "./hearthstoneApiHandlers";
 
 export const handlers = [
   ...jobCheckHandlers,
@@ -10,4 +11,5 @@ export const handlers = [
   ...statusHandlers,
   ...labelHandlers,
   ...priorityHandlers,
+  ...hearthstoneApiHandlers,
 ];
