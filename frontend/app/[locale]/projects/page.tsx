@@ -25,13 +25,13 @@ const projects = [
     link: "/projects/job-check",
   },
   {
-    title: "Hearthstone Card Finder",
-    subtitle: "Simple card finder for Hearthstone using the official API",
+    title: "Hearthstone Card Search",
+    subtitle: "Simple card search for Hearthstone using the official API",
     stack: ["Next.js", "Jest", "Tailwind CSS"],
     testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
     motivation:
       "Some of the pages that uses HS API are not very well designed, this tool helps to find cards and see their details in a simple way",
-    link: "/projects/hs-card-finder",
+    link: "/projects/hs-card-search",
   },
 ];
 

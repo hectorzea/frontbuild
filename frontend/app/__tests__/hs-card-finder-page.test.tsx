@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import HearthstoneCardFinder from "@/app/[locale]/projects/hs-card-finder/page";
+import HearthstoneCardSearch from "@/app/[locale]/projects/hs-card-search/page";
 
-describe("Hearthstone Card Finder", () => {
+describe("Hearthstone Card Search", () => {
   it("renders page", () => {
-    render(<HearthstoneCardFinder />);
-    expect(screen.getByText("HS CARD FINDER")).toBeInTheDocument();
+    render(<HearthstoneCardSearch />);
+    expect(screen.getByTestId("hs-card-search-page")).toBeInTheDocument();
   });
 });

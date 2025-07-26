@@ -48,6 +48,21 @@ export interface JobOffer {
   matchReasoningKeyPoints: string[];
 }
 
+export interface HearthstoneCardInfo {
+  cardId: string;
+  name: string;
+  type: string;
+  faction: string;
+  cardSet: string;
+  rarity: string;
+  race: string;
+  img: string;
+  locale: string;
+  tokens: HearthstoneCardInfo[];
+  discover: string[];
+  mechanics: CardMechanic[];
+}
+
 export interface HardSkills {
   frontend: string[];
   backend: string[];
@@ -63,4 +78,8 @@ export interface Project {
   testingApproach: string[];
   motivation: string;
   link: string;
+}
+
+interface CardMechanic {
+  name: string;
 }
