@@ -1,4 +1,4 @@
-name: Lint Checks
+name: Codecov Quality Checks
 on:
   push:
     branches: [main]
