@@ -5,6 +5,7 @@ import {
   StatusOptions,
   Task as TaskModel,
 } from "@/app/types/api/Api";
+import { CardMatchResultsModel, HeroClass } from "../types";
 
 export const taskSchema: z.ZodType<TaskModel> = z.object({
   _id: z.string().optional(),
@@ -15,3 +16,18 @@ export const taskSchema: z.ZodType<TaskModel> = z.object({
 });
 
 export type Task = z.infer<typeof taskSchema>;
+
+export const cardMatchResultSchema: z.ZodType<CardMatchResultsModel> = z.object(
+  {
+    myClassId: z.nativeEnum(HeroClass, {
+      message: "Invalid class",
+    }),
+    classOponentId: z.nativeEnum(HeroClass, {
+      message: "Invalid class",
+    }),
+    turnsDuration: z.string(),
+    win: z.boolean(),
+    initialCards: z.string(),
+    discardedCards: z.string(),
+  }
+);

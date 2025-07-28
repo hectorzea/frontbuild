@@ -83,3 +83,32 @@ export interface Project {
 interface CardMechanic {
   name: string;
 }
+
+export interface CardMatchResultsModel {
+  myClassId: string;
+  classOponentId: string;
+  turnsDuration: string;
+  win: boolean;
+  initialCards: string;
+  discardedCards: string;
+}
+
+export enum HeroClass {
+  Druid = "DRUID",
+  Paladin = "PALADIN",
+  DeathKnight = "DEATHKNIGHT",
+  Mage = "MAGE",
+  Warlock = "WARLOCK",
+  Warrior = "WARRIOR",
+  Shaman = "SHAMAN",
+  Rogue = "ROGUE",
+  Hunter = "HUNTER",
+  DemonHunter = "DEMONHUNTER",
+}
+
+export interface WinRateMulliganResponse {
+  cardId: string;
+  totalGames: number;
+  wins: number;
+  winrate: number;
+}
