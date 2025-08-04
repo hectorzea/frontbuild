@@ -38,7 +38,7 @@ test("filtra tareas por texto", async () => {
           tasks: tasks,
         },
       },
-    },
+    }
   );
 
   fireEvent.change(getByPlaceholderText("Filter tasks..."), {

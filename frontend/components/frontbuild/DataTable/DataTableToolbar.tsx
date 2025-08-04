@@ -14,19 +14,19 @@ import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
-  isEnabled?: boolean;
+  isEnabledToolbar?: boolean;
 }
 
 export function DataTableToolbar<TData>({
   table,
-  isEnabled = true,
+  isEnabledToolbar = true,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const priorities = useAppSelector(selectPriorities);
   const statuses = useAppSelector(selectStatuses);
 
-  if (!isEnabled) {
+  if (!isEnabledToolbar) {
     return null;
   }
 
