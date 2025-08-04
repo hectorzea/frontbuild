@@ -93,6 +93,11 @@ export interface CardMatchResultsModel {
   discardedCards: string;
 }
 
+export interface CardMatchRequestPayload {
+  matchUrl: string;
+  win: boolean;
+}
+
 export enum HeroClass {
   Druid = "DRUID",
   Paladin = "PALADIN",
