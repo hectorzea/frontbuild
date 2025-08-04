@@ -1,14 +1,22 @@
 "use client";
 import { useGetMulliganCardsQuery } from "@/lib/features/tasks/hearthstoneApiSlice";
+import { DataTable } from "../DataTable";
+import { mulliganColumns } from "../DataTable/Columns";
 
 export function MulliganTable() {
   const { data } = useGetMulliganCardsQuery();
-  console.log(data);
+  if (!data) {
+    return undefined;
+  }
   return (
-    <div className="flex flex-col w-8/12">
+    <>
       <p>Mulligan winrate</p>
-      <p>filtros</p>
-      {/* <DataTable data={[]} columns={[]} data-testid={"mulligan-cards-table"} /> */}
-    </div>
+      <p>Partidas ganadas por carta individual</p>
+      <DataTable
+        data={data}
+        columns={mulliganColumns}
+        data-testid={"mulligan-cards-table"}
+      />
+    </>
   );
 }

@@ -111,4 +111,5 @@ export interface WinRateMulliganResponse {
   totalGames: number;
   wins: number;
   winrate: number;
+  cardName: string;
 }
