@@ -4,7 +4,10 @@ import { DataTable } from "../DataTable";
 import { mulliganColumns } from "../DataTable/Columns";
 
 export function MulliganTable() {
-  const { data } = useGetMulliganCardsQuery();
+  const { data } = useGetMulliganCardsQuery({
+    classId: "DEATHKNIGHT",
+    type: "initial",
+  });
   if (!data) {
     return undefined;
   }
@@ -14,6 +17,7 @@ export function MulliganTable() {
       <p>Partidas ganadas por carta individual</p>
       <DataTable
         data={data}
+        toolbarEnabled={false}
         columns={mulliganColumns}
         data-testid={"mulligan-cards-table"}
       />

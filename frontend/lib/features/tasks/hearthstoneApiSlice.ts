@@ -16,8 +16,17 @@ export const hearthstoneApiSlice = createApi({
     // for the argument type instead.
     //build.query<ResponseDelBackend, parametro url que queramos enviar>
     //luego cuando ejecutemos query: (parametroURl) especificado del tipo de arriba obviamente
-    getMulliganCards: build.query<WinRateMulliganResponse[], void>({
-      query: () => ``,
+    getMulliganCards: build.query<
+      WinRateMulliganResponse[],
+      { classId: string; type: string }
+    >({
+      query: (arg) => {
+        const { classId, type } = arg;
+        return {
+          url: ``,
+          params: { classId, type },
+        };
+      },
       // `providesTags` determines which 'tag' is attached to the
       // cached data returned by the query.
       providesTags: () => [{ type: "Hearthstone" }],
