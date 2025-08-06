@@ -20,5 +20,5 @@ export type Task = z.infer<typeof taskSchema>;
 export const cardMatchResultSchema: z.ZodType<CardMatchRequestPayload> =
   z.object({
     win: z.boolean(),
-    matchUrl: z.string(),
+    matchUrl: z.string().nonempty("Match URL is required"),
   });

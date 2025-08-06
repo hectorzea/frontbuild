@@ -4,22 +4,26 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/frontbuild/Loading";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormField } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { cardMatchResultSchema } from "@/app/schemas";
 import { toast } from "sonner";
+import {
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 
-export function MulliganCreatorForm() {
+type MProps = {
+  route?: string;
+};
+
+export function MulliganCreatorForm({ route }: MProps) {
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof cardMatchResultSchema>>({
     resolver: zodResolver(cardMatchResultSchema),
@@ -39,6 +43,11 @@ export function MulliganCreatorForm() {
       );
       toast("Match has been added.");
       setLoading(false);
+      if (route) {
+        router.push(route);
+      } else {
+        router.back();
+      }
     } catch (error) {
       console.error("Error calling hz-server api:", error);
     }
@@ -49,56 +58,61 @@ export function MulliganCreatorForm() {
   }
 
   return (
-    <div className="flex flex-col w-4/12">
-      Mulligan Creator
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
-          <FormField
-            control={form.control}
-            name="matchUrl"
-            render={({ field }) => (
-              <FormItem className="mt-2">
-                <FormLabel>Match Link</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="https://hsreplay.net/replay/3B9Wn9qJhgQej7HJUywCTf"
-                    data-testid="card-search-input-field"
-                    {...field}
-                    className="max-w-md"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="win"
-            render={({ field }) => (
-              <FormItem className="mt-2">
-                <FormLabel>Win</FormLabel>
-                <FormControl>
-                  <Switch
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="flex">
-            <Button
-              type="submit"
-              className="mt-4"
-              disabled={loading}
-              data-testid="submit-button-card-search-form"
-            >
-              Submit
-            </Button>
-          </div>
-        </form>
-      </Form>
-    </div>
+    <>
+      <DialogHeader>
+        <DialogTitle>New Match</DialogTitle>
+        <DialogDescription>
+          Add the match URL and indicate W / L
+        </DialogDescription>
+      </DialogHeader>
+      <div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="flex justify-between gap-4">
+              <FormField
+                control={form.control}
+                name="matchUrl"
+                render={({ field }) => (
+                  <div className="flex flex-col gap-3 w-full">
+                    <p>Match URL</p>
+                    <Input
+                      placeholder="https://hsreplay.net/replay/id"
+                      data-testid="card-search-input-field"
+                      {...field}
+                      className="w-100"
+                    />
+                  </div>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="win"
+                render={({ field }) => (
+                  <div className="flex flex-col items-center">
+                    <p>Win</p>
+                    <Switch
+                      className="mt-5"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </div>
+                )}
+              />
+            </div>
+
+            <div className="flex">
+              <Button
+                type="submit"
+                className="mt-4"
+                disabled={loading}
+                data-testid="submit-button-card-search-form"
+              >
+                Submit
+              </Button>
+            </div>
+          </form>
+        </Form>
+      </div>
+    </>
   );
 }

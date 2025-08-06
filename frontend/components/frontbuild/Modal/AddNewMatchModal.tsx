@@ -1,9 +1,14 @@
 import ModalWrapper from "@/components/frontbuild/Modal/ModalWrapper";
+import { MulliganCreatorForm } from "../MulliganCreatorForm";
 
-interface NewItemModalProps {
+interface AddNewMatchModalProps {
   route?: string;
 }
 
-export default async function AddNewMatchModal({ route }: NewItemModalProps) {
-  return <ModalWrapper route={route}>asdasdas</ModalWrapper>;
+export default function AddNewMatchModal({ route }: AddNewMatchModalProps) {
+  return (
+    <ModalWrapper route={route}>
+      <MulliganCreatorForm route={route} />
+    </ModalWrapper>
+  );
 }
