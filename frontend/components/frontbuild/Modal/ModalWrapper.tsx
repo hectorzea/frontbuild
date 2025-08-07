@@ -22,7 +22,7 @@ const ModalWrapper: FC<ModalWindowProps> = ({ children, route }) => {
       >
         {children}
         {/* todo ver como mejorar modals vs vistas edit...  */}
-        {/* <ModalFooter /> */}
+        {/* se puede agregar aqui la estructura faltante de <DialogFooter> </DialogFooter> */}
       </DialogContent>
     </Dialog>
   );
