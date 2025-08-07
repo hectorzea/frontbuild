@@ -18,11 +18,11 @@ import {
 } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 
-type MProps = {
+type MulliganCreatorFormProps = {
   route?: string;
 };
 
-export function MulliganCreatorForm({ route }: MProps) {
+export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof cardMatchResultSchema>>({
@@ -77,7 +77,7 @@ export function MulliganCreatorForm({ route }: MProps) {
                     <p>Match URL</p>
                     <Input
                       placeholder="https://hsreplay.net/replay/id"
-                      data-testid="card-search-input-field"
+                      data-testid="card-match-url-input-field"
                       {...field}
                       className="w-100"
                     />
@@ -91,6 +91,7 @@ export function MulliganCreatorForm({ route }: MProps) {
                   <div className="flex flex-col items-center">
                     <p>Win</p>
                     <Switch
+                      data-testid="switch-win-loose"
                       className="mt-5"
                       checked={field.value}
                       onCheckedChange={field.onChange}
@@ -105,13 +106,13 @@ export function MulliganCreatorForm({ route }: MProps) {
                 type="submit"
                 className="mt-4"
                 disabled={loading}
-                data-testid="submit-button-card-search-form"
+                data-testid="submit-button-card-match-result"
               >
                 Submit
               </Button>
               <Button
                 className="mt-4"
-                data-testid="submit-button-card-search-form"
+                data-testid="close-button-card-match-form"
                 onClick={() => {
                   router.back();
                 }}
