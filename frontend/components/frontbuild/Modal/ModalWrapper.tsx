@@ -14,10 +14,10 @@ const ModalWrapper: FC<ModalWindowProps> = ({ children, route }) => {
       <DialogContent
         className="sm:max-w-[425px]"
         //TODO PARA EVITAR QUE CIERRE EL DIALOGO PERO ESTO DEBERIA SER FLEXIBE
-        onEscapeKeyDown={(e) => e.preventDefault()}
-        onInteractOutside={(e) => {
-          e.preventDefault();
-        }}
+        // onEscapeKeyDown={(e) => e.preventDefault()}
+        // onInteractOutside={(e) => {
+        //   e.preventDefault();
+        // }}
       >
         {children}
         {/* <ModalFooter /> */}
