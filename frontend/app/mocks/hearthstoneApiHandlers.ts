@@ -4,7 +4,28 @@ import { HearthstoneCardInfo } from "../types";
 type SearchCardRequestBody = { cardName: string };
 type SearchCardResponse = HearthstoneCardInfo;
 
+type GetMulliganRequestParams = {
+  type: string;
+  classId: string;
+};
+
 export const hearthstoneApiHandlers = [
+  http.get<GetMulliganRequestParams>(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan`,
+    () => {
+      return HttpResponse.json([
+        {
+          totalGames: 1,
+          wins: 1,
+          cardId: "DEEP_017",
+          winrate: 100,
+          cardName: "Mining Casualties",
+          cardImageUrl:
+            "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/DEEP_017.png",
+        },
+      ]);
+    }
+  ),
   http.post<SearchCardRequestBody, SearchCardResponse>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hs-card-search`,
     async ({ request }) => {

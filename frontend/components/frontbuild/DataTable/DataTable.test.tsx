@@ -4,15 +4,19 @@ import { DataTable } from "./";
 import { renderWithProviders } from "@/app/test-utils";
 import { tasks } from "@/app/mocks/taskHandlers";
 
-test("renderiza tabla con 2 filas", () => {
-  renderWithProviders(<DataTable data={tasks} columns={columns} />, {
-    preloadedState: {
-      tasks: {
-        tasks: tasks,
+test("renderiza tabla con 2 filas", async () => {
+  renderWithProviders(
+    <DataTable data={tasks} columns={columns} testId="test-table" />,
+    {
+      preloadedState: {
+        tasks: {
+          tasks: tasks,
+        },
       },
-    },
-  });
+    }
+  );
   //tests with 3 rows and the header
+  expect(await screen.findByTestId("test-table")).toBeInTheDocument();
   expect(screen.getAllByRole("row")).toHaveLength(4);
   expect(screen.getByText("Do something with the tests")).toBeInTheDocument();
 });

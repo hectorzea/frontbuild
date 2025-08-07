@@ -31,11 +31,13 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   toolbarEnabled?: boolean;
+  testId?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  testId,
   toolbarEnabled = true,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
@@ -82,7 +84,7 @@ export function DataTable<TData, TValue>({
     <div className="space-y-4">
       <DataTableToolbar table={table} toolbarEnabled={toolbarEnabled} />
       <div className="rounded-md border">
-        <Table>
+        <Table data-testid={testId}>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

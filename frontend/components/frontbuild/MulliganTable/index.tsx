@@ -19,25 +19,27 @@ export function MulliganTable() {
     return undefined;
   }
   return (
-    <>
+    <div>
+      <p className="text-xl" data-testid="mulligan-table-title">
+        MULLIGAN WINRATE STATS
+      </p>
+      <Button
+        asChild
+        size={"lg"}
+        data-testid={"add-new-match-mulligan"}
+        className="my-3"
+      >
+        <Link href={"/projects/hs-card-search/mulligan/new-match"}>
+          Add new match
+        </Link>
+      </Button>
       <div>
-        <p className="text-xl">MULLIGAN WINRATE STATS</p>
         <p className="mt-3">Partidas ganadas por carta individual (INICIAL)</p>
-        <Button
-          asChild
-          size={"lg"}
-          data-testid={"download-cv-button"}
-          className="my-3"
-        >
-          <Link href={"/projects/hs-card-search/mulligan/new-match"}>
-            Add new match
-          </Link>
-        </Button>
         <DataTable
           data={initialCards}
           toolbarEnabled={false}
           columns={mulliganColumns}
-          data-testid={"mulligan-cards-table"}
+          testId={"mulligan-winrate-initial-cards-table"}
         />
       </div>
       <div>
@@ -48,9 +50,9 @@ export function MulliganTable() {
           data={discardedCards}
           toolbarEnabled={false}
           columns={mulliganColumns}
-          data-testid={"mulligan-cards-table"}
+          testId={"mulligan-winrate-discard-cards-table"}
         />
       </div>
-    </>
+    </div>
   );
 }
