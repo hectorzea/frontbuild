@@ -100,7 +100,7 @@ export function MulliganCreatorForm({ route }: MProps) {
               />
             </div>
 
-            <div className="flex">
+            <div className="flex gap-3">
               <Button
                 type="submit"
                 className="mt-4"
@@ -108,6 +108,15 @@ export function MulliganCreatorForm({ route }: MProps) {
                 data-testid="submit-button-card-search-form"
               >
                 Submit
+              </Button>
+              <Button
+                className="mt-4"
+                data-testid="submit-button-card-search-form"
+                onClick={() => {
+                  router.back();
+                }}
+              >
+                Close
               </Button>
             </div>
           </form>
