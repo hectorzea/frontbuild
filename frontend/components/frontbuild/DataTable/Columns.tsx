@@ -11,13 +11,13 @@ import {
   getStatusIcon,
 } from "@/lib/utils";
 import { Binary } from "lucide-react";
-import { Priority, Status, WinRateMulliganResponse } from "@/app/types";
+import { Priority, Status, CardMatchResult } from "@/app/types";
 
 export interface ColumnMeta {
   columnClasses: string;
 }
 
-export const mulliganColumns: ColumnDef<WinRateMulliganResponse>[] = [
+export const mulliganColumns: ColumnDef<CardMatchResult>[] = [
   {
     accessorKey: "cardName",
     header: ({ column }) => (

@@ -1,17 +1,17 @@
 "use client";
-import { useGetMulliganCardsQuery } from "@/lib/features/tasks/hearthstoneApiSlice";
+import { useGetMulliganCardsMatchResultQuery } from "@/lib/features/tasks/hearthstoneApiSlice";
 import { DataTable } from "../DataTable";
 import { mulliganColumns } from "../DataTable/Columns";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export function MulliganTable() {
-  const { data: initialCards } = useGetMulliganCardsQuery({
+  const { data: initialCards } = useGetMulliganCardsMatchResultQuery({
     classId: "DEATHKNIGHT",
     type: "initial",
   });
 
-  const { data: discardedCards } = useGetMulliganCardsQuery({
+  const { data: discardedCards } = useGetMulliganCardsMatchResultQuery({
     classId: "DEATHKNIGHT",
     type: "discarded",
   });
