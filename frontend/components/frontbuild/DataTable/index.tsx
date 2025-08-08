@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import {
   ColumnDef,
@@ -31,11 +30,15 @@ import { ColumnMeta } from "./Columns";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  toolbarEnabled?: boolean;
+  testId?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  testId,
+  toolbarEnabled = true,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -58,6 +61,10 @@ export function DataTable<TData, TValue>({
       columnVisibility,
       rowSelection,
       columnFilters,
+      // pagination: {
+      //   pageIndex: 0,
+      //   pageSize: 500,
+      // },
       // pagination
     },
     enableRowSelection: true,
@@ -75,9 +82,9 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} toolbarEnabled={toolbarEnabled} />
       <div className="rounded-md border">
-        <Table>
+        <Table data-testid={testId}>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

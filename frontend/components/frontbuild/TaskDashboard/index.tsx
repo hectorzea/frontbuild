@@ -30,11 +30,7 @@ export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
           <UserNav />
         </div>
       </div>
-      <DataTable
-        data={tasks}
-        columns={columns}
-        data-testid={"frontbuild-table"}
-      />
+      <DataTable data={tasks} columns={columns} testId={"tasks-table"} />
     </div>
   );
 };
