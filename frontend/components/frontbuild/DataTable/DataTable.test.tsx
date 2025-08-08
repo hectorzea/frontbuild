@@ -33,6 +33,21 @@ test("renderiza tabla sin items", () => {
   expect(screen.getByText("No results.")).toBeInTheDocument();
 });
 
+test("renderiza tabla sin items", () => {
+  renderWithProviders(
+    <DataTable data={[]} columns={columns} toolbarEnabled={false} />,
+    {
+      preloadedState: {
+        tasks: {
+          tasks: [],
+        },
+      },
+    }
+  );
+
+  expect(screen.queryByTestId("data-table-toolbar")).not.toBeInTheDocument();
+});
+
 test("filtra tareas por texto", async () => {
   const { getByPlaceholderText } = renderWithProviders(
     <DataTable data={tasks} columns={columns} />,

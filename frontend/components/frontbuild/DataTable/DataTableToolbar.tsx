@@ -32,7 +32,7 @@ export function DataTableToolbar<TData>({
 
   //TODO VER COMO HACER ESTO MAS PERFORMANTE?
   return (
-    <div>
+    <div data-testid={"data-table-toolbar"}>
       <div className="flex flex-col flex-1 items-center sm:flex-row space-x-1 sm:space-x-2">
         <Input
           placeholder="Filter tasks..."
