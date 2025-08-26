@@ -28,5 +28,9 @@ jest.mock("next-intl/server", () => ({
   setRequestLocale: jest.fn((locale: string) => locale),
 }));
 
+jest.mock("@/i18n/navigation", () => ({
+  useRouter: jest.fn(),
+}));
+
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);

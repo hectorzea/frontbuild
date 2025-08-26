@@ -45,17 +45,14 @@ export function ModeToggle() {
       </DropdownMenu>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            data-testid="theme-mode-toggle-button"
-          >
+          <Button variant="outline" size="icon" data-testid="lang-nav-trigger">
             <Earth />
           </Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent align="end">
           <DropdownMenuItem
+            data-testid="es-lang-option"
             onClick={() => {
               router.replace("/", { locale: "es" });
             }}
@@ -63,6 +60,7 @@ export function ModeToggle() {
             🇪🇸 ES
           </DropdownMenuItem>
           <DropdownMenuItem
+            data-testid="en-lang-option"
             onClick={() => {
               router.replace("/", { locale: "en" });
             }}
