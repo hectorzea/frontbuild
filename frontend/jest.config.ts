@@ -13,7 +13,7 @@ const config: Config = {
   //configuracion de archhivos a ejecutar antes de cada prueba
   setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
   coveragePathIgnorePatterns: [
-    "<rootDir>/app/[locale]/layout.tsx", // Excluye el archivo layout.tsx de la cobertura
+    "<rootDir>/app/layout.tsx", // Excluye el archivo layout.tsx de la cobertura
   ],
   collectCoverageFrom: [
     "<rootDir>/components/**/*.{ts,tsx}",
