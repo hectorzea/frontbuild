@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
+import { use } from "react";
 
-export default function HomePage() {
+export default function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("HomePage");
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
