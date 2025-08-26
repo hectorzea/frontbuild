@@ -19,11 +19,14 @@ jest.mock("next-intl", () => {
             typeof key === "string" &&
             key in homePageTranslations
             ? homePageTranslations[key as keyof typeof homePageTranslations] //assertion
-            : `Missing translation: ${namespace}.${key}`;
+            : `Missing translatio n: ${namespace}.${key}`;
         };
       }),
   };
 });
+jest.mock("next-intl/server", () => ({
+  setRequestLocale: jest.fn((locale: string) => locale),
+}));
 
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
