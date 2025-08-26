@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Metadata } from "next";
 import { ModeToggle } from "@/components/frontbuild/ModeToggle";
+import { NextIntlClientProvider } from "next-intl";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,20 +34,20 @@ export default function RootLayout({
         className={`${geistSans.className} ${geistMono.className}`}
         data-testid="body-frontbuild"
       >
-        {/* <NextIntlClientProvider> */}
-        <StoreProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Toaster />
-            <ModeToggle />
-            {children}
-          </ThemeProvider>
-        </StoreProvider>
-        {/* </NextIntlClientProvider> */}
+        <NextIntlClientProvider>
+          <StoreProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Toaster />
+              <ModeToggle />
+              {children}
+            </ThemeProvider>
+          </StoreProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
