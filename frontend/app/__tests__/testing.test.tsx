@@ -4,8 +4,6 @@ import TestingPage from "@/app/[locale]/profile/testing/page";
 describe("TestingPage", () => {
   it("renders TestingPage component", () => {
     render(<TestingPage />);
-    expect(
-      screen.getByText("What to test in a Frontend Application?"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Testing page title")).toBeInTheDocument();
   });
 });
