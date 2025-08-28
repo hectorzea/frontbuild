@@ -6,6 +6,14 @@
     "cvLinkName": "Download CV"
   },
   "ProfileLayout": {
+    "sidebarItem": {
+      "item1": "About Me",
+      "item2": "Educación",
+      "item3": "Testing, My Way",
+      "item4": "Professional History",
+      "item5": "My Method: Agile Scrum",
+      "item6": "Projects"
+    },
     "title": "Hector Zea",
     "description": "I like to build things with code. Im a software engineer based in Berlin, Germany."
   },
@@ -13,8 +21,32 @@
     "title": "Understanding the business",
     "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
   },
-  "Tasks":{
+  "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Task creator using tanstack react-table and react-hook-form with zod schema validation."
+  },
+  "SkillsPage": {
+    "skillsList": {
+      "skill1": {
+        "title": "Ingeniero de Software en FRIDAY Insurance",
+        "dateAndLocation": "Berlin, Alemania | 2022-2025",
+        "description": "Desarrollé mejoras y mantenimiento en dos aplicaciones React, utilizando Next.js, ReduxToolkit, TypeScript y CSS. Aseguré la calidad mediante CI/CD usando gitlab, tareas demonitoreo con grafana para las APIs y sentry para el frontend, pruebas unitarias y E2Eusando playwright. Colaboré estrechamente con diseñadores y equipos de producto paracrear y mejorar la experiencia de usuario (UX), aportando ideas y definiendo el camino deimplementación."
+      },
+      "skill2": {
+        "title": "Ingeniero de Software en Eventbrite (Remoto)",
+        "dateAndLocation": "San Francisco, California | 2021-2022",
+        "description": "Desarrollé mejoras en el portal de creación de eventos, utilizando tecnologías modernascomo React, TypeScript y Redux enfocándome en código mantenible y escalable. Apliquéprincipios de Desarrollo Guiado por Pruebas (TDD) con Jest y React Testing Library paramejorar la calidad del código. Realicé tareas de monitorización (Sentry) y resolución deerrores dentro de la plataforma."
+      },
+      "skill3": {
+        "title": "Ingeniero de Software Frontend en CamonApp",
+        "dateAndLocation": "Argentina | 2020-2021",
+        "description": "Desarrollé vistas e interfaces para mejorar el monitoreo de la experiencia de usuario,utilizando React, Redux y Context. Integré servicios backend construidos en AWS conExpress y proporcioné retroalimentación a los diseñadores para refinar la experiencia deusuario en el desarrollo de nuevas funcionalidades."
+      },
+      "skill4": {
+        "title": "Desarrollador Frontend en Inclusion Cloud",
+        "dateAndLocation": "Argentina | 2016-2020",
+        "description": "Responsable de crear vistas e interfaces para varios clientes, abordando necesidades denegocio mediante tecnologías frontend modernas. Utilicé SAP como backend, trabajandoespecíficamente con SAP Cloud Platform (SCP), Fiori, UI5 y JavaScript para desarrollarinterfaces receptivas y en tiempo real. Adicionalmente, desarrollé aplicaciones React conpruebas de extremo a extremo para asegurar una alta calidad de la aplicación"
+      }
+    }
   }
 }

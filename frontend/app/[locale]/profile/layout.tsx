@@ -12,35 +12,33 @@ interface ProfileLayoutProps {
   children: React.ReactNode;
 }
 
-const sidebarNavItems: SidebarNavItem[] = [
-  {
-    title: "About Me",
-    href: "/profile/personal-info",
-  },
-  {
-    title: "Education",
-    href: "/profile/education",
-  },
-  {
-    title: "Testing, My Way",
-    href: "/profile/testing",
-  },
-  {
-    title: "Professional History",
-    href: "/profile/skills",
-  },
-  {
-    title: "My Method: Agile Scrum",
-    href: "/profile/crafting-software",
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-  },
-];
+type ProfileLayoutTranslations = ReturnType<
+  typeof useTranslations<"ProfileLayout">
+>;
 
 export default function ProfileLayout({ children }: ProfileLayoutProps) {
   const t = useTranslations("ProfileLayout");
+  const getSideBarNavItems = (t: ProfileLayoutTranslations) => {
+    return [
+      {
+        title: t("sidebarItem.item4"),
+        href: "/profile",
+      },
+      {
+        title: t("sidebarItem.item3"),
+        href: "/profile/testing",
+      },
+      {
+        title: t("sidebarItem.item5"),
+        href: "/profile/crafting-software",
+      },
+      {
+        title: t("sidebarItem.item6"),
+        href: "/projects",
+      },
+    ] as SidebarNavItem[];
+  };
+  const sidebarNavItems = getSideBarNavItems(t);
   return (
     <>
       <div className="p-10 pb-16" data-testid="frontbuild-profile-layout">
