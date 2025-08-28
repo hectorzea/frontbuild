@@ -11,9 +11,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "@/i18n/navigation";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
+  const router = useRouter();
 
   return (
     <div className="flex w-[90px] justify-between absolute top-4 right-4">
@@ -43,20 +45,26 @@ export function ModeToggle() {
       </DropdownMenu>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="icon"
-            data-testid="theme-mode-toggle-button"
-          >
+          <Button variant="outline" size="icon" data-testid="lang-nav-trigger">
             <Earth />
           </Button>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setTheme("light")}>
+          <DropdownMenuItem
+            data-testid="es-lang-option"
+            onClick={() => {
+              router.replace("/", { locale: "es" });
+            }}
+          >
             🇪🇸 ES
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("dark")}>
+          <DropdownMenuItem
+            data-testid="en-lang-option"
+            onClick={() => {
+              router.replace("/", { locale: "en" });
+            }}
+          >
             🇺🇸 EN
           </DropdownMenuItem>
         </DropdownMenuContent>

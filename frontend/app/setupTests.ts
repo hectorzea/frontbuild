@@ -19,11 +19,18 @@ jest.mock("next-intl", () => {
             typeof key === "string" &&
             key in homePageTranslations
             ? homePageTranslations[key as keyof typeof homePageTranslations] //assertion
-            : `Missing translation: ${namespace}.${key}`;
+            : `Missing translatio n: ${namespace}.${key}`;
         };
       }),
   };
 });
+jest.mock("next-intl/server", () => ({
+  setRequestLocale: jest.fn((locale: string) => locale),
+}));
+
+jest.mock("@/i18n/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
