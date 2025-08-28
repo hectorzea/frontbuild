@@ -30,4 +30,8 @@ const config: Config = {
   },
 };
 
-export default createJestConfig(config);
+module.exports = async () => ({
+  ...(await createJestConfig(config)()),
+  // https://github.com/vercel/next.js/issues/40183
+  transformIgnorePatterns: ["node_modules/(?!next-intl)/"],
+});
