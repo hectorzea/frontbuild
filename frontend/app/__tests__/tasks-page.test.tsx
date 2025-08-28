@@ -5,6 +5,8 @@ import { setupServer } from "msw/node";
 
 import { handlers } from "@/app/mocks/handlers";
 import { http, HttpResponse } from "msw";
+import { NextIntlClientProvider } from "next-intl";
+import en from "@/i18n/messages/en.json";
 const server = setupServer(...handlers);
 
 beforeAll(() => server.listen());
@@ -17,13 +19,18 @@ describe("TasksPage", () => {
   });
 
   it("renders TasksPage Page", async () => {
-    renderWithProviders(<TasksPage />, {
-      preloadedState: {
-        tasks: {
-          tasks: [],
+    renderWithProviders(
+      <NextIntlClientProvider locale="en" messages={en}>
+        <TasksPage />
+      </NextIntlClientProvider>,
+      {
+        preloadedState: {
+          tasks: {
+            tasks: [],
+          },
         },
-      },
-    });
+      }
+    );
     await waitFor(() => {
       expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
       expect(screen.getByTestId("user-nav-trigger")).toBeInTheDocument();
@@ -38,13 +45,18 @@ describe("TasksPage", () => {
         }
       )
     );
-    renderWithProviders(<TasksPage />, {
-      preloadedState: {
-        tasks: {
-          tasks: [],
+    renderWithProviders(
+      <NextIntlClientProvider locale="en" messages={en}>
+        <TasksPage />
+      </NextIntlClientProvider>,
+      {
+        preloadedState: {
+          tasks: {
+            tasks: [],
+          },
         },
-      },
-    });
+      }
+    );
 
     //async call action to the backend, so we need to wait for the result a bit
     await waitFor(() => {

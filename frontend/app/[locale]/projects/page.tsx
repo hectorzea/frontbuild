@@ -33,6 +33,15 @@ const projects = [
       "Some of the pages that uses HS API are not very well designed, this tool helps to find cards and see their details in a simple way",
     link: "/projects/hs-card-search",
   },
+  {
+    title: "Mulligan Generator",
+    subtitle: "Mulligan generator for hearthstone matches",
+    stack: ["Next.js", "Jest", "Tailwind CSS"],
+    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
+    motivation:
+      "Some of the custom decks of the daily basis are low sample rate and normal websites dont provide this kind of insights",
+    link: "/projects/hs-card-search/mulligan",
+  },
 ];
 
 export default function ProjectsPage() {
@@ -44,7 +53,7 @@ export default function ProjectsPage() {
           asChild
           className="hover:text-gray-300 transition-colors duration-200 p-0"
         >
-          <Link href={"/profile/skills"}>
+          <Link href={"/profile"}>
             <ArrowLeft size={"20"} />
             <p className="text-lg">Go back to my profile</p>
           </Link>

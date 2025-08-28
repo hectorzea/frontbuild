@@ -1,3 +1,8 @@
+import CssIcon from "@/components/frontbuild/Icons/CssIcon";
+import Html5Icon from "@/components/frontbuild/Icons/Html5Icon";
+import JavascriptIcon from "@/components/frontbuild/Icons/JavascriptIcon";
+import ReactIcon from "@/components/frontbuild/Icons/ReactIcon";
+import TypescriptIcon from "@/components/frontbuild/Icons/TypescriptIcon";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -24,6 +29,13 @@ export default function HomePage({
         unoptimized
       />
       <p>{t("title")}</p>
+      <div className="flex">
+        <JavascriptIcon />
+        <ReactIcon />
+        <Html5Icon />
+        <CssIcon />
+        <TypescriptIcon />
+      </div>
       <Button
         asChild
         size={"lg"}
@@ -39,7 +51,7 @@ export default function HomePage({
           {t("cvLinkName")}
         </Link>
       </Button>
-      <Link href={`/profile/skills`} className="text-blue-500 hover:underline">
+      <Link href={`/projects`} className="text-blue-500 hover:underline">
         {t("profile")}
       </Link>
     </div>

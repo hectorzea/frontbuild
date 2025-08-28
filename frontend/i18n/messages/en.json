@@ -1,19 +1,70 @@
 {
   "HomePage": {
     "title": "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications.",
-    "profile": "Go to my profile",
+    "profile": "Go to my projects",
     "cv": "cv_en_hz",
     "cvLinkName": "Download CV"
   },
+  "ProfilePage": {
+    "title": "Profile Page Title",
+    "skills": {
+      "innovation": {
+        "description": "Tengo amplia experiencia y conocimientos en tecnologías frontend modernas como React, Angular, TypeScript y Redux, lo que me permite desarrollar aplicaciones web eficientes y escalables."
+      },
+      "curious": {
+        "description": "Siempre me apasiona aprender nuevas tecnologías y metodologías, lo que me permite adaptarme rápidamente a diferentes entornos de trabajo y aportar soluciones innovadoras a los desafíos que enfrento."
+      },
+      "deliver": {
+        "description": "Tengo siempre la motivación de entregar productos de alta calidad que cumplan con los requisitos del cliente y superen sus expectativas, asegurando que cada proyecto se complete a tiempo y dentro del presupuesto.  "
+      }
+    }
+  },
   "ProfileLayout": {
+    "sidebarItem": {
+      "item1": "About Me",
+      "item2": "Educación",
+      "item3": "Testing, My Way",
+      "item4": "Professional History",
+      "item5": "My Method: Agile Scrum",
+      "item6": "Projects"
+    },
     "title": "Hector Zea",
     "description": "I like to build things with code. Im a software engineer based in Berlin, Germany."
+  },
+  "TestingPage": {
+    "title": "Testing page title",
+    "testPath": {
+      "path1": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path2": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path3": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path4": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path5": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path6": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      }
+    }
   },
   "CraftingSoftware": {
     "title": "Understanding the business",
     "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
   },
-  "Tasks":{
+  "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Task creator using tanstack react-table and react-hook-form with zod schema validation."
   }

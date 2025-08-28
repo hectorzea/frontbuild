@@ -5,12 +5,90 @@
     "cv": "cv_es_hz",
     "cvLinkName": "Descargar CV"
   },
+  "ProfilePage": {
+    "skills": {
+      "innovation": {
+        "description": "Tengo amplia experiencia y conocimientos en tecnologías frontend modernas como React, Angular, TypeScript y Redux, lo que me permite desarrollar aplicaciones web eficientes y escalables."
+      },
+      "curious": {
+        "description": "Siempre me apasiona aprender nuevas tecnologías y metodologías, lo que me permite adaptarme rápidamente a diferentes entornos de trabajo y aportar soluciones innovadoras a los desafíos que enfrento."
+      },
+      "deliver": {
+        "description": "Tengo siempre la motivación de entregar productos de alta calidad que cumplan con los requisitos del cliente y superen sus expectativas, asegurando que cada proyecto se complete a tiempo y dentro del presupuesto.  "
+      }
+    }
+  },
   "ProfileLayout": {
+    "sidebarItem": {
+      "item1": "Acerca de mi",
+      "item2": "Educación",
+      "item3": "Testing y calidad",
+      "item4": "Filosofía de desarrollo",
+      "item5": "Mi metodología: Scrum Agile",
+      "item6": "Proyectos"
+    },
     "title": "Hector Zea",
     "description": "Me gusta construir aplicaciones web con codigo de calidad. Soy un ingeniero de software basado en Berlin, Alemania."
   },
   "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
+  },
+  "TestingPage": {
+    "testPath": {
+      "path1": {
+        "title": "What to test in a Frontend Application?",
+        "description": "First, we need to understand which component we want to apply a good quality of tests and what type of tests we want to cover (e.g: unit tests, integration tests or visual / snapshot tests)"
+      },
+      "path2": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path3": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path4": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path5": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      },
+      "path6": {
+        "title": "Pruebas unitarias y de integración",
+        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
+      }
+    }
+  },
+  "CraftingSoftware": {
+    "title": "Crafting software title",
+    "craftingPath": {
+      "path1": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      },
+      "path2": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      },
+      "path3": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      },
+      "path4": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      },
+      "path5": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      },
+      "path6": {
+        "title": "Understanding the business",
+        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
+      }
+    }
   }
 }
