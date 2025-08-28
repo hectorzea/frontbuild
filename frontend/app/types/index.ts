@@ -83,3 +83,16 @@ export interface Project {
 interface CardMechanic {
   name: string;
 }
+
+export interface CardMatchRequestPayload {
+  matchUrl: string;
+  win: boolean;
+}
+
+export interface CardMatchResult {
+  cardId: string;
+  totalGames: number;
+  wins: number;
+  winrate: number;
+  cardName: string;
+}

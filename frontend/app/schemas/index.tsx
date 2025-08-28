@@ -5,6 +5,7 @@ import {
   StatusOptions,
   Task as TaskModel,
 } from "@/app/types/api/Api";
+import { CardMatchRequestPayload } from "@/app/types";
 
 export const taskSchema: z.ZodType<TaskModel> = z.object({
   _id: z.string().optional(),
@@ -15,3 +16,9 @@ export const taskSchema: z.ZodType<TaskModel> = z.object({
 });
 
 export type Task = z.infer<typeof taskSchema>;
+
+export const cardMatchResultSchema: z.ZodType<CardMatchRequestPayload> =
+  z.object({
+    win: z.boolean(),
+    matchUrl: z.string().nonempty("Match URL is required"),
+  });

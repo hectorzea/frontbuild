@@ -14,18 +14,25 @@ import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
+  toolbarEnabled: boolean;
 }
 
 export function DataTableToolbar<TData>({
   table,
+  toolbarEnabled,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const priorities = useAppSelector(selectPriorities);
   const statuses = useAppSelector(selectStatuses);
 
+  if (!toolbarEnabled) {
+    return null;
+  }
+
+  //TODO VER COMO HACER ESTO MAS PERFORMANTE?
   return (
-    <div>
+    <div data-testid={"data-table-toolbar"}>
       <div className="flex flex-col flex-1 items-center sm:flex-row space-x-1 sm:space-x-2">
         <Input
           placeholder="Filter tasks..."

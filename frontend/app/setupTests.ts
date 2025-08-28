@@ -11,5 +11,11 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: jest.fn(),
 }));
 
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
