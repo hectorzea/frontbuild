@@ -53,7 +53,7 @@ export default function ProjectsPage() {
           asChild
           className="hover:text-gray-300 transition-colors duration-200 p-0"
         >
-          <Link href={"/profile"}>
+          <Link href={"/"}>
             <ArrowLeft size={"20"} />
             <p className="text-lg">Go back to my profile</p>
           </Link>
