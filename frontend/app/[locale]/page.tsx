@@ -51,7 +51,7 @@ export default function HomePage({
           {t("cvLinkName")}
         </Link>
       </Button>
-      <Link href={`/profile`} className="text-blue-500 hover:underline">
+      <Link href={`/projects`} className="text-blue-500 hover:underline">
         {t("profile")}
       </Link>
     </div>

@@ -20,6 +20,6 @@ describe("Page", () => {
         "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications."
       )
     ).toBeInTheDocument();
-    expect(screen.getByText("Go to my profile")).toBeInTheDocument();
+    expect(screen.getByText("Go to my projects")).toBeInTheDocument();
   });
 });
