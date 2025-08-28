@@ -12,7 +12,7 @@ describe("PersonalInfoPage", () => {
     const mockReset = jest.fn();
     render(<ErrorPage error={mockError} reset={mockReset} />);
     expect(
-      screen.getByText("Something went wrong! (tasks)"),
+      screen.getByText("Something went wrong! (tasks)")
     ).toBeInTheDocument();
   });
 });
