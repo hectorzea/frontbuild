@@ -33,6 +33,15 @@ const projects = [
       "Some of the pages that uses HS API are not very well designed, this tool helps to find cards and see their details in a simple way",
     link: "/projects/hs-card-search",
   },
+  {
+    title: "Mulligan Generator",
+    subtitle: "Mulligan generator for hearthstone matches",
+    stack: ["Next.js", "Jest", "Tailwind CSS"],
+    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
+    motivation:
+      "Some of the custom decks of the daily basis are low sample rate and normal websites dont provide this kind of insights",
+    link: "/projects/hs-card-search/mulligan",
+  },
 ];
 
 export default function ProjectsPage() {

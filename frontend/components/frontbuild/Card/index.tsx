@@ -18,11 +18,11 @@ interface ProjectCardProps {
 const ProjectCard = ({ project }: ProjectCardProps) => {
   const { title, subtitle, stack, testingApproach, motivation, link } = project;
   return (
-    <Card className="max-w-md">
+    <Card className="max-w-lg">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-6 h-[400px] md:h-[460px] overflow-auto">
+      <CardContent className="flex flex-col gap-6 h-[450px]">
         <p className="text-sm">{subtitle}</p>
         <div>
           Stack Used
