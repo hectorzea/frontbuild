@@ -11,7 +11,7 @@ type GetMulliganRequestParams = {
 
 export const hearthstoneApiHandlers = [
   http.get<GetMulliganRequestParams>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan`,
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan?classId=DEATHKNIGHT&type=initial`,
     () => {
       return HttpResponse.json([
         {
@@ -24,6 +24,14 @@ export const hearthstoneApiHandlers = [
             "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/DEEP_017.png",
         },
       ]);
+    }
+  ),
+  http.post<SearchCardRequestBody, SearchCardResponse>(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
+    async ({ request }) => {
+      const requestData = await request.json();
+      console.log("Received request data:", requestData);
+      return HttpResponse.json({});
     }
   ),
   http.post<SearchCardRequestBody, SearchCardResponse>(
