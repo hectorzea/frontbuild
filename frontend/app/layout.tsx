@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${geistSans.className} ${geistMono.className}`}
+        // className={`${geistSans.className} ${geistMono.className}`}
         data-testid="body-frontbuild"
       >
         <NextIntlClientProvider>
