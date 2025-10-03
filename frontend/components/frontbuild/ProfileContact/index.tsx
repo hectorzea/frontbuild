@@ -1,0 +1,76 @@
+import { Mail, Github, Linkedin } from "lucide-react";
+
+export function ProfileContact() {
+  return (
+    <section
+      id="contact"
+      className="min-h-screen flex items-center px-6 md:px-12 py-20"
+    >
+      <div className="max-w-4xl w-full">
+        <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-12">
+          Contact
+        </h3>
+        <div className="space-y-8">
+          <div>
+            <h4 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+              Trabajemos Juntos
+            </h4>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Estoy interesado en escuchar y participar en projectos y
+              oportunidades innovadoras. Si deseas contactarme no dudes en
+              saludarme en mis redes / canales de trabajo
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 pt-8">
+            <div>
+              <h5 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                Email
+              </h5>
+              <a
+                href="mailto:hello@example.com"
+                className="text-lg hover:text-accent transition-colors flex items-center gap-2"
+              >
+                <Mail className="h-5 w-5" />
+                zea3471@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <h5 className="text-sm uppercase tracking-wider text-muted-foreground mb-4">
+                Social
+              </h5>
+              <div className="space-y-3">
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg hover:text-accent transition-colors flex items-center gap-2"
+                >
+                  <Github className="h-5 w-5" />
+                  GitHub
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg hover:text-accent transition-colors flex items-center gap-2"
+                >
+                  <Linkedin className="h-5 w-5" />
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 pt-8 border-t border-border">
+          <p className="text-sm text-muted-foreground text-center">
+            © {new Date().getFullYear()} Hector Zea. Built with Next.js and
+            Tailwind CSS.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
