@@ -1,37 +1,48 @@
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const projects = [
   {
+    id: "task_generator",
     title: "Task Generator",
     description:
       "A simple task generator using the best practices of redux toolkit + jest",
     link: "/projects/tasks",
-    technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
+    technologies: ["Next.js", "Playwright", "MongoDB", "Tailwind CSS"],
   },
   {
+    id: "job_lint",
     title: "Job Lint",
     description:
       "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
     link: "/projects/job-check",
-    technologies: ["React", "Firebase", "TypeScript", "Material-UI"],
+    technologies: ["Next.js", "MongoDB", "TypeScript", "Tailwind CSS"],
   },
   {
+    id: "hearthstone_card_search",
     title: "Hearthstone Card Search",
     description:
       "Simple card search for Hearthstone Game using Hearthstone JSON API",
     link: "/projects/hs-card-search",
-    technologies: ["Next.js", "MDX", "Tailwind CSS", "Framer Motion"],
+    technologies: ["Next.js", "Typescript", "Shadcn", "Tailwind CSS"],
   },
   {
+    id: "mulligan_generator",
     title: "Mulligan Generator",
     description: "Mulligan generator for hearthstone games",
     link: "/projects/hs-card-search/mulligan",
-    technologies: ["Node.js", "React", "OpenAPI", "Express", "Puppeteer"],
+    technologies: ["Node.js", "React", "NestJS", "Puppeteer"],
   },
 ];
 
 export function ProfileProjects() {
+  const t = useTranslations("Profile.projects");
+  const translatedProjects = projects.map((item) => ({
+    ...item,
+    title: t(`${item.id}_title`),
+    description: t(`${item.id}_description`),
+  }));
   return (
     <section
       id="projects"
@@ -39,10 +50,10 @@ export function ProfileProjects() {
     >
       <div className="max-w-4xl w-full">
         <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-12">
-          Projects
+          {t("title")}
         </h3>
         <div className="grid gap-8 md:grid-cols-2">
-          {projects.map((project, index) => (
+          {translatedProjects.map((project, index) => (
             <Link
               key={index}
               href={project.link}

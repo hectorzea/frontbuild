@@ -1,5 +1,8 @@
+import { useTranslations } from "next-intl";
+
 const experiences = [
   {
+    id: "friday_insurance",
     period: "2022 - 2025",
     title: "Ingeniero de Software",
     company: "FRIDAY Insurance",
@@ -19,9 +22,10 @@ const experiences = [
     ],
   },
   {
+    id: "eventbrite",
     period: "2021 - 2022",
     title: "Ingeniero de Software",
-    company: "Eventbrite (Remoto)",
+    company: "Eventbrite",
     location: "San Francisco, CA",
     description: "Mejorar y mantener SPA de creacíon de eventos globales.",
     technologies: [
@@ -34,14 +38,17 @@ const experiences = [
     ],
   },
   {
+    id: "camonapp",
     period: "2020 - 2021",
     title: "Ingeniero Frontend",
     company: "CamonApp",
     location: "Argentina",
-    description: "Desarrollo de SPA para monitorear creación de experiencias",
+    description:
+      "Desarrollo de SPA para monitorear creación de experiencias, mantenimiento de APIS",
     technologies: ["React", "Redux", "ChartJS", "AWS", "Express"],
   },
   {
+    id: "inclusion_cloud",
     period: "2016 - 2020",
     title: "Desarrollador Frontend",
     company: "Inclusion Cloud",
@@ -59,6 +66,12 @@ const experiences = [
 ];
 
 export function ProfileExperience() {
+  const t = useTranslations("Profile.experience");
+  const translatedExperience = experiences.map((item) => ({
+    ...item,
+    title: t(`${item.id}_title`),
+    description: t(`${item.id}_description`),
+  }));
   return (
     <section
       id="experience"
@@ -69,7 +82,7 @@ export function ProfileExperience() {
           Experience
         </h3>
         <div className="space-y-12">
-          {experiences.map((exp, index) => (
+          {translatedExperience.map((exp, index) => (
             <div key={index} className="group">
               <div className="flex flex-col md:flex-row md:gap-8">
                 <div className="md:w-48 flex-shrink-0 mb-2 md:mb-0">

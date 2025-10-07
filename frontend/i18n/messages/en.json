@@ -3,7 +3,8 @@
     "title": "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications.",
     "profile": "Go to my projects",
     "cv": "cv_en_hz",
-    "cvLinkName": "Download CV"
+    "cvLinkName": "Download CV",
+    "about": "Hector Zea. Built with Next.js, Shadcn and Tailwind CSS."
   },
   "ProfilePage": {
     "title": "Profile Page Title",
@@ -17,6 +18,56 @@
       "deliver": {
         "description": "Tengo siempre la motivación de entregar productos de alta calidad que cumplan con los requisitos del cliente y superen sus expectativas, asegurando que cada proyecto se complete a tiempo y dentro del presupuesto.  "
       }
+    }
+  },
+  "Profile": {
+    "navigation": {
+      "about": "About Me",
+      "projects": "Projects",
+      "experience": "Experience",
+      "contact": "Contact me"
+    },
+    "hero": {
+      "main": "Building the web and technology with curiosity, innovation, and quality",
+      "subtitle": "I focus on software development, tackling intelligent solutions to complex problems with curiosity, quality, and great added value."
+    },
+    "about": {
+      "title": "About me",
+      "text_1": "My curiosity and passion for the world of computer science led me to web development and the creation of high-quality, scalable solutions focused on user experiences. My work combines good development practices that ensure great product quality with a user-centric approach, leveraging cutting-edge technologies.",
+      "text_2": "Since the beginning of my career, I have honed my skills in web development through multiple small to large-scale projects, creating and improving functionalities. From my beginnings, I maintained my curiosity for JavaScript, being my favorite language and one that gets better every day with TypeScript.",
+      "text_3": "My technological preferences start with React applications, mostly with Next.js, Redux Toolkit, and TypeScript, emphasizing unit, integration, and UI testing, as well as effective application monitoring with Sentry, ensuring continuous quality delivery.",
+      "text_4": "I have experience connecting software components through the creation, maintenance, and monitoring (Grafana, Prometheus) of JavaScript APIs built in Node.js and using Docker for their scalability.",
+      "text_5": "My experience in diverse development environments, from startups to highly established companies, has given me the expertise to develop products from small to large scale, with passion and curiosity for improving every piece of code."
+    },
+    "experience": {
+      "title": "Experience",
+      "friday_insurance_title": "Software Engineer",
+      "friday_insurance_description": "Development of new functionalities and maintenance of SPA applications (self-service portal & claim creation).",
+      "eventbrite_title": "Frontend Developer",
+      "eventbrite_description": "Improve and maintain global event creation SPAs.",
+      "camonapp_title": "Software Engineer",
+      "camonapp_description": "Development of SPA to monitor experience creation, API maintenance.",
+      "inclusion_cloud_title": "Frontend Developer",
+      "inclusion_cloud_description": "Development and maintenance of internal SPAs using React, SAP Cloud Platform, and UI5."
+    },
+    "projects": {
+      "title": "Projects",
+      "task_generator_title": "Task Generator",
+      "task_generator_description": "A simple task generator using the best practices of redux toolkit + jest",
+      "job_lint_title": "Job Linter",
+      "job_lint_description": "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
+      "hearthstone_card_search_title": "Hearthstone Card Search",
+      "hearthstone_card_search_description": "Simple card search for Hearthstone Game using Hearthstone JSON API",
+      "mulligan_generator_title": "Mulligan Game Generator",
+      "mulligan_generator_description": "Mulligan generator for hearthstone games"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Let's work together",
+      "description": "I'm interested in hearing about and participating in innovative projects and opportunities. If you wish to contact me, feel free to reach out on my social media / professional channels.",
+      "about": "Hector Zea. Built with Next.js, Shadcn and Tailwind CSS.",
+      "cvLinkName": "Download CV",
+      "cv": "cv_en_hz"
     }
   },
   "ProfileLayout": {

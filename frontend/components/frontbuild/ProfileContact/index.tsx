@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function ProfileContact() {
-  const t = useTranslations("HomePage");
+  const t = useTranslations("Profile.contact");
   return (
     <section
       id="contact"
@@ -12,17 +12,15 @@ export function ProfileContact() {
     >
       <div className="max-w-4xl w-full">
         <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-12">
-          Contact
+          {t("title")}
         </h3>
         <div className="space-y-8">
           <div>
             <h4 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
-              Trabajemos Juntos
+              {t("subtitle")}
             </h4>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Estoy interesado en escuchar y participar en projectos y
-              oportunidades innovadoras. Si deseas contactarme no dudes en
-              saludarme en mis redes / canales de trabajo
+              {t("description")}
             </p>
             <Button
               asChild
@@ -85,8 +83,7 @@ export function ProfileContact() {
 
         <div className="mt-20 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} Hector Zea. Built with Next.js and
-            Tailwind CSS.
+            © {new Date().getFullYear()} {t("about")}
           </p>
         </div>
       </div>

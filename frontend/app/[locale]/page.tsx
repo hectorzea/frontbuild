@@ -5,7 +5,7 @@ import { ProfileHero } from "@/components/frontbuild/ProfileHero";
 import { ProfileNavigation } from "@/components/frontbuild/ProfileNavigation";
 import { ProfileProjects } from "@/components/frontbuild/ProfileProjects";
 
-export default function ProfilePage() {
+export default function HomePage() {
   return (
     <div className="min-h-screen">
       <ProfileNavigation />
