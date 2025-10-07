@@ -3,7 +3,8 @@
     "title": "Hola, mi nombre es Hector Zea, este es mi portafolio personal, soy un ingeniero de software enfocado en construir aplicaciones web.",
     "profile": "Ir a mis proyectos",
     "cv": "cv_es_hz",
-    "cvLinkName": "Descargar CV"
+    "cvLinkName": "Descargar CV",
+    "about": "Hector Zea. Construido con Next.js, Shadcn y Tailwind CSS."
   },
   "ProfilePage": {
     "skills": {
@@ -18,17 +19,55 @@
       }
     }
   },
-  "ProfileLayout": {
-    "sidebarItem": {
-      "item1": "Acerca de mi",
-      "item2": "Educación",
-      "item3": "Testing y calidad",
-      "item4": "Filosofía de desarrollo",
-      "item5": "Mi metodología: Scrum Agile",
-      "item6": "Proyectos"
+  "Profile": {
+    "navigation": {
+      "about": "Acerca de mi",
+      "projects": "Proyectos",
+      "experience": "Experiencia",
+      "contact": "Contactame"
     },
-    "title": "Hector Zea",
-    "description": "Me gusta construir aplicaciones web con codigo de calidad. Soy un ingeniero de software basado en Berlin, Alemania."
+    "hero": {
+      "main": "Construyendo la web y tecnología con curiosidad, innovación y calidad",
+      "subtitle": "Me enfoco en el desarrollo de software abordando soluciones inteligentes a problemas complejos con curiosidad, calidad y con gran valor agregado."
+    },
+    "about": {
+      "title": "Acerca de mi",
+      "text_1": "Mi curiosidad y pasión por el mundo de la informática me llevó al desarrollo web y creación de soluciones escalables de alta calidad centradas en experiencias de usuario. Mi trabajo combina buenas prácticas de desarrollo que permiten al producto gran calidad y con un enfoque centrado en el usuario, aprovechando tecnologías de vanguardia.",
+      "text_2": "Desde el comienzo de mi carrera, he perfeccionado mis habilidades en el desarrollo web a través de múltiples proyectos de pequeña a gran escala, creando y mejorando funcionalidades. Desde mis inicios, mantuve mi curiosidad por Javascript, siendo mi lenguaje favorito y que es mejor cada día con Typescript.",
+      "text_3": "Mis preferencias tecnológicas comienzan con aplicaciones React en su mayoría con Next.js, Redux Toolkit y TypeScript, enfatizando pruebas unitarias, de integración y de UI, así como el monitoreo eficaz de la aplicación con Sentry asegurando una entrega continua de calidad.",
+      "text_4": "Tengo experiencia en conectar componentes de software, mediante la creación, mantenimiento y monitorización (Grafana, Prometheus) de APIs con Javascript hechas en NodeJS y usando Docker para su escalabilidad.",
+      "text_5": "Mi experiencia en diversos entornos de desarrollo, desde startups hasta empresas con alto posicionamiento, me ha dado la experiencia para poder desarrollar productos de pequeña a gran escala, con pasión y curiosidad por mejorar cada pieza de código."
+    },
+    "experience": {
+      "title": "Experiencia",
+      "friday_insurance_title": "Ingeniero de software",
+      "friday_insurance_description": "Desarrollo de nuevas funcionalidades y mantenimiento de aplicaciones SPA (self service portal & claim creation).",
+      "eventbrite_title": "Desarrollador Frontend",
+      "eventbrite_description": "Mejorar y mantener SPA de creacíon de eventos globales.",
+      "camonapp_title": "Ingeniero de Software",
+      "camonapp_description": "Desarrollo de SPA para monitorear creación de experiencias, mantenimiento de APIS",
+      "inclusion_cloud_title": "Desarrollador Frontend",
+      "inclusion_cloud_description": "Desarrollo y mantenimiento SPA's internas usando React, SAP Cloud Platform y UI5"
+    },
+    "projects": {
+      "title": "Proyectos",
+      "task_generator_title": "Task Generator",
+      "task_generator_description": "Generador de tareas simples para probar practicas CI/CD y estandares de desarrollo y testing",
+      "job_lint_title": "Job Linter",
+      "job_lint_description": "Herramienta para filtrar propuestas de trabajo usando una IA para extraccion inteligente",
+      "hearthstone_card_search_title": "Hearthstone Card Search",
+      "hearthstone_card_search_description": "Busqueda sencilla de cartas de hearthstone usando data de JSON API Hearthstone",
+      "mulligan_generator_title": "Mulligan Game Generator",
+      "mulligan_generator_description": "Permite generar y ver tablas de mulligan de cartas"
+    },
+    "contact": {
+      "title": "Contacto",
+      "subtitle": "Trabajemos Juntos",
+      "description": "Estoy interesado en escuchar y participar en projectos y oportunidades innovadoras. Si deseas contactarme no dudes en saludarme en mis redes / canales de trabajo",
+      "about": "Hector Zea. Construido con Next.js, Shadcn y Tailwind CSS.",
+      "cvLinkName": "Descargar CV",
+      "cv": "cv_es_hz"
+    }
   },
   "Tasks": {
     "title": "Easy Task Creator",

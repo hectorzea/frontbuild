@@ -8,18 +8,18 @@ jest.mock("react", () => ({
   use: () => ({ locale: "en" }),
 }));
 
-describe("Page", () => {
+describe("Home Page - ", () => {
   it("renders a heading", () => {
     render(
       <NextIntlClientProvider locale="en" messages={en}>
-        <HomePage params={Promise.resolve({ locale: "en" })} />
+        <HomePage />
       </NextIntlClientProvider>
     );
+    expect(screen.getByText("Hector Zea")).toBeInTheDocument();
     expect(
       screen.getByText(
-        "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications."
+        "Building the web and technology with curiosity, innovation, and quality"
       )
     ).toBeInTheDocument();
-    expect(screen.getByText("Go to my projects")).toBeInTheDocument();
   });
 });
