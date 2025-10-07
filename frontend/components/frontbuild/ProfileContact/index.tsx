@@ -42,7 +42,7 @@ export function ProfileContact() {
               </h5>
               <div className="space-y-3">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/hectorzea"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lg hover:text-accent transition-colors flex items-center gap-2"
@@ -51,7 +51,7 @@ export function ProfileContact() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/hectorazea"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-lg hover:text-accent transition-colors flex items-center gap-2"

@@ -10,9 +10,7 @@ const navItems = [
   { name: "contact", href: "#contact" },
 ];
 
-export interface IAppProps {}
-
-export function ProfileNavigation(props: IAppProps) {
+export function ProfileNavigation() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -55,7 +53,7 @@ export function ProfileNavigation(props: IAppProps) {
 
           <div className="flex gap-4 mt-8">
             <a
-              href="https://github.com"
+              href="https://github.com/hectorzea"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -63,20 +61,12 @@ export function ProfileNavigation(props: IAppProps) {
               GitHub
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/hectorazea"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Twitter
             </a>
           </div>
         </div>

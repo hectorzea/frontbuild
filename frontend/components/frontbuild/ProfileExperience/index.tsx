@@ -5,7 +5,7 @@ const experiences = [
     company: "FRIDAY Insurance",
     location: "Berlin, Alemania",
     description:
-      "Desarrollé y mantuve apps React con Next.js, Redux, TS, CSS. Aseguré calidad con CI/CD, Grafana, Sentry y Playwright. Colaboré con UX.",
+      "Desarrollo de nuevas funcionalidades y mantenimiento de aplicaciones SPA (self service portal & claim creation) ",
     technologies: [
       "React",
       "Next.js",
@@ -23,8 +23,7 @@ const experiences = [
     title: "Ingeniero de Software",
     company: "Eventbrite (Remoto)",
     location: "San Francisco, CA",
-    description:
-      "Mejoré el portal con React, TS y Redux. Apliqué TDD con Jest y React Testing Library. Monitoricé con Sentry y resolví errores.",
+    description: "Mejorar y mantener SPA de creacíon de eventos globales.",
     technologies: [
       "React",
       "TypeScript",
@@ -39,9 +38,8 @@ const experiences = [
     title: "Ingeniero Frontend",
     company: "CamonApp",
     location: "Argentina",
-    description:
-      "Desarrollé vistas e interfaces con React, Redux y Context. Integré backend en AWS con Express, colaborando con diseñadores.",
-    technologies: ["React", "Redux", "Context", "AWS", "Express"],
+    description: "Desarrollo de SPA para monitorear creación de experiencias",
+    technologies: ["React", "Redux", "ChartJS", "AWS", "Express"],
   },
   {
     period: "2016 - 2020",
@@ -49,7 +47,7 @@ const experiences = [
     company: "Inclusion Cloud",
     location: "Argentina",
     description:
-      "Creé vistas e interfaces para clientes con tecnologías frontend modernas. Usé SAP como backend y desarrollé con SAP Cloud Platform.",
+      "Desarrollo y mantenimiento SPA's internas usando React, SAP Cloud Platform y UI5",
     technologies: [
       "JavaScript",
       "React",
