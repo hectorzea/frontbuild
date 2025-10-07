@@ -12,6 +12,7 @@ export default function Navigation({ navigationItems }: NavigationProps) {
     <>
       {/* Mobile menu button */}
       <Button
+        data-testid="navigation-menu-button-mobile"
         variant="ghost"
         size="icon"
         className="fixed top-4 left-4 z-50 lg:hidden"
@@ -25,6 +26,7 @@ export default function Navigation({ navigationItems }: NavigationProps) {
         className={`fixed top-0 left-0 h-full w-64 bg-background border-r border-border z-40 transition-transform duration-300 lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
+        data-testid="navigation-menu-button-desktop"
       >
         <div className="flex flex-col h-full p-8">
           <div className="mb-16">
