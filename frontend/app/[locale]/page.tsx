@@ -17,6 +17,7 @@ export default function HomePage({
 }) {
   const { locale } = use(params);
   setRequestLocale(locale);
+  //test
   const t = useTranslations("HomePage");
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center space-y-6 mx-4">
