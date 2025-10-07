@@ -18,7 +18,7 @@ export function ModeToggle() {
   const router = useRouter();
 
   return (
-    <div className="flex w-[90px] justify-between absolute top-4 right-4">
+    <div className="flex w-[90px] justify-between fixed top-4 right-4">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
