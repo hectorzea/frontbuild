@@ -1,6 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export function ProfileContact() {
+  const t = useTranslations("HomePage");
   return (
     <section
       id="contact"
@@ -20,6 +24,21 @@ export function ProfileContact() {
               oportunidades innovadoras. Si deseas contactarme no dudes en
               saludarme en mis redes / canales de trabajo
             </p>
+            <Button
+              asChild
+              size={"lg"}
+              data-testid={"download-cv-button"}
+              className="mt-3"
+            >
+              <Link
+                href={`/files/${t("cv")}.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Downlod CV"
+              >
+                {t("cvLinkName")}
+              </Link>
+            </Button>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 pt-8">

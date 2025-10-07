@@ -1,33 +1,33 @@
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Task Generator",
     description:
-      "A full-featured e-commerce solution with real-time inventory management, payment processing, and analytics dashboard.",
-    link: "https://github.com",
+      "A simple task generator using the best practices of redux toolkit + jest",
+    link: "/projects/tasks",
     technologies: ["Next.js", "Stripe", "PostgreSQL", "Tailwind CSS"],
   },
   {
-    title: "Task Management App",
+    title: "Job Lint",
     description:
-      "Collaborative task management tool with real-time updates, team workspaces, and advanced filtering capabilities.",
-    link: "https://github.com",
+      "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
+    link: "/projects/job-check",
     technologies: ["React", "Firebase", "TypeScript", "Material-UI"],
   },
   {
-    title: "Developer Portfolio Template",
+    title: "Hearthstone Card Search",
     description:
-      "Open-source portfolio template for developers with dark mode, MDX blog, and project showcase.",
-    link: "https://github.com",
+      "Simple card search for Hearthstone Game using Hearthstone JSON API",
+    link: "/projects/hs-card-search",
     technologies: ["Next.js", "MDX", "Tailwind CSS", "Framer Motion"],
   },
   {
-    title: "API Documentation Generator",
-    description:
-      "Automated tool for generating beautiful API documentation from OpenAPI specifications with interactive examples.",
-    link: "https://github.com",
-    technologies: ["Node.js", "React", "OpenAPI", "Express"],
+    title: "Mulligan Generator",
+    description: "Mulligan generator for hearthstone games",
+    link: "/projects/hs-card-search/mulligan",
+    technologies: ["Node.js", "React", "OpenAPI", "Express", "Puppeteer"],
   },
 ];
 
@@ -43,11 +43,9 @@ export function ProfileProjects() {
         </h3>
         <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project, index) => (
-            <a
+            <Link
               key={index}
               href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="group p-6 rounded-lg border border-border hover:border-accent transition-all duration-300 hover:shadow-lg"
             >
               <div className="flex items-start justify-between mb-3">
@@ -66,7 +64,7 @@ export function ProfileProjects() {
                   </span>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
