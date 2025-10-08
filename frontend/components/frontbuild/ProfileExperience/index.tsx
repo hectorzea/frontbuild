@@ -100,7 +100,7 @@ export function ProfileExperience() {
                     {exp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full"
+                        className="px-3 py-1 text-xs text-accent rounded-full bg-slate-600 dark:bg-slate-200"
                       >
                         {tech}
                       </span>
