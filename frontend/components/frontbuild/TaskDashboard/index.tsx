@@ -1,5 +1,4 @@
 "use client";
-import { UserNav } from "@/components/frontbuild/UserNav";
 import { selectAllTasks } from "@/lib/features/tasks/tasksSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { DataTable } from "../DataTable";
@@ -25,9 +24,6 @@ export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
           <p className="text-sm text-muted-foreground sm:text-base">
             {subtitle}
           </p>
-        </div>
-        <div className="flex items-center space-x-2">
-          <UserNav />
         </div>
       </div>
       <DataTable data={tasks} columns={columns} testId={"tasks-table"} />

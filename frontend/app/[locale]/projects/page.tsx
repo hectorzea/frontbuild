@@ -1,48 +1,6 @@
-import ProjectCard from "@/components/frontbuild/Card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-
-const projects = [
-  {
-    title: "Task Generator",
-    subtitle:
-      "A simple task generator using the best practices of redux toolkit + jest",
-    stack: ["Next.js", "Redux Toolkit", "Jest", "Tailwind CSS"],
-    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
-    motivation:
-      "Having a simple app but robust with CI/CD, applying testing pyramid principles and using server components / client components",
-    link: "/projects/tasks",
-  },
-  {
-    title: "Job Lint",
-    subtitle:
-      "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
-    stack: ["Next.js", "Jest", "Tailwind CSS"],
-    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
-    motivation:
-      "Sometimes job descriptions are too long and have a lot of unnecessary information, this tool helps to filter the job description and return just the useful details",
-    link: "/projects/job-check",
-  },
-  {
-    title: "Hearthstone Card Search",
-    subtitle: "Simple card search for Hearthstone using the official API",
-    stack: ["Next.js", "Jest", "Tailwind CSS"],
-    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
-    motivation:
-      "Some of the pages that uses HS API are not very well designed, this tool helps to find cards and see their details in a simple way",
-    link: "/projects/hs-card-search",
-  },
-  {
-    title: "Mulligan Generator",
-    subtitle: "Mulligan generator for hearthstone matches",
-    stack: ["Next.js", "Jest", "Tailwind CSS"],
-    testingApproach: ["Unit Tests", "Integration Tests", "E2E Tests"],
-    motivation:
-      "Some of the custom decks of the daily basis are low sample rate and normal websites dont provide this kind of insights",
-    link: "/projects/hs-card-search/mulligan",
-  },
-];
 
 export default function ProjectsPage() {
   return (
@@ -61,11 +19,7 @@ export default function ProjectsPage() {
       </div>
       <h1 className="text-2xl">Proyectos</h1>
       <p className="text-xl my-3">Una lista de todos mis proyectos</p>
-      <div className="flex flex-col gap-6 md:flex-row">
-        {projects.map((project, index) => (
-          <ProjectCard project={project} key={index} />
-        ))}
-      </div>
+      <div className="bg-card"></div>
     </div>
   );
 }

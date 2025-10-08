@@ -17,7 +17,6 @@ const config: Config = {
     "<rootDir>/lib/**/*.{ts,tsx}",
     "<rootDir>/app/**/*.{ts,tsx}", // Incluye todos los archivos js, jsx, ts y tsx dentro de la carpeta app
     "!<rootDir>/app/types/**/*", // Excluye la carpeta app/types
-    // "!<rootDir>/app/[locale]/layout.tsx",
     "!<rootDir>/components/ui/**/*",
     "!<rootDir>/components/ThemeProvider.tsx",
   ],
