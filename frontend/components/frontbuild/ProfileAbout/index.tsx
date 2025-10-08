@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 export function ProfileAbout() {
-  const t = useTranslations("Profile.about");
+  const t = useTranslations("HomePage.about");
   return (
     <section
       id="about"
@@ -16,7 +16,6 @@ export function ProfileAbout() {
           <p>{t("text_2")}</p>
           <p>{t("text_3")}</p>
           <p>{t("text_4")}</p>
-          <p>{t("text_5")}</p>
         </div>
       </div>
     </section>

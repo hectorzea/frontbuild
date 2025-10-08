@@ -1,25 +1,5 @@
 {
   "HomePage": {
-    "title": "Hola, mi nombre es Hector Zea, este es mi portafolio personal, soy un ingeniero de software enfocado en construir aplicaciones web.",
-    "profile": "Ir a mis proyectos",
-    "cv": "cv_es_hz",
-    "cvLinkName": "Descargar CV",
-    "about": "Hector Zea. Construido con Next.js, Shadcn y Tailwind CSS."
-  },
-  "ProfilePage": {
-    "skills": {
-      "innovation": {
-        "description": "Tengo amplia experiencia y conocimientos en tecnologías frontend modernas como React, Angular, TypeScript y Redux, lo que me permite desarrollar aplicaciones web eficientes y escalables."
-      },
-      "curious": {
-        "description": "Siempre me apasiona aprender nuevas tecnologías y metodologías, lo que me permite adaptarme rápidamente a diferentes entornos de trabajo y aportar soluciones innovadoras a los desafíos que enfrento."
-      },
-      "deliver": {
-        "description": "Tengo siempre la motivación de entregar productos de alta calidad que cumplan con los requisitos del cliente y superen sus expectativas, asegurando que cada proyecto se complete a tiempo y dentro del presupuesto.  "
-      }
-    }
-  },
-  "Profile": {
     "navigation": {
       "about": "Acerca de mi",
       "projects": "Proyectos",
@@ -35,8 +15,7 @@
       "text_1": "Mi curiosidad y pasión por el mundo de la informática me llevó al desarrollo web y creación de soluciones escalables de alta calidad centradas en experiencias de usuario. Mi trabajo combina buenas prácticas de desarrollo que permiten al producto gran calidad y con un enfoque centrado en el usuario, aprovechando tecnologías de vanguardia.",
       "text_2": "Desde el comienzo de mi carrera, he perfeccionado mis habilidades en el desarrollo web a través de múltiples proyectos de pequeña a gran escala, creando y mejorando funcionalidades. Desde mis inicios, mantuve mi curiosidad por Javascript, siendo mi lenguaje favorito y que es mejor cada día con Typescript.",
       "text_3": "Mis preferencias tecnológicas comienzan con aplicaciones React en su mayoría con Next.js, Redux Toolkit y TypeScript, enfatizando pruebas unitarias, de integración y de UI, así como el monitoreo eficaz de la aplicación con Sentry asegurando una entrega continua de calidad.",
-      "text_4": "Tengo experiencia en conectar componentes de software, mediante la creación, mantenimiento y monitorización (Grafana, Prometheus) de APIs con Javascript hechas en NodeJS y usando Docker para su escalabilidad.",
-      "text_5": "Mi experiencia en diversos entornos de desarrollo, desde startups hasta empresas con alto posicionamiento, me ha dado la experiencia para poder desarrollar productos de pequeña a gran escala, con pasión y curiosidad por mejorar cada pieza de código."
+      "text_4": "Tengo experiencia en conectar componentes de software, mediante la creación, mantenimiento y monitorización (Grafana, Prometheus) de APIs con Javascript hechas en NodeJS y usando Docker para su escalabilidad."
     },
     "experience": {
       "title": "Experiencia",
@@ -72,62 +51,5 @@
   "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
-  },
-  "TestingPage": {
-    "testPath": {
-      "path1": {
-        "title": "What to test in a Frontend Application?",
-        "description": "First, we need to understand which component we want to apply a good quality of tests and what type of tests we want to cover (e.g: unit tests, integration tests or visual / snapshot tests)"
-      },
-      "path2": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path3": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path4": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path5": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path6": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      }
-    }
-  },
-  "CraftingSoftware": {
-    "title": "Crafting software title",
-    "craftingPath": {
-      "path1": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      },
-      "path2": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      },
-      "path3": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      },
-      "path4": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      },
-      "path5": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      },
-      "path6": {
-        "title": "Understanding the business",
-        "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
-      }
-    }
   }
 }

@@ -66,7 +66,7 @@ const experiences = [
 ];
 
 export function ProfileExperience() {
-  const t = useTranslations("Profile.experience");
+  const t = useTranslations("HomePage.experience");
   const translatedExperience = experiences.map((item) => ({
     ...item,
     title: t(`${item.id}_title`),
@@ -100,7 +100,7 @@ export function ProfileExperience() {
                     {exp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full"
+                        className="px-3 py-1 text-xs text-accent rounded-full bg-slate-600 dark:bg-slate-200"
                       >
                         {tech}
                       </span>

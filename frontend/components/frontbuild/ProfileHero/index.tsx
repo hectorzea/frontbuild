@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 
 export function ProfileHero() {
-  const t = useTranslations("Profile.hero");
+  const t = useTranslations("HomePage.hero");
   return (
     <section className="min-h-screen flex items-center justify-center px-6 md:px-12">
       <div className="max-w-4xl">

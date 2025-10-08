@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 export function ProfileContact() {
-  const t = useTranslations("Profile.contact");
+  const t = useTranslations("HomePage.contact");
   return (
     <section
       id="contact"

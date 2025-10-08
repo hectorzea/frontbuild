@@ -37,7 +37,7 @@ const projects = [
 ];
 
 export function ProfileProjects() {
-  const t = useTranslations("Profile.projects");
+  const t = useTranslations("HomePage.projects");
   const translatedProjects = projects.map((item) => ({
     ...item,
     title: t(`${item.id}_title`),
