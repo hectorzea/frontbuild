@@ -11,7 +11,7 @@ const navItems = [
 
 export function ProfileNavigation() {
   //todo general translation wrapper for functional?
-  const t = useTranslations("Profile.navigation");
+  const t = useTranslations("HomePage.navigation");
   const navigationItems = navItems.map((item) => ({
     ...item,
     name: t(item.name),

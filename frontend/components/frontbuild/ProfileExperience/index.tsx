@@ -66,7 +66,7 @@ const experiences = [
 ];
 
 export function ProfileExperience() {
-  const t = useTranslations("Profile.experience");
+  const t = useTranslations("HomePage.experience");
   const translatedExperience = experiences.map((item) => ({
     ...item,
     title: t(`${item.id}_title`),

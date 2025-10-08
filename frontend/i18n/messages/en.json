@@ -1,26 +1,5 @@
 {
   "HomePage": {
-    "title": "Hi, my name is Hector Zea, this is my personal portfolio, im a software enginer focused in building web applications.",
-    "profile": "Go to my projects",
-    "cv": "cv_en_hz",
-    "cvLinkName": "Download CV",
-    "about": "Hector Zea. Built with Next.js, Shadcn and Tailwind CSS."
-  },
-  "ProfilePage": {
-    "title": "Profile Page Title",
-    "skills": {
-      "innovation": {
-        "description": "Tengo amplia experiencia y conocimientos en tecnologías frontend modernas como React, Angular, TypeScript y Redux, lo que me permite desarrollar aplicaciones web eficientes y escalables."
-      },
-      "curious": {
-        "description": "Siempre me apasiona aprender nuevas tecnologías y metodologías, lo que me permite adaptarme rápidamente a diferentes entornos de trabajo y aportar soluciones innovadoras a los desafíos que enfrento."
-      },
-      "deliver": {
-        "description": "Tengo siempre la motivación de entregar productos de alta calidad que cumplan con los requisitos del cliente y superen sus expectativas, asegurando que cada proyecto se complete a tiempo y dentro del presupuesto.  "
-      }
-    }
-  },
-  "Profile": {
     "navigation": {
       "about": "About Me",
       "projects": "Projects",
@@ -36,8 +15,7 @@
       "text_1": "My curiosity and passion for the world of computer science led me to web development and the creation of high-quality, scalable solutions focused on user experiences. My work combines good development practices that ensure great product quality with a user-centric approach, leveraging cutting-edge technologies.",
       "text_2": "Since the beginning of my career, I have honed my skills in web development through multiple small to large-scale projects, creating and improving functionalities. From my beginnings, I maintained my curiosity for JavaScript, being my favorite language and one that gets better every day with TypeScript.",
       "text_3": "My technological preferences start with React applications, mostly with Next.js, Redux Toolkit, and TypeScript, emphasizing unit, integration, and UI testing, as well as effective application monitoring with Sentry, ensuring continuous quality delivery.",
-      "text_4": "I have experience connecting software components through the creation, maintenance, and monitoring (Grafana, Prometheus) of JavaScript APIs built in Node.js and using Docker for their scalability.",
-      "text_5": "My experience in diverse development environments, from startups to highly established companies, has given me the expertise to develop products from small to large scale, with passion and curiosity for improving every piece of code."
+      "text_4": "I have experience connecting software components through the creation, maintenance, and monitoring (Grafana, Prometheus) of JavaScript APIs built in Node.js and using Docker for their scalability."
     },
     "experience": {
       "title": "Experience",
@@ -69,51 +47,6 @@
       "cvLinkName": "Download CV",
       "cv": "cv_en_hz"
     }
-  },
-  "ProfileLayout": {
-    "sidebarItem": {
-      "item1": "About Me",
-      "item2": "Educación",
-      "item3": "Testing, My Way",
-      "item4": "Professional History",
-      "item5": "My Method: Agile Scrum",
-      "item6": "Projects"
-    },
-    "title": "Hector Zea",
-    "description": "I like to build things with code. Im a software engineer based in Berlin, Germany."
-  },
-  "TestingPage": {
-    "title": "Testing page title",
-    "testPath": {
-      "path1": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path2": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path3": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path4": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path5": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      },
-      "path6": {
-        "title": "Pruebas unitarias y de integración",
-        "description": "Implementé pruebas unitarias y de integración utilizando Jest y React Testing Library para asegurar la funcionalidad y estabilidad del código, logrando una cobertura de pruebas del 85%."
-      }
-    }
-  },
-  "CraftingSoftware": {
-    "title": "Understanding the business",
-    "description": "By understanding the business we ensure that technical quality goes aligned with company objectives"
   },
   "Tasks": {
     "title": "Easy Task Creator",
