@@ -17,7 +17,6 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { HearthstoneCardInfo } from "@/app/types";
-import { useMsw } from "@/hooks/useMsw";
 import { BrushCleaningIcon } from "lucide-react";
 
 const FormSchema = z.object({
@@ -27,7 +26,6 @@ const FormSchema = z.object({
 });
 
 export function HearthstoneCardSearchForm() {
-  const mswLoaded = useMsw();
   const [data, setData] = useState<HearthstoneCardInfo | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -39,7 +37,6 @@ export function HearthstoneCardSearchForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      console.log(`Calling API with mswLoaded in ${mswLoaded}`);
       setLoading(true);
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hs-card-search`,

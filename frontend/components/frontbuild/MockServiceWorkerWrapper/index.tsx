@@ -13,7 +13,7 @@ export default function MockServiceWorkerWrapper({
 
   useEffect(() => {
     async function enableMocks() {
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NEXT_PUBLIC_ENABLE_MSW === "true") {
         const { initMocks } = await import("@/app/mocks/setupMocks");
         await initMocks();
       }
