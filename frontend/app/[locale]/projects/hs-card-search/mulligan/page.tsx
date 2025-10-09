@@ -1,3 +1,4 @@
+import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
 import { MulliganTable } from "@/components/frontbuild/MulliganTable";
 import React from "react";
 
@@ -7,7 +8,9 @@ export default function MulliganPage() {
       data-testid="hs-mulligan-creator-page"
       className="flex flex-col gap-4 m-6"
     >
-      <MulliganTable />
+      <MockServiceWorkerWrapper>
+        <MulliganTable />
+      </MockServiceWorkerWrapper>
     </div>
   );
 }

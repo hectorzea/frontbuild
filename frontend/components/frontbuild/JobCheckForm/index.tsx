@@ -19,8 +19,6 @@ import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { JobOffer } from "@/app/types";
-import { useMsw } from "@/hooks/useMsw";
-
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -28,7 +26,6 @@ const FormSchema = z.object({
 });
 
 export function JobCheckForm() {
-  const mswLoaded = useMsw();
   const [data, setData] = useState<JobOffer | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -40,7 +37,6 @@ export function JobCheckForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      console.log(`Calling API with mswLoaded in ${mswLoaded}`);
       setLoading(true);
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
@@ -186,7 +182,9 @@ export function JobCheckForm() {
           </h3>
           <ul className="space-y-1 list-disc list-inside">
             {data?.recruitmentProcessSteps?.map(
-              (skill: string, index: number) => <li key={index}>{skill}</li>
+              (skill: string, index: number) => (
+                <li key={index}>{skill}</li>
+              )
             )}
           </ul>
           <Separator className="my-4" />

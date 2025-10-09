@@ -7,29 +7,29 @@ import { setTasks } from "@/lib/features/tasks/tasksSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-export const useFrontbuildApi = (mswLoaded: boolean) => {
+export const useFrontbuildApi = () => {
   const dispatch = useDispatch();
   const {
     data: tasksData,
     isSuccess: isSuccessGetTasks,
     isError: isErrorGetTasks,
-  } = useGetTasksQuery(undefined, { skip: !mswLoaded });
+  } = useGetTasksQuery();
 
   const {
     data: labels,
     isSuccess: isSuccessGetLabels,
     isError: isErrorGetLabels,
-  } = useGetLabelsQuery(undefined, { skip: !mswLoaded });
+  } = useGetLabelsQuery();
   const {
     data: statuses,
     isSuccess: isSuccessGetStatus,
     isError: isErrorGetStatuses,
-  } = useGetStatusQuery(undefined, { skip: !mswLoaded });
+  } = useGetStatusQuery();
   const {
     data: priorities,
     isSuccess: isSuccessGetPriorities,
     isError: isErrorGetPriorities,
-  } = useGetPriorityQuery(undefined, { skip: !mswLoaded });
+  } = useGetPriorityQuery();
 
   const apiHasError =
     isErrorGetTasks ||

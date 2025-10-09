@@ -1,15 +1,7 @@
 import React from "react";
-import { setupServer } from "msw/node";
 import { screen } from "@testing-library/react";
 import { MulliganTable } from ".";
 import { renderWithProviders } from "@/app/test-utils";
-import { handlers } from "@/app/mocks/handlers";
-
-const server = setupServer(...handlers);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
 
 test("Loads <MulliganTable /> and check for main elements", async () => {
   renderWithProviders(<MulliganTable />, {
