@@ -15,9 +15,11 @@ export function MulliganTable() {
     classId: "DEATHKNIGHT",
     type: "discarded",
   });
+
   if (!initialCards || !discardedCards) {
     return undefined;
   }
+
   return (
     <div>
       <p className="text-xl" data-testid="mulligan-table-title">
