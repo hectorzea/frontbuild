@@ -1,12 +1,4 @@
-import { setupServer } from "msw/node";
-import { handlers } from "./handlers";
 import { addTaskApi, updateTaskApi } from "@/lib/features/tasks/api";
-
-const server = setupServer(...handlers);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
 
 describe("MSW Handlers", () => {
   it("POST add task response tests", async () => {

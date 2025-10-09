@@ -9,7 +9,7 @@ jest.mock("react", () => ({
 }));
 
 describe("Home Page - ", () => {
-  it("renders a heading", () => {
+  it("Renders Complete UI", () => {
     render(
       <NextIntlClientProvider locale="en" messages={en}>
         <HomePage />

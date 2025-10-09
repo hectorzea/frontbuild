@@ -1,6 +1,12 @@
 import "@testing-library/jest-dom";
 import "@/app/mocks/matchMedia.mock";
 import { loadEnvConfig } from "@next/env";
+import { server } from "@/app/mocks/server";
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
 jest.mock("next/navigation", () => jest.requireActual("next-router-mock"));
 
 jest.mock("next-intl/server", () => ({

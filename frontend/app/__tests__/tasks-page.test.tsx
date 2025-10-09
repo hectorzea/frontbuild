@@ -1,23 +1,12 @@
 import { screen, waitFor } from "@testing-library/react";
 import TasksPage from "@/app/[locale]/projects/tasks/page";
 import { renderWithProviders } from "@/app/test-utils";
-import { setupServer } from "msw/node";
-
-import { handlers } from "@/app/mocks/handlers";
 import { http, HttpResponse } from "msw";
 import { NextIntlClientProvider } from "next-intl";
 import en from "@/i18n/messages/en.json";
-const server = setupServer(...handlers);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+import { server } from "../mocks/server";
 
 describe("TasksPage", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it("renders TasksPage Page", async () => {
     renderWithProviders(
       <NextIntlClientProvider locale="en" messages={en}>
@@ -35,6 +24,7 @@ describe("TasksPage", () => {
       expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
     });
   });
+
   it("Renders <Loading> when backend Error", async () => {
     server.use(
       http.get(
