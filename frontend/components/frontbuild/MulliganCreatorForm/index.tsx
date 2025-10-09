@@ -22,10 +22,7 @@ type MulliganCreatorFormProps = {
   route?: string;
 };
 
-import { useMsw } from "@/hooks/useMsw";
-
 export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
-  const mswLoaded = useMsw();
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof cardMatchResultSchema>>({
@@ -38,7 +35,6 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
 
   async function onSubmit(data: z.infer<typeof cardMatchResultSchema>) {
     try {
-      console.log(`msw --> ${mswLoaded}`);
       setLoading(true);
       await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,

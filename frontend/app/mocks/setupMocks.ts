@@ -1,14 +1,9 @@
 import { handlers } from "./handlers";
 
-export const setUpMocks = async () => {
+export async function initMocks() {
   if (typeof window !== "undefined") {
-    try {
-      const { setupWorker } = await import("msw/browser");
-      const worker = setupWorker(...handlers);
-      await worker.start({ onUnhandledRequest: "bypass" });
-    } catch (error) {
-      console.error("MSW: Error setting up or starting worker:", error);
-    }
+    const { setupWorker } = await import("msw/browser");
+    const worker = setupWorker(...handlers);
+    await worker.start({ onUnhandledRequest: "bypass" });
   }
-  return { workerExists: false };
-};
+}
