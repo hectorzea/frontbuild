@@ -11,8 +11,16 @@ type GetMulliganRequestParams = {
 
 export const hearthstoneApiHandlers = [
   http.get<GetMulliganRequestParams>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan?classId=DEATHKNIGHT&type=initial`,
-    () => {
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan`,
+    ({ request }) => {
+      const url = new URL(request.url);
+      const productId = url.searchParams.get("classId");
+      const type = url.searchParams.get("type");
+
+      if (!productId || !type) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
       return HttpResponse.json([
         {
           totalGames: 1,
