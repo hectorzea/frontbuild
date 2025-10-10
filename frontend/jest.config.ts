@@ -11,7 +11,7 @@ const config: Config = {
   coverageProvider: "v8",
   testEnvironment: "jest-fixed-jsdom",
   //configuracion de archhivos a ejecutar antes de cada prueba
-  setupFilesAfterEnv: ["<rootDir>/app/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   collectCoverageFrom: [
     "<rootDir>/components/**/*.{ts,tsx}",
     "<rootDir>/lib/**/*.{ts,tsx}",
