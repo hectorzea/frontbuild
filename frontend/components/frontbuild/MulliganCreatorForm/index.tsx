@@ -20,6 +20,7 @@ type MulliganCreatorFormProps = {
 export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const form = useForm<z.infer<typeof cardMatchResultSchema>>({
     resolver: zodResolver(cardMatchResultSchema),
     defaultValues: {
@@ -36,7 +37,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
         data
       );
       toast("Match has been added.");
-      setLoading(false);
+      setError(false);
       if (route) {
         router.push(route);
       } else {
@@ -44,6 +45,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
       }
     } catch (error) {
       console.error("Error calling hz-server api:", error);
+      setError(true);
     }
   }
 
@@ -105,6 +107,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
             Close
           </Button>
         </div>
+        {error && <p className="text-red-400">Error adding match</p>}
       </form>
     </Form>
   );
