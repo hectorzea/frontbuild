@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import AddNewMatchPage from "@/app/[locale]/projects/hs-card-search/mulligan/new-match/page";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
@@ -70,6 +70,10 @@ describe("Add New Match Page - ", () => {
 
     await user.click(screen.getByTestId("submit-button-card-match-result"));
 
-    expect(screen.getByText("Error adding match.")).toBeInTheDocument();
+    // expect(screen.getByText("Error adding match.")).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText("Error adding match.")).toBeInTheDocument();
+    });
   });
 });
