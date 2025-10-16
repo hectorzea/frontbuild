@@ -36,7 +36,6 @@ describe("Add New Match Page - ", () => {
     });
   });
 
-  //test
   it("Render full UI - Create match, ERROR Scenario (Internal Server Error)", async () => {
     server.use(
       http.post(
