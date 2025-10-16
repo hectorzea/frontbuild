@@ -44,7 +44,8 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
         router.back();
       }
     } catch (error) {
-      console.error("Error calling hz-server api:", error);
+      console.log("Error calling hz-server api:", error);
+      setLoading(false);
       setError(true);
     }
   }
@@ -107,7 +108,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
             Close
           </Button>
         </div>
-        {error && <p className="text-red-400">Error adding match</p>}
+        {error && <p className="text-red-400 mt-3">Error adding match.</p>}
       </form>
     </Form>
   );
