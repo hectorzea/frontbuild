@@ -36,7 +36,7 @@ describe("Add New Match Page - ", () => {
     });
   });
 
-  it("Render full UI - Create match, ERROR Scenario", async () => {
+  it("Render full UI - Create match, ERROR Scenario (Internal Server Error)", async () => {
     server.use(
       http.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
