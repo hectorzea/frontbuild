@@ -70,8 +70,6 @@ describe("Add New Match Page - ", () => {
 
     await user.click(screen.getByTestId("submit-button-card-match-result"));
 
-    // expect(screen.getByText("Error adding match.")).toBeInTheDocument();
-
     await waitFor(() => {
       expect(screen.getByText("Error adding match.")).toBeInTheDocument();
     });
