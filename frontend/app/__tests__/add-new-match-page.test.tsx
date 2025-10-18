@@ -69,6 +69,7 @@ describe("Add New Match Page - ", () => {
 
     await user.click(screen.getByTestId("submit-button-card-match-result"));
 
+    //probar aqui async vs no async en race conditions para futuras pruebas de asincronismos
     await waitFor(() => {
       expect(screen.getByText("Error adding match.")).toBeInTheDocument();
     });
