@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { Task, TaskSuccessResponseSchema } from "../types/api/Api";
 import { generateMockObjectId } from "@/lib/utils";
+import { Task, TaskSuccessResponseSchema } from "@/app/types/api/Api";
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<

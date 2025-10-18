@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 import { TaskForm } from ".";
 import { renderWithProviders } from "@/app/test-utils";
-import { tasks } from "@/app/mocks/taskHandlers";
+import { tasks } from "@/app/mocks/handlers/taskHandlers";
 
 test("Loads <TaskForm /> and check for main elements", async () => {
   renderWithProviders(
@@ -87,7 +87,7 @@ test("Loads <TaskForm /> and check for main elements", async () => {
           ],
         },
       },
-    },
+    }
   );
   expect(await screen.findByTestId("task-form-title")).toBeInTheDocument();
   expect(await screen.findByTestId("task-form-status")).toBeInTheDocument();
