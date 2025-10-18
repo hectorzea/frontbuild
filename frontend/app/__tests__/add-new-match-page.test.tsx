@@ -5,6 +5,7 @@ import mockRouter from "next-router-mock";
 import { server } from "@/app/mocks/server";
 import { http, HttpResponse } from "msw";
 
+//Integration tests for adding new match, check different behaviors.
 describe("Add New Match Page - ", () => {
   it("Render full UI - Create match, SUCCESS Scenario", async () => {
     const user = userEvent.setup();
