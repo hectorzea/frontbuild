@@ -96,3 +96,16 @@ export interface CardMatchResult {
   winrate: number;
   cardName: string;
 }
+
+export interface Game {
+  myClassId: string;
+  oponentClassId: string;
+  numberOfTurns: string;
+  matchResult: string;
+  mulligan: Mulligan;
+}
+
+export interface Mulligan {
+  initialCardsIds: string[];
+  discardedCardsIds: string[];
+}

@@ -4,7 +4,7 @@ import { renderWithProviders } from "@/app/test-utils";
 import { http, HttpResponse } from "msw";
 import { NextIntlClientProvider } from "next-intl";
 import en from "@/i18n/messages/en.json";
-import { server } from "../mocks/server";
+import { server } from "@/app/mocks/server";
 
 describe("TasksPage", () => {
   it("renders TasksPage Page", async () => {

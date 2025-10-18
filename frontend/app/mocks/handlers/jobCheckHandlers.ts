@@ -1,5 +1,5 @@
+import { JobOffer } from "@/app/types";
 import { http, HttpResponse } from "msw";
-import { JobOffer } from "../types";
 
 //request bodies
 type CheckJobRequestBody = {
