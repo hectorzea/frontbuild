@@ -1,16 +1,13 @@
 "use client";
-
 import { Table } from "@tanstack/react-table";
 import { X } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./DataTableViewOptions";
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter";
-import { useState } from "react";
-import { TaskDialog } from "@/components/frontbuild/TaskDialog";
 import { useAppSelector } from "@/lib/hooks";
 import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice";
+import Link from "next/link";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -22,7 +19,6 @@ export function DataTableToolbar<TData>({
   toolbarEnabled,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const priorities = useAppSelector(selectPriorities);
   const statuses = useAppSelector(selectStatuses);
 
@@ -74,18 +70,11 @@ export function DataTableToolbar<TData>({
           size={"sm"}
           data-testid={"add-task-button"}
           className="w-full sm:w-auto mt-2 sm:mt-0"
-          onClick={() => setIsDialogOpen(true)}
         >
-          Add Task
+          <Link href={"/projects/tasks/new"}>New Task</Link>
         </Button>
         <DataTableViewOptions table={table} />
       </div>
-      <TaskDialog
-        mode={"add"}
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-        task={{ _id: "", title: "", label: "", priority: "", status: "" }}
-      />
     </div>
   );
 }

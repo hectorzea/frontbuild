@@ -19,7 +19,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { taskSchema } from "@/app/schemas";
-import { TaskDialog } from "@/components/frontbuild/TaskDialog";
 import { useState } from "react";
 import { ConfirmationDialog } from "@/components/frontbuild/ConfirmationDialog";
 import { toast } from "sonner";
@@ -28,6 +27,7 @@ import { useDispatch } from "react-redux";
 import { selectLabels } from "@/lib/features/app/appSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { deleteTaskApi } from "@/lib/features/tasks/api";
+import Link from "next/link";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -38,7 +38,6 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
   const dispatch = useDispatch();
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
   const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
     useState<boolean>(false);
   const labels = useAppSelector(selectLabels);
@@ -69,9 +68,11 @@ export function DataTableRowActions<TData>({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          <DropdownMenuItem onClick={() => setIsDialogOpen(true)}>
-            Edit Task
-          </DropdownMenuItem>
+          {/* TODO mejorar esto a rutas paralelas */}
+          <Link href={`/projects/tasks/edit/${task._id}`}>Edit Task</Link>
+          {/* <DropdownMenuItem>
+            <Link href={`/tasks/edit/${task._id}`}>Edit Task</Link>
+          </DropdownMenuItem> */}
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />
@@ -94,12 +95,6 @@ export function DataTableRowActions<TData>({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <TaskDialog
-        task={task}
-        mode={"edit"}
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-      />
       <ConfirmationDialog
         open={isConfirmationDialogOpen}
         onOpenChange={setConfirmationDialogOpen}
