@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -22,8 +23,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label, Priority, Status } from "@/app/types/api/Api";
-import Box from "ui-box";
-import { TaskMode } from "@/components/frontbuild/TaskDialog/types";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { addTask, modifyTask } from "@/lib/features/tasks/tasksSlice";
@@ -34,22 +33,21 @@ import {
   selectStatuses,
 } from "@/lib/features/app/appSlice";
 import { updateTaskApi, addTaskApi } from "@/lib/features/tasks/api";
+// import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface TaskFormProps {
-  defaultValues?: Partial<Task>;
-  onOpenChange: (open: boolean) => void;
-  mode: TaskMode;
+  route?: string;
+  id?: string;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({
-  defaultValues,
-  mode,
-  onOpenChange,
-}) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
+  console.log(route);
+  const router = useRouter();
   const dispatch = useDispatch();
   const form = useForm<Task>({
     resolver: zodResolver(taskSchema),
-    defaultValues,
+    defaultValues: { title: "", label: "", priority: "", status: "" },
   });
 
   const labels = useAppSelector(selectLabels);
@@ -59,17 +57,16 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   const onSubmit = async (values: z.infer<typeof taskSchema>) => {
     try {
       let task;
-      if (mode === "add") {
+      if (!id) {
         task = await addTaskApi(values);
         dispatch(addTask(task));
-        toast("Task has been created.");
-      } else if (mode === "edit") {
-        if (!values._id) throw new Error("Task ID is required for editing.");
+        router.back();
+      } else {
         task = await updateTaskApi(values);
         dispatch(modifyTask(task));
         toast("Task has been updated.");
+        router.back();
       }
-      onOpenChange(false);
     } catch (error) {
       console.error("Error submitting task:", error);
       toast.error("Failed to save task.");
@@ -186,11 +183,19 @@ export const TaskForm: React.FC<TaskFormProps> = ({
             </FormItem>
           )}
         />
-        <Box display="flex" justifyContent="end">
+        <div className="flex justify-end gap-2">
           <Button data-testid="task-form-submit-button" type="submit">
             Save Task
           </Button>
-        </Box>
+          <Button
+            data-testid="task-form-submit-button"
+            onClick={() => {
+              router.back();
+            }}
+          >
+            Close Task
+          </Button>
+        </div>
       </form>
     </Form>
   );

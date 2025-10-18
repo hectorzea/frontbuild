@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import AddNewMatchPage from "@/app/[locale]/projects/hs-card-search/mulligan/new-match/page";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
-import { server } from "@/app/mocks/server";
+import { server } from "@/mocks/server";
 import { http, HttpResponse } from "msw";
 
 //Integration tests for adding new match, check different behaviors.

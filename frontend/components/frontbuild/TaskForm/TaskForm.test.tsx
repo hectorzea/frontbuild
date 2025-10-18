@@ -2,7 +2,7 @@ import React from "react";
 import { screen } from "@testing-library/react";
 import { TaskForm } from ".";
 import { renderWithProviders } from "@/app/test-utils";
-import { tasks } from "@/app/mocks/handlers/taskHandlers";
+import { tasks } from "@/mocks/handlers/taskHandlers";
 
 test("Loads <TaskForm /> and check for main elements", async () => {
   renderWithProviders(
