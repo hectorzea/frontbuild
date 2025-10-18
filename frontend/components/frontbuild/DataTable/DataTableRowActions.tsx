@@ -69,6 +69,7 @@ export function DataTableRowActions<TData>({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
+          {/* TODO mejorar esto a rutas paralelas */}
           <DropdownMenuItem onClick={() => setIsDialogOpen(true)}>
             Edit Task
           </DropdownMenuItem>
