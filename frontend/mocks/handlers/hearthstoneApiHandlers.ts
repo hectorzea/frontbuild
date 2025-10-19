@@ -1,10 +1,10 @@
 import { http, HttpResponse } from "msw";
-import { Game, HearthstoneCardInfo } from "../../types";
 import {
   cardMatchMockScenarios,
   cardSearchMockData,
   mulliganMockData,
 } from "../data/mockData";
+import { Game, HearthstoneCardInfo } from "@/app/types";
 
 // --- Search Card Mock Types
 type SearchCardRequestBody = { cardName: string };
