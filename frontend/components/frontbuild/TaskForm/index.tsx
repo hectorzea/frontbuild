@@ -26,15 +26,10 @@ import { Label, Priority, Status } from "@/app/types/api/Api";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { addTask, modifyTask } from "@/lib/features/tasks/tasksSlice";
-import { useAppSelector } from "@/lib/hooks";
-import {
-  selectLabels,
-  selectPriorities,
-  selectStatuses,
-} from "@/lib/features/app/appSlice";
 import { updateTaskApi, addTaskApi } from "@/lib/features/tasks/api";
 // import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { labels, priorities, statuses } from "./data";
 
 interface TaskFormProps {
   route?: string;
@@ -49,10 +44,6 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
     resolver: zodResolver(taskSchema),
     defaultValues: { title: "", label: "", priority: "", status: "" },
   });
-
-  const labels = useAppSelector(selectLabels);
-  const statuses = useAppSelector(selectStatuses);
-  const priorities = useAppSelector(selectPriorities);
 
   const onSubmit = async (values: z.infer<typeof taskSchema>) => {
     try {

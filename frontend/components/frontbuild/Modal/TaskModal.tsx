@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/dialog";
 import MockServiceWorkerWrapper from "../MockServiceWorkerWrapper";
 import { TaskForm } from "../TaskForm";
+import { TaskLoader } from "../TaskForm/TaskLoader";
 
 interface AddNewMatchModalProps {
   route?: string;
@@ -20,7 +21,9 @@ export default function TaskModal({ route, id }: AddNewMatchModalProps) {
         <DialogDescription></DialogDescription>
       </DialogHeader>
       <MockServiceWorkerWrapper>
-        <TaskForm route={route} id={id} />
+        <TaskLoader id={id}>
+          <TaskForm route={route} id={id} />
+        </TaskLoader>
       </MockServiceWorkerWrapper>
     </ModalWrapper>
   );

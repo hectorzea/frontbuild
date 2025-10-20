@@ -41,9 +41,18 @@ export const tasks = [
 ];
 
 export const taskHandlers = [
-  http.get(`${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`, () => {
-    return HttpResponse.json(tasks);
-  }),
+  http.get(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
+    () => {
+      return HttpResponse.json(tasks);
+    }
+  ),
+  http.get(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
+    () => {
+      return HttpResponse.json(tasks);
+    }
+  ),
   http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`,
     async ({ request }) => {

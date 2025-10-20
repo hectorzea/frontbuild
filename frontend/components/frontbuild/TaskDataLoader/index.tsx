@@ -8,9 +8,9 @@ type TaskDataLoaderProps = {
 };
 
 const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
-  const { apiHasError } = useFrontbuildApi();
+  const { isErrorGetTasks } = useFrontbuildApi();
 
-  if (apiHasError) {
+  if (isErrorGetTasks) {
     return (
       <div className="flex flex-col h-screen items-center justify-center gap-y-2">
         <Loading />
