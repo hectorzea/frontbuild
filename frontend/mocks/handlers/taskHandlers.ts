@@ -49,8 +49,10 @@ export const taskHandlers = [
   ),
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
-    () => {
-      return HttpResponse.json(tasks);
+    ({ params }) => {
+      const { id } = params;
+      const mockTask = tasks.find((t) => t._id === id);
+      return HttpResponse.json(mockTask);
     }
   ),
   http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(

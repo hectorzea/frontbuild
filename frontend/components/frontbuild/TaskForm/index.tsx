@@ -25,11 +25,16 @@ import {
 import { Label, Priority, Status } from "@/app/types/api/Api";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { addTask, modifyTask } from "@/lib/features/tasks/tasksSlice";
+import {
+  addTask,
+  modifyTask,
+  selectTask,
+} from "@/lib/features/tasks/tasksSlice";
 import { updateTaskApi, addTaskApi } from "@/lib/features/tasks/api";
 // import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { labels, priorities, statuses } from "./data";
+import { useAppSelector } from "@/lib/hooks";
 
 interface TaskFormProps {
   route?: string;
@@ -37,12 +42,14 @@ interface TaskFormProps {
 }
 
 export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
-  console.log(route);
+  console.log("Route:", route);
   const router = useRouter();
   const dispatch = useDispatch();
+  const task = useAppSelector(selectTask);
   const form = useForm<Task>({
     resolver: zodResolver(taskSchema),
-    defaultValues: { title: "", label: "", priority: "", status: "" },
+    defaultValues: { status: "", label: "", priority: "", title: "" },
+    values: task,
   });
 
   const onSubmit = async (values: z.infer<typeof taskSchema>) => {
@@ -88,9 +95,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           control={form.control}
           name="status"
           render={({ field }) => (
-            <FormItem>
+            // added key field https://github.com/shadcn-ui/ui/issues/1253
+            <FormItem key={field.value}>
               <FormLabel>Status</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger data-testid="task-form-status">
                     <SelectValue placeholder="Select a status" />
@@ -118,9 +126,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           control={form.control}
           name="label"
           render={({ field }) => (
-            <FormItem>
+            <FormItem key={field.value}>
               <FormLabel>Label</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl data-testid="task-form-label">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a label" />
@@ -148,9 +156,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           control={form.control}
           name="priority"
           render={({ field }) => (
-            <FormItem>
+            <FormItem key={field.value}>
               <FormLabel>Priority</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl data-testid="task-form-priority">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a priority" />
@@ -175,10 +183,15 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           )}
         />
         <div className="flex justify-end gap-2">
-          <Button data-testid="task-form-submit-button" type="submit">
-            Save Task
+          <Button
+            className="bg-green-500"
+            data-testid="task-form-submit-button btn-primary"
+            type="submit"
+          >
+            {id ? "Edit Task" : "Save Task"}
           </Button>
           <Button
+            type="button"
             data-testid="task-form-submit-button"
             onClick={() => {
               router.back();

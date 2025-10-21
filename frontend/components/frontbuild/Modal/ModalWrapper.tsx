@@ -1,23 +1,29 @@
 "use client";
 import { type FC, type ReactNode } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { useRouter } from "next/navigation";
 interface ModalWindowProps {
   children: ReactNode;
   route?: string;
 }
 
 const ModalWrapper: FC<ModalWindowProps> = ({ children, route }) => {
-  console.log(route);
+  const router = useRouter();
   return (
-    <Dialog defaultOpen={true}>
+    <Dialog
+      defaultOpen={true}
+      onOpenChange={() => {
+        router.back();
+      }}
+    >
       <DialogContent
         className="sm:max-w-[425px]"
-        //TODO PARA EVITAR QUE CIERRE EL DIALOGO PERO ESTO DEBERIA SER FLEXIBE
-        onEscapeKeyDown={(e) => {
-          e.preventDefault();
+        //TODO: can we still improve this?
+        onEscapeKeyDown={() => {
+          router.push(route ? route : "");
         }}
-        onInteractOutside={(e) => {
-          e.preventDefault();
+        onInteractOutside={() => {
+          router.push(route ? route : "");
         }}
       >
         {children}

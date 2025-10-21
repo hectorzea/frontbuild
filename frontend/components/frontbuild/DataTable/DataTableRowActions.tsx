@@ -27,7 +27,7 @@ import { useDispatch } from "react-redux";
 import { selectLabels } from "@/lib/features/app/appSlice";
 import { useAppSelector } from "@/lib/hooks";
 import { deleteTaskApi } from "@/lib/features/tasks/api";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -38,6 +38,7 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
   const dispatch = useDispatch();
+  const router = useRouter();
   const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
     useState<boolean>(false);
   const labels = useAppSelector(selectLabels);
@@ -68,11 +69,13 @@ export function DataTableRowActions<TData>({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          {/* TODO mejorar esto a rutas paralelas */}
-          <Link href={`/projects/tasks/edit/${task._id}`}>Edit Task</Link>
-          {/* <DropdownMenuItem>
-            <Link href={`/tasks/edit/${task._id}`}>Edit Task</Link>
-          </DropdownMenuItem> */}
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/projects/tasks/edit/${task._id}`);
+            }}
+          >
+            Edit Task
+          </DropdownMenuItem>
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>
           <DropdownMenuSeparator />

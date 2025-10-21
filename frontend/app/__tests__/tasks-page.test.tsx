@@ -28,7 +28,7 @@ describe("TasksPage", () => {
   it("Renders <Loading> when backend Error", async () => {
     server.use(
       http.get(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
+        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
         }

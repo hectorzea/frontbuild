@@ -3,16 +3,21 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface TasksState {
   tasks: Task[];
+  task?: Task;
 }
 
 const initialState: TasksState = {
   tasks: [],
+  task: undefined,
 };
 
 export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
+    setTask: (state, action: PayloadAction<Task>) => {
+      state.task = action.payload;
+    },
     setTasks: (state, action: PayloadAction<Task[]>) => {
       state.tasks = action.payload;
     },
@@ -33,13 +38,15 @@ export const tasksSlice = createSlice({
     },
   },
   selectors: {
-    selectAllTasks: (task) => task.tasks,
+    selectAllTasks: (tasksState) => tasksState.tasks,
+    selectTask: (tasksState) => tasksState.task,
   },
   // extraReducers: (builder) => {
   //   // handle here async actions if necessary
   // },
 });
 
-export const { setTasks, addTask, removeTask, modifyTask } = tasksSlice.actions;
+export const { setTasks, setTask, addTask, removeTask, modifyTask } =
+  tasksSlice.actions;
 
-export const { selectAllTasks } = tasksSlice.selectors;
+export const { selectAllTasks, selectTask } = tasksSlice.selectors;
