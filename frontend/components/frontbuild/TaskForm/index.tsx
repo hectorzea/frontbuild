@@ -37,12 +37,10 @@ import { labels, priorities, statuses } from "./data";
 import { useAppSelector } from "@/lib/hooks";
 
 interface TaskFormProps {
-  route?: string;
   id?: string;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
-  console.log("Route:", route);
+export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const task = useAppSelector(selectTask);
@@ -98,7 +96,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
             // added key field https://github.com/shadcn-ui/ui/issues/1253
             <FormItem key={field.value}>
               <FormLabel>Status</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              <Select onValueChange={field.onChange} {...field}>
                 <FormControl>
                   <SelectTrigger data-testid="task-form-status">
                     <SelectValue placeholder="Select a status" />
@@ -128,7 +126,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           render={({ field }) => (
             <FormItem key={field.value}>
               <FormLabel>Label</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              <Select onValueChange={field.onChange} {...field}>
                 <FormControl data-testid="task-form-label">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a label" />
@@ -158,7 +156,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ route, id }) => {
           render={({ field }) => (
             <FormItem key={field.value}>
               <FormLabel>Priority</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              {/* value={field.value} es lo mismo a {...field} */}
+              <Select onValueChange={field.onChange} {...field}>
                 <FormControl data-testid="task-form-priority">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a priority" />

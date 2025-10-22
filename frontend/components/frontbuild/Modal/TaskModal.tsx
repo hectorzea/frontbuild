@@ -22,7 +22,7 @@ export default function TaskModal({ route, id }: AddNewMatchModalProps) {
       </DialogHeader>
       <MockServiceWorkerWrapper>
         <TaskLoader id={id}>
-          <TaskForm route={route} id={id} />
+          <TaskForm id={id} />
         </TaskLoader>
       </MockServiceWorkerWrapper>
     </ModalWrapper>

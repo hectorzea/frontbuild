@@ -5,15 +5,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 export interface IAppProps {
-  id?: string;
+  id: string;
   children: React.ReactNode;
 }
 
-export function TaskEditLoader({ id = "", children }: IAppProps) {
+export function TaskEditLoader({ id, children }: IAppProps) {
   const dispatch = useDispatch();
   const {
     data: tasksData,
-    isLoading,
     isSuccess: isSuccessGetTasks,
     isError: isErrorGetTasks,
   } = useGetTaskByIdQuery(id);
@@ -25,15 +24,13 @@ export function TaskEditLoader({ id = "", children }: IAppProps) {
     }
   }, [dispatch, tasksData, isSuccessGetTasks]);
 
-  if (isLoading) {
-    return <>Loading getting data... </>;
-  }
-
   if (isErrorGetTasks) {
     return <>Error on getting tasks...</>;
   }
 
   if (isSuccessGetTasks) {
-    return children;
+    return <>{children}</>;
   }
+
+  return <>Loading...</>;
 }
