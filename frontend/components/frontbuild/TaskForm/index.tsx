@@ -57,11 +57,12 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
         task = await addTaskApi(values);
         dispatch(addTask(task));
         router.back();
+        toast("Task has been created.");
       } else {
         task = await updateTaskApi(values);
         dispatch(modifyTask(task));
-        toast("Task has been updated.");
         router.back();
+        toast("Task has been updated");
       }
     } catch (error) {
       console.error("Error submitting task:", error);
@@ -97,19 +98,15 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
             <FormItem key={field.value}>
               <FormLabel>Status</FormLabel>
               <Select onValueChange={field.onChange} {...field}>
-                <FormControl>
-                  <SelectTrigger data-testid="task-form-status">
+                <FormControl data-testid="task-form-status">
+                  <SelectTrigger>
                     <SelectValue placeholder="Select a status" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   <SelectGroup>
                     {statuses?.map((status: Status) => (
-                      <SelectItem
-                        value={status.value}
-                        key={status.value}
-                        data-testid={`status-item-${status.value}`}
-                      >
+                      <SelectItem value={status.value} key={status.value}>
                         {status.label}
                       </SelectItem>
                     ))}
@@ -184,14 +181,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
         <div className="flex justify-end gap-2">
           <Button
             className="bg-green-500"
-            data-testid="task-form-submit-button btn-primary"
+            data-testid="task-form-submit-button"
             type="submit"
           >
             {id ? "Edit Task" : "Save Task"}
           </Button>
           <Button
             type="button"
-            data-testid="task-form-submit-button"
+            data-testid="close-task-form-submit-button"
             onClick={() => {
               router.back();
             }}

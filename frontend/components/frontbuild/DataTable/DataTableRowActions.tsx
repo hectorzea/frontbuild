@@ -63,6 +63,7 @@ export function DataTableRowActions<TData>({
           <Button
             variant="ghost"
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+            data-testid={`${task._id}-actions-button`}
           >
             <MoreHorizontal />
             <span className="sr-only">Open menu</span>
