@@ -23,5 +23,5 @@ export const useFrontbuildApi = () => {
     }
   }, [dispatch, tasksData, isSuccessGetTasks, isErrorGetTasks]);
 
-  return { isErrorGetTasks };
+  return { isErrorGetTasks, isSuccessGetTasks };
 };

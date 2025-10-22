@@ -8,17 +8,19 @@ type TaskDataLoaderProps = {
 };
 
 const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
-  const { isErrorGetTasks } = useFrontbuildApi();
+  const { isErrorGetTasks, isSuccessGetTasks } = useFrontbuildApi();
 
   if (isErrorGetTasks) {
     return (
       <div className="flex flex-col h-screen items-center justify-center gap-y-2">
-        <Loading />
         An error has ocurred while loading tasks from the API.
       </div>
     );
   }
-  return <>{children}</>;
+
+  if (isSuccessGetTasks) return <>{children}</>;
+
+  return <Loading />;
 };
 
 export default TaskDataLoader;

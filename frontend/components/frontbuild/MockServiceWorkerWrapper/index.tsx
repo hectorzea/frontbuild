@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import { useEffect } from "react";
+import { Loading } from "../Loading";
 
 export interface IMockServiceWorkerWrapperProps {
   children: React.ReactNode;
@@ -31,7 +32,12 @@ export default function MockServiceWorkerWrapper({
   }, []);
 
   if (!isMockReady) {
-    return <div>Loading mocks...</div>;
+    return (
+      <>
+        <p>Loading Mocks</p>
+        <Loading />
+      </>
+    );
   }
 
   return <>{children}</>;

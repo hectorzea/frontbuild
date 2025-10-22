@@ -3,6 +3,7 @@ import { useGetTaskByIdQuery } from "@/lib/features/tasks/tasksApiSlice";
 import { setTask } from "@/lib/features/tasks/tasksSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Loading } from "../Loading";
 
 export interface IAppProps {
   id: string;
@@ -32,5 +33,10 @@ export function TaskEditLoader({ id, children }: IAppProps) {
     return <>{children}</>;
   }
 
-  return <>Loading...</>;
+  return (
+    <>
+      Loading task
+      <Loading />
+    </>
+  );
 }
