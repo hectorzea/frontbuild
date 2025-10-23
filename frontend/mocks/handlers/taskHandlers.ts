@@ -40,6 +40,8 @@ export const tasks = [
   },
 ];
 
+export const editTaskMockId: string = tasks[0]._id;
+
 export const taskHandlers = [
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
