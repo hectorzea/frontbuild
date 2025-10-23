@@ -4,6 +4,7 @@ import { setTask } from "@/lib/features/tasks/tasksSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Loading } from "../Loading";
+import ServerError from "@/components/common/Error";
 
 export interface IAppProps {
   id: string;
@@ -26,9 +27,13 @@ export function TaskEditLoader({ id, children }: IAppProps) {
   }, [dispatch, tasksData, isSuccessGetTasks]);
 
   if (isErrorGetTasks) {
-    return <>Error on getting tasks...</>;
+    return (
+      <ServerError
+        message={"Error getting task by id"}
+        description="Please, find the correct id and try again later"
+      />
+    );
   }
-
   if (isSuccessGetTasks) {
     return <>{children}</>;
   }

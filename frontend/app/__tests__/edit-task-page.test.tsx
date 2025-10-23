@@ -12,7 +12,7 @@ describe("Edit Task page", () => {
     renderWithProviders(await EditTaskPage({ params: paramsPromise }));
 
     await waitFor(() => {
-      expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
+      expect(screen.getByText("Error getting task by id")).toBeInTheDocument();
     });
   });
 
@@ -22,6 +22,9 @@ describe("Edit Task page", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
+      expect(screen.getByLabelText("Title")).toHaveValue(
+        "Do something with the tests"
+      );
     });
   });
 
@@ -45,6 +48,7 @@ describe("Edit Task page", () => {
     // Esto es CORRECTO, queryByTestId devuelve NULL de un elemento pero sigue ejecutando el test
     await waitFor(() => {
       expect(screen.queryByTestId("task-form-title")).not.toBeInTheDocument();
+      expect(screen.getByText("Error getting task by id")).toBeInTheDocument();
     });
   });
 });

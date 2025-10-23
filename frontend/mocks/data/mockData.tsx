@@ -1,3 +1,4 @@
+import { Task } from "@/app/schemas";
 import { HearthstoneMatchCreatedResponse } from "../handlers/hearthstoneApiHandlers";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
@@ -110,4 +111,56 @@ export const cardSearchMockData = {
       ],
     },
   ],
+};
+
+type FindTaskByIdMockScenarios = Record<string, MockScenarioFindById>;
+
+type MockScenarioFindById = SuccessResponseFindById | ErrorResponseFindById;
+
+type SuccessResponseFindById = {
+  status: 200;
+  response: Task;
+};
+type ErrorResponseFindById = {
+  status: 500 | 404;
+  response: {
+    message: string;
+  };
+};
+
+export const tasksMock = [
+  {
+    _id: "67574211b5599f1ebce84868",
+    title: "Do something with the tests",
+    status: "done",
+    label: "epic",
+    priority: "high",
+  },
+  {
+    _id: "675743bc6331e0a65f16a42a",
+    title: "Run backend in streams",
+    status: "done",
+    label: "epic",
+    priority: "high",
+  },
+  {
+    _id: "6760816d7f14e013cb7a9656",
+    title: "Render pipelines without a trace",
+    status: "backlog",
+    label: "feature",
+    priority: "low",
+  },
+];
+
+export const taskByIdMockResponseScenario: FindTaskByIdMockScenarios = {
+  "67574211b5599f1ebce84868": {
+    status: 200,
+    response: tasksMock[0],
+  },
+  "675743bc6331e0a65f16a42m": {
+    status: 404,
+    response: {
+      message: "Task not found",
+    },
+  },
 };
