@@ -19,15 +19,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { taskSchema } from "@/app/schemas";
-import { TaskDialog } from "@/components/frontbuild/TaskDialog";
 import { useState } from "react";
 import { ConfirmationDialog } from "@/components/frontbuild/ConfirmationDialog";
 import { toast } from "sonner";
 import { removeTask } from "@/lib/features/tasks/tasksSlice";
 import { useDispatch } from "react-redux";
-import { selectLabels } from "@/lib/features/app/appSlice";
-import { useAppSelector } from "@/lib/hooks";
 import { deleteTaskApi } from "@/lib/features/tasks/api";
+import { useRouter } from "next/navigation";
+import { labels } from "@/components/frontbuild/TaskForm/data";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -38,10 +37,9 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
   const dispatch = useDispatch();
-  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const router = useRouter();
   const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
     useState<boolean>(false);
-  const labels = useAppSelector(selectLabels);
 
   const onDeleteTask = async () => {
     try {
@@ -63,13 +61,18 @@ export function DataTableRowActions<TData>({
           <Button
             variant="ghost"
             className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+            data-testid={`${task._id}-actions-button`}
           >
             <MoreHorizontal />
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[160px]">
-          <DropdownMenuItem onClick={() => setIsDialogOpen(true)}>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/projects/tasks/edit/${task._id}`);
+            }}
+          >
             Edit Task
           </DropdownMenuItem>
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
@@ -94,12 +97,6 @@ export function DataTableRowActions<TData>({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <TaskDialog
-        task={task}
-        mode={"edit"}
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-      />
       <ConfirmationDialog
         open={isConfirmationDialogOpen}
         onOpenChange={setConfirmationDialogOpen}

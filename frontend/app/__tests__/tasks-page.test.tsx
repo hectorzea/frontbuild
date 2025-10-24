@@ -4,7 +4,7 @@ import { renderWithProviders } from "@/app/test-utils";
 import { http, HttpResponse } from "msw";
 import { NextIntlClientProvider } from "next-intl";
 import en from "@/i18n/messages/en.json";
-import { server } from "@/app/mocks/server";
+import { server } from "@/mocks/server";
 
 describe("TasksPage", () => {
   it("renders TasksPage Page", async () => {
@@ -28,7 +28,7 @@ describe("TasksPage", () => {
   it("Renders <Loading> when backend Error", async () => {
     server.use(
       http.get(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks`,
+        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
         }

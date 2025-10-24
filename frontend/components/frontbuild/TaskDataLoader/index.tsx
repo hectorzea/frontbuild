@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Loading } from "@/components/frontbuild/Loading";
+import { Loading } from "@/components/common/Loading";
 import { useFrontbuildApi } from "@/hooks/useFrontbuildApi";
 
 type TaskDataLoaderProps = {
@@ -8,17 +8,19 @@ type TaskDataLoaderProps = {
 };
 
 const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
-  const { apiHasError } = useFrontbuildApi();
+  const { isErrorGetTasks, isSuccessGetTasks } = useFrontbuildApi();
 
-  if (apiHasError) {
+  if (isErrorGetTasks) {
     return (
       <div className="flex flex-col h-screen items-center justify-center gap-y-2">
-        <Loading />
         An error has ocurred while loading tasks from the API.
       </div>
     );
   }
-  return <>{children}</>;
+
+  if (isSuccessGetTasks) return <>{children}</>;
+
+  return <Loading loadingText="Loading tasks" />;
 };
 
 export default TaskDataLoader;

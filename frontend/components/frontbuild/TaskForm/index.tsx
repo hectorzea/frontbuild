@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -22,54 +23,47 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label, Priority, Status } from "@/app/types/api/Api";
-import Box from "ui-box";
-import { TaskMode } from "@/components/frontbuild/TaskDialog/types";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
-import { addTask, modifyTask } from "@/lib/features/tasks/tasksSlice";
-import { useAppSelector } from "@/lib/hooks";
 import {
-  selectLabels,
-  selectPriorities,
-  selectStatuses,
-} from "@/lib/features/app/appSlice";
+  addTask,
+  modifyTask,
+  selectTask,
+} from "@/lib/features/tasks/tasksSlice";
 import { updateTaskApi, addTaskApi } from "@/lib/features/tasks/api";
+// import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { labels, priorities, statuses } from "./data";
+import { useAppSelector } from "@/lib/hooks";
 
 interface TaskFormProps {
-  defaultValues?: Partial<Task>;
-  onOpenChange: (open: boolean) => void;
-  mode: TaskMode;
+  id?: string;
 }
 
-export const TaskForm: React.FC<TaskFormProps> = ({
-  defaultValues,
-  mode,
-  onOpenChange,
-}) => {
+export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
+  const task = useAppSelector(selectTask);
   const form = useForm<Task>({
     resolver: zodResolver(taskSchema),
-    defaultValues,
+    defaultValues: { status: "", label: "", priority: "", title: "" },
+    values: task,
   });
-
-  const labels = useAppSelector(selectLabels);
-  const statuses = useAppSelector(selectStatuses);
-  const priorities = useAppSelector(selectPriorities);
 
   const onSubmit = async (values: z.infer<typeof taskSchema>) => {
     try {
       let task;
-      if (mode === "add") {
+      if (!id) {
         task = await addTaskApi(values);
         dispatch(addTask(task));
+        router.back();
         toast("Task has been created.");
-      } else if (mode === "edit") {
-        if (!values._id) throw new Error("Task ID is required for editing.");
+      } else {
         task = await updateTaskApi(values);
         dispatch(modifyTask(task));
-        toast("Task has been updated.");
+        router.back();
+        toast("Task has been updated");
       }
-      onOpenChange(false);
     } catch (error) {
       console.error("Error submitting task:", error);
       toast.error("Failed to save task.");
@@ -88,8 +82,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({
               <FormControl>
                 <Input
                   placeholder="Task title"
-                  {...field}
                   data-testid="task-form-title"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -100,22 +94,19 @@ export const TaskForm: React.FC<TaskFormProps> = ({
           control={form.control}
           name="status"
           render={({ field }) => (
-            <FormItem>
+            // added key field https://github.com/shadcn-ui/ui/issues/1253
+            <FormItem key={field.value}>
               <FormLabel>Status</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger data-testid="task-form-status">
+              <Select onValueChange={field.onChange} {...field}>
+                <FormControl data-testid="task-form-status">
+                  <SelectTrigger>
                     <SelectValue placeholder="Select a status" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   <SelectGroup>
                     {statuses?.map((status: Status) => (
-                      <SelectItem
-                        value={status.value}
-                        key={status.value}
-                        data-testid={`status-item-${status.value}`}
-                      >
+                      <SelectItem value={status.value} key={status.value}>
                         {status.label}
                       </SelectItem>
                     ))}
@@ -130,9 +121,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({
           control={form.control}
           name="label"
           render={({ field }) => (
-            <FormItem>
+            <FormItem key={field.value}>
               <FormLabel>Label</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} {...field}>
                 <FormControl data-testid="task-form-label">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a label" />
@@ -160,9 +151,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({
           control={form.control}
           name="priority"
           render={({ field }) => (
-            <FormItem>
+            <FormItem key={field.value}>
               <FormLabel>Priority</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              {/* value={field.value} es lo mismo a {...field} */}
+              <Select onValueChange={field.onChange} {...field}>
                 <FormControl data-testid="task-form-priority">
                   <SelectTrigger>
                     <SelectValue placeholder="Select a priority" />
@@ -186,11 +178,24 @@ export const TaskForm: React.FC<TaskFormProps> = ({
             </FormItem>
           )}
         />
-        <Box display="flex" justifyContent="end">
-          <Button data-testid="task-form-submit-button" type="submit">
-            Save Task
+        <div className="flex justify-end gap-2">
+          <Button
+            className="bg-green-500"
+            data-testid="task-form-submit-button"
+            type="submit"
+          >
+            {id ? "Edit Task" : "Save Task"}
           </Button>
-        </Box>
+          <Button
+            type="button"
+            data-testid="close-task-form-submit-button"
+            onClick={() => {
+              router.back();
+            }}
+          >
+            Close Task
+          </Button>
+        </div>
       </form>
     </Form>
   );

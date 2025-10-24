@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
-import "@/app/mocks/matchMedia.mock";
+import "@/mocks/matchMedia.mock";
 import { loadEnvConfig } from "@next/env";
-import { server } from "@/app/mocks/server";
+import { server } from "@/mocks/server";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

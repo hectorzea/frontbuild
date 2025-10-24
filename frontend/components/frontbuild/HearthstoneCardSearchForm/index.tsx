@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loading } from "@/components/frontbuild/Loading";
+import { Loading } from "@/components/common/Loading";
 import Image from "next/image";
 import {
   Form,
