@@ -3,7 +3,7 @@ import { useGetTaskByIdQuery } from "@/lib/features/tasks/tasksApiSlice";
 import { setTask } from "@/lib/features/tasks/tasksSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Loading } from "../Loading";
+import { Loading } from "../../common/Loading";
 import ServerError from "@/components/common/Error";
 
 export interface IAppProps {

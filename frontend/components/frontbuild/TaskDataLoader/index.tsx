@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Loading } from "@/components/frontbuild/Loading";
+import { Loading } from "@/components/common/Loading";
 import { useFrontbuildApi } from "@/hooks/useFrontbuildApi";
 
 type TaskDataLoaderProps = {
@@ -20,7 +20,7 @@ const TaskDataLoader = ({ children }: TaskDataLoaderProps) => {
 
   if (isSuccessGetTasks) return <>{children}</>;
 
-  return <Loading />;
+  return <Loading loadingText="Loading tasks" />;
 };
 
 export default TaskDataLoader;
