@@ -5,9 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTableViewOptions } from "./DataTableViewOptions";
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter";
-import { useAppSelector } from "@/lib/hooks";
-import { selectPriorities, selectStatuses } from "@/lib/features/app/appSlice";
 import Link from "next/link";
+import { priorities, statuses } from "@/components/frontbuild/TaskForm/data";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -19,8 +18,6 @@ export function DataTableToolbar<TData>({
   toolbarEnabled,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
-  const priorities = useAppSelector(selectPriorities);
-  const statuses = useAppSelector(selectStatuses);
 
   if (!toolbarEnabled) {
     return null;
@@ -43,7 +40,7 @@ export function DataTableToolbar<TData>({
             <DataTableFacetedFilter
               column={table.getColumn("status")}
               title="Status"
-              options={statuses!}
+              options={statuses}
               filterType="status"
             />
           )}
@@ -52,7 +49,7 @@ export function DataTableToolbar<TData>({
               column={table.getColumn("priority")}
               title="Priority"
               filterType="priority"
-              options={priorities!}
+              options={priorities}
             />
           )}
         </div>

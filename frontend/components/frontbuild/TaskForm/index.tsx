@@ -82,8 +82,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
               <FormControl>
                 <Input
                   placeholder="Task title"
-                  {...field}
                   data-testid="task-form-title"
+                  {...field}
                 />
               </FormControl>
               <FormMessage />

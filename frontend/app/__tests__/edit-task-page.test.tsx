@@ -6,7 +6,6 @@ import { server } from "@/mocks/server";
 import { http, HttpResponse } from "msw";
 
 describe("Edit Task page", () => {
-  //TODO VER si crear un componente Not found
   it("should render task not found id page - WRONG ID", async () => {
     const paramsPromise = Promise.resolve({ id: "123123" });
     renderWithProviders(await EditTaskPage({ params: paramsPromise }));

@@ -24,10 +24,9 @@ import { ConfirmationDialog } from "@/components/frontbuild/ConfirmationDialog";
 import { toast } from "sonner";
 import { removeTask } from "@/lib/features/tasks/tasksSlice";
 import { useDispatch } from "react-redux";
-import { selectLabels } from "@/lib/features/app/appSlice";
-import { useAppSelector } from "@/lib/hooks";
 import { deleteTaskApi } from "@/lib/features/tasks/api";
 import { useRouter } from "next/navigation";
+import { labels } from "@/components/frontbuild/TaskForm/data";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -41,7 +40,6 @@ export function DataTableRowActions<TData>({
   const router = useRouter();
   const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
     useState<boolean>(false);
-  const labels = useAppSelector(selectLabels);
 
   const onDeleteTask = async () => {
     try {
