@@ -36,23 +36,23 @@ export function DataTableRowActions<TData>({
   row,
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
-  const dispatch = useDispatch();
   const router = useRouter();
-  const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
-    useState<boolean>(false);
+  // const dispatch = useDispatch();
+  // const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
+  //   useState<boolean>(false);
 
-  const onDeleteTask = async () => {
-    try {
-      await deleteTaskApi(task._id!);
-      setConfirmationDialogOpen(false);
-      dispatch(removeTask(task._id!));
-      toast("Task deleted");
-    } catch (error) {
-      setConfirmationDialogOpen(false);
-      toast("Error on deleting task");
-      console.error(error);
-    }
-  };
+  // const onDeleteTask = async () => {
+  //   try {
+  //     await deleteTaskApi(task._id!);
+  //     setConfirmationDialogOpen(false);
+  //     dispatch(removeTask(task._id!));
+  //     toast("Task deleted");
+  //   } catch (error) {
+  //     setConfirmationDialogOpen(false);
+  //     toast("Error on deleting task");
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <>
@@ -91,17 +91,16 @@ export function DataTableRowActions<TData>({
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => setConfirmationDialogOpen(true)}>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(`/projects/tasks/delete/${task._id}`);
+            }}
+          >
             Delete
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-      <ConfirmationDialog
-        open={isConfirmationDialogOpen}
-        onOpenChange={setConfirmationDialogOpen}
-        onAccept={onDeleteTask}
-      />
     </>
   );
 }
