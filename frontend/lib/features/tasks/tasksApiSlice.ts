@@ -43,16 +43,16 @@ export const tasksApiSlice = createApi({
         };
       },
     }),
-    // todo leer put vs patch
-    // updateTask: build.mutation<Task, Task>({
-    //   query(body) {
-    //     return {
-    //       url: `${id}`,
-    //       method: "PUT",
-    //       body,
-    //     };
-    //   },
-    // }),
+    updateTask: build.mutation<Task, Task>({
+      query(body) {
+        return {
+          url: `${body._id}`,
+          method: "PATCH",
+          body,
+        };
+      },
+      invalidatesTags: ["Tasks"],
+    }),
   }),
 });
 
@@ -63,4 +63,5 @@ export const {
   useGetTaskByIdQuery,
   useDeleteTaskMutation,
   useCreateTaskMutation,
+  useUpdateTaskMutation,
 } = tasksApiSlice;

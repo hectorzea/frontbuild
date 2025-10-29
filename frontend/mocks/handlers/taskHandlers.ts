@@ -13,7 +13,11 @@ type TaskGeneralPayloadBody = Pick<
 >;
 type AddTaskRequestBody = TaskGeneralPayloadBody;
 type UpdateTaskRequestBody = Task;
+type PatchTaskSuccessResponse = Task;
 type DeleteTaskSuccessResponse = null;
+
+//Todo generate GENERIC error message from coming backed any library / ui
+export type TaskGenericErrorResponse = { message: string };
 
 //params
 interface TaskRequestParams {
@@ -22,13 +26,16 @@ interface TaskRequestParams {
 
 export const editTaskMockId: string = tasks[0]._id;
 
+//todo update handlers new api
 export const taskHandlers = [
+  ////todo finish like patch
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     () => {
       return HttpResponse.json(tasks);
     }
   ),
+  ////todo finish like patch
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
     ({ params }) => {
@@ -40,6 +47,7 @@ export const taskHandlers = [
       });
     }
   ),
+  ////todo finish like patch
   http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`,
     async ({ request }) => {
@@ -50,17 +58,23 @@ export const taskHandlers = [
       });
     }
   ),
-  http.put<TaskRequestParams, UpdateTaskRequestBody, TaskSuccessResponseSchema>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`,
+  http.patch<
+    TaskRequestParams,
+    UpdateTaskRequestBody,
+    PatchTaskSuccessResponse | TaskGenericErrorResponse
+  >(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
     async ({ request, params }) => {
-      const { id } = params;
       const taskData = await request.json();
-      return HttpResponse.json({
-        message: "Task modified successfully",
-        task: { ...taskData, _id: id },
+      const { id } = params;
+      const defaultId = id as string;
+      const mockResponse = taskByIdMockResponseScenario[defaultId];
+      return HttpResponse.json(taskData, {
+        status: mockResponse.status,
       });
     }
   ),
+  ////todo finish like patch
   http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`,
     async ({}) => {

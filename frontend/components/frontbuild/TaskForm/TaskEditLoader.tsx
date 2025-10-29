@@ -38,10 +38,5 @@ export function TaskEditLoader({ id, children }: IAppProps) {
     return <>{children}</>;
   }
 
-  return (
-    <>
-      Loading task
-      <Loading />
-    </>
-  );
+  return <Loading loadingText="Loading task..." />;
 }

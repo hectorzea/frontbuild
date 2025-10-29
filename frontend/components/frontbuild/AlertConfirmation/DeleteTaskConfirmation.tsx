@@ -35,6 +35,7 @@ export function DeleteTaskConfirmation({ id }: IAppProps) {
   };
 
   return (
+    //todo que en esta vista se muestre error state y loading state y hacer tests sobre eso
     <AlertDialog open={open}>
       <AlertDialogContent>
         <AlertDialogHeader>

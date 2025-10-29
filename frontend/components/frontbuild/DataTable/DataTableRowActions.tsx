@@ -19,12 +19,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { taskSchema } from "@/app/schemas";
-import { useState } from "react";
-import { ConfirmationDialog } from "@/components/frontbuild/ConfirmationDialog";
-import { toast } from "sonner";
-import { removeTask } from "@/lib/features/tasks/tasksSlice";
-import { useDispatch } from "react-redux";
-import { deleteTaskApi } from "@/lib/features/tasks/api";
 import { useRouter } from "next/navigation";
 import { labels } from "@/components/frontbuild/TaskForm/data";
 
@@ -37,22 +31,10 @@ export function DataTableRowActions<TData>({
 }: DataTableRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
   const router = useRouter();
-  // const dispatch = useDispatch();
-  // const [isConfirmationDialogOpen, setConfirmationDialogOpen] =
-  //   useState<boolean>(false);
 
-  // const onDeleteTask = async () => {
-  //   try {
-  //     await deleteTaskApi(task._id!);
-  //     setConfirmationDialogOpen(false);
-  //     dispatch(removeTask(task._id!));
-  //     toast("Task deleted");
-  //   } catch (error) {
-  //     setConfirmationDialogOpen(false);
-  //     toast("Error on deleting task");
-  //     console.error(error);
-  //   }
-  // };
+  const navigateToTasks = () => {
+    router.push(`/projects/tasks/delete/${task._id}`);
+  };
 
   return (
     <>
@@ -91,11 +73,7 @@ export function DataTableRowActions<TData>({
             </DropdownMenuSubContent>
           </DropdownMenuSub>
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => {
-              router.push(`/projects/tasks/delete/${task._id}`);
-            }}
-          >
+          <DropdownMenuItem onClick={navigateToTasks}>
             Delete
             <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
           </DropdownMenuItem>

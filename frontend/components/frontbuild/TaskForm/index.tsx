@@ -30,12 +30,13 @@ import {
   modifyTask,
   selectTask,
 } from "@/lib/features/tasks/tasksSlice";
-import { updateTaskApi } from "@/lib/features/tasks/api";
-// import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { labels, priorities, statuses } from "./data";
 import { useAppSelector } from "@/lib/hooks";
-import { useCreateTaskMutation } from "@/lib/features/tasks/tasksApiSlice";
+import {
+  useCreateTaskMutation,
+  useUpdateTaskMutation,
+} from "@/lib/features/tasks/tasksApiSlice";
 
 interface TaskFormProps {
   id?: string;
@@ -48,6 +49,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
   const dispatch = useDispatch();
   const task = useAppSelector(selectTask);
   const [createTask] = useCreateTaskMutation();
+  const [updateTask, { isError, isSuccess }] = useUpdateTaskMutation();
   const form = useForm<Task>({
     resolver: zodResolver(taskSchema),
     defaultValues: { status: "", label: "", priority: "", title: "" },
@@ -63,8 +65,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
         router.back();
         toast("Task has been created.");
       } else {
-        task = await updateTaskApi(values);
-        dispatch(modifyTask(task));
+        task = await updateTask(values);
+        dispatch(modifyTask(task.data!));
         router.back();
         toast("Task has been updated");
       }
@@ -82,12 +84,13 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel htmlFor={field.name}>Title</FormLabel>
               <FormControl>
                 <Input
+                  {...field}
+                  id={field.name}
                   placeholder="Task title"
                   data-testid="task-form-title"
-                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -200,6 +203,9 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
             Close Task
           </Button>
         </div>
+        {/*TODO: generar transicion despues con framer motion  */}
+        {isError && <p>Error editing task</p>}
+        {isSuccess && <p>Edit task success</p>}
       </form>
     </Form>
   );
