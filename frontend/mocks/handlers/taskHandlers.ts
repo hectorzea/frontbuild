@@ -49,13 +49,15 @@ export const taskHandlers = [
   ),
   ////todo finish like patch
   http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/add`,
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     async ({ request }) => {
       const taskData = await request.json();
-      return HttpResponse.json({
-        message: "Task added successfully",
-        task: { ...taskData, _id: generateMockObjectId() },
-      });
+      return HttpResponse.json(
+        { ...taskData, _id: generateMockObjectId() },
+        {
+          status: 200,
+        }
+      );
     }
   ),
   http.patch<
