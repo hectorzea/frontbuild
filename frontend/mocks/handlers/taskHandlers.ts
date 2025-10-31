@@ -14,7 +14,7 @@ type TaskGeneralPayloadBody = Pick<
 type AddTaskRequestBody = TaskGeneralPayloadBody;
 type UpdateTaskRequestBody = Task;
 type PatchTaskSuccessResponse = Task;
-type DeleteTaskSuccessResponse = null;
+type DeleteTaskSuccessResponse = { message: string; success: boolean };
 
 //Todo generate GENERIC error message from coming backed any library / ui
 export type TaskGenericErrorResponse = { message: string };
@@ -78,14 +78,14 @@ export const taskHandlers = [
   ),
   ////todo finish like patch
   http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_API_URL}/api/tasks/:id`,
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
     async ({}) => {
-      return new HttpResponse(null, {
-        status: 204,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      return HttpResponse.json(
+        { success: true, message: "Deleted correctly" },
+        {
+          status: 200,
+        }
+      );
     }
   ),
 ];
