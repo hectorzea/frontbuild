@@ -1,10 +1,11 @@
 import { http, HttpResponse } from "msw";
-import { generateMockObjectId } from "@/lib/utils";
-import { Task, TaskSuccessResponseSchema } from "@/app/types/api/Api";
 import {
+  createTaskMockScenario,
+  deleteTaskMockScenario,
   taskByIdMockResponseScenario,
   tasksMock as tasks,
 } from "@/mocks/data/mockData";
+import { Task } from "@/app/types/api/Api";
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<
@@ -12,6 +13,7 @@ type TaskGeneralPayloadBody = Pick<
   "title" | "status" | "label" | "priority"
 >;
 type AddTaskRequestBody = TaskGeneralPayloadBody;
+type CreateTaskSuccessResponse = Task;
 type UpdateTaskRequestBody = Task;
 type PatchTaskSuccessResponse = Task;
 type DeleteTaskSuccessResponse = { message: string; success: boolean };
@@ -26,16 +28,13 @@ interface TaskRequestParams {
 
 export const editTaskMockId: string = tasks[0]._id;
 
-//todo update handlers new api
 export const taskHandlers = [
-  ////todo finish like patch
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     () => {
       return HttpResponse.json(tasks);
     }
   ),
-  ////todo finish like patch
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
     ({ params }) => {
@@ -47,17 +46,19 @@ export const taskHandlers = [
       });
     }
   ),
-  ////todo finish like patch
-  http.post<AddTaskRequestBody, TaskSuccessResponseSchema>(
+  http.post<
+    never,
+    AddTaskRequestBody,
+    CreateTaskSuccessResponse | TaskGenericErrorResponse
+  >(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     async ({ request }) => {
       const taskData = await request.json();
-      return HttpResponse.json(
-        { ...taskData, _id: generateMockObjectId() },
-        {
-          status: 200,
-        }
-      );
+      const defaultId = taskData.title as string;
+      const mockResponse = createTaskMockScenario[defaultId];
+      return HttpResponse.json(taskData, {
+        status: mockResponse.status,
+      });
     }
   ),
   http.patch<
@@ -76,16 +77,18 @@ export const taskHandlers = [
       });
     }
   ),
-  ////todo finish like patch
-  http.delete<TaskRequestParams, DeleteTaskSuccessResponse>(
+  http.delete<
+    TaskRequestParams,
+    DeleteTaskSuccessResponse | TaskGenericErrorResponse
+  >(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
-    async ({}) => {
-      return HttpResponse.json(
-        { success: true, message: "Deleted correctly" },
-        {
-          status: 200,
-        }
-      );
+    async ({ params }) => {
+      const { id } = params;
+      const defaultId = id as string;
+      const mockResponse = deleteTaskMockScenario[defaultId];
+      return HttpResponse.json(mockResponse.response, {
+        status: mockResponse.status,
+      });
     }
   ),
 ];
