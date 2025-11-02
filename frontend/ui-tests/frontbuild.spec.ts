@@ -23,9 +23,7 @@ test("Fronbuild Flow // Tasks", async ({ page }) => {
   ).toBeVisible();
 
   await page.getByTestId("add-task-button").click();
-  await page
-    .getByRole("textbox", { name: "Title" })
-    .fill("New task created for ui tests");
+  await page.getByRole("textbox", { name: "Title" }).fill("do success");
 
   await page.getByRole("combobox", { name: "Status" }).click();
   await page.getByRole("option", { name: "In progress" }).click();
@@ -40,7 +38,7 @@ test("Fronbuild Flow // Tasks", async ({ page }) => {
 
   await expect(page.getByText("Task has been created.")).toBeVisible();
 
-  await expect(page.getByText("New task created for ui tests")).toBeVisible();
+  await expect(page.getByText("do success")).toBeVisible();
 });
 
 test("Fronbuild Flow // Edit", async ({ page }) => {
