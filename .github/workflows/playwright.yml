@@ -19,7 +19,7 @@ jobs:
       # lts /* toma la ultima
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/jod
+          node-version: lts/*
 
       # 3. Instala dependencias en /frontend
       - name: Install dependencies
