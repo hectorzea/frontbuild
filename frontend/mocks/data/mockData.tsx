@@ -114,7 +114,6 @@ export const cardSearchMockData = {
 };
 
 type FindTaskByIdMockScenarios = Record<string, MockScenarioFindById>;
-
 type MockScenarioFindById = SuccessResponseFindById | ErrorResponseFindById;
 
 type SuccessResponseFindById = {
@@ -122,6 +121,36 @@ type SuccessResponseFindById = {
   response: Task;
 };
 type ErrorResponseFindById = {
+  status: 500 | 404;
+  response: {
+    message: string;
+  };
+};
+
+type DeleteTackMockScenarios = Record<string, MockScenarioDeleteTask>;
+type MockScenarioDeleteTask = SuccessResponseDelete | ErrorResponseDelete;
+
+type SuccessResponseDelete = {
+  status: 200;
+  response: { success: boolean; message: string };
+};
+type ErrorResponseDelete = {
+  status: 500 | 404;
+  response: {
+    message: string;
+  };
+};
+
+type CreateTaskMockScenarios = Record<string, MockScenarioCreateTask>;
+type MockScenarioCreateTask =
+  | SuccessResponseCreateTask
+  | ErrorResponseCreateTask;
+
+type SuccessResponseCreateTask = {
+  status: 200;
+  response: Task;
+};
+type ErrorResponseCreateTask = {
   status: 500 | 404;
   response: {
     message: string;
@@ -157,10 +186,42 @@ export const taskByIdMockResponseScenario: FindTaskByIdMockScenarios = {
     status: 200,
     response: tasksMock[0],
   },
+  "123123": {
+    status: 404,
+    response: {
+      message: "Task not found",
+    },
+  },
   "675743bc6331e0a65f16a42m": {
     status: 404,
     response: {
       message: "Task not found",
+    },
+  },
+};
+
+export const deleteTaskMockScenario: DeleteTackMockScenarios = {
+  "67574211b5599f1ebce84868": {
+    status: 200,
+    response: { success: true, message: "Deleted" },
+  },
+  "675743bc6331e0a65f16a42m": {
+    status: 500,
+    response: {
+      message: "Error deleting task",
+    },
+  },
+};
+
+export const createTaskMockScenario: CreateTaskMockScenarios = {
+  "do success": {
+    status: 200,
+    response: tasksMock[0],
+  },
+  "do error": {
+    status: 500,
+    response: {
+      message: "Error adding task",
     },
   },
 };
