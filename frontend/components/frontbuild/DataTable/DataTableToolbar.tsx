@@ -66,7 +66,7 @@ export function DataTableToolbar<TData>({
         <Button
           size={"sm"}
           data-testid={"add-task-button"}
-          className="w-full sm:w-auto mt-2 sm:mt-0"
+          className="w-full sm:w-auto mt-2 sm:mt-0 cursor-pointer"
         >
           <Link href={"/projects/tasks/new"}>New Task</Link>
         </Button>
