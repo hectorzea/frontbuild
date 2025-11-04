@@ -1,9 +1,9 @@
-import { ProfileAbout } from "@/components/frontbuild/ProfileAbout";
-import { ProfileContact } from "@/components/frontbuild/ProfileContact";
-import { ProfileExperience } from "@/components/frontbuild/ProfileExperience";
-import { ProfileHero } from "@/components/frontbuild/ProfileHero";
-import { ProfileNavigation } from "@/components/frontbuild/ProfileNavigation";
-import { ProfileProjects } from "@/components/frontbuild/ProfileProjects";
+import { ProfileAbout } from "@/components/frontbuild/profile/ProfileAbout";
+import { ProfileContact } from "@/components/frontbuild/profile/ProfileContact";
+import { ProfileExperience } from "@/components/frontbuild/profile/ProfileExperience";
+import { ProfileHero } from "@/components/frontbuild/profile/ProfileHero";
+import { ProfileNavigation } from "@/components/frontbuild/profile/ProfileNavigation";
+import { ProfileProjects } from "@/components/frontbuild/profile/ProfileProjects";
 
 export default function HomePage() {
   return (
