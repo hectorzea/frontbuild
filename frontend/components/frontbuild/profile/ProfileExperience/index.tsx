@@ -79,7 +79,7 @@ export function ProfileExperience() {
     >
       <div className="max-w-4xl w-full">
         <h3 className="text-sm uppercase tracking-wider text-muted-foreground mb-12">
-          Experience
+          {t("title")}
         </h3>
         <div className="space-y-12">
           {translatedExperience.map((exp, index) => (
