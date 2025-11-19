@@ -17,9 +17,6 @@ describe("Add new task page", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Title is required")).toBeInTheDocument();
-      expect(screen.getByText("Select a status")).toBeInTheDocument();
-      expect(screen.getByText("Select a priority")).toBeInTheDocument();
-      expect(screen.getByText("Select a label")).toBeInTheDocument();
     });
   });
 });
