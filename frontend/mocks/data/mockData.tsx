@@ -1,5 +1,10 @@
 import { Task } from "@/app/schemas";
 import { HearthstoneMatchCreatedResponse } from "../handlers/hearthstoneApiHandlers";
+import {
+  LabelOptions,
+  PriorityOptions,
+  StatusOptions,
+} from "@/app/types/api/Api";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
 //o sencillo
@@ -161,23 +166,23 @@ export const tasksMock = [
   {
     _id: "67574211b5599f1ebce84868",
     title: "Do something with the tests",
-    status: "done",
-    label: "epic",
-    priority: "high",
+    status: StatusOptions.Done,
+    label: LabelOptions.Epic,
+    priority: PriorityOptions.High,
   },
   {
     _id: "675743bc6331e0a65f16a42a",
     title: "Run backend in streams",
-    status: "done",
-    label: "epic",
-    priority: "high",
+    status: StatusOptions.Done,
+    label: LabelOptions.Epic,
+    priority: PriorityOptions.High,
   },
   {
     _id: "6760816d7f14e013cb7a9656",
     title: "Render pipelines without a trace",
-    status: "backlog",
-    label: "feature",
-    priority: "low",
+    status: StatusOptions.Done,
+    label: LabelOptions.Epic,
+    priority: PriorityOptions.High,
   },
 ];
 

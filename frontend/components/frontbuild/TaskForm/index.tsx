@@ -22,7 +22,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Label, Priority, Status } from "@/app/types/api/Api";
+import {
+  Label,
+  LabelOptions,
+  Priority,
+  PriorityOptions,
+  Status,
+  StatusOptions,
+} from "@/app/types/api/Api";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import {
@@ -52,7 +59,12 @@ export const TaskForm: React.FC<TaskFormProps> = ({ id }) => {
   const [updateTask, { isError, isSuccess }] = useUpdateTaskMutation();
   const form = useForm<Task>({
     resolver: zodResolver(taskSchema),
-    defaultValues: { status: "", label: "", priority: "", title: "" },
+    defaultValues: {
+      status: StatusOptions.Done,
+      label: LabelOptions.Bug,
+      priority: PriorityOptions.High,
+      title: "",
+    },
     values: task,
   });
 
