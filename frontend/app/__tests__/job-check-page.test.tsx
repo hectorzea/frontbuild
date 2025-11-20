@@ -6,11 +6,11 @@ describe("Job Check - ", () => {
   it("Render page", async () => {
     const user = userEvent.setup();
     render(<JobCheckPage />);
-    expect(screen.getByText("Job linter")).toBeInTheDocument();
+    expect(screen.getByText("Job Lint")).toBeInTheDocument();
 
     const input = screen.getByTestId("job-check-input-field");
     expect(
-      screen.getByText("Please, enter linkedIN job URL to initiate the lint")
+      screen.getByText("Enter LinkedIN Url and start the research!")
     ).toBeInTheDocument();
 
     await user.type(input, "wwww.linkedin.com/jobs/view/123456789/");

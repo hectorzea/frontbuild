@@ -1,0 +1,116 @@
+// import * as React from "react";
+// import Link from "next/link";
+// import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
+// import { Separator } from "@/components/ui/separator";
+// import { Button } from "@/components/ui/button";
+
+// export interface IJobDataProps {
+//   data: any;
+// }
+
+// export function JobData({ data }: IJobDataProps) {
+//   return (
+//     <div className="mt-4">
+//       <h2 className="text-2xl font-semibold mb-3">Job Information</h2>
+//       <div className="flex flex-row gap-2 items-center justify-between">
+//         <div>Company: {data?.companyName}</div>
+//         <div className="flex flex-row gap-2">
+//           <Button size={"sm"} data-testid={"download-cv-button"} className="">
+//             <Link
+//               href={data?.jobLink || "#"}
+//               target="_blank"
+//               aria-label="Go to job"
+//             >
+//               Apply
+//             </Link>
+//             <ArrowBigRight />
+//           </Button>
+//           <Button
+//             size={"sm"}
+//             onClick={() => {
+//               setData(null);
+//               setLoading(false);
+//               form.reset();
+//             }}
+//             disabled={loading}
+//             data-testid="submit-button"
+//           >
+//             Clean Data
+//             <BrushCleaningIcon />
+//           </Button>
+//         </div>
+//       </div>
+//       <div data-testid="job-title">Job Title: {data?.jobTitle}</div>
+//       <div>Job Description: {data?.jobDescription}</div>
+//       <div>Years of Experience: {data?.yearsOfExperience}</div>
+//       <Separator className="my-4" />
+//       <h2 className="text-2xl font-semibold mt-3">Hard Skills</h2>
+//       <h3 className="text-xl font-semibold mt-3">Frontend</h3>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.hardSkills?.frontend?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <h3 className="text-xl font-semibold mt-3">Backend</h3>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.hardSkills?.backend?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <h3 className="text-xl font-semibold mt-3">CI / CD</h3>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.hardSkills?.cicd?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <h3 className="text-xl font-semibold mt-3">Testing</h3>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.hardSkills?.testing?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <h3 className="text-xl font-semibold mt-3">Extras</h3>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.hardSkills?.extras?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <Separator className="my-4" />
+//       <h2 className="text-2xl font-semibold mt-3">Soft Skills</h2>
+//       <ul className="max-w-md space-y-1 list-disc list-inside">
+//         {data?.softSkills?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <Separator className="my-4" />
+//       <div className="mt-3">Salary Range: {data?.salaryRange}</div>
+//       <h3 className="text-2xl font-semibold mt-3">Location / Work Model</h3>
+//       <div>Work Environment: {data?.workEnvironment}</div>
+//       <div>Location: {data?.location}</div>
+//       <div>Allow Relocation: {data?.allowRelocation ? "yes" : "no"}</div>
+//       <h3 className="text-2xl font-semibold mt-3">Recruitment Process Steps</h3>
+//       <ul className="space-y-1 list-disc list-inside">
+//         {data?.recruitmentProcessSteps?.map((skill: string, index: number) => (
+//           <li key={index}>{skill}</li>
+//         ))}
+//       </ul>
+//       <Separator className="my-4" />
+//       <h3 className="text-2xl font-semibold my-3">
+//         Considerations about the job (IA)
+//       </h3>
+//       <ul className="space-y-4 list-disc list-inside">
+//         {data?.considerations?.map((consideration: string, index: number) => (
+//           <li key={index}>{consideration}</li>
+//         ))}
+//       </ul>
+//       <h3 className="text-2xl font-semibold my-3">Match Reasoning vs CV</h3>
+//       <ul className="space-y-4 list-disc list-inside">
+//         {data?.matchReasoningKeyPoints?.map(
+//           (matchReasoningKeyPoint: string, index: number) => (
+//             <li key={index}>{matchReasoningKeyPoint}</li>
+//           )
+//         )}
+//       </ul>
+//     </div>
+//   );
+// }
