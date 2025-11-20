@@ -3,22 +3,20 @@ import {
   LabelOptions,
   PriorityOptions,
   StatusOptions,
-  Task as TaskModel,
 } from "@/app/types/api/Api";
-import { CardMatchRequestPayload } from "@/app/types";
 
-export const taskSchema: z.ZodType<TaskModel> = z.object({
+export const taskSchema = z.object({
   _id: z.string().optional(),
-  title: z.string().nonempty({ message: "Title is required" }),
-  status: z.nativeEnum(StatusOptions, { message: "Invalid status" }),
-  label: z.nativeEnum(LabelOptions, { message: "Invalid label" }),
-  priority: z.nativeEnum(PriorityOptions, { message: "Invalid priority" }),
+  title: z.string().min(5, { message: "Title is required" }),
+  status: z.enum(StatusOptions, { message: "Invalid status" }),
+  label: z.enum(LabelOptions, { message: "Invalid label" }),
+  priority: z.enum(PriorityOptions, { message: "Invalid priority" }),
 });
 
 export type Task = z.infer<typeof taskSchema>;
-//TEST
-export const cardMatchResultSchema: z.ZodType<CardMatchRequestPayload> =
-  z.object({
-    win: z.boolean(),
-    matchUrl: z.string().nonempty("Match URL is required"),
-  });
+
+export const cardMatchResultSchema = z.object({
+  win: z.boolean(),
+  matchUrl: z.string().min(5, { error: "Match URL is required" }),
+});
+export type CardMatchResult = z.infer<typeof cardMatchResultSchema>;
