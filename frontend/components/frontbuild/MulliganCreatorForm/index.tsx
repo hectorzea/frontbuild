@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
-import { cardMatchResultSchema } from "@/app/schemas";
+import { CardMatchResult, cardMatchResultSchema } from "@/app/schemas";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -21,7 +21,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const form = useForm<z.infer<typeof cardMatchResultSchema>>({
+  const form = useForm<CardMatchResult>({
     resolver: zodResolver(cardMatchResultSchema),
     defaultValues: {
       win: true,
