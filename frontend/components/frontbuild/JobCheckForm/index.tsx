@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/common/Loading";
 import {
   Form,
@@ -19,9 +18,18 @@ import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { JobOffer } from "@/app/types";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+    message: "Must be an valid URL",
   }),
 });
 
@@ -56,44 +64,6 @@ export function JobCheckForm() {
 
   return (
     <>
-      {data ? (
-        <></>
-      ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
-              control={form.control}
-              name="linkedInJobUrl"
-              render={({ field }) => (
-                <FormItem className="mt-2">
-                  <FormLabel>
-                    Please, enter linkedIN job URL to initiate the lint
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="https://www.linkedin.com/jobs/view/123456789/"
-                      data-testid="job-check-input-field"
-                      {...field}
-                      className="max-w-md"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex ">
-              <Button
-                type="submit"
-                className="mt-4 w-full"
-                disabled={loading}
-                data-testid="submit-button-job-check-form"
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
-        </Form>
-      )}
       {data ? (
         <div className="mt-4">
           <h2 className="text-2xl font-semibold mb-3">Job Information</h2>
@@ -206,10 +176,50 @@ export function JobCheckForm() {
               )
             )}
           </ul>
-          <div>Match %: {data?.matchPercentage}</div>
         </div>
       ) : (
-        <></>
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Job Lint</CardTitle>
+            <CardDescription>
+              Enter LinkedIN Url and start the research!
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)}>
+                <FormField
+                  control={form.control}
+                  name="linkedInJobUrl"
+                  render={({ field }) => (
+                    <FormItem className="mt-2">
+                      <FormLabel>LinkedIN URL</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="https://www.linkedin.com/jobs/view/4225517886"
+                          data-testid="job-check-input-field"
+                          {...field}
+                          className="max-w-md"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="flex ">
+                  <Button
+                    type="submit"
+                    className="mt-4 w-full"
+                    disabled={loading}
+                    data-testid="submit-button-job-check-form"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
       )}
     </>
   );
