@@ -1,20 +1,16 @@
-# backend
-/backend/node_modules/
-/backend/dist/
-
 # frontend
-/frontend/.next/
-/frontend/out/
-/frontend/node_modules/
-/frontend/test-results/
-/frontend/playwright-report/
-/frontend/blob-report/
-/frontend/playwright/.cache/
-/frontend/coverage/*
-/frontend/out/
-/frontend/build/
-/frontend/.swc/
-/frontend/.DS_Store
+/.next/
+/out/
+/node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/coverage/*
+/out/
+/build/
+/.swc/
+/.DS_Store
 /.github/.DS_Store
 
 # misc
