@@ -1,5 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { motion, AnimatePresence } from "motion/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,15 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { HearthstoneCardInfo } from "@/app/types";
-import { BrushCleaningIcon } from "lucide-react";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { CardDetail } from "./CardDetail";
 
 const FormSchema = z.object({
   cardName: z.string().min(2, {
@@ -57,79 +66,74 @@ export function HearthstoneCardSearchForm() {
 
   return (
     <>
-      {data ? (
-        <div className="flex flex-col gap-4">
-          <p className="text-center">Your card</p>
-          <Image
-            src={data.img}
-            width={200}
-            height={200}
-            alt="Picture of the author"
-          />
-          {data.tokens?.length > 0 && (
-            <div className="flex flex-col">
-              <p className="text-center">Tokens</p>
-              <div className="flex justify-space-between">
-                {data.tokens?.map((t) => (
+      <AnimatePresence>
+        {data ? (
+          <motion.div
+            key="box"
+            //nos aseguramos de que la animacion empiece vacia
+            initial={{ opacity: 0 }}
+            //final opacity en 1 significa mostrar y
+            animate={{ opacity: 1 }}
+            // exit={{ opacity: 1 }}
+          >
+            <CardDetail data={data} />
+          </motion.div>
+        ) : (
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle>
+                <div className="flex flex-col items-center gap-y-3">
                   <Image
-                    key={t.cardId}
-                    src={t.img}
+                    src="/files/hearthstone.png"
                     width={200}
                     height={200}
-                    alt="Picture of the author"
+                    alt="Picture of the hearthstone logo"
                   />
-                ))}
-              </div>
-            </div>
-          )}
-          <Button
-            size={"sm"}
-            onClick={() => {
-              setData(null);
-              setLoading(false);
-              form.reset();
-            }}
-            disabled={loading}
-            data-testid="submit-button"
-          >
-            Reset Seach
-            <BrushCleaningIcon />
-          </Button>
-        </div>
-      ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
-              control={form.control}
-              name="cardName"
-              render={({ field }) => (
-                <FormItem className="mt-2">
-                  <FormLabel>Please, enter the name of the card</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Ragnaros the Firelord"
-                      data-testid="card-search-input-field"
-                      {...field}
-                      className="max-w-md"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex ">
-              <Button
-                type="submit"
-                className="mt-4 w-full"
-                disabled={loading}
-                data-testid="submit-button-card-search-form"
-              >
-                Submit
-              </Button>
-            </div>
-          </form>
-        </Form>
-      )}
+                  <p>Hearthstone Card Search</p>
+                  <p className="font-normal">
+                    Enter the card name and get your card easily!
+                  </p>
+                </div>
+              </CardTitle>
+              <CardDescription></CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
+                  <FormField
+                    control={form.control}
+                    name="cardName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Card name:</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Ragnaros the Firelord"
+                            data-testid="card-search-input-field"
+                            {...field}
+                            className="max-w-md"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="flex ">
+                    <Button
+                      type="submit"
+                      className="mt-4 w-full"
+                      disabled={loading}
+                      data-testid="submit-button-card-search-form"
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </form>
+              </Form>
+            </CardContent>
+          </Card>
+        )}
+      </AnimatePresence>
     </>
   );
 }
