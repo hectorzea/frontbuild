@@ -74,11 +74,13 @@ export function HearthstoneCardSearchForm() {
             initial={{ opacity: 0 }}
             //final opacity en 1 significa mostrar y
             animate={{ opacity: 1 }}
+            className="w-full flex justify-center items-center"
             // exit={{ opacity: 1 }}
           >
             <CardDetail data={data} />
           </motion.div>
         ) : (
+          // <CardDetail data={data} />
           <Card className="w-full max-w-md">
             <CardHeader>
               <CardTitle>
