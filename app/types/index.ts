@@ -61,6 +61,7 @@ export interface HearthstoneCardInfo {
   locale: string;
   tokens: HearthstoneCardInfo[];
   discover: string[];
+  playerClass: string;
   mechanics: CardMechanic[];
 }
 
