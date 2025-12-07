@@ -1,3 +1,5 @@
+import TokenDashboard from "@/components/frontbuild/Token/TokenDashboard";
+
 export default async function CardTokensPage({
   params,
 }: {
@@ -5,7 +7,7 @@ export default async function CardTokensPage({
 }) {
   const { id } = await params;
   //   const cardId = await getPost(slug);
-  console.log(id);
+  // console.log(id);
 
-  return <div>Tokens: {id}</div>;
+  return <TokenDashboard cardId={id} />;
 }

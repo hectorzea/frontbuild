@@ -1,6 +1,5 @@
 import { HearthstoneCardSearchForm } from "@/components/frontbuild/HearthstoneCardSearchForm";
 import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
-import React from "react";
 
 export default function HearthstoneCardSearchPage() {
   return (

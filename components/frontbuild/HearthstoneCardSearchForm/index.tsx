@@ -17,16 +17,16 @@ import {
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
-import { HearthstoneCardInfo } from "@/app/types";
 
 import {
-  Card,
+  Card as UICard,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { CardDetail } from "./CardDetail";
+import { Card } from "@/app/types";
 
 const FormSchema = z.object({
   cardName: z.string().min(2, {
@@ -35,7 +35,7 @@ const FormSchema = z.object({
 });
 
 export function HearthstoneCardSearchForm() {
-  const [data, setData] = useState<HearthstoneCardInfo | null>(null);
+  const [data, setData] = useState<Card | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -81,7 +81,7 @@ export function HearthstoneCardSearchForm() {
           </motion.div>
         ) : (
           // <CardDetail data={data} />
-          <Card className="w-full max-w-md">
+          <UICard className="w-full max-w-md">
             <CardHeader>
               <CardTitle>
                 <div className="flex flex-col items-center gap-y-3">
@@ -133,7 +133,7 @@ export function HearthstoneCardSearchForm() {
                 </form>
               </Form>
             </CardContent>
-          </Card>
+          </UICard>
         )}
       </AnimatePresence>
     </>

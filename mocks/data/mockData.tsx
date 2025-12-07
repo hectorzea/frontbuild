@@ -58,64 +58,27 @@ export const cardMatchMockScenarios: CardMatchMockScenarios = {
 };
 
 export const cardSearchMockData = {
-  cardId: "EDR_813",
-  dbfId: 114967,
-  name: "Morbid Swarm",
-  cardSet: "Into the Emerald Dream",
-  type: "Spell",
-  rarity: "Rare",
-  cost: 1,
-  text: "<b>Choose One -</b> Summon two 1/1 Ants; or Spend 2 <b>Corpses</b> to deal $4_damage to a minion.",
+  _id: "693597fa46975091c567d3e3",
+  id: "TIME_619",
+  name: "Talanji of the Graves",
+  dbfId: 120183,
+  text: "[x]<b>Fabled.</b> <b>Battlecry:</b> Draw\nBwonsamdi <i>(or resurrect\nhim if he has died)</i>. Choose\na Boon to give him.",
   flavor:
-    "Death Knights are masters of death who use shadow magic to control swarms of... ants?",
-  artist: "  Grafit",
+    "In one dark timeline, Talanji was struck down and raised again as a death knight. But even death can't stop her from protecting the Zandalari.",
+  artist: "James Ryman",
+  attack: 4,
+  cardClass: "DEATHKNIGHT",
   collectible: true,
-  playerClass: "Death Knight",
-  runeCost: {
-    blood: 1,
-    frost: 0,
-    unholy: 1,
-  },
-  img: "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/5e99e20879204c7b716f9ac8d8090bca67bb2c1526986f067cca237b81f9032c.png",
-  locale: "enUS",
-  mechanics: [
-    {
-      name: "Corpse",
-    },
-  ],
-  tokens: [
-    {
-      cardId: "EDR_813a",
-      dbfId: 115797,
-      name: "Contaminated Colony",
-      cardSet: "Into the Emerald Dream",
-      type: "Spell",
-      cost: 1,
-      text: "Summon two 1/1 Ants.",
-      artist: "  Grafit",
-      playerClass: "Death Knight",
-      img: "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/3f04aeb5849290606e674998436f3e9385d0db603171510991207c4e22ae5183.png",
-      locale: "enUS",
-    },
-    {
-      cardId: "EDR_813b",
-      dbfId: 117525,
-      name: "Bug Bites",
-      cardSet: "Into the Emerald Dream",
-      type: "Spell",
-      cost: 1,
-      text: "Spend 2 <b>Corpses</b> to deal $4 damage to a_minion.",
-      artist: "  Grafit",
-      playerClass: "Death Knight",
-      img: "https://d15f34w2p8l1cc.cloudfront.net/hearthstone/983fcb44f2a8b72640dba10facc9e64006cb1b4f9548704b2d24324a8c280906.png",
-      locale: "enUS",
-      mechanics: [
-        {
-          name: "Corpse",
-        },
-      ],
-    },
-  ],
+  cost: 4,
+  elite: true,
+  health: 5,
+  mechanics: ["BATTLECRY"],
+  rarity: "LEGENDARY",
+  set: "TIME_TRAVEL",
+  type: "MINION",
+  imageUrl:
+    "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619.png",
+  __v: 0,
 };
 
 type FindTaskByIdMockScenarios = Record<string, MockScenarioFindById>;

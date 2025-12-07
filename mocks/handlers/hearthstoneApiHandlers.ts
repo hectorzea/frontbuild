@@ -4,11 +4,11 @@ import {
   cardSearchMockData,
   mulliganMockData,
 } from "../data/mockData";
-import { Game, HearthstoneCardInfo } from "@/app/types";
+import { Card, Game } from "@/app/types";
 
 // --- Search Card Mock Types
 type SearchCardRequestBody = { cardName: string };
-type SearchCardResponse = HearthstoneCardInfo;
+type SearchCardResponse = Card;
 
 // --- Create Match Request Types
 type HearthstoneMatchRequest = { win: string; matchUrl: string };

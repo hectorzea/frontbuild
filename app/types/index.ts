@@ -49,21 +49,21 @@ export interface JobOffer {
   matchReasoningKeyPoints: string[];
 }
 
-export interface HearthstoneCardInfo {
-  cardId: string;
-  name: string;
-  type: string;
-  faction: string;
-  cardSet: string;
-  rarity: string;
-  race: string;
-  img: string;
-  locale: string;
-  tokens: HearthstoneCardInfo[];
-  discover: string[];
-  playerClass: string;
-  mechanics: CardMechanic[];
-}
+// export interface HearthstoneCardInfo {
+//   cardId: string;
+//   name: string;
+//   type: string;
+//   faction: string;
+//   cardSet: string;
+//   rarity: string;
+//   race: string;
+//   img: string;
+//   locale: string;
+//   tokens: HearthstoneCardInfo[];
+//   discover: string[];
+//   playerClass: string;
+//   mechanics: CardMechanic[];
+// }
 
 export interface HardSkills {
   frontend: string[];
@@ -110,4 +110,25 @@ export interface Game {
 export interface Mulligan {
   initialCardsIds: string[];
   discardedCardsIds: string[];
+}
+
+export interface Card {
+  id: string;
+  dbfId: number;
+  name: string;
+  text: string;
+  flavor: string;
+  artist: string;
+  attack: number;
+  cardClass: string;
+  collectible: boolean;
+  cost: number;
+  elite: boolean;
+  faction: string;
+  health: number;
+  mechanics: string[];
+  rarity: string;
+  set: string;
+  type: string;
+  imageUrl: string;
 }
