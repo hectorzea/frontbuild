@@ -52,7 +52,6 @@ export function HearthstoneCardSearchForm() {
         { cardName: data.cardName }
       );
       setData(jobResponse.data);
-      console.log("Response from API:", jobResponse.data.img);
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);

@@ -21,7 +21,15 @@ export function CardDetail({ data }: IAppProps) {
         <div className="flex flex-col">
           <p className="text-center font-bold text-2xl">{data.name}</p>
           <p className="text-center font-bold">{data.cardClass}</p>
-          <div className="flex justify-center gap-5 mt-5">
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <Image
+              src={data.imageUrl}
+              width={400}
+              height={400}
+              alt="Picture of the author"
+            />
+          </motion.div>
+          <div className="flex flex-col justify-center gap-5 mt-5">
             <Button
               data-testid="reset-button-card-search"
               onClick={onResetSearch}
@@ -40,39 +48,31 @@ export function CardDetail({ data }: IAppProps) {
               </a>
             </Button>
           </div>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Image
-              src={data.imageUrl}
-              width={400}
-              height={400}
-              alt="Picture of the author"
-            />
-          </motion.div>
         </div>
         <div className="flex flex-col gap-y-8">
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Nombre Carta</p>
-            <p>Crocolisco Acuaticos</p>
+            <p className="font-bold">Flavor</p>
+            <p>{data.flavor}</p>
           </div>
           <div className="flex flex-col gap-y-2">
             <p className="font-bold">Coste</p>
-            <p>9</p>
+            <p>{data.cost}</p>
           </div>
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Tipo</p>
-            <p>Bestia</p>
+            <p className="font-bold">Health</p>
+            <p>{data.health}</p>
           </div>
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Efecto</p>
-            <p>Daña al oponente enmigo y revientlo a patadas</p>
+            <p className="font-bold">Attack</p>
+            <p>{data.attack}</p>
           </div>
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Otros Temas</p>
-            <p>Daña al oponente enmigo y revientlo a patadas</p>
+            <p className="font-bold">Rarity</p>
+            <p>{data.rarity}</p>
           </div>
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Otros Temas</p>
-            <p>Daña al oponente enmigo y revientlo a patadas</p>
+            <p className="font-bold">Card Text</p>
+            <p>{data.text}</p>
           </div>
           <div className="flex flex-col gap-y-2">
             <p className="font-bold">Tokens</p>
