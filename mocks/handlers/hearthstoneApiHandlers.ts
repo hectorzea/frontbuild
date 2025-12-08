@@ -2,8 +2,9 @@ import { http, HttpResponse } from "msw";
 import {
   cardMatchMockScenarios,
   cardSearchMockData,
+  cardTokensMock,
   mulliganMockData,
-} from "../data/mockData";
+} from "@/mocks/data/mockData";
 import { Card, Game } from "@/app/types";
 
 // --- Search Card Mock Types
@@ -52,11 +53,31 @@ export const hearthstoneApiHandlers = [
     }
   ),
   http.post<SearchCardRequestBody, SearchCardResponse>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hs-card-search`,
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card`,
     async ({ request }) => {
       const requestData = await request.json();
       console.log("Received request data:", requestData);
       return HttpResponse.json(cardSearchMockData);
+    }
+  ),
+  http.get<{ id: string }, Card[]>(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card/:id`,
+    ({ params }) => {
+      const { id } = params;
+      //TODO: generate error scenarios
+      const defaultId = id as string;
+      console.log(defaultId);
+      return HttpResponse.json(cardTokensMock);
+    }
+  ),
+  http.get<{ id: string }, Card[]>(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card/:id`,
+    ({ params }) => {
+      const { id } = params;
+      //TODO: generate error scenarios
+      const defaultId = id as string;
+      console.log(defaultId);
+      return HttpResponse.json(cardTokensMock);
     }
   ),
 ];

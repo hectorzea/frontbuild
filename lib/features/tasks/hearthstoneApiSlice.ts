@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const hearthstoneApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/mulligan`,
+    baseUrl: `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone`,
   }),
   reducerPath: "hearthstoneApi",
   // Tag types are used for caching and invalidation.
@@ -23,7 +23,7 @@ export const hearthstoneApiSlice = createApi({
       query: (arg) => {
         const { classId, type } = arg;
         return {
-          url: ``,
+          url: `/mulligan`,
           params: { classId, type },
         };
       },
@@ -34,7 +34,7 @@ export const hearthstoneApiSlice = createApi({
     getCardTokens: build.query<Card[], string>({
       query: (cardId) => {
         return {
-          url: `${cardId}`,
+          url: `/card/${cardId}`,
         };
       },
       // `providesTags` determines which 'tag' is attached to the

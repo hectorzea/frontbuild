@@ -24,6 +24,8 @@ export function CardDetail({ data }: IAppProps) {
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Image
               src={data.imageUrl}
+              placeholder="blur"
+              blurDataURL={data.imageUrl}
               width={400}
               height={400}
               alt="Picture of the author"

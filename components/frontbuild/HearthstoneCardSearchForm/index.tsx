@@ -47,8 +47,9 @@ export function HearthstoneCardSearchForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
+      //todo convert in mutation
       const jobResponse = await axios.post(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hs-card-search`,
+        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card`,
         { cardName: data.cardName }
       );
       setData(jobResponse.data);

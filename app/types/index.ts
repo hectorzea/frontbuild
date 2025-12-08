@@ -82,10 +82,6 @@ export interface Project {
   link: string;
 }
 
-interface CardMechanic {
-  name: string;
-}
-
 export interface CardMatchRequestPayload {
   matchUrl: string;
   win: boolean;
@@ -113,21 +109,23 @@ export interface Mulligan {
 }
 
 export interface Card {
+  __v: number;
+  _id: string;
   id: string;
   dbfId: number;
   name: string;
   text: string;
-  flavor: string;
+  flavor?: string;
   artist: string;
-  attack: number;
+  attack?: number;
   cardClass: string;
-  collectible: boolean;
+  collectible?: boolean;
   cost: number;
-  elite: boolean;
-  faction: string;
-  health: number;
+  elite?: boolean;
+  faction?: string;
+  health?: number;
   mechanics: string[];
-  rarity: string;
+  rarity?: string;
   set: string;
   type: string;
   imageUrl: string;

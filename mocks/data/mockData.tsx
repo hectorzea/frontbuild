@@ -5,6 +5,7 @@ import {
   PriorityOptions,
   StatusOptions,
 } from "@/app/types/api/Api";
+import { Card } from "@/app/types";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
 //o sencillo
@@ -80,6 +81,74 @@ export const cardSearchMockData = {
     "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619.png",
   __v: 0,
 };
+
+export const cardTokensMock: Card[] = [
+  {
+    _id: "693597fa46975091c567d3fb",
+    id: "TIME_619t2",
+    name: "What Befell Zandalar",
+    dbfId: 120188,
+    text: "[x]Deal $2 damage to all\nenemies. Choose a Boon\nto give to Bwonsamdi.",
+    artist: "Ivo Campelo da Silva",
+    cardClass: "DEATHKNIGHT",
+    cost: 3,
+    elite: true,
+    mechanics: [],
+    set: "TIME_TRAVEL",
+    type: "SPELL",
+    imageUrl:
+      "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619t2.png",
+    __v: 0,
+  },
+  {
+    _id: "693597fa46975091c567d3fe",
+    id: "TIME_619t3",
+    name: "Boon of Power",
+    dbfId: 120184,
+    text: "Give Bwonsamdi <b>Taunt</b> <i>permanently</i>. Minions summoned by his <b>Deathrattle</b> cost (2) more.",
+    artist: "Grafit",
+    cardClass: "DEATHKNIGHT",
+    cost: 0,
+    mechanics: [],
+    set: "TIME_TRAVEL",
+    type: "SPELL",
+    imageUrl:
+      "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619t3.png",
+    __v: 0,
+  },
+  {
+    _id: "693597fa46975091c567d401",
+    id: "TIME_619t4",
+    name: "Boon of Longevity",
+    dbfId: 120185,
+    text: "Give Bwonsamdi <b>Lifesteal</b> <i>permanently</i>. Minions summoned by his <b>Deathrattle</b> cost (2) more.",
+    artist: "Grafit",
+    cardClass: "DEATHKNIGHT",
+    cost: 0,
+    mechanics: [],
+    set: "TIME_TRAVEL",
+    type: "SPELL",
+    imageUrl:
+      "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619t4.png",
+    __v: 0,
+  },
+  {
+    _id: "693597fa46975091c567d404",
+    id: "TIME_619t5",
+    name: "Boon of Speed",
+    dbfId: 120186,
+    text: "Give Bwonsamdi <b>Rush</b> <i>permanently</i>. Minions summoned by his <b>Deathrattle</b> cost (2) more.",
+    artist: "Grafit",
+    cardClass: "DEATHKNIGHT",
+    cost: 0,
+    mechanics: [],
+    set: "TIME_TRAVEL",
+    type: "SPELL",
+    imageUrl:
+      "https://art.hearthstonejson.com/v1/render/latest/enUS/512x/TIME_619t5.png",
+    __v: 0,
+  },
+];
 
 type FindTaskByIdMockScenarios = Record<string, MockScenarioFindById>;
 type MockScenarioFindById = SuccessResponseFindById | ErrorResponseFindById;
