@@ -70,14 +70,4 @@ export const hearthstoneApiHandlers = [
       return HttpResponse.json(cardTokensMock);
     }
   ),
-  http.get<{ id: string }, Card[]>(
-    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card/:id`,
-    ({ params }) => {
-      const { id } = params;
-      //TODO: generate error scenarios
-      const defaultId = id as string;
-      console.log(defaultId);
-      return HttpResponse.json(cardTokensMock);
-    }
-  ),
 ];
