@@ -80,7 +80,6 @@ export function HearthstoneCardSearchForm() {
             <CardDetail data={data} />
           </motion.div>
         ) : (
-          // <CardDetail data={data} />
           <UICard className="w-full max-w-md">
             <CardHeader>
               <CardTitle>
