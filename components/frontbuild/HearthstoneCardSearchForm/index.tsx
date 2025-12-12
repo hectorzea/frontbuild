@@ -87,8 +87,9 @@ export function HearthstoneCardSearchForm() {
                 <div className="flex flex-col items-center gap-y-3">
                   <Image
                     src="/files/hearthstone.png"
-                    width={200}
-                    height={200}
+                    width={150}
+                    height={150}
+                    style={{ width: "auto", height: "auto" }}
                     alt="Picture of the hearthstone logo"
                   />
                   <p>Hearthstone Card Search</p>
