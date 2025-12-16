@@ -15,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import axios from "axios";
 import { useState } from "react";
 
 import {
@@ -27,6 +26,7 @@ import {
 } from "@/components/ui/card";
 import { CardDetail } from "./CardDetail";
 import { Card } from "@/app/types";
+import { useSearchCardMutation } from "@/lib/features/tasks/hearthstoneApiSlice";
 
 const FormSchema = z.object({
   cardName: z.string().min(2, {
@@ -35,8 +35,7 @@ const FormSchema = z.object({
 });
 
 export function HearthstoneCardSearchForm() {
-  const [data, setData] = useState<Card | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [searchCard, { data, isSuccess, isLoading }] = useSearchCardMutation();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -46,96 +45,83 @@ export function HearthstoneCardSearchForm() {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      setLoading(true);
-      //todo convert in mutation
-      const jobResponse = await axios.post(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card`,
-        { cardName: data.cardName }
-      );
-      setData(jobResponse.data);
-      setLoading(false);
+      await searchCard(data);
     } catch (error) {
-      console.error("Error calling google api cloud:", error);
-      setData(null);
+      console.error("Error adding card.", error);
     }
   }
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <>
-      <AnimatePresence>
-        {data ? (
-          <motion.div
-            key="box"
-            //nos aseguramos de que la animacion empiece vacia
-            initial={{ opacity: 0 }}
-            //final opacity en 1 significa mostrar y
-            animate={{ opacity: 1 }}
-            className="w-full flex justify-center items-center"
-            // exit={{ opacity: 1 }}
-          >
-            <CardDetail data={data} />
-          </motion.div>
-        ) : (
-          <UICard className="w-full max-w-md">
-            <CardHeader>
-              <CardTitle>
-                <div className="flex flex-col items-center gap-y-3">
-                  <Image
-                    src="/files/hearthstone.png"
-                    width={150}
-                    height={150}
-                    style={{ width: "auto", height: "auto" }}
-                    alt="Picture of the hearthstone logo"
-                  />
-                  <p>Hearthstone Card Search</p>
-                  <p className="font-normal">
-                    Enter the card name and get your card easily!
-                  </p>
+    <AnimatePresence>
+      {isSuccess ? (
+        <motion.div
+          key="box"
+          //nos aseguramos de que la animacion empiece vacia
+          initial={{ opacity: 0 }}
+          //final opacity en 1 significa mostrar y
+          animate={{ opacity: 1 }}
+          className="w-full flex justify-center items-center"
+          // exit={{ opacity: 1 }}
+        >
+          <CardDetail data={data} />
+        </motion.div>
+      ) : (
+        // <CardDetail data={data} />
+        <UICard className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>
+              <div className="flex flex-col items-center gap-y-3">
+                <Image
+                  src="/files/hearthstone.png"
+                  width={150}
+                  height={150}
+                  style={{ width: "auto", height: "auto" }}
+                  alt="Picture of the hearthstone logo"
+                />
+                <p>Hearthstone Card Search</p>
+                <p className="font-normal">
+                  Enter the card name and get your card easily!
+                </p>
+              </div>
+            </CardTitle>
+            <CardDescription></CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)}>
+                <FormField
+                  control={form.control}
+                  name="cardName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Card name:</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Ragnaros the Firelord"
+                          data-testid="card-search-input-field"
+                          {...field}
+                          className="max-w-md"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="flex ">
+                  <Button
+                    type="submit"
+                    className="mt-4 w-full"
+                    disabled={isLoading}
+                    data-testid="submit-button-card-search-form"
+                  >
+                    Submit
+                  </Button>
                 </div>
-              </CardTitle>
-              <CardDescription></CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                  <FormField
-                    control={form.control}
-                    name="cardName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Card name:</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="Ragnaros the Firelord"
-                            data-testid="card-search-input-field"
-                            {...field}
-                            className="max-w-md"
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <div className="flex ">
-                    <Button
-                      type="submit"
-                      className="mt-4 w-full"
-                      disabled={loading}
-                      data-testid="submit-button-card-search-form"
-                    >
-                      Submit
-                    </Button>
-                  </div>
-                </form>
-              </Form>
-            </CardContent>
-          </UICard>
-        )}
-      </AnimatePresence>
-    </>
+              </form>
+            </Form>
+          </CardContent>
+        </UICard>
+      )}
+    </AnimatePresence>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { BookIcon, BrushCleaningIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,16 +22,14 @@ export function CardDetail({ data }: IAppProps) {
         <div className="flex flex-col">
           <p className="text-center font-bold text-2xl">{data.name}</p>
           <p className="text-center font-bold">{data.cardClass}</p>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Image
-              src={data.imageUrl}
-              placeholder="blur"
-              blurDataURL={data.imageUrl}
-              width={400}
-              height={400}
-              alt="Picture of the author"
-            />
-          </motion.div>
+          <Image
+            src={data.imageUrl}
+            placeholder="blur"
+            blurDataURL={data.imageUrl}
+            width={400}
+            height={400}
+            alt="Picture of the author"
+          />
           <div className="flex flex-col justify-center gap-5 mt-5">
             <Button
               data-testid="reset-button-card-search"
