@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
         pathname: "/hearthstone/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "art.hearthstonejson.com",
+        port: "",
+        // pathname: "/hearthstone/**",
+        search: "",
+      },
+
+      // art.hearthstonejson.com
     ],
   },
 };
