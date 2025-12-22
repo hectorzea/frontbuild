@@ -20,7 +20,7 @@ export default function TokenDashboard({ cardId }: ITokenDashboardProps) {
   return (
     <div className="flex flex-col justify-center items-center m-5 min-h-screen">
       <p className="text-2xl my-2">Card Tokens</p>
-      <Carousel className="w-full max-w-md">
+      <Carousel className="w-full max-w-md" data-testid="carousel-card-tokens">
         <CarouselContent>
           {data?.map((cardToken, index) => (
             <CarouselItem key={index}>
