@@ -17,19 +17,21 @@ export function CardDetail({ data }: IAppProps) {
     window.location.reload();
   }
   return (
-    <UICard className="w-full max-w-4xl">
+    <UICard className="w-full max-w-4xl bg-[#161b22]">
       <CardContent className="flex flex-row gap-x-5 flex-wrap md:flex-nowrap justify-center">
-        <div className="flex flex-col">
-          <p className="text-center font-bold text-2xl">{data.name}</p>
-          <p className="text-center font-bold">{data.cardClass}</p>
-          <Image
-            src={data.imageUrl}
-            placeholder="blur"
-            blurDataURL={data.imageUrl}
-            width={400}
-            height={400}
-            alt="Picture of the author"
-          />
+        <div className="flex flex-col justify-between">
+          <div>
+            <p className="text-center font-bold text-2xl">{data.name}</p>
+            <p className="text-center font-bold">{data.cardClass}</p>
+            <Image
+              src={data.imageUrl}
+              placeholder="blur"
+              blurDataURL={data.imageUrl}
+              width={400}
+              height={400}
+              alt="Picture of the author"
+            />
+          </div>
           <div className="flex flex-col justify-center gap-5 mt-5">
             <Button
               data-testid="reset-button-card-search"
@@ -56,7 +58,7 @@ export function CardDetail({ data }: IAppProps) {
             <p>{data.flavor}</p>
           </div>
           <div className="flex flex-col gap-y-2">
-            <p className="font-bold">Coste</p>
+            <p className="font-bold">Cost</p>
             <p>{data.cost}</p>
           </div>
           <div className="flex flex-col gap-y-2">

@@ -67,7 +67,7 @@ export function HearthstoneCardSearchForm() {
         </motion.div>
       ) : (
         // <CardDetail data={data} />
-        <UICard className="w-full max-w-md">
+        <UICard className="w-full max-w-md bg-[#161b22]">
           <CardHeader>
             <CardTitle>
               <div className="flex flex-col items-center gap-y-3">
@@ -80,7 +80,7 @@ export function HearthstoneCardSearchForm() {
                 />
                 <p>Hearthstone Card Search</p>
                 <p className="font-normal">
-                  Enter the card name and get your card easily!
+                  An app to find your card in an easy way
                 </p>
               </div>
             </CardTitle>
@@ -93,14 +93,16 @@ export function HearthstoneCardSearchForm() {
                   control={form.control}
                   name="cardName"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Card name:</FormLabel>
+                    <FormItem className="text-center">
+                      <FormLabel className="text-center">
+                        Type your card here...
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Ragnaros the Firelord"
                           data-testid="card-search-input-field"
                           {...field}
-                          className="max-w-md"
+                          className="max-w-md mt-3"
                         />
                       </FormControl>
                       <FormMessage />
