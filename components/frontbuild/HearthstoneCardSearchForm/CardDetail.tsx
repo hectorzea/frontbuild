@@ -16,7 +16,7 @@ export function CardDetail({ data }: IAppProps) {
     window.location.reload();
   }
   return (
-    <UICard className="w-full max-w-4xl bg-[#161b22]">
+    <UICard className="w-full max-w-4xl bg-hearthstone">
       <CardContent className="flex flex-row gap-x-5 flex-wrap md:flex-nowrap justify-center">
         <div className="flex flex-col justify-between">
           <div>

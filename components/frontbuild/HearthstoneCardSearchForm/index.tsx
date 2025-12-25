@@ -62,7 +62,7 @@ export function HearthstoneCardSearchForm() {
           <CardDetail data={data} />
         </motion.div>
       ) : (
-        <UICard className="w-full max-w-md bg-[#161b22]">
+        <UICard className="w-full max-w-md bg-hearthstone">
           <CardHeader>
             <CardTitle>
               <div className="flex flex-col items-center gap-y-3">
