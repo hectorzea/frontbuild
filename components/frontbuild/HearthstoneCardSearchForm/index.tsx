@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Loading } from "@/components/common/Loading";
 import Image from "next/image";
 import {
   Form,
@@ -15,8 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-
 import {
   Card as UICard,
   CardContent,
@@ -25,7 +22,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { CardDetail } from "./CardDetail";
-import { Card } from "@/app/types";
 import { useSearchCardMutation } from "@/lib/features/tasks/hearthstoneApiSlice";
 
 const FormSchema = z.object({
@@ -66,7 +62,6 @@ export function HearthstoneCardSearchForm() {
           <CardDetail data={data} />
         </motion.div>
       ) : (
-        // <CardDetail data={data} />
         <UICard className="w-full max-w-md bg-[#161b22]">
           <CardHeader>
             <CardTitle>
