@@ -10,6 +10,7 @@ export default function HearthstoneCardSearchPage() {
       style={{
         backgroundImage: `url(${image.src})`,
         backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <MockServiceWorkerWrapper>
