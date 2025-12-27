@@ -1,4 +1,3 @@
-import React from "react";
 import { ProfileNavigation } from ".";
 import { render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";

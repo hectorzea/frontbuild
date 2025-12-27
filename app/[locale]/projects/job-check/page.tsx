@@ -1,6 +1,5 @@
 import { JobCheckForm } from "@/components/frontbuild/JobCheckForm";
 import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
-import React from "react";
 
 export default function ProjectsPage() {
   return (
