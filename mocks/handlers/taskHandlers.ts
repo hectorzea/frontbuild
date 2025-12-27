@@ -54,11 +54,19 @@ export const taskHandlers = [
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     async ({ request }) => {
       const taskData = await request.json();
-      const defaultId = taskData.title as string;
-      const mockResponse = createTaskMockScenario[defaultId];
-      return HttpResponse.json(taskData, {
-        status: mockResponse.status,
-      });
+      const defaultTitle = taskData.title as string;
+      let mockResponse;
+      if (defaultTitle !== "error") {
+        mockResponse = createTaskMockScenario["success"];
+        return HttpResponse.json(taskData, {
+          status: mockResponse.status,
+        });
+      } else {
+        const mockResponse = createTaskMockScenario["error"];
+        return HttpResponse.json(taskData, {
+          status: mockResponse.status,
+        });
+      }
     }
   ),
   http.patch<
