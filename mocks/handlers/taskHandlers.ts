@@ -62,7 +62,7 @@ export const taskHandlers = [
           status: mockResponse.status,
         });
       } else {
-        const mockResponse = createTaskMockScenario["error"];
+        mockResponse = createTaskMockScenario["error"];
         return HttpResponse.json(taskData, {
           status: mockResponse.status,
         });
