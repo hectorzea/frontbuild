@@ -1,4 +1,3 @@
-import React from "react";
 import { screen } from "@testing-library/react";
 import { TaskDashboard } from ".";
 import { renderWithProviders } from "@/app/test-utils";

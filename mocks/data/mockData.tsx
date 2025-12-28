@@ -251,11 +251,11 @@ export const deleteTaskMockScenario: DeleteTackMockScenarios = {
 };
 
 export const createTaskMockScenario: CreateTaskMockScenarios = {
-  "do success": {
+  success: {
     status: 200,
     response: tasksMock[0],
   },
-  "do error": {
+  error: {
     status: 500,
     response: {
       message: "Error adding task",

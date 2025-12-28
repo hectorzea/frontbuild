@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
 import { Loading } from "@/components/common/Loading";
 import { useGetTasksQuery } from "@/lib/features/tasks/tasksApiSlice";
 import { useDispatch } from "react-redux";
 import { setTasks } from "@/lib/features/tasks/tasksSlice";
+import { useEffect } from "react";
 
 type TaskDataLoaderProps = {
   children?: React.ReactNode;
