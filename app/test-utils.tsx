@@ -1,4 +1,3 @@
-import React, { PropsWithChildren } from "react";
 import { render } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
@@ -17,7 +16,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 
 export function renderWithProviders(
   ui: React.ReactElement,
-  extendedRenderOptions: ExtendedRenderOptions = {},
+  extendedRenderOptions: ExtendedRenderOptions = {}
 ) {
   const {
     preloadedState = {},
@@ -26,7 +25,7 @@ export function renderWithProviders(
     ...renderOptions
   } = extendedRenderOptions;
 
-  const Wrapper = ({ children }: PropsWithChildren) => (
+  const Wrapper = ({ children }: React.PropsWithChildren) => (
     <Provider store={store}>{children}</Provider>
   );
 

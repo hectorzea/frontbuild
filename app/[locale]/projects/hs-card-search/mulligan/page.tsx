@@ -1,6 +1,5 @@
 import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
 import { MulliganTable } from "@/components/frontbuild/MulliganTable";
-import React from "react";
 
 export default function MulliganPage() {
   return (

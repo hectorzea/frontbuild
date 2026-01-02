@@ -1,4 +1,3 @@
-import React from "react";
 import { TaskDashboard } from "@/components/frontbuild/TaskDashboard";
 import { useTranslations } from "next-intl";
 import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
