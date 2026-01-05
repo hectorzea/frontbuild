@@ -3,16 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -38,10 +32,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ],
-  "types": [
-    "@testing-library/jest-dom"
-  ]
+  "exclude": ["node_modules"],
+  "types": ["@testing-library/jest-dom"]
 }
