@@ -63,13 +63,13 @@ export function DataTableToolbar<TData>({
             <X />
           </Button>
         )}
-        <Button asChild size={"sm"} className="w-full sm:w-auto mt-2 sm:mt-0">
-          <Link
-            href={"/projects/tasks/new"}
-            data-testid={"add-task-link-button"}
-          >
-            New Task
-          </Link>
+        <Button
+          asChild
+          size={"sm"}
+          className="w-full sm:w-auto mt-2 sm:mt-0"
+          data-testid="add-task-link-button"
+        >
+          <Link href={"/projects/tasks/new"}>New Task</Link>
         </Button>
         <DataTableViewOptions table={table} />
       </div>
