@@ -49,7 +49,7 @@ export function DataTableRowActions<TData>({
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[160px]">
+        <DropdownMenuContent align="end" className="w-40">
           <DropdownMenuItem
             onClick={() => {
               router.push(`/projects/tasks/edit/${task._id}`);
