@@ -19,6 +19,10 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
+  const addTask = () => {
+    //navigation to <Link href={"/projects/tasks/new"}>
+  };
+
   if (!toolbarEnabled) {
     return null;
   }
@@ -35,7 +39,7 @@ export function DataTableToolbar<TData>({
           }
           className="h-8 w-full sm:w-[150px] lg:w-[250px]"
         />
-        <div className="flex w-full justify-between sm:justify-start space-x-2">
+        <div className="flex flex-col w-full sm:flex-row sm:w-auto justify-between sm:justify-start space-x-2">
           {table.getColumn("status") && (
             <DataTableFacetedFilter
               column={table.getColumn("status")}
@@ -64,11 +68,17 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
         <Button
+          asChild
           size={"sm"}
-          data-testid={"add-task-button"}
           className="w-full sm:w-auto mt-2 sm:mt-0"
+          data-testid={"add-task-button"}
         >
-          <Link href={"/projects/tasks/new"}>New Task</Link>
+          <Link
+            href={"/projects/tasks/new"}
+            data-testid={"add-task-link-button"}
+          >
+            New Task
+          </Link>
         </Button>
         <DataTableViewOptions table={table} />
       </div>

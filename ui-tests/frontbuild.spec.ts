@@ -22,7 +22,7 @@ test("Fronbuild Flow // Tasks", async ({ page }) => {
     page.getByText(/Task creator using tanstack react-table/i)
   ).toBeVisible();
 
-  await page.getByTestId("add-task-button").click();
+  await page.getByTestId("add-task-link-button").click();
   await page.getByRole("textbox", { name: "Title" }).fill("do success");
 
   await page.getByRole("combobox", { name: "Status" }).click();
