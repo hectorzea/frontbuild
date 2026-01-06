@@ -19,10 +19,6 @@ export function DataTableToolbar<TData>({
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
-  const addTask = () => {
-    //navigation to <Link href={"/projects/tasks/new"}>
-  };
-
   if (!toolbarEnabled) {
     return null;
   }
