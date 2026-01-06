@@ -3,7 +3,7 @@ import {
   LabelOptions,
   PriorityOptions,
   StatusOptions,
-} from "@/app/types/api/Api";
+} from "@/app/(frontbuild)/types/api/Api";
 
 export const taskSchema = z.object({
   _id: z.string().optional(),

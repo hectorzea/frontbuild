@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ErrorPage from "@/app/[locale]/projects/tasks/error";
+import ErrorPage from "@/app/(frontbuild)/[locale]/projects/tasks/error";
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),

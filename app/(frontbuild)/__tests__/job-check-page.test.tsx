@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import JobCheckPage from "@/app/[locale]/projects/job-check/page";
+import JobCheckPage from "@/app/(frontbuild)/[locale]/projects/job-check/page";
 import userEvent from "@testing-library/user-event";
 
 describe("Job Check - ", () => {

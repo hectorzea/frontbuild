@@ -1,7 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "./";
-import { renderWithProviders } from "@/app/test-utils";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
 import { tasksMock as tasks } from "@/mocks/data/mockData";
 
 test("renderiza tabla con 2 filas", async () => {
