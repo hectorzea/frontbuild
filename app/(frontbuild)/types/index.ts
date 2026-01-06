@@ -15,7 +15,7 @@ export const priorityIconMap = {
   low: ArrowDown,
 };
 
-//todo ver si generar un record aca
+//todo ver si generar un record acaa
 export type Priority = keyof typeof priorityIconMap;
 export type PriorityIcon = (typeof priorityIconMap)[Priority];
 
