@@ -5,7 +5,7 @@ import {
   taskByIdMockResponseScenario,
   tasksMock as tasks,
 } from "@/mocks/data/mockData";
-import { Task } from "@/app/types/api/Api";
+import { Task } from "@/app/(frontbuild)/types/api/Api";
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<

@@ -1,4 +1,4 @@
-import { JobOffer } from "@/app/types";
+import { JobOffer } from "@/app/(frontbuild)/types";
 import { http, HttpResponse } from "msw";
 
 //request bodies
