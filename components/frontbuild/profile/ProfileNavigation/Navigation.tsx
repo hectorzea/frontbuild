@@ -30,7 +30,7 @@ export default function Navigation({ navigationItems }: NavigationProps) {
       >
         <div className="flex flex-col h-full p-8">
           <div className="mb-16">
-            <h1 className="text-2xl font-bold mb-2">Hector Zea</h1>
+            <h1 className="text-2xl font-bold my-4">Hector Zea</h1>
             <p className="text-muted-foreground text-sm">Software Engineer</p>
           </div>
 
