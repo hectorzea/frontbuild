@@ -14,14 +14,13 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
 ## Technologies Used
 
 - **Docker**: 
-  - Allows you to create, deploy, and run applications in containers, 
-  facilitating portability and consistency in the development environment.
+  - Docker to allow the app to run any container
 
 - **React 19**: 
   - A JavaScript library for building user interfaces, allowing you to create 
   reusable components and manage the application state efficiently.
 
-- **Redux Toolkit / RTK Query (client side api calls) **: 
+- **Redux Toolkit / RTK Query (client side api calls)**: 
   - A tool for managing the application state using Redux, simplifying state management 
   and improving efficiency. It is used alongside React Query for making backend calls 
   and handling data caching. 
@@ -38,5 +37,29 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
   - A set of user interface components that provides predefined styles and functionalities, 
   allowing for faster and more consistent UI development.
 
-  ![alt text](image.png)
+- **Framer / Motion**
+  - For improving UI transitions
 
+
+## List of projects
+ - **Easy Task Generator**: simple CRUD for create / edit / delete tasks using redux toolkit and rtk query (can work offline with mocks for real testing scenarios and online with real api calls) 
+
+
+ - **Job Linter**: This project enables local scraping to extract all relevant information from a LinkedIn job posting and process it through an AI-powered endpoint. The goal is to determine whether the job position matches a specific candidate profile or CV.
+  
+ - **Hearthstone Card Search**: While searching for Hearthstone cards online is generally simple, existing tools often provide a lot of unnecessary information. This project focuses on returning only the essential card data, with the option to view related tokens. All card information is served from a custom API built with NestJS
+  
+ - **Hearthstone Mulligan Generator**: Mulligan Game Generator: This project allows you to extract all relevant data from a Hearthstone replay game URL to analyze the win rate percentage of cards you kept in your opening hand versus those you mulliganed away. As they say… it’s all about luck, right?
+ - **Music Blog**: Using Payload CMS to bring a catalog of the music i like (ongoing...)
+
+
+## Application Performance 
+  <img width="447" height="605" alt="image" src="https://github.com/user-attachments/assets/d334427b-9c95-40c1-b0cc-62a5657b5ed3" />
+
+## CI / CD
+  - ESLint: A static code analysis tool that scans the source code to detect programming errors, bugs, stylistic issues, and suspicious patterns without executing the code.
+  - Component & Integration Testing: Uses React Testing Library, Jest, and MSW to enable integration and behavior testing between components.
+  - Code Coverage: Ensures consistently high code quality by maintaining a minimum coverage threshold of 85%.
+  - End-to-End (E2E) Testing with Playwright: Full E2E tests to validate screen transitions and application behavior from start to finish.
+
+   ![alt text](image-1.png)
