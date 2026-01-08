@@ -40,3 +40,7 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
 
   ![alt text](image.png)
 
+  Lighthouse Performance
+  <img width="447" height="605" alt="image" src="https://github.com/user-attachments/assets/d334427b-9c95-40c1-b0cc-62a5657b5ed3" />
+
+
