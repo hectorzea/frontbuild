@@ -20,7 +20,7 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
   - A JavaScript library for building user interfaces, allowing you to create 
   reusable components and manage the application state efficiently.
 
-- **Redux Toolkit / RTK Query (client side api calls) **: 
+- **Redux Toolkit / RTK Query (client side api calls)**: 
   - A tool for managing the application state using Redux, simplifying state management 
   and improving efficiency. It is used alongside React Query for making backend calls 
   and handling data caching. 
@@ -36,6 +36,9 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
 - **Shadcn UI**: 
   - A set of user interface components that provides predefined styles and functionalities, 
   allowing for faster and more consistent UI development.
+
+- **Framer / Motion**
+  - For improving UI transitions
 
 
 ## List of projects
