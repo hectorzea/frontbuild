@@ -56,4 +56,10 @@ Currently, all projects run using Mock Service Worker (MSW), with the backend di
 ## Application Performance 
   <img width="447" height="605" alt="image" src="https://github.com/user-attachments/assets/d334427b-9c95-40c1-b0cc-62a5657b5ed3" />
 
+## CI / CD
+  - ESLint: A static code analysis tool that scans the source code to detect programming errors, bugs, stylistic issues, and suspicious patterns without executing the code.
+  - Component & Integration Testing: Uses React Testing Library, Jest, and MSW to enable integration and behavior testing between components.
+  - Code Coverage: Ensures consistently high code quality by maintaining a minimum coverage threshold of 85%.
+  - End-to-End (E2E) Testing with Playwright: Full E2E tests to validate screen transitions and application behavior from start to finish.
 
+   ![alt text](image-1.png)
