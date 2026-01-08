@@ -1,8 +1,8 @@
-import { NextConfig } from "next";
+import { withPayload } from '@payloadcms/next/withPayload'
 import createNextIntlPlugin from "next-intl/plugin";
 
 //todo diferentes cloudfront de images?
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -16,14 +16,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "art.hearthstonejson.com",
         port: "",
-        // pathname: "/hearthstone/**",
         search: "",
       },
-
-      // art.hearthstonejson.com
     ],
   },
 };
 
 const withNextIntl = createNextIntlPlugin();
-export default withNextIntl(nextConfig);
+export default withNextIntl(withPayload(nextConfig));
+  

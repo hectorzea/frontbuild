@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/test-utils";
-import CardTokensPage from "@/app/[locale]/projects/hs-card-search/tokens/[id]/page";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import CardTokensPage from "@/app/(frontbuild)/[locale]/projects/hs-card-search/tokens/[id]/page";
 
 describe("Card Tokens Page", () => {
   it("Renders page - success / error ID", async () => {

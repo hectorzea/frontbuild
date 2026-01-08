@@ -4,7 +4,7 @@ import { BookIcon, BrushCleaningIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card as UICard, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { Card } from "@/app/types";
+import { Card } from "@/app/(frontbuild)/types";
 
 export interface IAppProps {
   data: Card;

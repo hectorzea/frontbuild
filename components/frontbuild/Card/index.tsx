@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import { Project } from "@/app/types";
+import { Project } from "@/app/(frontbuild)/types";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

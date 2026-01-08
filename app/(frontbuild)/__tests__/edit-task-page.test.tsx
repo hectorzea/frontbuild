@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/test-utils";
-import EditTaskPage from "@/app/[locale]/projects/tasks/edit/[id]/page";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import EditTaskPage from "@/app/(frontbuild)/[locale]/projects/tasks/edit/[id]/page";
 import { editTaskMockId } from "@/mocks/handlers/taskHandlers";
 import { server } from "@/mocks/server";
 import { http, HttpResponse } from "msw";

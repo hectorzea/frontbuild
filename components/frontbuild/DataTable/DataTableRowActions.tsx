@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { taskSchema } from "@/app/schemas";
+import { taskSchema } from "@/app/(frontbuild)/schemas";
 import { useRouter } from "next/navigation";
 import { labels } from "@/components/frontbuild/TaskForm/data";
 
@@ -49,7 +49,7 @@ export function DataTableRowActions<TData>({
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-[160px]">
+        <DropdownMenuContent align="end" className="w-40">
           <DropdownMenuItem
             onClick={() => {
               router.push(`/projects/tasks/edit/${task._id}`);

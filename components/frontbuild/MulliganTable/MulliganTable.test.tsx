@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { MulliganTable } from ".";
-import { renderWithProviders } from "@/app/test-utils";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
 
 test("Loads <MulliganTable /> and check for main elements", async () => {
   renderWithProviders(<MulliganTable />, {

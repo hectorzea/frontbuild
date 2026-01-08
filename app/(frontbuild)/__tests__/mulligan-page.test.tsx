@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import MulliganPage from "@/app/[locale]/projects/hs-card-search/mulligan/page";
+import MulliganPage from "@/app/(frontbuild)/[locale]/projects/hs-card-search/mulligan/page";
 import { renderWithProviders } from "../test-utils";
 
 describe("Mulligan Page - ", () => {
