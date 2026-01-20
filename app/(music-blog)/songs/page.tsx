@@ -3,21 +3,10 @@ import configPromise from "@payload-config";
 import Image from "next/image";
 import Link from "next/link";
 
-//TODO: Find about SSG + Payload CMS
 export default async function SongsPage() {
   const payload = await getPayload({ config: configPromise });
   const songs = await payload.find({
     collection: "songs",
-    //TODO in depth soon
-    // depth: 1,
-    // limit: 12,
-    // overrideAccess: false,
-    // select: {
-    //   title: true,
-    //   slug: true,
-    //   categories: true,
-    //   meta: true,
-    // },
   });
   return (
     <div data-testid="music-blog-page" className="flex flex-col gap-5 p-5">
