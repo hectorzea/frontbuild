@@ -4,6 +4,12 @@ export const Songs: CollectionConfig = {
   slug: "songs",
   fields: [
     {
+      name: "coverImage",
+      type: "upload",
+      relationTo: "media",
+      required: true,
+    },
+    {
       name: "songTitle",
       type: "text",
       required: true,
