@@ -6,12 +6,17 @@ test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
   await page.goto("/");
   await expect(
     page.getByText(
-      /Building the web and technology with curiosity, innovation, and quality/i
-    )
+      /Building the web and technology with curiosity, innovation, and quality/i,
+    ),
   ).toBeVisible();
   await expect(page).toHaveScreenshot({
     maxDiffPixelRatio: 0.3,
   });
+});
+
+test("Fronbuild Flow // Music Blog ", async ({ page }) => {
+  await page.goto("/songs");
+  await expect(page.getByText(/My Most Favorite Song/i)).toBeVisible();
 });
 
 test("Fronbuild Flow // Tasks", async ({ page }) => {
@@ -19,7 +24,7 @@ test("Fronbuild Flow // Tasks", async ({ page }) => {
 
   await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
   await expect(
-    page.getByText(/Task creator using tanstack react-table/i)
+    page.getByText(/Task creator using tanstack react-table/i),
   ).toBeVisible();
 
   await page.getByTestId("add-task-link-button").click();
@@ -46,11 +51,11 @@ test("Fronbuild Flow // Edit", async ({ page }) => {
 
   await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
   await expect(
-    page.getByText(/Task creator using tanstack react-table/i)
+    page.getByText(/Task creator using tanstack react-table/i),
   ).toBeVisible();
 
   await expect(
-    page.getByTestId("67574211b5599f1ebce84868-actions-button")
+    page.getByTestId("67574211b5599f1ebce84868-actions-button"),
   ).toBeVisible();
 
   await page.getByTestId("67574211b5599f1ebce84868-actions-button").click();
