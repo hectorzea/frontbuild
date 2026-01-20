@@ -12,7 +12,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Por defecto en App Router, los componentes son estáticos
 export default async function SongPage({
   params,
 }: {
