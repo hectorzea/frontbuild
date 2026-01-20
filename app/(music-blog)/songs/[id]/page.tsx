@@ -25,6 +25,7 @@ export default async function SongPage({
     where: { id: { equals: id } },
     limit: 1,
   });
+  console.log(song);
 
-  return <div>{song.docs[0]?.title}</div>;
+  return <div>{song.docs[0]?.songTitle}</div>;
 }

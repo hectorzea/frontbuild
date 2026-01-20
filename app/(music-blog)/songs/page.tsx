@@ -1,9 +1,10 @@
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 import Image from "next/image";
+import Link from "next/link";
 
 //TODO: Find about SSG + Payload CMS
-export default async function MusicBlogPage() {
+export default async function SongsPage() {
   const payload = await getPayload({ config: configPromise });
   const songs = await payload.find({
     collection: "songs",
@@ -33,6 +34,7 @@ export default async function MusicBlogPage() {
             />
             <p>{song.songTitle}</p>
             <p>{song.artist}</p>
+            <Link href={`/songs/${song.id}`}>Go to hear this song</Link>
           </div>
         ))}
       </div>
