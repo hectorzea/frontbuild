@@ -31,5 +31,14 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
   disconnect: jest.fn(),
 }));
 
+jest.mock("payload", () => ({
+  getPayload: jest.fn(),
+  buildConfig: jest.fn(() => ({})),
+}));
+
+jest.mock("@payloadcms/richtext-lexical", () => ({
+  lexicalEditor: jest.fn(() => ({})),
+}));
+
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);

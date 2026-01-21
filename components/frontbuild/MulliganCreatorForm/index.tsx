@@ -37,7 +37,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
       setLoading(true);
       await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
-        data
+        data,
       );
       toast("Match has been added.");
       setError(false);
