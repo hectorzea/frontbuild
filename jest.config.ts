@@ -19,6 +19,7 @@ const config: Config = {
     "!<rootDir>/app/types/**/*", // Excluye la carpeta app/types
     "!<rootDir>/components/ui/**/*",
     "!<rootDir>/components/ThemeProvider.tsx",
+    "!<rootDir>/app/[(]payload[)]/**",
   ],
   testPathIgnorePatterns: ["<rootDir>/ui-tests/"],
   moduleNameMapper: {

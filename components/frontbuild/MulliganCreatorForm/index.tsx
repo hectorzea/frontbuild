@@ -9,7 +9,10 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
-import { CardMatchResult, cardMatchResultSchema } from "@/app/schemas";
+import {
+  CardMatchResult,
+  cardMatchResultSchema,
+} from "@/app/(frontbuild)/schemas";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -34,7 +37,7 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
       setLoading(true);
       await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
-        data
+        data,
       );
       toast("Match has been added.");
       setError(false);

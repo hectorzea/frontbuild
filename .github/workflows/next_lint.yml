@@ -18,7 +18,7 @@ jobs:
 
       # 3. Instala dependencias en /frontend
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       # 4. Ejecuta el linter
       - name: Run Lint

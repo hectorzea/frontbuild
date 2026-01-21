@@ -21,7 +21,6 @@ export function TaskEditLoader({ id, children }: IAppProps) {
 
   useEffect(() => {
     if (isSuccessGetTasks) {
-      console.log("Success tasks", tasksData);
       dispatch(setTask(tasksData));
     }
   }, [dispatch, tasksData, isSuccessGetTasks]);

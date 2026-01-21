@@ -1,4 +1,4 @@
-import { Task } from "@/app/schemas";
+import { Task } from "@/app/(frontbuild)/schemas";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface TasksState {

@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { TaskDashboard } from ".";
-import { renderWithProviders } from "@/app/test-utils";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
 import { tasksMock as tasks } from "@/mocks/data/mockData";
 
 test("Loads <TaskDashboard /> and check for main elements", async () => {

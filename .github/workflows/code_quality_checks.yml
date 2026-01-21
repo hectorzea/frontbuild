@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: lts/*
       - name: Install Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Set environment variables
         run: |
           echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV

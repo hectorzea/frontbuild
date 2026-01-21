@@ -1,11 +1,11 @@
-import { Task } from "@/app/schemas";
+import { Task } from "@/app/(frontbuild)/schemas";
 import { HearthstoneMatchCreatedResponse } from "../handlers/hearthstoneApiHandlers";
 import {
   LabelOptions,
   PriorityOptions,
   StatusOptions,
-} from "@/app/types/api/Api";
-import { Card } from "@/app/types";
+} from "@/app/(frontbuild)/types/api/Api";
+import { Card } from "@/app/(frontbuild)/types";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
 //o sencillo
