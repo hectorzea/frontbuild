@@ -8,6 +8,7 @@ export default async function SongsPage() {
   const songs = await payload.find({
     collection: "songs",
   });
+  console.log(songs);
   return (
     <div data-testid="music-blog-page" className="flex flex-col gap-5 p-5">
       <p>My Most Favorite Songs</p>
