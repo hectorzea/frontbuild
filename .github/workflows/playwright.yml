@@ -28,11 +28,6 @@ jobs:
 
       # 5. Ejecuta las pruebas de Playwright
       - name: Run Playwright tests
-        env:
-          # 👇 Variables de entorno desde GitHub Secrets
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-          # Agrega más según necesites
         run: npx playwright test
 
       # 6. Sube el reporte de Playwright como artefacto
