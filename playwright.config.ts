@@ -43,6 +43,8 @@ export default defineConfig({
     port: 3000,
     env: {
       NEXT_PUBLIC_ENABLE_MSW: "true",
+      DATABASE_URL: process.env.DATABASE_URL!,
+      PAYLOAD_SECRET: process.env.PAYLOAD_SECRET!,
     },
     reuseExistingServer: !process.env.CI,
   },
