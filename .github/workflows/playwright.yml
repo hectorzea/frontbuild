@@ -31,6 +31,7 @@ jobs:
         env:
           # 👇 Variables de entorno desde GitHub Secrets
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
           # Agrega más según necesites
         run: npx playwright test
 
