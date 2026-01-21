@@ -17,6 +17,7 @@ test("Fronbuild Quality Tests // Home Page (Snapshot Test)", async ({
 test("Fronbuild Flow // Music Blog ", async ({ page }) => {
   await page.goto("/songs");
   await expect(page.getByText(/My Most Favorite Song/i)).toBeVisible();
+  await expect(page.getByText(/Crystal Glow/i)).toBeVisible();
 });
 
 test("Fronbuild Flow // Tasks", async ({ page }) => {

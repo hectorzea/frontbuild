@@ -15,10 +15,10 @@ export default async function SongsPage() {
         {songs.docs?.map((song) => (
           <div className="flex flex-col gap-2" key={song.id}>
             <Image
-              src={`/media/${song.coverImage.filename}`}
+              src={`${song.coverImage ? `/media/${song.coverImage.filename}` : `/media/no-picture.jpg`}`}
               width={200}
               height={200}
-              alt={song.coverImage.alt}
+              alt={song.coverImage ? song.coverImage.alt : "No picture"}
               className="rounded-sm"
             />
             <p>{song.songTitle}</p>

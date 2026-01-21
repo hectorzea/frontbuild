@@ -7,7 +7,6 @@ export const Songs: CollectionConfig = {
       name: "coverImage",
       type: "upload",
       relationTo: "media",
-      required: true,
     },
     {
       name: "songTitle",
