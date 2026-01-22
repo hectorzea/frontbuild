@@ -40,7 +40,7 @@ export default async function SongPage({
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       />
-      <p>Why i like this song?</p>
+      <p className="text-2xl">Why i like this song?</p>
       <p>{song.whyILike}</p>
     </div>
   );

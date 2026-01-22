@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function SongsPage() {
+  //TODO FINISH ui on mobile, find a way to share common folder for css / shadcn, now we getting globals from frontbuild
   const payload = await getPayload({ config: configPromise });
   const songs = await payload.find({
     collection: "songs",
