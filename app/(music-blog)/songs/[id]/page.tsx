@@ -1,5 +1,6 @@
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
+import { getSpotifyTrackUrl } from "@/lib/utils";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -19,10 +20,28 @@ export default async function SongPage({
 }) {
   const { id } = await params;
   const payload = await getPayload({ config: configPromise });
-  const song = await payload.find({
+  const songCollection = await payload.find({
     collection: "songs",
     where: { id: { equals: id } },
     limit: 1,
   });
-  return <div data-testid="song-title">{song.docs[0]?.songTitle}</div>;
+  const song = { ...songCollection.docs[0] };
+  const spotifySongId = getSpotifyTrackUrl(song.spotifyUrl);
+  return (
+    <div
+      data-testid="song-page-container"
+      className="flex flex-col p-5 gap-5 justify-center items-center min-h-screen font-extralight"
+    >
+      <p className="text-2xl">Your song</p>
+      <iframe
+        className="w-[340px] h-[352px] rounded-xl"
+        data-testid="embed-iframe-songs"
+        src={`https://open.spotify.com/embed/track/${spotifySongId}`}
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      />
+      <p>Why i like this song?</p>
+      <p>{song.whyILike}</p>
+    </div>
+  );
 }

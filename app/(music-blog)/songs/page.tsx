@@ -10,7 +10,7 @@ export default async function SongsPage() {
   });
   return (
     <div data-testid="music-blog-page" className="flex flex-col gap-5 p-5">
-      <p>My Most Favorite Songs</p>
+      <h1 className="text-2xl">My Most Favorite Songs</h1>
       <div className="flex gap-5">
         {songs.docs?.map((song) => (
           <div className="flex flex-col gap-2" key={song.id}>
