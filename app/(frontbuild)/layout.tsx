@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/components/common/globals.css";
 import { StoreProvider } from "./StoreProvider";
 // import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";

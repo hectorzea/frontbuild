@@ -1,4 +1,4 @@
-import "@/app/(frontbuild)/globals.css";
+import "@/components/common/globals.css";
 import { ThemeProvider } from "next-themes";
 
 export const metadata = {
