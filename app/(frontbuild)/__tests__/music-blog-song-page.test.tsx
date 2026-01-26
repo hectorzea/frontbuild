@@ -10,6 +10,7 @@ beforeEach(() => {
           id: "1",
           songTitle: "Crystal Glow",
           artist: "Snade",
+          whyILike: "Its nice and progressive song",
           coverImage: {
             filename: "cover1.jpg",
             alt: "cover",
@@ -20,10 +21,14 @@ beforeEach(() => {
   });
 });
 
-describe("Music Blog Page", () => {
+describe("Page Song By Id", () => {
   it("is rendering correctly", async () => {
     const paramsPromise = Promise.resolve({ id: "1" });
     render(await SongPage({ params: paramsPromise }));
     expect(screen.getByTestId("song-page-container")).toBeInTheDocument();
+    expect(screen.getByTestId("song-whyILike")).toBeInTheDocument();
+    expect(
+      screen.getByText("Its nice and progressive song"),
+    ).toBeInTheDocument();
   });
 });

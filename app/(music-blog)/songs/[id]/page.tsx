@@ -41,7 +41,7 @@ export default async function SongPage({
         loading="lazy"
       />
       <p className="text-2xl">Why i like this song?</p>
-      <p>{song.whyILike}</p>
+      <p data-testId="song-whyILike">{song.whyILike}</p>
     </div>
   );
 }
