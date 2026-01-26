@@ -24,6 +24,6 @@ describe("Music Blog Page", () => {
   it("is rendering correctly", async () => {
     const paramsPromise = Promise.resolve({ id: "1" });
     render(await SongPage({ params: paramsPromise }));
-    expect(screen.getByTestId("song-title")).toBeInTheDocument();
+    expect(screen.getByTestId("song-page-container")).toBeInTheDocument();
   });
 });
