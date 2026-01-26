@@ -11,7 +11,7 @@ const loadingComponents = [
 describe.each(loadingComponents)(
   "Loading Components",
   ({ path, name, loadingText }) => {
-    it(`${name} debe renderizar el spinner correctamente`, async () => {
+    it(`${name} must load the loading spinner with text`, async () => {
       const Component = (await import(path)).default;
       render(<Component />);
 
