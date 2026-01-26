@@ -1,4 +1,4 @@
 import { Loading } from "@/components/common/Loading";
 export default function SongsLoading() {
-  return <Loading />;
+  return <Loading loadingText="Loading Songs..." />;
 }
