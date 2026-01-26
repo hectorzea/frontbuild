@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function SongsPage() {
-  //TODO FINISH  find a way to share common folder for css / shadcn, now we getting globals from frontbuild
+  //TODO make songs come from a CDN in prd envs
   const payload = await getPayload({ config: configPromise });
   const songs = await payload.find({
     collection: "songs",
