@@ -48,7 +48,7 @@ export function JobCheckForm() {
       setLoading(true);
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
-        { linkedinJobUrl: data.linkedInJobUrl }
+        { linkedinJobUrl: data.linkedInJobUrl },
       );
       setData(jobResponse.data);
       setLoading(false);
@@ -70,11 +70,7 @@ export function JobCheckForm() {
           <div className="flex flex-row gap-2 items-center justify-between">
             <div>Company: {data?.companyName}</div>
             <div className="flex flex-row gap-2">
-              <Button
-                size={"sm"}
-                data-testid={"download-cv-button"}
-                className=""
-              >
+              <Button size={"sm"} data-testid={"download-cv-button"}>
                 <Link
                   href={data?.jobLink || "#"}
                   target="_blank"
@@ -154,7 +150,7 @@ export function JobCheckForm() {
             {data?.recruitmentProcessSteps?.map(
               (skill: string, index: number) => (
                 <li key={index}>{skill}</li>
-              )
+              ),
             )}
           </ul>
           <Separator className="my-4" />
@@ -165,7 +161,7 @@ export function JobCheckForm() {
             {data?.considerations?.map(
               (consideration: string, index: number) => (
                 <li key={index}>{consideration}</li>
-              )
+              ),
             )}
           </ul>
           <h3 className="text-2xl font-semibold my-3">Match Reasoning vs CV</h3>
@@ -173,7 +169,7 @@ export function JobCheckForm() {
             {data?.matchReasoningKeyPoints?.map(
               (matchReasoningKeyPoint: string, index: number) => (
                 <li key={index}>{matchReasoningKeyPoint}</li>
-              )
+              ),
             )}
           </ul>
         </div>
