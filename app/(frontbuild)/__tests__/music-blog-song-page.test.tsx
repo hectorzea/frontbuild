@@ -9,6 +9,8 @@ beforeEach(() => {
         {
           id: "1",
           songTitle: "Crystal Glow",
+          spotifyUrl:
+            "https://open.spotify.com/track/4ya8lP9HLt2s6fj9xX4lSZ?si=3JycucfyTRKqGkDUXIaTsw",
           artist: "Snade",
           whyILike: "Its nice and progressive song",
           coverImage: {

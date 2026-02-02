@@ -13,8 +13,7 @@ describe.each(loadingComponents)(
   ({ path, name, loadingText }) => {
     it(`${name} must load the loading spinner with text`, async () => {
       const Component = (await import(path)).default;
-      render(<Component />);
-
+      render(<Component loadingText={loadingText} />);
       expect(screen.getByText(loadingText)).toBeInTheDocument();
     });
   },
