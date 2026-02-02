@@ -26,10 +26,6 @@ export const capitalizeFirstLetter = (value: string) => {
   return value?.charAt(0).toUpperCase() + value?.slice(1);
 };
 
-export const generateMockObjectId = () => {
-  return randomBytes(12).toString("hex");
-};
-
 export const getSpotifyTrackUrl = (url: string): string | null => {
   try {
     const parsedUrl = new URL(url);
