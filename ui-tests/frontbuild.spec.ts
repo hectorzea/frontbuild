@@ -21,7 +21,7 @@ test("Fronbuild Flow // Music Blog ", async ({ page }) => {
 });
 
 test("Fronbuild Flow // Tasks", async ({ page }) => {
-  await page.goto("/projects/tasks");
+  await page.goto("/tasks");
 
   await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
   await expect(
@@ -48,7 +48,7 @@ test("Fronbuild Flow // Tasks", async ({ page }) => {
 });
 
 test("Fronbuild Flow // Edit", async ({ page }) => {
-  await page.goto("/projects/tasks");
+  await page.goto("/tasks");
 
   await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
   await expect(

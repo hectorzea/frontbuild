@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
-import AddNewTaskPage from "@/app/(frontbuild)/[locale]/projects/tasks/new/page";
+import AddNewTaskPage from "@/app/(tasks)/tasks/new/page";
 import userEvent from "@testing-library/user-event";
 
 describe("Add new task page", () => {
