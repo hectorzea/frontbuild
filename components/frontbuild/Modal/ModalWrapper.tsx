@@ -2,6 +2,7 @@
 import { type FC, type ReactNode } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
+
 interface ModalWindowProps {
   children: ReactNode;
   route?: string;

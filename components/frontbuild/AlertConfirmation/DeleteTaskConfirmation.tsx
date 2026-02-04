@@ -49,7 +49,7 @@ export function DeleteTaskConfirmation({ id }: IAppProps) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>
-            <Link href="/projects/tasks">Cancel</Link>
+            <Link href="/tasks">Cancel</Link>
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={onDeleteTask}

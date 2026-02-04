@@ -33,7 +33,7 @@ export function DataTableRowActions<TData>({
   const router = useRouter();
 
   const navigateToTasks = () => {
-    router.push(`/projects/tasks/delete/${task._id}`);
+    router.push(`/tasks/delete/${task._id}`);
   };
 
   return (
@@ -52,7 +52,7 @@ export function DataTableRowActions<TData>({
         <DropdownMenuContent align="end" className="w-40">
           <DropdownMenuItem
             onClick={() => {
-              router.push(`/projects/tasks/edit/${task._id}`);
+              router.push(`/tasks/edit/${task._id}`);
             }}
           >
             Edit Task

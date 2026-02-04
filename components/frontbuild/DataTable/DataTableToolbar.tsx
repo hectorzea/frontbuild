@@ -69,7 +69,7 @@ export function DataTableToolbar<TData>({
           className="w-full sm:w-auto mt-2 sm:mt-0"
           data-testid="add-task-link-button"
         >
-          <Link href={"/projects/tasks/new"}>New Task</Link>
+          <Link href={"/tasks/new"}>New Task</Link>
         </Button>
         <DataTableViewOptions table={table} />
       </div>
