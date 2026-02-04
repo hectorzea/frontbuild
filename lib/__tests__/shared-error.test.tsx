@@ -17,6 +17,11 @@ const errorComponents: ErrorComponent[] = [
     errorText: "Something went wrong on Tasks Project",
     name: "Tasks Error Page",
   },
+  {
+    path: "@/app/(frontbuild)/error",
+    errorText: "Something went wrong on Frontbuild Page",
+    name: "Frontbuild Error Page",
+  },
 ];
 
 jest.mock("react", () => ({
