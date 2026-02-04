@@ -35,7 +35,7 @@ export const hearthstoneApiHandlers = [
       }
 
       return HttpResponse.json(mulliganMockData);
-    }
+    },
   ),
   http.post<
     never,
@@ -50,7 +50,7 @@ export const hearthstoneApiHandlers = [
       return HttpResponse.json(mockResponse.response, {
         status: mockResponse.status,
       });
-    }
+    },
   ),
   http.post<SearchCardRequestBody, SearchCardResponse>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card`,
@@ -58,7 +58,7 @@ export const hearthstoneApiHandlers = [
       const requestData = await request.json();
       console.log("Received request data:", requestData);
       return HttpResponse.json(cardSearchMockData);
-    }
+    },
   ),
   http.get<{ id: string }, Card[]>(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card/:id`,
@@ -68,6 +68,6 @@ export const hearthstoneApiHandlers = [
       const defaultId = id as string;
       console.log(defaultId);
       return HttpResponse.json(cardTokensMock);
-    }
+    },
   ),
 ];
