@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 import CardTokensPage from "@/app/(frontbuild)/[locale]/projects/hs-card-search/tokens/[id]/page";
 
 describe("Card Tokens Page", () => {

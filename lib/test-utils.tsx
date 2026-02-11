@@ -1,9 +1,9 @@
-import { render } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
-
 import type { AppStore, RootState } from "@/lib/store";
 import { setupStore } from "@/lib/store";
+import userEvent from "@testing-library/user-event";
 // As a basic setup, import your same slice reducers
 //import {tasksSlice} from '@/lib/features/tasks/tasksSlice'
 
@@ -16,7 +16,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 
 export function renderWithProviders(
   ui: React.ReactElement,
-  extendedRenderOptions: ExtendedRenderOptions = {}
+  extendedRenderOptions: ExtendedRenderOptions = {},
 ) {
   const {
     preloadedState = {},
@@ -35,3 +35,18 @@ export function renderWithProviders(
     ...render(ui, { wrapper: Wrapper, ...renderOptions }),
   };
 }
+
+export const runNewTaskFormTests = async () => {
+  const user = userEvent.setup();
+
+  expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
+  expect(screen.getByTestId("task-form-status")).toBeInTheDocument();
+  expect(screen.getByTestId("task-form-label")).toBeInTheDocument();
+  expect(screen.getByTestId("task-form-priority")).toBeInTheDocument();
+
+  await user.click(screen.getByTestId("task-form-submit-button"));
+
+  await waitFor(() => {
+    expect(screen.getByText("Title is required")).toBeInTheDocument();
+  });
+};

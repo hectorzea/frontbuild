@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
-import EditTaskPage from "@/app/(frontbuild)/[locale]/projects/tasks/edit/[id]/page";
+import { renderWithProviders } from "@/lib/test-utils";
+import EditTaskPage from "@/app/(tasks)/tasks/edit/[id]/page";
 import { editTaskMockId } from "@/mocks/handlers/taskHandlers";
 import { server } from "@/mocks/server";
 import { http, HttpResponse } from "msw";
@@ -23,7 +23,7 @@ describe("Edit Task page", () => {
     await waitFor(() => {
       expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
       expect(screen.getByLabelText("Title")).toHaveValue(
-        "Do something with the tests"
+        "Do something with the tests",
       );
     });
   });
@@ -38,7 +38,7 @@ describe("Edit Task page", () => {
       expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
       //information from backend expected to be loaded
       expect(screen.getByLabelText("Title")).toHaveValue(
-        "Do something with the tests"
+        "Do something with the tests",
       );
     });
 
@@ -61,8 +61,8 @@ describe("Edit Task page", () => {
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
-        }
-      )
+        },
+      ),
     );
     const user = userEvent.setup();
     const paramsPromise = Promise.resolve({ id: editTaskMockId });
@@ -85,8 +85,8 @@ describe("Edit Task page", () => {
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
-        }
-      )
+        },
+      ),
     );
     const paramsPromise = Promise.resolve({ id: editTaskMockId });
     renderWithProviders(await EditTaskPage({ params: paramsPromise }));

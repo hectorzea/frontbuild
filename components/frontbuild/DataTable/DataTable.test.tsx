@@ -1,7 +1,7 @@
 import { fireEvent, screen } from "@testing-library/react";
 import { columns } from "@/components/frontbuild/DataTable/Columns";
 import { DataTable } from "./";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 import { tasksMock as tasks } from "@/mocks/data/mockData";
 
 test("renderiza tabla con 2 filas", async () => {
@@ -13,7 +13,7 @@ test("renderiza tabla con 2 filas", async () => {
           tasks: tasks,
         },
       },
-    }
+    },
   );
   //tests with 3 rows and the header
   expect(await screen.findByTestId("test-table")).toBeInTheDocument();
@@ -42,7 +42,7 @@ test("renderiza tabla sin items", () => {
           tasks: [],
         },
       },
-    }
+    },
   );
 
   expect(screen.queryByTestId("data-table-toolbar")).not.toBeInTheDocument();
@@ -57,7 +57,7 @@ test("filtra tareas por texto", async () => {
           tasks: tasks,
         },
       },
-    }
+    },
   );
 
   fireEvent.change(getByPlaceholderText("Filter tasks..."), {

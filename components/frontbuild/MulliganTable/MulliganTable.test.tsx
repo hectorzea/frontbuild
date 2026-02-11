@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { MulliganTable } from ".";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 
 test("Loads <MulliganTable /> and check for main elements", async () => {
   renderWithProviders(<MulliganTable />, {
@@ -9,10 +9,10 @@ test("Loads <MulliganTable /> and check for main elements", async () => {
 
   expect(await screen.findByTestId("mulligan-table-title")).toBeInTheDocument();
   expect(
-    await screen.findByTestId("mulligan-winrate-initial-cards-table")
+    await screen.findByTestId("mulligan-winrate-initial-cards-table"),
   ).toBeInTheDocument();
   expect(
-    await screen.findByTestId("mulligan-winrate-discard-cards-table")
+    await screen.findByTestId("mulligan-winrate-discard-cards-table"),
   ).toBeInTheDocument();
 });
 

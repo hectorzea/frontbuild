@@ -8,7 +8,7 @@ const projects = [
     title: "Task Generator",
     description:
       "A simple task generator using the best practices of redux toolkit + jest",
-    link: "/projects/tasks",
+    link: "/tasks",
     technologies: ["Next.js", "Playwright", "MongoDB", "Tailwind CSS"],
   },
   {

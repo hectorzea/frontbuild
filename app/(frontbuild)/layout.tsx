@@ -1,5 +1,5 @@
 import "@/components/common/globals.css";
-import { StoreProvider } from "./StoreProvider";
+// import { StoreProvider } from "../../lib/StoreProvider";
 // import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -36,18 +36,16 @@ export default function RootLayout({
         data-testid="body-frontbuild"
       >
         <NextIntlClientProvider>
-          <StoreProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Toaster />
-              <ModeToggle />
-              {children}
-            </ThemeProvider>
-          </StoreProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster />
+            <ModeToggle />
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
