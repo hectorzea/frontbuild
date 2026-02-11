@@ -34,6 +34,14 @@ const projects = [
     link: "/projects/hs-card-search/mulligan",
     technologies: ["Node.js", "React", "NestJS", "Puppeteer"],
   },
+  //TODO ADD TRANSLATIONS
+  // {
+  //   id: "music-blog",
+  //   title: "Music Blog",
+  //   description: "Music Blog with PayloadCMS",
+  //   link: "/songs",
+  //   technologies: ["React", "PayloadCMS", "GraphQL"],
+  // },
 ];
 
 export function ProfileProjects() {
