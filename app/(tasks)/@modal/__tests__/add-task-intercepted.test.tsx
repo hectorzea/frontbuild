@@ -1,13 +1,14 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
 import InterceptedPage from "@/app/(tasks)/@modal/(.)tasks/new/page";
 import userEvent from "@testing-library/user-event";
+import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
 
-//TODO FINISH THIS TEST PASAR DE SYNC A ASYNC INTERCEPTED PAGE ERROR
+//TODO: intercepted page test is the same test as add-task-page, find better no duplication
 describe("Add new task page", () => {
   it("renders page and submit a task creation without filling fields - ERROR", async () => {
     const user = userEvent.setup();
-    renderWithProviders(<InterceptedPage />);
+    //Reminder: Render with providers and Redux on Server Page --> Client Page
+    renderWithProviders(await InterceptedPage());
 
     expect(screen.getByTestId("task-form-title")).toBeInTheDocument();
     expect(screen.getByTestId("task-form-status")).toBeInTheDocument();

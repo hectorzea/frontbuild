@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "update:snapshots": "jest --updateSnapshot",
-    "test": "jest",
+    "test": "jest --runTestsByPath",
     "test:unit": "jest",
     "test:e2e": "npx playwright test",
     "test:all": "npm run test:unit && npm run test:e2e",
