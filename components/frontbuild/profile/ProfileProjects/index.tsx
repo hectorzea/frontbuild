@@ -24,16 +24,24 @@ const projects = [
     title: "Hearthstone Card Search",
     description:
       "Simple card search for Hearthstone Game using Hearthstone JSON API",
-    link: "/projects/hs-card-search",
+    link: "/hs-card-search",
     technologies: ["Next.js", "Typescript", "Shadcn", "Tailwind CSS"],
   },
   {
     id: "mulligan_generator",
     title: "Mulligan Generator",
     description: "Mulligan generator for hearthstone games",
-    link: "/projects/hs-card-search/mulligan",
+    link: "/hs-card-search/mulligan",
     technologies: ["Node.js", "React", "NestJS", "Puppeteer"],
   },
+  //TODO ADD TRANSLATIONS
+  // {
+  //   id: "music-blog",
+  //   title: "Music Blog",
+  //   description: "Music Blog with PayloadCMS",
+  //   link: "/songs",
+  //   technologies: ["React", "PayloadCMS", "GraphQL"],
+  // },
 ];
 
 export function ProfileProjects() {

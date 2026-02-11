@@ -79,7 +79,7 @@ export function CardDetail({ data }: IAppProps) {
           <div className="flex flex-col gap-y-2">
             <p className="font-bold">Tokens</p>
             <Link
-              href={`/projects/hs-card-search/tokens/${data.id}`}
+              href={`/hs-card-search/tokens/${data.id}`}
               className="underline hover:text-gray-700 transition-all duration-300"
             >
               Ver Tokens
