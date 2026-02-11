@@ -10,6 +10,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useDeleteTaskMutation } from "@/lib/features/tasks/tasksApiSlice";
+import { removeTask } from "@/lib/features/tasks/tasksSlice";
+import { useAppDispatch } from "@/lib/hooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -22,6 +24,7 @@ export interface IAppProps {
 //TODO: check with intercepted page because maybe routing is making app to call tasks multiple times
 export function DeleteTaskConfirmation({ id }: IAppProps) {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const [deleteTask, { isError, isSuccess }] = useDeleteTaskMutation();
   const [open, setOpen] = useState<boolean>(true);
   const onDeleteTask = async () => {
@@ -29,6 +32,7 @@ export function DeleteTaskConfirmation({ id }: IAppProps) {
       await deleteTask(id);
       router.back();
       toast("Task has been deleted.");
+      dispatch(removeTask(id));
     } catch (error) {
       console.error(error);
       setOpen(false);

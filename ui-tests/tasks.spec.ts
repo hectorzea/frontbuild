@@ -62,4 +62,27 @@ test.describe("Tasks Page", () => {
 
     await expect(page.getByText("Task has been updated")).toBeVisible();
   });
+
+  test("DELETE", async ({ page }) => {
+    await expect(page.getByText(/Easy Task Creator/i)).toBeVisible();
+    await expect(
+      page.getByText(/Task creator using tanstack react-table/i),
+    ).toBeVisible();
+
+    await expect(
+      page.getByTestId("67574211b5599f1ebce84868-actions-button"),
+    ).toBeVisible();
+
+    await page.getByTestId("67574211b5599f1ebce84868-actions-button").click();
+
+    await page.getByRole("menuitem", { name: "Delete" }).click();
+
+    await page.getByTestId("delete-task-submit-button").click();
+
+    await expect(
+      page.getByText("Do something with the tests"),
+    ).not.toBeVisible();
+
+    await expect(page.getByText("Task has been deleted.")).toBeVisible();
+  });
 });
