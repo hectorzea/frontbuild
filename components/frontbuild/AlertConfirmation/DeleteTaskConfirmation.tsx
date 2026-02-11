@@ -19,6 +19,7 @@ export interface IAppProps {
   id: string;
 }
 
+//TODO: check with intercepted page because maybe routing is making app to call tasks multiple times
 export function DeleteTaskConfirmation({ id }: IAppProps) {
   const router = useRouter();
   const [deleteTask, { isError, isSuccess }] = useDeleteTaskMutation();
