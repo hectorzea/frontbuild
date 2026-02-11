@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 import DeleteTaskPage from "@/app/(tasks)/tasks/delete/[id]/page";
 import userEvent from "@testing-library/user-event";
 import { server } from "@/mocks/server";

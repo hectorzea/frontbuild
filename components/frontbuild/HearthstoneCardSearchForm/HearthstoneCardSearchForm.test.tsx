@@ -1,7 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import { HearthstoneCardSearchForm } from ".";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 
 test("Render <HearthstoneCardSearchForm /> and find a card", async () => {
   const user = userEvent.setup();
@@ -9,7 +9,7 @@ test("Render <HearthstoneCardSearchForm /> and find a card", async () => {
 
   const input = screen.getByTestId("card-search-input-field");
   expect(
-    screen.getByTestId("submit-button-card-search-form")
+    screen.getByTestId("submit-button-card-search-form"),
   ).toBeInTheDocument();
 
   await user.type(input, "ragnaros the firelord");
@@ -19,8 +19,8 @@ test("Render <HearthstoneCardSearchForm /> and find a card", async () => {
   await waitFor(() => {
     expect(
       screen.getByText(
-        /Talanji was struck down and raised again as a death knight/i
-      )
+        /Talanji was struck down and raised again as a death knight/i,
+      ),
     ).toBeInTheDocument();
   });
 });

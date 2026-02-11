@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import TasksPage from "@/app/(tasks)/tasks/page";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 import { http, HttpResponse } from "msw";
 import { NextIntlClientProvider } from "next-intl";
 import en from "@/i18n/messages/en.json";

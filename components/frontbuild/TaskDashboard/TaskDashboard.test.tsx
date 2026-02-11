@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { TaskDashboard } from ".";
-import { renderWithProviders } from "@/app/(frontbuild)/test-utils";
+import { renderWithProviders } from "@/lib/test-utils";
 import { tasksMock as tasks } from "@/mocks/data/mockData";
 
 test("Loads <TaskDashboard /> and check for main elements", async () => {
@@ -17,12 +17,12 @@ test("Loads <TaskDashboard /> and check for main elements", async () => {
           tasks: tasks,
         },
       },
-    }
+    },
   );
 
   expect(await screen.findByTestId("frontbuild-title")).toBeInTheDocument();
   expect(
-    await screen.findByText(/Render pipelines without a trace/i)
+    await screen.findByText(/Render pipelines without a trace/i),
   ).toBeInTheDocument();
 });
 
@@ -40,7 +40,7 @@ test("Loads <TaskDashboard /> and check for main elements", async () => {
           tasks: [],
         },
       },
-    }
+    },
   );
 
   expect(await screen.findByTestId("frontbuild-title")).toBeInTheDocument();
