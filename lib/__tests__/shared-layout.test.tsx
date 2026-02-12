@@ -20,6 +20,11 @@ const layoutComponents: LayoutComponent[] = [
     path: "@/app/(hs-card-search)/layout",
     layoutProps: { children: <div>Hearthstone Card Search</div> },
   },
+  {
+    name: "Job Search",
+    path: "@/app/(job-search)/layout",
+    layoutProps: { children: <div>Job Search</div> },
+  },
 ];
 
 describe.each(layoutComponents)(

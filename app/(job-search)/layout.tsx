@@ -1,5 +1,4 @@
 import "@/components/common/globals.css";
-import { StoreProvider } from "@/lib/StoreProvider";
 import { ThemeProvider } from "next-themes";
 
 export const metadata = {
@@ -9,10 +8,8 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -23,10 +20,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StoreProvider>
-            {children}
-            {modal}
-          </StoreProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>
