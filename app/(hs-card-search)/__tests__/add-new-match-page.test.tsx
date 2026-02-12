@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import AddNewMatchPage from "@/app/(frontbuild)/[locale]/projects/hs-card-search/mulligan/new-match/page";
+import AddNewMatchPage from "@/app/(hs-card-search)/hs-card-search/mulligan/new-match/page";
 import userEvent from "@testing-library/user-event";
 import mockRouter from "next-router-mock";
 import { server } from "@/mocks/server";
@@ -12,21 +12,21 @@ describe("Add New Match Page - ", () => {
     render(<AddNewMatchPage />);
     expect(screen.getByText("New Match")).toBeInTheDocument();
     expect(
-      screen.getByTestId("card-match-url-input-field")
+      screen.getByTestId("card-match-url-input-field"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Add the match URL and indicate W / L")
+      screen.getByText("Add the match URL and indicate W / L"),
     ).toBeInTheDocument();
     expect(screen.getByTestId("switch-win-loose")).toBeInTheDocument();
     expect(
-      screen.getByTestId("close-button-card-match-form")
+      screen.getByTestId("close-button-card-match-form"),
     ).toBeInTheDocument();
 
     const input = screen.getByTestId("card-match-url-input-field");
 
     await user.type(
       input,
-      "https://hsreplay.net/replay/UEpCuDvFktfgBpq6AjH4rP"
+      "https://hsreplay.net/replay/UEpCuDvFktfgBpq6AjH4rP",
     );
 
     await user.click(screen.getByTestId("submit-button-card-match-result"));
@@ -43,29 +43,29 @@ describe("Add New Match Page - ", () => {
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
         () => {
           return new HttpResponse("Internal Server Error", { status: 500 });
-        }
-      )
+        },
+      ),
     );
 
     const user = userEvent.setup();
     render(<AddNewMatchPage />);
     expect(screen.getByText("New Match")).toBeInTheDocument();
     expect(
-      screen.getByTestId("card-match-url-input-field")
+      screen.getByTestId("card-match-url-input-field"),
     ).toBeInTheDocument();
     expect(
-      screen.getByText("Add the match URL and indicate W / L")
+      screen.getByText("Add the match URL and indicate W / L"),
     ).toBeInTheDocument();
     expect(screen.getByTestId("switch-win-loose")).toBeInTheDocument();
     expect(
-      screen.getByTestId("close-button-card-match-form")
+      screen.getByTestId("close-button-card-match-form"),
     ).toBeInTheDocument();
 
     const input = screen.getByTestId("card-match-url-input-field");
 
     await user.type(
       input,
-      "https://hsreplay.net/replay/UEpCuDvFktfgBpq6AjH4rP"
+      "https://hsreplay.net/replay/UEpCuDvFktfgBpq6AjH4rP",
     );
 
     await user.click(screen.getByTestId("submit-button-card-match-result"));
