@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import HearthstoneCardSearchPage from "@/app/(frontbuild)/[locale]/projects/hs-card-search/page";
+import HearthstoneCardSearchPage from "@/app/(hs-card-search)/hs-card-search/page";
 import { renderWithProviders } from "@/lib/test-utils";
 
 describe("Hearthstone Card Search", () => {
