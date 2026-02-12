@@ -21,7 +21,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StoreProvider> {children}</StoreProvider>
+          <StoreProvider>{children}</StoreProvider>
         </ThemeProvider>
       </body>
     </html>
