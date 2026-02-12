@@ -1,6 +1,11 @@
+
 # Frontbuild
 
 [https://frontbuild.vercel.app](https://frontbuild.vercel.app/en)
+
+# How to install?
+
+Locally you can run `npm install --legacy-peer-deps`
 
 ## Description
 
