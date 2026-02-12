@@ -9,5 +9,5 @@ export const config = {
   // - … the ones containing a dot (e.g. `favicon.ico`)
   // test my matcher /((?!_next|api|mockServiceWorker\\.js|favicon\\.ico|sw\\.js).*)
   matcher:
-    "/((?!api|trpc|admin|songs|tasks|hs-card-search|_next|_vercel|.*\\..*).*)",
+    "/((?!api|trpc|admin|songs|tasks|hs-card-search|job-search|_next|_vercel|.*\\..*).*)",
 };

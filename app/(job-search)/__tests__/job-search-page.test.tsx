@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import JobCheckPage from "@/app/(frontbuild)/[locale]/projects/job-check/page";
+import JobCheckPage from "@/app/(job-search)/job-search/page";
 import userEvent from "@testing-library/user-event";
 
 describe("Job Check - ", () => {
@@ -10,13 +10,13 @@ describe("Job Check - ", () => {
 
     const input = screen.getByTestId("job-check-input-field");
     expect(
-      screen.getByText("Enter LinkedIN Url and start the research!")
+      screen.getByText("Enter LinkedIN Url and start the research!"),
     ).toBeInTheDocument();
 
     await user.type(input, "wwww.linkedin.com/jobs/view/123456789/");
 
     expect(
-      screen.getByTestId("submit-button-job-check-form")
+      screen.getByTestId("submit-button-job-check-form"),
     ).toBeInTheDocument();
 
     await user.click(screen.getByTestId("submit-button-job-check-form"));
