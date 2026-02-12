@@ -10,7 +10,7 @@ describe("Mulligan Page - ", () => {
       expect(screen.getByTestId("mulligan-table-title")).toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: "Add new match" }),
-      ).toHaveAttribute("href", "/projects/hs-card-search/mulligan/new-match");
+      ).toHaveAttribute("href", "/hs-card-search/mulligan/new-match");
     });
   });
 });
