@@ -11,11 +11,9 @@ export function generateStaticParams() {
 export default async function LocaleLayout({
   children,
   params,
-  modal,
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
-  modal: React.ReactNode;
 }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
@@ -26,10 +24,7 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <NextIntlClientProvider>
-        {modal}
-        {children}
-      </NextIntlClientProvider>
+      <NextIntlClientProvider>{children}</NextIntlClientProvider>
     </>
   );
 }

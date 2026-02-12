@@ -31,9 +31,7 @@ export function MulliganTable() {
         data-testid={"add-new-match-mulligan"}
         className="my-3"
       >
-        <Link href={"/projects/hs-card-search/mulligan/new-match"}>
-          Add new match
-        </Link>
+        <Link href={"/hs-card-search/mulligan/new-match"}>Add new match</Link>
       </Button>
       <div>
         <p className="mt-3">Partidas ganadas por carta individual (INICIAL)</p>
