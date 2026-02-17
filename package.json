@@ -14,7 +14,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@google/genai": "^1.4.0",
+    "@google/genai": "^1.41.0",
     "@hookform/resolvers": "^5.2.2",
     "@payloadcms/db-mongodb": "^3.76.1",
     "@payloadcms/next": "^3.76.1",
