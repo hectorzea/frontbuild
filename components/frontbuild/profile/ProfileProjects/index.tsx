@@ -12,11 +12,11 @@ const projects = [
     technologies: ["Next.js", "Playwright", "MongoDB", "Tailwind CSS"],
   },
   {
-    id: "job_lint",
-    title: "Job Lint",
+    id: "job_search",
+    title: "Job Lint Search",
     description:
       "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
-    link: "/job-check",
+    link: "/job-search",
     technologies: ["Next.js", "MongoDB", "TypeScript", "Tailwind CSS"],
   },
   {
