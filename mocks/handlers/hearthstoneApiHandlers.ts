@@ -5,7 +5,7 @@ import {
   cardTokensMock,
   mulliganMockData,
 } from "@/mocks/data/mockData";
-import { Card, Game } from "@/app/(frontbuild)/types";
+import { Card, Game } from "@/lib/types";
 
 // --- Search Card Mock Types
 type SearchCardRequestBody = { cardName: string };

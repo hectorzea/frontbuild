@@ -4,8 +4,8 @@ import {
   LabelOptions,
   PriorityOptions,
   StatusOptions,
-} from "@/app/(frontbuild)/types/api/Api";
-import { Card } from "@/app/(frontbuild)/types";
+} from "@/lib/types/api/Api";
+import { Card } from "@/lib/types";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
 //o sencillo

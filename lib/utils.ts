@@ -5,7 +5,7 @@ import {
   Status,
   StatusIcon,
   statusIconMap,
-} from "@/app/(frontbuild)/types";
+} from "@/lib/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 

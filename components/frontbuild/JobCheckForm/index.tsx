@@ -17,7 +17,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { JobOffer } from "@/app/(frontbuild)/types";
+import { JobOffer } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import {
   Card,

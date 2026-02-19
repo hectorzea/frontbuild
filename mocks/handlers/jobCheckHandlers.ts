@@ -1,4 +1,4 @@
-import { JobOffer } from "@/app/(frontbuild)/types";
+import { JobOffer } from "@/lib/types";
 import { http, HttpResponse } from "msw";
 
 //request bodies
@@ -101,6 +101,6 @@ export const jobCheckHandlers = [
     async ({ request }) => {
       await request.json();
       return HttpResponse.json(jobData);
-    }
+    },
   ),
 ];

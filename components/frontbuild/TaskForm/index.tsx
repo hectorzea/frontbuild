@@ -28,7 +28,7 @@ import {
   PriorityOptions,
   Status,
   StatusOptions,
-} from "@/app/(frontbuild)/types/api/Api";
+} from "@/lib/types/api/Api";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import {
