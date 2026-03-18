@@ -164,7 +164,7 @@ type ErrorResponseFindById = {
   };
 };
 
-type DeleteTackMockScenarios = Record<string, MockScenarioDeleteTask>;
+type DeleteTaskMockScenarios = Record<string, MockScenarioDeleteTask>;
 type MockScenarioDeleteTask = SuccessResponseDelete | ErrorResponseDelete;
 
 type SuccessResponseDelete = {
@@ -237,7 +237,7 @@ export const taskByIdMockResponseScenario: FindTaskByIdMockScenarios = {
   },
 };
 
-export const deleteTaskMockScenario: DeleteTackMockScenarios = {
+export const deleteTaskMockScenario: DeleteTaskMockScenarios = {
   "67574211b5599f1ebce84868": {
     status: 200,
     response: { success: true, message: "Deleted" },
