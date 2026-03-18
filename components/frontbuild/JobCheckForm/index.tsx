@@ -35,6 +35,7 @@ const FormSchema = z.object({
 
 export function JobCheckForm() {
   const [data, setData] = useState<JobOffer | null>(null);
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -46,6 +47,7 @@ export function JobCheckForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
+      //TODO error cases to test mock
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
         { linkedinJobUrl: data.linkedInJobUrl },
@@ -54,8 +56,29 @@ export function JobCheckForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
-      setData(null);
+      setError(true);
     }
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-3.5">
+        <p>An error has ocurred, do the call again </p>
+        <Button
+          className="cursor-pointer"
+          size={"sm"}
+          onClick={() => {
+            setData(null);
+            setError(false);
+            setLoading(false);
+            form.reset();
+          }}
+          data-testid="retry-job-posting"
+        >
+          Retry
+        </Button>
+      </div>
+    );
   }
 
   if (loading) {
