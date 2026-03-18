@@ -11,7 +11,8 @@ import {
   getStatusIcon,
 } from "@/lib/utils";
 import { Binary } from "lucide-react";
-import { Priority, Status, CardMatchResult } from "@/lib/types";
+import { Priority, Status } from "@/lib/types";
+import { CardMatchResult } from "@hectorzea1994/types";
 
 export interface ColumnMeta {
   columnClasses: string;

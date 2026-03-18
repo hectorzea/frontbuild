@@ -1,4 +1,4 @@
-import { JobOffer } from "@/lib/types";
+import { JobOffer } from "@hectorzea1994/types";
 import { http, HttpResponse } from "msw";
 
 //request bodies
