@@ -1,4 +1,5 @@
 import { JobOffer } from "@/app/(frontbuild)/types";
+import { JobSearchMockScenarios } from "./types";
 
 export const jobData: JobOffer = {
   allowRelocation: true,
@@ -103,19 +104,3 @@ export const jobSearchMockScenarios: JobSearchMockScenarios = {
     },
   },
 };
-
-export type SuccessJobSearchResponse = JobOffer;
-export type ErrorJobSearchResponse = { message: string };
-
-export type SuccessJobSearch = {
-  status: 200;
-  response: JobOffer;
-};
-
-export type ErrorJobSearch = {
-  status: 500 | 503;
-  response: ErrorJobSearchResponse;
-};
-
-type MockScenarioJobSearch = SuccessJobSearch | ErrorJobSearch;
-type JobSearchMockScenarios = Record<string, MockScenarioJobSearch>;

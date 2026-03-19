@@ -1,14 +1,10 @@
 import { http, HttpResponse } from "msw";
 import {
+  CheckJobRequestBody,
   ErrorJobSearchResponse,
-  jobSearchMockScenarios,
   SuccessJobSearchResponse,
-} from "../data/job-search";
-
-//request bodies
-type CheckJobRequestBody = {
-  linkedinJobUrl: string;
-};
+} from "../job-search/types";
+import { jobSearchMockScenarios } from "../job-search/data";
 
 export const jobCheckHandlers = [
   http.post<
