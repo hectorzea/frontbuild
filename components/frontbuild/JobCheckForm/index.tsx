@@ -26,6 +26,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import JobSearchError from "./JobSearchError";
 
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
@@ -35,7 +36,9 @@ const FormSchema = z.object({
 
 export function JobCheckForm() {
   const [data, setData] = useState<JobOffer | null>(null);
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -46,6 +49,7 @@ export function JobCheckForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
+      //TODO error cases to test mock
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
         { linkedinJobUrl: data.linkedInJobUrl },
@@ -54,8 +58,19 @@ export function JobCheckForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
-      setData(null);
+      setError(true);
     }
+  }
+
+  const cleanErrors = () => {
+    setData(null);
+    setError(false);
+    setLoading(false);
+    form.reset();
+  };
+
+  if (error) {
+    return <JobSearchError cleanErrors={cleanErrors} />;
   }
 
   if (loading) {

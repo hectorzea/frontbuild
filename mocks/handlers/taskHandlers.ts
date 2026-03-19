@@ -1,11 +1,11 @@
 import { http, HttpResponse } from "msw";
+import { tasksMock as tasks } from "@/mocks/tasks/data";
+import { Task } from "@/app/(frontbuild)/types/api/Api";
 import {
   createTaskMockScenario,
   deleteTaskMockScenario,
   taskByIdMockResponseScenario,
-  tasksMock as tasks,
-} from "@/mocks/data/mockData";
-import { Task } from "@/app/(frontbuild)/types/api/Api";
+} from "../tasks/data";
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<
@@ -33,7 +33,7 @@ export const taskHandlers = [
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks`,
     () => {
       return HttpResponse.json(tasks);
-    }
+    },
   ),
   http.get(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/tasks/:id`,
@@ -44,7 +44,7 @@ export const taskHandlers = [
       return HttpResponse.json(mockResponse.response, {
         status: mockResponse.status,
       });
-    }
+    },
   ),
   http.post<
     never,
@@ -67,7 +67,7 @@ export const taskHandlers = [
           status: mockResponse.status,
         });
       }
-    }
+    },
   ),
   http.patch<
     TaskRequestParams,
@@ -83,7 +83,7 @@ export const taskHandlers = [
       return HttpResponse.json(taskData, {
         status: mockResponse.status,
       });
-    }
+    },
   ),
   http.delete<
     TaskRequestParams,
@@ -97,6 +97,6 @@ export const taskHandlers = [
       return HttpResponse.json(mockResponse.response, {
         status: mockResponse.status,
       });
-    }
+    },
   ),
 ];

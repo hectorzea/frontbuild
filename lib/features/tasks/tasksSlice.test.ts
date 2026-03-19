@@ -6,7 +6,7 @@ import reducer, {
   setTasks,
   TasksState,
 } from "./tasksSlice";
-import { tasksMock } from "@/mocks/data/mockData";
+import { tasksMock } from "@/mocks/tasks/data";
 
 test("should return the initial state", () => {
   expect(reducer(undefined, { type: "unknown" })).toEqual({
@@ -80,6 +80,7 @@ test("should modify task from tasks state", () => {
     label: "tech-debt",
   };
 
+  //TODO FIX THIS
   expect(reducer(previousState, modifyTask(updateTaskPayload))).toEqual({
     task: undefined,
     tasks: [updateTaskPayload],

@@ -4,7 +4,7 @@ import {
   cardSearchMockData,
   cardTokensMock,
   mulliganMockData,
-} from "@/mocks/data/mockData";
+} from "@/mocks/hs-card-search/data";
 import { Card, Game } from "@/app/(frontbuild)/types";
 
 // --- Search Card Mock Types
