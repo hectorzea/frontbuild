@@ -1,4 +1,4 @@
-import { JobOffer } from "@/app/(frontbuild)/types";
+import { JobOffer } from "@/app/(job-search)/types";
 
 //Types && Interfaces
 export type CheckJobRequestBody = {

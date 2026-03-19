@@ -1,3 +1,8 @@
+import {
+  LabelOptions,
+  PriorityOptions,
+  StatusOptions,
+} from "@/app/(tasks)/types";
 import reducer, {
   addTask,
   modifyTask,
@@ -75,9 +80,9 @@ test("should modify task from tasks state", () => {
   const updateTaskPayload = {
     _id: taskId,
     title: "hola",
-    status: "todo",
-    priority: "high",
-    label: "tech-debt",
+    status: StatusOptions.Done,
+    priority: PriorityOptions.Low,
+    label: LabelOptions.Documentation,
   };
 
   //TODO FIX THIS
