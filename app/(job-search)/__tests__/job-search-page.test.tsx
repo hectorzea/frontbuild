@@ -26,7 +26,7 @@ describe("Job Check - ", () => {
       expect(screen.getByTestId("job-title")).toBeInTheDocument();
     });
   });
-  it("Render page, add link and error search", async () => {
+  it("Render page, add link and error search, retry and check form again", async () => {
     const user = userEvent.setup();
     render(<JobCheckPage />);
     expect(screen.getByText("Job Lint")).toBeInTheDocument();
@@ -48,6 +48,16 @@ describe("Job Check - ", () => {
     await waitFor(() => {
       expect(
         screen.getByText("An error has ocurred, do the call again"),
+      ).toBeInTheDocument();
+    });
+
+    expect(screen.getByTestId("retry-job-posting")).toBeInTheDocument();
+
+    await user.click(screen.getByTestId("retry-job-posting"));
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("Enter LinkedIN Url and start the research!"),
       ).toBeInTheDocument();
     });
   });
