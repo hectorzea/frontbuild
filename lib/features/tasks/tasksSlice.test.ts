@@ -76,7 +76,6 @@ test("should modify task from tasks state", () => {
 
   const taskId = tasksMock[0]._id;
 
-  //TODO UPDATE PAYLOAD
   const updateTaskPayload = {
     _id: taskId,
     title: "hola",
@@ -85,7 +84,6 @@ test("should modify task from tasks state", () => {
     label: LabelOptions.Documentation,
   };
 
-  //TODO FIX THIS
   expect(reducer(previousState, modifyTask(updateTaskPayload))).toEqual({
     task: undefined,
     tasks: [updateTaskPayload],
