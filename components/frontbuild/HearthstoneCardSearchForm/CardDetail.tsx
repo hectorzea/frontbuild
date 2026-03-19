@@ -4,7 +4,7 @@ import { BookIcon, BrushCleaningIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card as UICard, CardContent } from "@/components/ui/card";
 import Link from "next/link";
-import { Card } from "@hectorzea1994/types";
+import { Card } from "@/app/(hs-card-search)/types";
 
 export interface IAppProps {
   data: Card;

@@ -12,7 +12,7 @@ import {
 } from "@/lib/utils";
 import { Binary } from "lucide-react";
 import { Priority, Status } from "@/lib/types";
-import { CardMatchResult } from "@hectorzea1994/types";
+import { CardMatchResult } from "@/app/(hs-card-search)/types";
 
 export interface ColumnMeta {
   columnClasses: string;

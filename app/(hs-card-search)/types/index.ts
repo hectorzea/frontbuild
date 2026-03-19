@@ -33,3 +33,11 @@ export interface Game {
   matchResult: string;
   mulligan: Mulligan;
 }
+
+export interface CardMatchResult {
+  cardId: string;
+  totalGames: number;
+  wins: number;
+  winrate: number;
+  cardName: string;
+}
