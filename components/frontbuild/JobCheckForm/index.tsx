@@ -26,6 +26,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import JobSearchError from "./JobSearchError";
 
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
@@ -37,6 +38,7 @@ export function JobCheckForm() {
   const [data, setData] = useState<JobOffer | null>(null);
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -60,25 +62,15 @@ export function JobCheckForm() {
     }
   }
 
+  const cleanErrors = () => {
+    setData(null);
+    setError(false);
+    setLoading(false);
+    form.reset();
+  };
+
   if (error) {
-    return (
-      <div className="flex flex-col gap-3.5">
-        <p>An error has ocurred, do the call again </p>
-        <Button
-          className="cursor-pointer"
-          size={"sm"}
-          onClick={() => {
-            setData(null);
-            setError(false);
-            setLoading(false);
-            form.reset();
-          }}
-          data-testid="retry-job-posting"
-        >
-          Retry
-        </Button>
-      </div>
-    );
+    return <JobSearchError cleanErrors={cleanErrors} />;
   }
 
   if (loading) {
