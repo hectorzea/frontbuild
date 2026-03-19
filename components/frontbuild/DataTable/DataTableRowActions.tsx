@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { taskSchema } from "@/app/(frontbuild)/schemas";
+import { taskSchema } from "@/app/(tasks)/schemas";
 import { useRouter } from "next/navigation";
 import { labels } from "@/components/frontbuild/TaskForm/data";
 

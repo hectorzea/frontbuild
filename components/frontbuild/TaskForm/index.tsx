@@ -1,7 +1,7 @@
 "use client";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Task, taskSchema } from "@/app/(frontbuild)/schemas";
+import { Task, taskSchema } from "@/app/(tasks)/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -28,7 +28,7 @@ import {
   PriorityOptions,
   Status,
   StatusOptions,
-} from "@/app/(frontbuild)/types/api/Api";
+} from "@/app/(tasks)/types";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import {

@@ -1,3 +1,8 @@
+import {
+  LabelOptions,
+  PriorityOptions,
+  StatusOptions,
+} from "@/app/(tasks)/types";
 import reducer, {
   addTask,
   modifyTask,
@@ -71,16 +76,14 @@ test("should modify task from tasks state", () => {
 
   const taskId = tasksMock[0]._id;
 
-  //TODO UPDATE PAYLOAD
   const updateTaskPayload = {
     _id: taskId,
     title: "hola",
-    status: "todo",
-    priority: "high",
-    label: "tech-debt",
+    status: StatusOptions.Done,
+    priority: PriorityOptions.Low,
+    label: LabelOptions.Documentation,
   };
 
-  //TODO FIX THIS
   expect(reducer(previousState, modifyTask(updateTaskPayload))).toEqual({
     task: undefined,
     tasks: [updateTaskPayload],

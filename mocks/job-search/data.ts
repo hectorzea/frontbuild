@@ -1,4 +1,4 @@
-import { JobOffer } from "@/app/(frontbuild)/types";
+import { JobOffer } from "@/app/(job-search)/types";
 import { JobSearchMockScenarios } from "./types";
 
 export const jobData: JobOffer = {

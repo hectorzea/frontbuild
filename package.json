@@ -11,7 +11,8 @@
     "test:all": "npm run test:unit && npm run test:e2e",
     "test:watch": "jest --watch",
     "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/types/api",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@google/genai": "^1.4.0",

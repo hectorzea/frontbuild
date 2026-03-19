@@ -1,5 +1,5 @@
 import { CardMatchMockScenarios } from "./types";
-import { Card } from "@/app/(frontbuild)/types";
+import { Card } from "@/app/(hs-card-search)/types";
 
 export const mulliganMockData = [
   {

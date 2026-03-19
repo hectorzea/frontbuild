@@ -2,7 +2,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge, BadgeVariant } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Task } from "@/app/(frontbuild)/schemas";
+import { Task } from "@/app/(tasks)/schemas";
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
 import { DataTableRowActions } from "./DataTableRowActions";
 import {
@@ -11,7 +11,8 @@ import {
   getStatusIcon,
 } from "@/lib/utils";
 import { Binary } from "lucide-react";
-import { Priority, Status, CardMatchResult } from "@/app/(frontbuild)/types";
+import { Priority, Status } from "@/lib/types";
+import { CardMatchResult } from "@/app/(hs-card-search)/types";
 
 export interface ColumnMeta {
   columnClasses: string;

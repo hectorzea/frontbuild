@@ -1,4 +1,4 @@
-import { Task } from "@/app/(frontbuild)/schemas";
+import { Task } from "@/app/(tasks)/schemas";
 
 export type FindTaskByIdMockScenarios = Record<string, MockScenarioFindById>;
 type MockScenarioFindById = SuccessResponseFindById | ErrorResponseFindById;
