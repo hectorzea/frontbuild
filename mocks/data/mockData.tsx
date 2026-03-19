@@ -9,6 +9,8 @@ import { Card } from "@/app/(frontbuild)/types";
 
 //Todo, ver como exportar del BE al FE success error  y response types automaticamanete o prgoramatico
 //o sencillo
+
+//TODO MOVER A CARPETAS SEPARADAS DATA / TIPOS
 type CardMatchMockScenarios = Record<string, MockScenario>;
 
 type MockScenario = SuccessResponse | ErrorResponse;
