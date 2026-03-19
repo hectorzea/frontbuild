@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { tasksMock as tasks } from "@/mocks/tasks/data";
-import { Task } from "@/lib/types/api/Api";
+import { Task } from "@/app/(tasks)/types";
 import {
   createTaskMockScenario,
   deleteTaskMockScenario,

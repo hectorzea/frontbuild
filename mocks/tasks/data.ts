@@ -2,7 +2,7 @@ import {
   LabelOptions,
   PriorityOptions,
   StatusOptions,
-} from "@/lib/types/api/Api";
+} from "@/app/(tasks)/types";
 import {
   CreateTaskMockScenarios,
   DeleteTaskMockScenarios,

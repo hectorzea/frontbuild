@@ -9,10 +9,7 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
-import {
-  CardMatchResult,
-  cardMatchResultSchema,
-} from "@/app/(frontbuild)/schemas";
+import { CardMatchResult, cardMatchResultSchema } from "@/app/(tasks)/schemas";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
