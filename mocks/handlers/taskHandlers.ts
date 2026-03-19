@@ -1,11 +1,11 @@
 import { http, HttpResponse } from "msw";
+import { tasksMock as tasks } from "@/mocks/tasks/data";
+import { Task } from "@/lib/types/api/Api";
 import {
   createTaskMockScenario,
   deleteTaskMockScenario,
   taskByIdMockResponseScenario,
-  tasksMock as tasks,
-} from "@/mocks/data/mockData";
-import { Task } from "@/lib/types/api/Api";
+} from "../tasks/data";
 
 //request bodies
 type TaskGeneralPayloadBody = Pick<

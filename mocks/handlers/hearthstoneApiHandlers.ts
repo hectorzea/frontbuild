@@ -4,8 +4,8 @@ import {
   cardSearchMockData,
   cardTokensMock,
   mulliganMockData,
-} from "@/mocks/data/mockData";
-import { Card, Game } from "@/lib/types";
+} from "@/mocks/hs-card-search/data";
+import { Card, Game } from "@/app/(hs-card-search)/types";
 
 // --- Search Card Mock Types
 type SearchCardRequestBody = { cardName: string };
