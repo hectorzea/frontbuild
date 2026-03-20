@@ -11,9 +11,7 @@ const JobSearchError = ({ cleanErrors }: JobSearchErrorProps) => {
       <Button
         className="cursor-pointer"
         size={"sm"}
-        onClick={() => {
-          cleanErrors();
-        }}
+        onClick={cleanErrors}
         data-testid="retry-job-posting"
       >
         Retry
