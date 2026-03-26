@@ -34,6 +34,7 @@ const CardSearchForm = ({ form, onSubmit, isLoading }: CardSearchFormProps) => {
           <div className="flex flex-col items-center gap-y-3">
             <Image
               src="/files/hearthstone.png"
+              loading="eager"
               width={150}
               height={150}
               style={{ width: "auto", height: "auto" }}

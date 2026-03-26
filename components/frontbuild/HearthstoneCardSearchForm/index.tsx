@@ -32,7 +32,7 @@ export function HearthstoneCardSearchForm() {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isSuccess ? (
         <motion.div
           key="card-detail"
@@ -41,16 +41,16 @@ export function HearthstoneCardSearchForm() {
           //final opacity en 1 significa mostrar y
           animate={{ opacity: 1 }}
           className="w-full flex justify-center items-center"
-          // exit={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
           <CardDetail data={data} onResetSearch={onResetSearch} />
         </motion.div>
       ) : (
         <motion.div
           key="card-form"
-          initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: 1, y: 1 }}
-          exit={{ opacity: 0, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           className="w-full flex justify-center items-center"
         >
           <CardSearchForm

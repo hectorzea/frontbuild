@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card as UICard, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { Card } from "@/app/(hs-card-search)/types";
+import parse from "html-react-parser";
 
 export interface IAppProps {
   data: Card;
@@ -76,7 +77,7 @@ export function CardDetail({ data, onResetSearch }: IAppProps) {
           </div>
           <div className="flex flex-col gap-y-2">
             <p className="font-bold">Card Text</p>
-            <p>{data.text}</p>
+            <p>{parse(data.text)}</p>
           </div>
           <div className="flex flex-col gap-y-2">
             <p className="font-bold">Tokens</p>
