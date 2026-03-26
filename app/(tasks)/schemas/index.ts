@@ -7,10 +7,10 @@ import {
 
 export const taskSchema = z.object({
   _id: z.string().optional(),
-  title: z.string().min(5, { message: "Title is required" }),
-  status: z.enum(StatusOptions, { message: "Invalid status" }),
-  label: z.enum(LabelOptions, { message: "Invalid label" }),
-  priority: z.enum(PriorityOptions, { message: "Invalid priority" }),
+  title: z.string().min(5, { error: "Title is required" }),
+  status: z.enum(StatusOptions, { error: "Invalid status" }),
+  label: z.enum(LabelOptions, { error: "Invalid label" }),
+  priority: z.enum(PriorityOptions, { error: "Invalid priority" }),
 });
 
 export type Task = z.infer<typeof taskSchema>;

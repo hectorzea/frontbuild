@@ -49,7 +49,6 @@ export function JobCheckForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
-      //TODO error cases to test mock
       const jobResponse = await axios.post(
         `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
         { linkedinJobUrl: data.linkedInJobUrl },
