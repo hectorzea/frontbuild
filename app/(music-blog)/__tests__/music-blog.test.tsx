@@ -29,13 +29,6 @@ beforeEach(() => {
   });
 });
 
-// describe("Music Blog Page", () => {
-//   it("is rendering correctly", async () => {
-//     render(await SongsPage());
-//     expect(screen.getByTestId("music-blog-page")).toBeInTheDocument();
-//   });
-// });
-
 describe("Page Song By Id", () => {
   const originalEnv = process.env;
 
@@ -46,6 +39,7 @@ describe("Page Song By Id", () => {
   it("is rendering correctly", async () => {
     render(await SongsPage());
     expect(screen.getByTestId("music-blog-page")).toBeInTheDocument();
+    expect(screen.getByText("Crystal Glow")).toBeInTheDocument();
   });
 
   it("should do something when IS_E2E is true", async () => {
