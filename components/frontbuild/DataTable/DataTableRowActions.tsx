@@ -21,6 +21,7 @@ import {
 import { taskSchema } from "@/app/(tasks)/schemas";
 import { useRouter } from "next/navigation";
 import { labels } from "@/components/frontbuild/TaskForm/data";
+import Link from "next/link";
 
 interface DataTableRowActionsProps<TData> {
   row: Row<TData>;
@@ -50,12 +51,8 @@ export function DataTableRowActions<TData>({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-40">
-          <DropdownMenuItem
-            onClick={() => {
-              router.push(`/tasks/edit/${task._id}`);
-            }}
-          >
-            Edit Task
+          <DropdownMenuItem asChild>
+            <Link href={`/tasks/edit/${task._id}`}> Edit Task</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>Make a copy</DropdownMenuItem>
           <DropdownMenuItem>Favorite</DropdownMenuItem>

@@ -43,6 +43,7 @@ export default defineConfig({
     port: 3000,
     env: {
       NEXT_PUBLIC_ENABLE_MSW: "true",
+      NEXT_PUBLIC_IS_E2E: "true",
     },
     reuseExistingServer: !process.env.CI,
   },

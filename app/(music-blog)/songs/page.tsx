@@ -3,12 +3,28 @@ import configPromise from "@payload-config";
 import Image from "next/image";
 import Link from "next/link";
 
+const getMockSongs = () => ({
+  docs: [
+    {
+      id: "1",
+      songTitle: "Crystal Glow",
+      artist: "Snade",
+      coverImage: null,
+    },
+  ],
+});
+
 export default async function SongsPage() {
-  //TODO make songs come from a CDN in prd envs
-  const payload = await getPayload({ config: configPromise });
-  const songs = await payload.find({
-    collection: "songs",
-  });
+  let songs;
+  if (process.env.NEXT_PUBLIC_IS_E2E === "true") {
+    songs = getMockSongs();
+  } else {
+    // Si es desarrollo normal o producción, usamos la BD real
+    const payload = await getPayload({ config: configPromise });
+    songs = await payload.find({
+      collection: "songs",
+    });
+  }
 
   return (
     <div data-testid="music-blog-page" className="flex flex-col gap-5 p-5">

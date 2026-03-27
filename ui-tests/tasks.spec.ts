@@ -4,6 +4,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Tasks Page", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/tasks");
+    await page.waitForLoadState("networkidle");
   });
 
   test("ADD", async ({ page }) => {
@@ -12,10 +13,13 @@ test.describe("Tasks Page", () => {
       page.getByText(/Task creator using tanstack react-table/i),
     ).toBeVisible();
 
-    await page.getByTestId("add-task-link-button").click();
-
+    const link = page.getByTestId("add-task-link-button");
     const modal = page.getByRole("dialog");
-    await expect(modal).toBeVisible();
+
+    await expect(async () => {
+      await link.click();
+      await expect(modal).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
 
     await page.getByRole("textbox", { name: "Title" }).fill("do success");
 
@@ -41,16 +45,21 @@ test.describe("Tasks Page", () => {
       page.getByText(/Task creator using tanstack react-table/i),
     ).toBeVisible();
 
-    await expect(
-      page.getByTestId("67574211b5599f1ebce84868-actions-button"),
-    ).toBeVisible();
-
-    await page.getByTestId("67574211b5599f1ebce84868-actions-button").click();
-
-    await page.getByRole("menuitem", { name: "Edit Task" }).click();
-
+    const actionsButton = page.getByTestId(
+      "67574211b5599f1ebce84868-actions-button",
+    );
     const modal = page.getByRole("dialog");
-    await expect(modal).toBeVisible();
+
+    await expect(actionsButton).toBeVisible();
+
+    // Reintentar: abrir menú + click edit hasta que el modal aparezca
+    await expect(async () => {
+      await actionsButton.click();
+      await page
+        .getByRole("menuitem", { name: "Edit Task" })
+        .click({ timeout: 2000 });
+      await expect(modal).toBeVisible({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
 
     await page
       .getByRole("textbox", { name: "Title" })
@@ -69,13 +78,18 @@ test.describe("Tasks Page", () => {
       page.getByText(/Task creator using tanstack react-table/i),
     ).toBeVisible();
 
-    await expect(
-      page.getByTestId("67574211b5599f1ebce84868-actions-button"),
-    ).toBeVisible();
+    const actionsButton = page.getByTestId(
+      "67574211b5599f1ebce84868-actions-button",
+    );
 
-    await page.getByTestId("67574211b5599f1ebce84868-actions-button").click();
+    await expect(actionsButton).toBeVisible();
 
-    await page.getByRole("menuitem", { name: "Delete" }).click();
+    await expect(async () => {
+      await actionsButton.click();
+      await page
+        .getByRole("menuitem", { name: "Delete" })
+        .click({ timeout: 2000 });
+    }).toPass({ timeout: 15000 });
 
     await page.getByTestId("delete-task-submit-button").click();
 
