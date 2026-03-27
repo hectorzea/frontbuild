@@ -7,8 +7,8 @@ const getMockSongs = () => ({
   docs: [
     {
       id: "1",
-      songTitle: "Crystal Glow",
-      artist: "Snade",
+      songTitle: "Atrevete",
+      artist: "Calle 13",
       coverImage: null,
     },
   ],
