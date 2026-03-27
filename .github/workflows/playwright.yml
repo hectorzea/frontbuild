@@ -29,8 +29,9 @@ jobs:
       # 5. Ejecuta las pruebas de Playwright
       - name: Run Playwright tests
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          # DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          NEXT_PUBLIC_IS_E2E: ${{secrets.NEXT_PUBLIC_IS_E2E}}
         run: npx playwright test
 
       # 6. Sube el reporte de Playwright como artefacto
