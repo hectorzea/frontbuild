@@ -10,7 +10,6 @@
     "test:e2e": "npx playwright test",
     "test:all": "npm run test:unit && npm run test:e2e",
     "test:watch": "jest --watch",
-    "generate-types": "swagger-typescript-api -p http://localhost:8080/swagger.json -o ./app/types/api",
     "lint": "eslint .",
     "type-check": "tsc --noEmit"
   },
@@ -55,7 +54,6 @@
     "react-redux": "^9.1.0",
     "sharp": "^0.34.5",
     "sonner": "^1.7.1",
-    "swagger-typescript-api": "^13.0.23",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.14",
     "tailwindcss-animate": "^1.0.7",
