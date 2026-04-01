@@ -14,8 +14,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "@/app/(profile)/schema";
 import { Input } from "@/components/ui/input";
+import { useLoginMutation } from "@/lib/features/auth/authApi";
 
 const LoginForm = () => {
+  const [login, { isLoading }] = useLoginMutation();
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -24,8 +26,14 @@ const LoginForm = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof loginFormSchema>) => {
-    console.log(data);
+  const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
+    try {
+      console.log(data);
+      const result = await login(data).unwrap();
+      console.log(`Generated token ${result.accessToken}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

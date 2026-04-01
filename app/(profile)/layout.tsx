@@ -1,4 +1,5 @@
 import "@/components/common/globals.css";
+import { StoreProvider } from "@/lib/StoreProvider";
 import { ThemeProvider } from "next-themes";
 
 export const metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <StoreProvider> {children}</StoreProvider>
         </ThemeProvider>
       </body>
     </html>
