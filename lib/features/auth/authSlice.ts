@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { authApiSlice } from "./authApiSlice";
 
 interface User {
@@ -31,6 +31,16 @@ export const authSlice = createSlice({
         state.accessToken = payload.accessToken;
       },
     );
+    build.addMatcher(
+      authApiSlice.endpoints.refresh.matchFulfilled,
+      (state, { payload }) => {
+        state.accessToken = payload.accessToken;
+      },
+    );
+    build.addMatcher(authApiSlice.endpoints.logout.matchFulfilled, (state) => {
+      state.accessToken = null;
+      state.user = null;
+    });
   },
 });
 

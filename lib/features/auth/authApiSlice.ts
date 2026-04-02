@@ -6,6 +6,10 @@ export type LoginRequest = {
   password: string;
 };
 
+type UserProfile = {
+  name: string;
+};
+
 export const authApiSlice = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
@@ -27,7 +31,24 @@ export const authApiSlice = createApi({
         body: credentials,
       }),
     }),
+    profile: build.query<UserProfile, void>({
+      query: () => `/api/auth/profile`,
+    }),
+    refresh: build.query<{ accessToken: string }, void>({
+      query: () => "/api/auth/refresh",
+    }),
+    logout: build.mutation<{ message: string }, void>({
+      query: () => ({
+        url: "/api/auth/logout",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApiSlice;
+export const {
+  useLoginMutation,
+  useLazyProfileQuery,
+  useRefreshQuery,
+  useLogoutMutation,
+} = authApiSlice;

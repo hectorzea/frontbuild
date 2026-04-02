@@ -1,4 +1,5 @@
 import "@/components/common/globals.css";
+import LogingSessionWrapper from "@/components/frontbuild/profile-app/LogingSessionWrapper";
 import { StoreProvider } from "@/lib/StoreProvider";
 import { ThemeProvider } from "next-themes";
 
@@ -21,7 +22,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StoreProvider> {children}</StoreProvider>
+          <StoreProvider>
+            <LogingSessionWrapper>{children}</LogingSessionWrapper>
+          </StoreProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -14,23 +14,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "@/app/(login)/schema";
 import { Input } from "@/components/ui/input";
-import {
-  useLazyProfileQuery,
-  useLoginMutation,
-  useLogoutMutation,
-} from "@/lib/features/auth/authApiSlice";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-import { RootState } from "@/lib/store";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const router = useRouter();
-  const [logout] = useLogoutMutation();
-  const [login, { isLoading }] = useLoginMutation();
-  const [getProfileFromApi, { data, error }] = useLazyProfileQuery();
-
-  const token = useSelector((state: RootState) => state.auth.accessToken);
-  const isAuth = !!token;
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -43,33 +30,15 @@ const LoginForm = () => {
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
       console.log(data);
-      const result = await login(data).unwrap();
-      console.log(`Generated token ${result.accessToken}`);
+      //   const result = await login(data).unwrap();
+      //   console.log(`Generated token ${result.accessToken}`);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getProfile = async () => {
-    const result = await getProfileFromApi().unwrap();
-    console.log(result);
-    try {
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const onLogout = async () => {
-    const result = await logout().unwrap();
-    console.log(result);
-    try {
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const goToRegister = () => {
-    router.push(`/login/register`);
+  const onLoginBack = async () => {
+    router.push(`/login`);
   };
 
   return (
@@ -77,7 +46,7 @@ const LoginForm = () => {
       <CardHeader>
         <CardTitle>
           <div className="flex flex-col items-center gap-y-3">
-            <p>Profile Login Form</p>
+            <p>Register Form</p>
           </div>
         </CardTitle>
       </CardHeader>
@@ -123,42 +92,25 @@ const LoginForm = () => {
             />
             <div className="flex flex-col gap-5 ">
               <Button
-                disabled={isAuth}
                 type="submit"
                 className="mt-4 w-full bg-green-300"
                 data-testid="submit-button-card-search-form"
               >
-                Login
+                Register
               </Button>
             </div>
           </form>
         </Form>
-        {/* <Button
-          onClick={getProfile}
-          className="mt-4 w-full"
-          data-testid="submit-button-card-search-form"
-        >
-          Profile
-        </Button> */}
         <Button
-          onClick={goToRegister}
-          className="mt-4 w-full bg-amber-400"
-          data-testid="register-button"
-        >
-          Register
-        </Button>
-        {/* todo check how to change name if i have token */}
-        <Button
-          onClick={onLogout}
+          onClick={onLoginBack}
           className="mt-4 w-full"
           data-testid="logout-button"
-          disabled={!isAuth}
         >
-          Logout
+          Go back to login
         </Button>
       </CardContent>
     </Card>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
