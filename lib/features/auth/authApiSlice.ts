@@ -6,13 +6,12 @@ export type LoginRequest = {
   password: string;
 };
 
-export const authApi = createApi({
+export const authApiSlice = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL,
     credentials: "include",
     prepareHeaders: (headers, { getState }) => {
-      //TODO generate reducer
       const token = (getState() as RootState).auth.accessToken;
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
@@ -23,7 +22,7 @@ export const authApi = createApi({
   endpoints: (build) => ({
     login: build.mutation<{ accessToken: string }, LoginRequest>({
       query: (credentials) => ({
-        url: "/auth/login",
+        url: "/api/auth/login",
         method: "POST",
         body: credentials,
       }),
@@ -31,4 +30,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation } = authApiSlice;

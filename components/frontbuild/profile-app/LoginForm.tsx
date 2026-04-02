@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "@/app/(profile)/schema";
 import { Input } from "@/components/ui/input";
-import { useLoginMutation } from "@/lib/features/auth/authApi";
+import { useLoginMutation } from "@/lib/features/auth/authApiSlice";
 
 const LoginForm = () => {
   const [login, { isLoading }] = useLoginMutation();
