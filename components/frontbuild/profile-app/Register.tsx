@@ -57,8 +57,8 @@ const RegisterForm = () => {
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem className="text-center">
-                  <FormLabel className="text-center">Email</FormLabel>
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="test@test.com"
@@ -75,8 +75,8 @@ const RegisterForm = () => {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormItem className="text-center">
-                  <FormLabel className="text-center">Password</FormLabel>
+                <FormItem className="mt-5">
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="******"
