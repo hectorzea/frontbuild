@@ -40,7 +40,6 @@ const LoginForm = () => {
 
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
-      console.log(data);
       const result = await login(data).unwrap();
       console.log(`Generated token ${result.accessToken}`);
     } catch (error) {
