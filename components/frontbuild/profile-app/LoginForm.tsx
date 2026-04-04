@@ -122,13 +122,6 @@ const LoginForm = () => {
             </div>
           </form>
         </Form>
-        {/* <Button
-          onClick={getProfile}
-          className="mt-4 w-full"
-          data-testid="submit-button-card-search-form"
-        >
-          Profile
-        </Button> */}
         <Button
           onClick={goToRegister}
           className="mt-4 w-full bg-amber-400"
