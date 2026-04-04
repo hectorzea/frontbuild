@@ -15,7 +15,6 @@ import { useForm } from "react-hook-form";
 import { loginFormSchema } from "@/app/(login)/schema";
 import { Input } from "@/components/ui/input";
 import {
-  useLazyProfileQuery,
   useLoginMutation,
   useLogoutMutation,
 } from "@/lib/features/auth/authApiSlice";
@@ -26,8 +25,7 @@ import { RootState } from "@/lib/store";
 const LoginForm = () => {
   const router = useRouter();
   const [logout] = useLogoutMutation();
-  const [login, { isLoading }] = useLoginMutation();
-  const [getProfileFromApi, { data, error }] = useLazyProfileQuery();
+  const [login] = useLoginMutation();
 
   const token = useSelector((state: RootState) => state.auth.accessToken);
   const isAuth = !!token;
@@ -45,15 +43,6 @@ const LoginForm = () => {
       console.log(data);
       const result = await login(data).unwrap();
       console.log(`Generated token ${result.accessToken}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getProfile = async () => {
-    const result = await getProfileFromApi().unwrap();
-    console.log(result);
-    try {
     } catch (error) {
       console.log(error);
     }

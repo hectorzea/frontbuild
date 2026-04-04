@@ -11,13 +11,13 @@ export default function LogingSessionWrapper({
 }) {
   const token = useSelector((state: RootState) => state.auth.accessToken);
 
-  // Solo hacemos la petición si NO tenemos token en memoria
+  // we do the call if we dont have token
   const { isLoading } = useRefreshQuery(undefined, {
-    skip: !!token, // "skip" le dice a RTK que ignore la query si ya hay token
+    skip: !!token, // skip if we have token
   });
 
   if (isLoading) {
-    return <p>Cargando sesión...</p>; // O un spinner
+    return <p>Cargando sesión...</p>;
   }
 
   return <>{children}</>;
