@@ -128,7 +128,6 @@ const LoginForm = () => {
         >
           Register
         </Button>
-        {/* todo check how to change name if i have token */}
         <Button
           onClick={onLogout}
           className="mt-4 w-full"
