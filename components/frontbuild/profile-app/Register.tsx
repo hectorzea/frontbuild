@@ -107,6 +107,7 @@ const RegisterForm = () => {
             <div className="flex flex-col gap-5 ">
               <Button
                 type="submit"
+                disabled={isSuccess}
                 className="mt-4 w-full bg-green-300"
                 data-testid="submit-button-card-search-form"
               >
