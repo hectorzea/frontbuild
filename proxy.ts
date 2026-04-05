@@ -1,13 +1,64 @@
-import createMiddleware from "next-intl/middleware";
+import createIntlMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
+import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware(routing);
+const intlMiddleware = createIntlMiddleware(routing);
+
+const noLocaleRoutes = [
+  "/admin",
+  "/songs",
+  "/tasks",
+  "/hs-card-search",
+  "/job-search",
+  "/login",
+  "/unauthorized",
+];
+const protectedRoutes = ["/login/profile"];
+const adminRoutes = ["/login/admin"];
+
+export default function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Auth
+  const isProtected = protectedRoutes.some((route) =>
+    pathname.startsWith(route),
+  );
+  const isAdminRoute = adminRoutes.some((route) => pathname.startsWith(route));
+
+  if (isProtected || isAdminRoute) {
+    const refreshToken = request.cookies.get("refreshToken")?.value;
+
+    if (!refreshToken) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    if (isAdminRoute) {
+      try {
+        const payloadBase64 = refreshToken.split(".")[1];
+        const decodedPayload = JSON.parse(atob(payloadBase64));
+        const userRoles: string[] = decodedPayload.roles || [];
+
+        if (!userRoles.includes("admin")) {
+          return NextResponse.redirect(new URL("/unauthorized", request.url));
+        }
+      } catch {
+        return NextResponse.redirect(new URL("/login", request.url));
+      }
+    }
+  }
+
+  //if route doesnt require locale, we let it pass
+  const isNoLocaleRoute = noLocaleRoutes.some((route) =>
+    pathname.startsWith(route),
+  );
+  if (isNoLocaleRoute) {
+    return NextResponse.next();
+  }
+
+  //if the route HAS locale, we use intlMiddleware
+  return intlMiddleware(request);
+}
 
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
-  // test my matcher /((?!_next|api|mockServiceWorker\\.js|favicon\\.ico|sw\\.js).*)
-  matcher:
-    "/((?!api|trpc|admin|songs|tasks|hs-card-search|login|job-search|_next|_vercel|.*\\..*).*)",
+  matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
 };

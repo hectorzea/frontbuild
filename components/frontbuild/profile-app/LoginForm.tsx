@@ -21,11 +21,13 @@ import {
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Check, CircleX } from "lucide-react";
 
 const LoginForm = () => {
   const router = useRouter();
   const [logout] = useLogoutMutation();
-  const [login] = useLoginMutation();
+  const [login, { isSuccess, isError, isLoading }] = useLoginMutation();
 
   const token = useSelector((state: RootState) => state.auth.accessToken);
   const isAuth = !!token;
@@ -40,8 +42,8 @@ const LoginForm = () => {
 
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
-      const result = await login(data).unwrap();
-      console.log(`Generated token ${result.accessToken}`);
+      await login(data).unwrap();
+      form.reset();
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +68,18 @@ const LoginForm = () => {
         <CardTitle>
           <div className="flex flex-col items-center gap-y-3">
             <p>Profile Login Form</p>
+            {isSuccess && (
+              <Alert className="bg-green-900">
+                <Check />
+                <AlertTitle>{`Logged in`}</AlertTitle>
+              </Alert>
+            )}
+            {isError && (
+              <Alert className="bg-red-500">
+                <CircleX />
+                <AlertTitle>{"Error on login user"}</AlertTitle>
+              </Alert>
+            )}
           </div>
         </CardTitle>
       </CardHeader>
@@ -111,7 +125,7 @@ const LoginForm = () => {
             />
             <div className="flex flex-col gap-5 ">
               <Button
-                disabled={isAuth}
+                disabled={isAuth || isLoading}
                 type="submit"
                 className="mt-4 w-full bg-green-300"
                 data-testid="submit-button-card-search-form"

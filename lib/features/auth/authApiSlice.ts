@@ -1,10 +1,7 @@
+import { User } from "@/app/(login)/schema";
+import { RegisterUserResponse } from "@/app/(login)/types";
 import { RootState } from "@/lib/store";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-export type LoginRequest = {
-  email: string;
-  password: string;
-};
 
 type UserProfile = {
   name: string;
@@ -24,11 +21,18 @@ export const authApiSlice = createApi({
     },
   }),
   endpoints: (build) => ({
-    login: build.mutation<{ accessToken: string }, LoginRequest>({
+    login: build.mutation<{ accessToken: string }, User>({
       query: (credentials) => ({
         url: "/api/auth/login",
         method: "POST",
         body: credentials,
+      }),
+    }),
+    register: build.mutation<RegisterUserResponse, User>({
+      query: (user) => ({
+        url: "/api/auth/register",
+        method: "POST",
+        body: user,
       }),
     }),
     profile: build.query<UserProfile, void>({
@@ -48,7 +52,8 @@ export const authApiSlice = createApi({
 
 export const {
   useLoginMutation,
+  useLogoutMutation,
+  useRegisterMutation,
   useLazyProfileQuery,
   useRefreshQuery,
-  useLogoutMutation,
 } = authApiSlice;

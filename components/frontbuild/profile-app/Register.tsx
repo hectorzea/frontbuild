@@ -15,8 +15,12 @@ import { useForm } from "react-hook-form";
 import { loginFormSchema } from "@/app/(login)/schema";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { useRegisterMutation } from "@/lib/features/auth/authApiSlice";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Check, CircleX } from "lucide-react";
 
 const RegisterForm = () => {
+  const [register, { isSuccess, isError }] = useRegisterMutation();
   const router = useRouter();
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -29,9 +33,7 @@ const RegisterForm = () => {
 
   const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
-      console.log(data);
-      //   const result = await login(data).unwrap();
-      //   console.log(`Generated token ${result.accessToken}`);
+      await register(data).unwrap();
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +49,18 @@ const RegisterForm = () => {
         <CardTitle>
           <div className="flex flex-col items-center gap-y-3">
             <p>Register Form</p>
+            {isSuccess && (
+              <Alert className="bg-green-900">
+                <Check />
+                <AlertTitle>{"Register success"}</AlertTitle>
+              </Alert>
+            )}
+            {isError && (
+              <Alert className="bg-red-500">
+                <CircleX />
+                <AlertTitle>{"Error registering user"}</AlertTitle>
+              </Alert>
+            )}
           </div>
         </CardTitle>
       </CardHeader>
