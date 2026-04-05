@@ -37,7 +37,6 @@ export function CardDetail({ data, onResetSearch }: IAppProps) {
             <Button
               data-testid="reset-button-card-search"
               onClick={onResetSearch}
-              className="cursor-pointer"
             >
               <BrushCleaningIcon />
               Reset Search

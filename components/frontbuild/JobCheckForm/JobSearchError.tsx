@@ -8,12 +8,7 @@ const JobSearchError = ({ cleanErrors }: JobSearchErrorProps) => {
   return (
     <div className="flex flex-col gap-3.5">
       <p>An error has ocurred, do the call again </p>
-      <Button
-        className="cursor-pointer"
-        size={"sm"}
-        onClick={cleanErrors}
-        data-testid="retry-job-posting"
-      >
+      <Button size={"sm"} onClick={cleanErrors} data-testid="retry-job-posting">
         Retry
       </Button>
     </div>
