@@ -21,7 +21,7 @@ export const authApiSlice = createApi({
     },
   }),
   endpoints: (build) => ({
-    login: build.mutation<{ accessToken: string }, User>({
+    login: build.mutation<{ accessToken: string; user: string }, User>({
       query: (credentials) => ({
         url: "/api/auth/login",
         method: "POST",

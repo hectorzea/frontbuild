@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authApiSlice } from "./authApiSlice";
 
-interface User {
-  name: string;
-}
-
 interface AuthState {
   accessToken: string | null;
-  user: User | null;
+  user: string | null;
 }
 
 const initialState: AuthState = {
@@ -29,6 +25,7 @@ export const authSlice = createSlice({
       authApiSlice.endpoints.login.matchFulfilled,
       (state, { payload }) => {
         state.accessToken = payload.accessToken;
+        state.user = payload.user;
       },
     );
     build.addMatcher(

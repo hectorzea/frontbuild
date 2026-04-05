@@ -27,7 +27,7 @@ import { Check, CircleX } from "lucide-react";
 const LoginForm = () => {
   const router = useRouter();
   const [logout] = useLogoutMutation();
-  const [login, { isSuccess, isError, isLoading }] = useLoginMutation();
+  const [login, { data, isSuccess, isError, isLoading }] = useLoginMutation();
 
   const token = useSelector((state: RootState) => state.auth.accessToken);
   const isAuth = !!token;
@@ -67,11 +67,11 @@ const LoginForm = () => {
       <CardHeader>
         <CardTitle>
           <div className="flex flex-col items-center gap-y-3">
-            <p>Profile Login Form</p>
+            <p data-testid="login-title">Profile Login Form</p>
             {isSuccess && (
               <Alert className="bg-green-900">
                 <Check />
-                <AlertTitle>{`Logged in`}</AlertTitle>
+                <AlertTitle>{`Logged in as ${data?.user}`}</AlertTitle>
               </Alert>
             )}
             {isError && (
@@ -95,7 +95,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       placeholder="test@test.com"
-                      data-testid="card-search-input-field"
+                      data-testid="login-email-input"
                       {...field}
                       className="max-w-md mt-3"
                     />
@@ -113,7 +113,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       placeholder="******"
-                      data-testid="card-search-input-field"
+                      data-testid="login-password-input"
                       {...field}
                       className="max-w-md mt-3"
                       type="password"
@@ -128,7 +128,7 @@ const LoginForm = () => {
                 disabled={isAuth || isLoading}
                 type="submit"
                 className="mt-4 w-full bg-green-300"
-                data-testid="submit-button-card-search-form"
+                data-testid="submit-login-button"
               >
                 Login
               </Button>
