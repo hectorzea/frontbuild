@@ -112,6 +112,9 @@ export function JobCheckForm() {
           <div data-testid="job-title">Job Title: {data?.jobTitle}</div>
           <div>Job Description: {data?.jobDescription}</div>
           <div>Years of Experience: {data?.yearsOfExperience}</div>
+          <p className="font-bold text-lime-500">
+            Match percentage: {data?.matchPercentage}
+          </p>
           <Separator className="my-4" />
           <h2 className="text-2xl font-semibold mt-3">Hard Skills</h2>
           <h3 className="text-xl font-semibold mt-3">Frontend</h3>
