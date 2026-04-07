@@ -48,7 +48,7 @@ const RegisterForm = () => {
       <CardHeader>
         <CardTitle>
           <div className="flex flex-col items-center gap-y-3">
-            <p>Register Form</p>
+            <p data-testid="register-title">Register Form</p>
             {isSuccess && (
               <Alert className="bg-green-900">
                 <Check />
@@ -76,7 +76,7 @@ const RegisterForm = () => {
                   <FormControl>
                     <Input
                       placeholder="test@test.com"
-                      data-testid="card-search-input-field"
+                      data-testid="register-email-input"
                       {...field}
                       className="max-w-md mt-3"
                     />
@@ -94,7 +94,7 @@ const RegisterForm = () => {
                   <FormControl>
                     <Input
                       placeholder="******"
-                      data-testid="card-search-input-field"
+                      data-testid="register-password-input"
                       {...field}
                       className="max-w-md mt-3"
                       type="password"
@@ -109,7 +109,7 @@ const RegisterForm = () => {
                 type="submit"
                 disabled={isSuccess}
                 className="mt-4 w-full bg-green-300"
-                data-testid="submit-button-card-search-form"
+                data-testid="register-submit-button"
               >
                 Register
               </Button>
@@ -119,7 +119,7 @@ const RegisterForm = () => {
         <Button
           onClick={onLoginBack}
           className="mt-4 w-full"
-          data-testid="logout-button"
+          data-testid="register-back-button"
         >
           Go back to login
         </Button>

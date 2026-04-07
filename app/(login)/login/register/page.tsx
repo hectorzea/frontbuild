@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/frontbuild/profile-app/Register";
+import RegisterForm from "@/components/frontbuild/profile-app/RegisterForm";
 
 export default function IndexPage() {
   return (
