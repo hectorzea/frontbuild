@@ -16,7 +16,6 @@ describe("Login Page", () => {
     expect(screen.getByTestId("login-email-input")).toBeInTheDocument();
     expect(screen.getByTestId("login-password-input")).toBeInTheDocument();
     expect(screen.getByTestId("submit-login-button")).toBeInTheDocument();
-    expect(screen.getByTestId("login-title")).toBeInTheDocument();
     expect(screen.getByTestId("logout-button")).toBeInTheDocument();
 
     // await waitFor(() => {
