@@ -7,7 +7,7 @@ type UserProfile = {
   name: string;
 };
 
-export type LoginSuccessResponse = { acessToken: string; user: string };
+export type LoginSuccessResponse = { accessToken: string; user: string };
 export type LoginErrorResponse = { message: string };
 
 export const authApiSlice = createApi({
