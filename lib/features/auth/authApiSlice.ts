@@ -7,6 +7,9 @@ type UserProfile = {
   name: string;
 };
 
+export type LoginSuccessResponse = { acessToken: string; user: string };
+export type LoginErrorResponse = { message: string };
+
 export const authApiSlice = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
@@ -21,7 +24,7 @@ export const authApiSlice = createApi({
     },
   }),
   endpoints: (build) => ({
-    login: build.mutation<{ accessToken: string; user: string }, User>({
+    login: build.mutation<LoginSuccessResponse, User>({
       query: (credentials) => ({
         url: "/api/auth/login",
         method: "POST",

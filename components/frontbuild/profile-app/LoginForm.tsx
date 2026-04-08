@@ -77,7 +77,7 @@ const LoginForm = () => {
             {isError && (
               <Alert className="bg-red-500">
                 <CircleX />
-                <AlertTitle>{"Error on login user"}</AlertTitle>
+                <AlertTitle>Error on login user</AlertTitle>
               </Alert>
             )}
           </div>

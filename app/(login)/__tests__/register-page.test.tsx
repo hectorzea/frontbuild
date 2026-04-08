@@ -22,5 +22,8 @@ describe("Register Page", () => {
     //   expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
     // });
   });
-  it("renders Login Page - Submit not success", async () => {});
+  it("renders Register Page - Submit Success", async () => {});
+  it("renders Register Page - Submit Error", async () => {});
+  it("renders Register Page - Session Closed Success", async () => {});
+  it("renders Register Page - Session Closed Error", async () => {});
 });
