@@ -25,6 +25,11 @@ const layoutComponents: LayoutComponent[] = [
     path: "@/app/(job-search)/layout",
     layoutProps: { children: <div>Job Search</div> },
   },
+  {
+    name: "Unauthorized",
+    path: "@/app/unauthorized/layout",
+    layoutProps: { children: <div>Unauthorized</div> },
+  },
 ];
 
 describe.each(layoutComponents)(
