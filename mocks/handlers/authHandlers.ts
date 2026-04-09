@@ -24,4 +24,15 @@ export const authHandlers = [
       });
     },
   ),
+  http.post<never, never, { message: string }>(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/auth/logout`,
+    async ({}) => {
+      return HttpResponse.json(
+        { message: "Success Logout" },
+        {
+          status: 200,
+        },
+      );
+    },
+  ),
 ];

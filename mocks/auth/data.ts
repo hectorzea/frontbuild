@@ -8,7 +8,7 @@ export const loginMockScenarios: LoginMockScenarios = {
   "errorUser@test.abc": {
     status: 403,
     response: {
-      message: "Error on parsing job info",
+      message: "Error on login",
     },
   },
 };

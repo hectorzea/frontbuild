@@ -71,4 +71,21 @@ describe("Login Page", () => {
       expect(screen.getByText("Error on login user")).toBeInTheDocument();
     });
   });
+  it("renders Login Page - Logout success", async () => {
+    renderWithProviders(<LoginPage />, {
+      preloadedState: {
+        auth: {
+          accessToken: "123",
+          user: null,
+        },
+      },
+    });
+    const user = userEvent.setup();
+
+    await user.click(screen.getByTestId("logout-button"));
+
+    await waitFor(() => {
+      expect(screen.getByText("Success Logout")).toBeInTheDocument();
+    });
+  });
 });

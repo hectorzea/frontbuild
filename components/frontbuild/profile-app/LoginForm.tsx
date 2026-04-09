@@ -26,7 +26,7 @@ import { Check, CircleX } from "lucide-react";
 
 const LoginForm = () => {
   const router = useRouter();
-  const [logout] = useLogoutMutation();
+  const [logout, { isSuccess: isSuccessLogout }] = useLogoutMutation();
   const [login, { data, isSuccess, isError, isLoading }] = useLoginMutation();
 
   const token = useSelector((state: RootState) => state.auth.accessToken);
@@ -72,6 +72,12 @@ const LoginForm = () => {
               <Alert className="bg-green-900">
                 <Check />
                 <AlertTitle>{`Logged in as ${data?.user}`}</AlertTitle>
+              </Alert>
+            )}
+            {isSuccessLogout && (
+              <Alert className="bg-green-900">
+                <Check />
+                <AlertTitle>{`Success Logout`}</AlertTitle>
               </Alert>
             )}
             {isError && (
