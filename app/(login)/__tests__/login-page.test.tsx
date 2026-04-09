@@ -2,6 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "@/lib/test-utils";
 import LoginPage from "../login/page";
 import userEvent from "@testing-library/user-event";
+import mockRouter from "next-router-mock";
 
 describe("Login Page", () => {
   it("renders Login Page", async () => {
@@ -86,6 +87,24 @@ describe("Login Page", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Success Logout")).toBeInTheDocument();
+    });
+  });
+  it("renders Login Page - Go To Register Page", async () => {
+    renderWithProviders(<LoginPage />, {
+      preloadedState: {
+        auth: {
+          accessToken: null,
+          user: null,
+        },
+      },
+    });
+    const user = userEvent.setup();
+
+    await user.click(screen.getByTestId("register-button"));
+
+    expect(mockRouter).toMatchObject({
+      asPath: "/login/register",
+      pathname: "/login/register",
     });
   });
 });
