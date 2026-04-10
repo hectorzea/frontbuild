@@ -18,10 +18,6 @@ describe("Register Page", () => {
     expect(screen.getByTestId("register-password-input")).toBeInTheDocument();
     expect(screen.getByTestId("register-back-button")).toBeInTheDocument();
     expect(screen.getByTestId("register-submit-button")).toBeInTheDocument();
-
-    // await waitFor(() => {
-    //   expect(screen.getByTestId("frontbuild-title")).toBeInTheDocument();
-    // });
   });
   it("renders Register Page - Submit Success", async () => {
     renderWithProviders(<RegisterPage />, {
