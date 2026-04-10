@@ -5,10 +5,14 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { tasksApiSlice } from "@/lib/features/tasks/tasksApiSlice";
 import { tasksSlice } from "@/lib/features/tasks/tasksSlice";
 import { hearthstoneApiSlice } from "./features/tasks/hearthstoneApiSlice";
+import { authSlice } from "./features/auth/authSlice";
+import { authApiSlice } from "./features/auth/authApiSlice";
 
 const rootReducer = combineReducers({
   tasks: tasksSlice.reducer,
   tasksApi: tasksApiSlice.reducer,
+  auth: authSlice.reducer,
+  authApi: authApiSlice.reducer,
   hearthstoneApi: hearthstoneApiSlice.reducer,
 });
 
@@ -19,7 +23,8 @@ export const setupStore = (preloadedState?: Partial<RootState>) => {
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware().concat(
         tasksApiSlice.middleware,
-        hearthstoneApiSlice.middleware
+        hearthstoneApiSlice.middleware,
+        authApiSlice.middleware,
       );
     },
   });

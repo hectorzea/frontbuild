@@ -1,0 +1,9 @@
+import RegisterForm from "@/components/frontbuild/profile-app/RegisterForm";
+
+export default function IndexPage() {
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <RegisterForm />
+    </div>
+  );
+}
