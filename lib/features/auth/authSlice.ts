@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { authApiSlice } from "./authApiSlice";
 
-interface AuthState {
+export interface AuthState {
   accessToken: string | null;
   user: string | null;
 }
@@ -40,5 +40,7 @@ export const authSlice = createSlice({
     });
   },
 });
+
+export const { logout } = authSlice.actions;
 
 export default authSlice.reducer;
