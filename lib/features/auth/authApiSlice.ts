@@ -9,6 +9,8 @@ type UserProfile = {
 
 export type LoginSuccessResponse = { accessToken: string; user: string };
 export type LoginErrorResponse = { message: string };
+export type RegisterSuccessResponse = RegisterUserResponse;
+export type RegisterErrorResponse = { message: string };
 
 export const authApiSlice = createApi({
   reducerPath: "authApi",

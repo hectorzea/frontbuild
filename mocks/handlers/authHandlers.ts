@@ -1,9 +1,11 @@
 import { http, HttpResponse } from "msw";
-import { LoginRequest } from "../auth/types";
-import { loginMockScenarios } from "../auth/data";
+import { LoginRequest, RegisterRequest } from "../auth/types";
+import { loginMockScenarios, registerMockScenarios } from "../auth/data";
 import {
   LoginErrorResponse,
   LoginSuccessResponse,
+  RegisterErrorResponse,
+  RegisterSuccessResponse,
 } from "@/lib/features/auth/authApiSlice";
 
 export const authHandlers = [
@@ -19,6 +21,21 @@ export const authHandlers = [
       const requestData: LoginRequest = await request.json();
       const email = requestData.email;
       const mockResponse = loginMockScenarios[email];
+      return HttpResponse.json(mockResponse.response, {
+        status: mockResponse.status,
+      });
+    },
+  ),
+  http.post<
+    never,
+    RegisterRequest,
+    RegisterSuccessResponse | RegisterErrorResponse
+  >(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/auth/register`,
+    async ({ request }) => {
+      const requestData: RegisterRequest = await request.json();
+      const email = requestData.email;
+      const mockResponse = registerMockScenarios[email];
       return HttpResponse.json(mockResponse.response, {
         status: mockResponse.status,
       });
