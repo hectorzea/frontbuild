@@ -1,4 +1,5 @@
 import {
+  JwtPayload,
   Priority,
   PriorityIcon,
   priorityIconMap,
@@ -8,7 +9,6 @@ import {
 } from "@/lib/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { UserRoles } from "./routes";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -40,12 +40,6 @@ export const getSpotifyTrackUrl = (url: string): string | null => {
     return null;
   }
 };
-
-interface JwtPayload {
-  roles: UserRoles;
-  sub: string;
-  exp: number;
-}
 
 export function decodeJwt(token: string): JwtPayload | null {
   try {

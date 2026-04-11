@@ -9,6 +9,7 @@ import {
   Timer,
 } from "lucide-react";
 
+export type UserRoles = "user" | "admin" | "moderator";
 export const priorityIconMap = {
   high: ArrowUp,
   medium: ArrowRight,
@@ -29,3 +30,9 @@ export const statusIconMap = {
 
 export type Status = keyof typeof statusIconMap;
 export type StatusIcon = (typeof statusIconMap)[Status];
+
+export interface JwtPayload {
+  roles: UserRoles;
+  sub: string;
+  exp: number;
+}

@@ -8,8 +8,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { decodeJwt } from "@/lib/utils";
 import { getRouteConfig } from "@/lib/routes";
 
-const protectedRoutes = ["/login/profile"];
-
 export default function LogingSessionWrapper({
   children,
 }: {

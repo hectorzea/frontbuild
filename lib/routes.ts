@@ -1,4 +1,4 @@
-export type UserRoles = "user" | "admin" | "moderator";
+import { UserRoles } from "./types";
 
 interface RouteConfig {
   path: string;
