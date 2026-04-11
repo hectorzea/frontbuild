@@ -14,7 +14,6 @@ export default function LoginSessionWrapper({
   children: React.ReactNode;
 }) {
   const token = useSelector((state: RootState) => state.auth.accessToken);
-  const [isMounted, setIsMounted] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -28,14 +27,8 @@ export default function LoginSessionWrapper({
     skip: !!token,
   });
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   // Guard: Auth + Roles
   useEffect(() => {
-    if (!isMounted || isLoading) return;
-
     const routeConfig = getRouteConfig(pathname);
 
     // Public Route
@@ -57,10 +50,10 @@ export default function LoginSessionWrapper({
     }
 
     setIsAuthorized(true);
-  }, [isMounted, isLoading, pathname, token, role, router]);
+  }, [isLoading, pathname, token, role, router]);
 
   // Not yout mounted and loading session
-  if (!isMounted || isLoading) {
+  if (isLoading) {
     return <p>Cargando sesión...</p>;
   }
 
