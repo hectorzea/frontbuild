@@ -3,10 +3,10 @@
 import { useRefreshQuery } from "@/lib/features/auth/authApiSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-
-const protectedRoutes = ["/login/profile"];
+import { decodeJwt } from "@/lib/utils";
+import { getRouteConfig } from "@/lib/routes";
 
 export default function LogingSessionWrapper({
   children,
@@ -17,6 +17,11 @@ export default function LogingSessionWrapper({
   const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  const role = useMemo(() => {
+    if (!token) return null;
+    return decodeJwt(token)?.roles ?? null;
+  }, [token]);
 
   // we do the call if we dont have token
   const { isLoading } = useRefreshQuery(undefined, {
@@ -31,15 +36,20 @@ export default function LogingSessionWrapper({
   useEffect(() => {
     if (!isMounted || isLoading) return;
 
-    const isProtected = protectedRoutes.some((route) =>
-      pathname.startsWith(route),
-    );
+    const routeConfig = getRouteConfig(pathname);
 
-    // if there is no token
-    if (isProtected && !token) {
-      router.replace("/login");
+    if (!routeConfig) return;
+
+    if (!token) {
+      router.replace(routeConfig.redirectTo ?? "/login");
+      return;
     }
-  }, [isMounted, isLoading, pathname, token, router]);
+
+    if (routeConfig.roles && (!role || !routeConfig.roles.includes(role))) {
+      router.replace("/unauthorized");
+      return;
+    }
+  }, [isMounted, isLoading, pathname, token, role, router]);
 
   if (!isMounted) {
     return <>{children}</>;

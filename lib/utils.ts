@@ -1,4 +1,5 @@
 import {
+  JwtPayload,
   Priority,
   PriorityIcon,
   priorityIconMap,
@@ -39,3 +40,13 @@ export const getSpotifyTrackUrl = (url: string): string | null => {
     return null;
   }
 };
+
+export function decodeJwt(token: string): JwtPayload | null {
+  try {
+    const base64Payload = token.split(".")[1];
+    const payload = JSON.parse(atob(base64Payload));
+    return payload as JwtPayload;
+  } catch {
+    return null;
+  }
+}
