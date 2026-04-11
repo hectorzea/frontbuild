@@ -145,6 +145,7 @@ const LoginForm = () => {
           onClick={goToRegister}
           className="mt-4 w-full bg-amber-400"
           data-testid="register-button"
+          disabled={isAuth}
         >
           Register
         </Button>
