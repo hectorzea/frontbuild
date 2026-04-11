@@ -5,16 +5,17 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { decodeJwt } from "@/lib/utils";
 import { getRouteConfig } from "@/lib/routes";
+import { decodeJwt } from "@/lib/utils";
 
-export default function LogingSessionWrapper({
+export default function LoginSessionWrapper({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const token = useSelector((state: RootState) => state.auth.accessToken);
   const [isMounted, setIsMounted] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -23,40 +24,49 @@ export default function LogingSessionWrapper({
     return decodeJwt(token)?.roles ?? null;
   }, [token]);
 
-  // we do the call if we dont have token
   const { isLoading } = useRefreshQuery(undefined, {
-    skip: !!token, // skip if we have token
+    skip: !!token,
   });
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  //Guard Auth
+  // Guard: Auth + Roles
   useEffect(() => {
     if (!isMounted || isLoading) return;
 
     const routeConfig = getRouteConfig(pathname);
 
-    if (!routeConfig) return;
+    // Public Route
+    if (!routeConfig) {
+      setIsAuthorized(true);
+      return;
+    }
 
     if (!token) {
+      setIsAuthorized(false);
       router.replace(routeConfig.redirectTo ?? "/login");
       return;
     }
 
     if (routeConfig.roles && (!role || !routeConfig.roles.includes(role))) {
+      setIsAuthorized(false);
       router.replace("/unauthorized");
       return;
     }
+
+    setIsAuthorized(true);
   }, [isMounted, isLoading, pathname, token, role, router]);
 
-  if (!isMounted) {
-    return <>{children}</>;
+  // Not yout mounted and loading session
+  if (!isMounted || isLoading) {
+    return <p>Cargando sesión...</p>;
   }
 
-  if (!token && isLoading) {
-    return <p>Cargando sesión...</p>;
+  // Guard evaluated but has no access
+  if (!isAuthorized) {
+    return null;
   }
 
   return <>{children}</>;
