@@ -29,6 +29,7 @@ export default function LoginSessionWrapper({
 
   // Guard: Auth + Roles
   useEffect(() => {
+    if (isLoading) return;
     const routeConfig = getRouteConfig(pathname);
 
     // Public Route
