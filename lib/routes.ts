@@ -1,10 +1,4 @@
-import { UserRoles } from "./types";
-
-interface RouteConfig {
-  path: string;
-  roles?: UserRoles[];
-  redirectTo?: string;
-}
+import { RouteConfig } from "./types";
 
 export const protectedRoutes: RouteConfig[] = [
   { path: "/login/profile" },
