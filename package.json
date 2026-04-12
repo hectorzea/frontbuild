@@ -13,7 +13,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
-    "payload-importmap": "payload generate:importmap"
+    "payload-importmap": "payload generate:importmap",
+    "payload-types": "payload generate:types"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
