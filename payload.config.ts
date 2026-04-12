@@ -4,13 +4,19 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { buildConfig } from "payload";
 import { Songs } from "./collections/Songs";
 import { Media } from "./collections/Media";
+import { Admins } from "./collections/Admins";
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
+  //admin
+  admin: {
+    user: Admins.slug,
+  },
+
   // Define and configure your collections in this array
-  collections: [Songs, Media],
+  collections: [Admins, Songs, Media],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || "",

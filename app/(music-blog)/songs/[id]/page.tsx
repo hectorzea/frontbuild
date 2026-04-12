@@ -1,6 +1,7 @@
 import { getPayload } from "payload";
 import configPromise from "@payload-config";
 import { getSpotifyTrackUrl } from "@/lib/utils";
+import { Song } from "@/payload-types";
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise });
@@ -25,8 +26,8 @@ export default async function SongPage({
     where: { id: { equals: id } },
     limit: 1,
   });
-  const song = { ...songCollection.docs[0] };
-  const spotifySongId = getSpotifyTrackUrl(song.spotifyUrl);
+  const song: Song = { ...songCollection.docs[0] };
+  const spotifySongId = getSpotifyTrackUrl(song.spotifyUrl!);
   return (
     <div
       data-testid="song-page-container"
