@@ -10,7 +10,10 @@ const getMockSongs = () => ({
       id: "1",
       songTitle: "Atrevete",
       artist: "Calle 13",
-      coverImage: null,
+      coverImage: {
+        alt: "picture",
+        filename: "song.mp3",
+      },
     },
   ],
 });
