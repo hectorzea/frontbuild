@@ -38,7 +38,7 @@ export default async function SongsPage() {
       <div className="flex flex-col items-center md:flex-row md:flex-wrap gap-5">
         {songs.docs?.map((song) => {
           const coverImage = song.coverImage as Media;
-          const altImage = coverImage.alt ? coverImage.alt : "no-picture";
+          const altImage = coverImage?.alt ? coverImage.alt : "no-picture";
           return (
             <div className="flex flex-col gap-2" key={song.id}>
               <Image
