@@ -51,5 +51,48 @@
   "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
+  },
+  "profileForm": {
+    "page": {
+      "title": "My profile",
+      "description": "Update your personal information. Fields marked with an asterisk are required.",
+      "skipLink": "Skip to form"
+    },
+    "sections": {
+      "personal": "Personal information",
+      "contact": "Contact information",
+      "preferences": "Preferences"
+    },
+    "fields": {
+      "fullName": {
+        "label": "Full name",
+        "hint": "As it appears on your ID document.",
+        "errors": {
+          "required": "Your name is required.",
+          "tooShort": "Must be at least 2 characters long."
+        }
+      },
+      "email": {
+        "label": "Email address",
+        "hint": "We will never share your email.",
+        "errors": {
+          "required": "Email is required.",
+          "invalid": "Enter a valid email, for example: name@domain.com."
+        }
+      },
+      "bio": {
+        "label": "About me",
+        "hint": "Maximum 300 characters.",
+        "charactersRemaining": "{count, plural, =0 {No characters remaining} one {# character remaining} other {# characters remaining}}"
+      }
+    },
+    "errors": {
+      "summaryTitle": "{count, plural, one {There is # error in the form} other {There are # errors in the form}}"
+    },
+    "actions": {
+      "submit": "Save changes",
+      "submitting": "Saving…",
+      "success": "Profile updated successfully."
+    }
   }
 }
