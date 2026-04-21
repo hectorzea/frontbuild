@@ -54,45 +54,45 @@
   },
   "profileForm": {
     "page": {
-      "title": "Mi perfil",
-      "description": "Actualiza tu información personal. Los campos marcados con asterisco son obligatorios.",
-      "skipLink": "Saltar al formulario"
+      "title": "My profile",
+      "description": "Update your personal information. Fields marked with an asterisk are required.",
+      "skipLink": "Skip to form"
     },
     "sections": {
-      "personal": "Información personal",
-      "contact": "Información de contacto",
-      "preferences": "Preferencias"
+      "personal": "Personal information",
+      "contact": "Contact information",
+      "preferences": "Preferences"
     },
     "fields": {
       "fullName": {
-        "label": "Nombre completo",
-        "hint": "Como aparece en tu documento de identidad.",
+        "label": "Full name",
+        "hint": "As it appears on your ID document.",
         "errors": {
-          "required": "El nombre es obligatorio.",
-          "tooShort": "Debe tener al menos 2 caracteres."
+          "required": "Your name is required.",
+          "tooShort": "Must be at least 2 characters long."
         }
       },
       "email": {
-        "label": "Correo electrónico",
-        "hint": "Nunca compartiremos tu correo.",
+        "label": "Email address",
+        "hint": "We will never share your email.",
         "errors": {
-          "required": "El correo es obligatorio.",
-          "invalid": "Ingresa un correo válido, por ejemplo: nombre@dominio.com."
+          "required": "Email is required.",
+          "invalid": "Enter a valid email, for example: name@domain.com."
         }
       },
       "bio": {
-        "label": "Sobre mí",
-        "hint": "Máximo 300 caracteres.",
-        "charactersRemaining": "{count, plural, =0 {Sin caracteres restantes} one {# carácter restante} other {# caracteres restantes}}"
+        "label": "About me",
+        "hint": "Maximum 300 characters.",
+        "charactersRemaining": "{count, plural, =0 {No characters remaining} one {# character remaining} other {# characters remaining}}"
       }
     },
     "errors": {
-      "summaryTitle": "{count, plural, one {Hay # error en el formulario} other {Hay # errores en el formulario}}"
+      "summaryTitle": "{count, plural, one {There is # error in the form} other {There are # errors in the form}}"
     },
     "actions": {
-      "submit": "Guardar cambios",
-      "submitting": "Guardando…",
-      "success": "Perfil actualizado correctamente."
+      "submit": "Save changes",
+      "submitting": "Saving…",
+      "success": "Profile updated successfully."
     }
   }
 }
