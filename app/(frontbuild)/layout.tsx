@@ -5,8 +5,6 @@ import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Metadata } from "next";
 import { getLocale } from "next-intl/server";
-// import { ModeToggle } from "@/components/frontbuild/ModeToggle";
-// import { NextIntlClientProvider } from "next-intl";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
