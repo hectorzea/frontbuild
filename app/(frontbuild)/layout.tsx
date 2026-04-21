@@ -4,8 +4,9 @@ import "@/components/common/globals.css";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Metadata } from "next";
-import { ModeToggle } from "@/components/frontbuild/ModeToggle";
-import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
+// import { ModeToggle } from "@/components/frontbuild/ModeToggle";
+// import { NextIntlClientProvider } from "next-intl";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -23,30 +24,29 @@ export const metadata: Metadata = {
 };
 
 //TODO, ver como isolar NextIntl de layout ya que falla en tests
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang={locale} suppressHydrationWarning className="scroll-smooth">
       <head />
       <body
         // className={`${geistSans.className} ${geistMono.className}`}
         data-testid="body-frontbuild"
       >
-        <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Toaster />
-            <ModeToggle />
-            {children}
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        {/* <NextIntlClientProvider> */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Toaster />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
