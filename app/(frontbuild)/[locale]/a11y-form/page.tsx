@@ -35,16 +35,12 @@ export default async function A11yFormPage({
           description={t("page.description")}
         />
         <main id="main-content">
-          {/* CAMBIAR MAYBE POR FORM TODO */}
           <section
             id="profile-form"
             tabIndex={-1}
             aria-labelledby="profile-form-heading"
             className="rounded-lg border bg-card p-6 shadow-sm"
           >
-            <h2 id="profile-form-heading" className="text-xl font-semibold">
-              {t("sections.personal")}
-            </h2>
             <ProfileForm />
           </section>
         </main>
