@@ -11,10 +11,17 @@ import AccessibleField from "./AccesibleField";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import ErrorSummary, { ErrorSummaryItem } from "./ErrorSummary";
+import { useId, useState } from "react";
 
 const ProfileForm = () => {
   const t = useTranslations("profileForm");
   const schema = createProfileSchema(t);
+  const [submitAttempt, setSubmitAttempt] = useState<number>(0);
+
+  const fullNameId = useId();
+  const emailId = useId();
+  const bioId = useId();
 
   const {
     register,
@@ -30,22 +37,46 @@ const ProfileForm = () => {
     },
   });
 
-  const onSubmit = async (data: ProfileFormValues) => {
+  const onValid = async (data: ProfileFormValues) => {
     await new Promise((r) => setTimeout(r, 800));
     console.log("Data:", data);
   };
 
+  const onInvalid = () => {
+    setSubmitAttempt((n) => n + 1);
+  };
+
+  const summaryErrors: ErrorSummaryItem[] = [
+    errors.fullName && {
+      fieldId: fullNameId,
+      fieldLabel: t("fields.fullName.label"),
+      message: errors.fullName.message ?? "",
+    },
+    errors.email && {
+      fieldId: emailId,
+      fieldLabel: t("fields.email.label"),
+      message: errors.email.message ?? "",
+    },
+    errors.bio && {
+      fieldId: bioId,
+      fieldLabel: t("fields.bio.label"),
+      message: errors.bio.message ?? "",
+    },
+  ].filter(Boolean) as ErrorSummaryItem[];
+
   return (
     <div className="w-full">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onValid, onInvalid)}
         noValidate
         aria-labelledby="profile-form-heading"
       >
+        <ErrorSummary errors={summaryErrors} submitAttempt={submitAttempt} />
         <FieldGroup>
           <FieldSet>
             <FieldLegend>{t("sections.personal")}</FieldLegend>
             <AccessibleField
+              id={fullNameId}
               label={t("fields.fullName.label")}
               hint={t("fields.fullName.hint")}
               error={errors.fullName?.message}
@@ -63,6 +94,7 @@ const ProfileForm = () => {
             </AccessibleField>
 
             <AccessibleField
+              id={emailId}
               label={t("fields.email.label")}
               hint={t("fields.email.hint")}
               error={errors.email?.message}
@@ -81,6 +113,7 @@ const ProfileForm = () => {
             </AccessibleField>
 
             <AccessibleField
+              id={bioId}
               label={t("fields.bio.label")}
               hint={t("fields.bio.hint")}
               error={errors.bio?.message}

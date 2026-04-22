@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/field";
 
 type AccessibleFieldProps = {
+  id?: string;
   label: string;
   hint?: string;
   error?: string;
@@ -22,13 +23,15 @@ type AccessibleFieldProps = {
 };
 
 const AccessibleField = ({
+  id: externalId,
   label,
   hint,
   error,
   required = false,
   children,
 }: AccessibleFieldProps) => {
-  const id = useId();
+  const autoId = useId();
+  const id = externalId ?? autoId;
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
 
