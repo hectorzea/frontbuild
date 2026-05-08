@@ -6,13 +6,16 @@ import {
 import { FieldGroup, FieldLegend, FieldSet } from "@/components/ui/field";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import AccessibleField from "./AccesibleField";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import ErrorSummary, { ErrorSummaryItem } from "./ErrorSummary";
 import { useId, useState } from "react";
+import { useAnnouncer } from "@/app/(frontbuild)/[locale]/a11y-form/hooks/useAnnouncer";
+import { CharacterCounter } from "./CharacterCounter";
+import { Announcer } from "./Announcer";
 
 const ProfileForm = () => {
   const t = useTranslations("profileForm");
@@ -23,7 +26,10 @@ const ProfileForm = () => {
   const emailId = useId();
   const bioId = useId();
 
+  const { announce, message, politeness } = useAnnouncer();
+
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -37,9 +43,14 @@ const ProfileForm = () => {
     },
   });
 
+  const bioValue = useWatch({ control, name: "bio" }) ?? "";
+  const bioCounterId = `${bioId}-counter`;
+
   const onValid = async (data: ProfileFormValues) => {
     await new Promise((r) => setTimeout(r, 800));
     console.log("Data:", data);
+    //todo ver como randomizar esto
+    announce(t("actions.success"), "polite");
   };
 
   const onInvalid = () => {
@@ -115,20 +126,34 @@ const ProfileForm = () => {
             <AccessibleField
               id={bioId}
               label={t("fields.bio.label")}
-              hint={t("fields.bio.hint")}
+              // hint={t("fields.bio.hint")}
               error={errors.bio?.message}
             >
               {(fieldProps) => (
-                <Textarea
-                  {...fieldProps}
-                  {...register("bio")}
-                  rows={4}
-                  maxLength={300}
-                />
+                <>
+                  <Textarea
+                    {...fieldProps}
+                    {...register("bio")}
+                    rows={4}
+                    maxLength={300}
+                    aria-describedby={[
+                      fieldProps["aria-describedby"],
+                      bioCounterId,
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  />
+                  <CharacterCounter
+                    id={bioCounterId}
+                    current={bioValue.length}
+                    max={300}
+                  />
+                </>
               )}
             </AccessibleField>
           </FieldSet>
         </FieldGroup>
+        <Announcer message={message} politeness={politeness} />
         <Button
           type="submit"
           disabled={isSubmitting}
