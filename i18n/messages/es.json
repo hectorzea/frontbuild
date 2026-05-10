@@ -93,6 +93,12 @@
       "submit": "Guardar cambios",
       "submitting": "Guardando…",
       "success": "Perfil actualizado correctamente."
+    },
+    "confirm": {
+      "title": "¿Guardar cambios en tu perfil?",
+      "description": "Estás a punto de actualizar {name} y {email}. Esta acción puede deshacerse más tarde.",
+      "cancel": "Cancelar",
+      "confirm": "Sí, guardar"
     }
   }
 }

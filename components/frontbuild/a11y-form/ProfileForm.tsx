@@ -16,11 +16,17 @@ import { useId, useState } from "react";
 import { useAnnouncer } from "@/app/(frontbuild)/[locale]/a11y-form/hooks/useAnnouncer";
 import { CharacterCounter } from "./CharacterCounter";
 import { Announcer } from "./Announcer";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 const ProfileForm = () => {
   const t = useTranslations("profileForm");
   const schema = createProfileSchema(t);
   const [submitAttempt, setSubmitAttempt] = useState<number>(0);
+
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [pendingValues, setPendingValues] = useState<ProfileFormValues | null>(
+    null,
+  );
 
   const fullNameId = useId();
   const emailId = useId();
@@ -46,15 +52,24 @@ const ProfileForm = () => {
   const bioValue = useWatch({ control, name: "bio" }) ?? "";
   const bioCounterId = `${bioId}-counter`;
 
-  const onValid = async (data: ProfileFormValues) => {
-    await new Promise((r) => setTimeout(r, 800));
-    console.log("Data:", data);
-    //todo ver como randomizar esto
-    announce(t("actions.success"), "polite");
+  // submit → validate → open modal → confirm → send
+  const onValid = (data: ProfileFormValues) => {
+    setPendingValues(data);
+    setConfirmOpen(true);
   };
 
   const onInvalid = () => {
     setSubmitAttempt((n) => n + 1);
+  };
+
+  const handleConfirm = async () => {
+    if (!pendingValues) return;
+    // Aquí el envío real
+    await new Promise((r) => setTimeout(r, 800));
+    console.log("Datos enviados:", pendingValues);
+    setConfirmOpen(false);
+    setPendingValues(null);
+    announce(t("actions.success"), "polite");
   };
 
   const summaryErrors: ErrorSummaryItem[] = [
@@ -163,6 +178,13 @@ const ProfileForm = () => {
           {isSubmitting ? t("actions.submitting") : t("actions.submit")}
         </Button>
       </form>
+      <ConfirmDialog
+        open={confirmOpen}
+        onOpenChange={setConfirmOpen}
+        values={pendingValues}
+        onConfirm={handleConfirm}
+        isSubmitting={isSubmitting}
+      />
     </div>
   );
 };

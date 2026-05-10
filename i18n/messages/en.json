@@ -93,6 +93,12 @@
       "submit": "Save changes",
       "submitting": "Saving…",
       "success": "Profile updated successfully."
+    },
+    "confirm": {
+      "title": "Save changes to your profile?",
+      "description": "You are about to update {name} and {email}. This action can be undone later.",
+      "cancel": "Cancel",
+      "confirm": "Yes, save"
     }
   }
 }
