@@ -25,8 +25,7 @@ export default async function LocaleLayout({
   return (
     <>
       <NextIntlClientProvider locale={locale}>
-        {/* TODO ver como acomodar dps para accesibilidad o como hacer para que este en unos lugares y en otros no */}
-        {/* <ModeToggle /> */}
+        <ModeToggle />
         {children}
       </NextIntlClientProvider>
     </>
