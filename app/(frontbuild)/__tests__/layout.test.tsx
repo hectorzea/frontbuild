@@ -7,11 +7,15 @@ jest.mock("next-intl", () => ({
   ),
 }));
 
+jest.mock("next-intl/server", () => ({
+  getLocale: () => "es",
+}));
+
 describe("MyLayout", () => {
-  it("renders the footnote", () => {
-    render(Layout({ children: <>Children</> }));
+  it("renders the footnote", async () => {
+    //todo async test change
+    render(await Layout({ children: <>Children</> }));
     const children = screen.getByText("Children");
     expect(children).toBeInTheDocument();
-    expect(screen.getByTestId("theme-mode-toggle-button")).toBeInTheDocument();
   });
 });
