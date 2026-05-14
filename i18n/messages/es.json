@@ -51,5 +51,54 @@
   "Tasks": {
     "title": "Easy Task Creator",
     "subtitle": "Creador de tareas usando tanstack react-table y react-hook-form con zod para validation de esquemas."
+  },
+  "profileForm": {
+    "page": {
+      "title": "Mi perfil",
+      "description": "Actualiza tu información personal. Los campos marcados con asterisco son obligatorios.",
+      "skipLink": "Saltar al formulario"
+    },
+    "sections": {
+      "personal": "Información personal",
+      "contact": "Información de contacto",
+      "preferences": "Preferencias"
+    },
+    "fields": {
+      "fullName": {
+        "label": "Nombre completo",
+        "hint": "Como aparece en tu documento de identidad.",
+        "errors": {
+          "required": "El nombre es obligatorio.",
+          "tooShort": "Debe tener al menos 2 caracteres."
+        }
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "hint": "Nunca compartiremos tu correo.",
+        "errors": {
+          "required": "El correo es obligatorio.",
+          "invalid": "Ingresa un correo válido, por ejemplo: nombre@dominio.com."
+        }
+      },
+      "bio": {
+        "label": "Sobre mí",
+        "hint": "Máximo 300 caracteres.",
+        "charactersRemaining": "{count, plural, =0 {Sin caracteres restantes} one {# carácter restante} other {# caracteres restantes}}"
+      }
+    },
+    "errors": {
+      "summaryTitle": "{count, plural, one {Hay # error en el formulario} other {Hay # errores en el formulario}}"
+    },
+    "actions": {
+      "submit": "Guardar cambios",
+      "submitting": "Guardando…",
+      "success": "Perfil actualizado correctamente."
+    },
+    "confirm": {
+      "title": "¿Guardar cambios en tu perfil?",
+      "description": "Estás a punto de actualizar {name} y {email}. Esta acción puede deshacerse más tarde.",
+      "cancel": "Cancelar",
+      "confirm": "Sí, guardar"
+    }
   }
 }
