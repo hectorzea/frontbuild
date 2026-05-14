@@ -115,6 +115,7 @@ const ProfileForm = () => {
                   type="text"
                   autoComplete="name"
                   autoCapitalize="words"
+                  data-testid="ay11-form-name-input"
                 />
               )}
             </AccessibleField>
@@ -134,6 +135,7 @@ const ProfileForm = () => {
                   autoComplete="email"
                   inputMode="email"
                   spellCheck={false}
+                  data-testid="ay11-form-email-input"
                 />
               )}
             </AccessibleField>
@@ -157,6 +159,7 @@ const ProfileForm = () => {
                     ]
                       .filter(Boolean)
                       .join(" ")}
+                    data-testid="ay11-form-bio-input"
                   />
                   <CharacterCounter
                     id={bioCounterId}
@@ -174,6 +177,7 @@ const ProfileForm = () => {
           disabled={isSubmitting}
           aria-busy={isSubmitting}
           className="mt-6"
+          data-testid="ay11-form-submit-button"
         >
           {isSubmitting ? t("actions.submitting") : t("actions.submit")}
         </Button>
