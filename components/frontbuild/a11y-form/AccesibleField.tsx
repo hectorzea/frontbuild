@@ -36,7 +36,6 @@ const AccessibleField = ({
   const errorId = error ? `${id}-error` : undefined;
 
   const describedBy = [hintId, errorId].filter(Boolean).join(" ") || undefined;
-  console.log(describedBy);
 
   return (
     <Field data-invalid={!!error}>

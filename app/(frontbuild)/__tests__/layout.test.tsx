@@ -8,7 +8,17 @@ jest.mock("next-intl", () => ({
 }));
 
 jest.mock("next-intl/server", () => ({
-  getLocale: () => "es",
+  getLocale: () => "en",
+  getTranslations: jest.fn(async ({ namespace }) => {
+    return (key: string) => {
+      const messages: Record<string, string> = {
+        "profileForm.page.skipLink": "Skip to content",
+        "profileForm.page.title": "Profile Settings",
+        "profileForm.page.description": "Manage your profile",
+      };
+      return messages[`${namespace}.${key}`] || `${namespace}.${key}`;
+    };
+  }),
 }));
 
 describe("MyLayout", () => {

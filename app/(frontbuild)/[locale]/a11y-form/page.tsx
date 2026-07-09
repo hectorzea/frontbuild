@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/frontbuild/a11y-form/PageHeader";
 import ProfileForm from "@/components/frontbuild/a11y-form/ProfileForm";
 import SkipLink from "@/components/frontbuild/a11y-form/SkipLink";
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
@@ -18,14 +19,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function A11yFormPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "profileForm" });
-
+export default function A11yFormPage() {
+  const t = useTranslations("profileForm");
   return (
     <>
       <SkipLink href="#profile-form">{t("page.skipLink")}</SkipLink>
