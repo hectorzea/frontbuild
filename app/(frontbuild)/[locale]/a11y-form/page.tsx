@@ -35,6 +35,7 @@ export default function A11yFormPage() {
             tabIndex={-1}
             aria-labelledby="profile-form-heading"
             className="rounded-lg border bg-card p-6 shadow-sm"
+            data-testid="section-a11y-form"
           >
             <ProfileForm />
           </section>

@@ -13,6 +13,7 @@ describe("a11y Page ", () => {
 
     await waitFor(() => {
       expect(screen.getByTestId("ay11-form-bio-input")).toBeInTheDocument();
+      expect(screen.getByTestId("section-a11y-form")).toBeInTheDocument();
     });
   });
 });
