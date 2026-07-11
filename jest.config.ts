@@ -10,7 +10,10 @@ const config = {
   coverageProvider: "v8",
   testEnvironment: "jest-fixed-jsdom",
   //configuracion de archhivos a ejecutar antes de cada prueba
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.setup.ts",
+    "<rootDir>/mocks/matchMedia.mock",
+  ],
   collectCoverageFrom: [
     "<rootDir>/components/**/*.{ts,tsx}",
     "<rootDir>/lib/**/*.{ts,tsx}",

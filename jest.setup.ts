@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import "@/mocks/matchMedia.mock";
+// import "@/mocks/matchMedia.mock";
 import { loadEnvConfig } from "@next/env";
 import { server } from "@/mocks/server";
 
