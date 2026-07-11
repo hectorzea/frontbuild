@@ -1,4 +1,3 @@
-import type { Config } from "jest";
 import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
@@ -7,7 +6,7 @@ const createJestConfig = nextJest({
 });
 
 // Add any custom config to be passed to Jest
-const config: Config = {
+const config = {
   coverageProvider: "v8",
   testEnvironment: "jest-fixed-jsdom",
   //configuracion de archhivos a ejecutar antes de cada prueba
@@ -27,10 +26,12 @@ const config: Config = {
   },
 };
 
-export default async () => {
+const exportJest = async () => {
   const nextJestConfig = await createJestConfig(config)();
   return {
     ...nextJestConfig,
     transformIgnorePatterns: ["node_modules/(?!next-intl)/"],
   };
 };
+
+export default exportJest;
