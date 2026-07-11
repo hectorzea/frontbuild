@@ -1,4 +1,3 @@
-import type { Config } from "jest";
 import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
@@ -7,11 +6,14 @@ const createJestConfig = nextJest({
 });
 
 // Add any custom config to be passed to Jest
-const config: Config = {
+const config = {
   coverageProvider: "v8",
   testEnvironment: "jest-fixed-jsdom",
   //configuracion de archhivos a ejecutar antes de cada prueba
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.setup.ts",
+    "<rootDir>/mocks/matchMedia.mock",
+  ],
   collectCoverageFrom: [
     "<rootDir>/components/**/*.{ts,tsx}",
     "<rootDir>/lib/**/*.{ts,tsx}",
@@ -27,8 +29,12 @@ const config: Config = {
   },
 };
 
-module.exports = async () => ({
-  ...(await createJestConfig(config)()),
-  // https://github.com/vercel/next.js/issues/40183
-  transformIgnorePatterns: ["node_modules/(?!next-intl)/"],
-});
+const exportJest = async () => {
+  const nextJestConfig = await createJestConfig(config)();
+  return {
+    ...nextJestConfig,
+    transformIgnorePatterns: ["node_modules/(?!next-intl)/"],
+  };
+};
+
+export default exportJest;
