@@ -16,7 +16,7 @@ const projects = [
     title: "Job Lint Search",
     description:
       "A job linting tool that helps to filter job description using an API endpoint with AI and return just the useful details",
-    link: "/job-search",
+    link: "/job-offer-ai",
     technologies: ["Next.js", "MongoDB", "TypeScript", "Tailwind CSS"],
   },
   {

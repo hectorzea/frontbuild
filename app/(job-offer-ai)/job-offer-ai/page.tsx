@@ -1,4 +1,4 @@
-import { JobCheckForm } from "@/components/frontbuild/JobCheckForm";
+import { JobSearchForm } from "@/components/frontbuild/JobSearchForm";
 import MockServiceWorkerWrapper from "@/components/frontbuild/MockServiceWorkerWrapper";
 
 export default function ProjectsPage() {
@@ -6,7 +6,7 @@ export default function ProjectsPage() {
     <div data-testid="projects-page" className="flex flex-col p-4">
       <div className="flex flex-col justify-center items-center min-h-screen">
         <MockServiceWorkerWrapper>
-          <JobCheckForm />
+          <JobSearchForm />
         </MockServiceWorkerWrapper>
       </div>
     </div>

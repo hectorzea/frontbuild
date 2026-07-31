@@ -9,7 +9,7 @@ const noLocaleRoutes = [
   "/songs",
   "/tasks",
   "/hs-card-search",
-  "/job-search",
+  "/job-offer-ai",
   "/login",
   "/unauthorized",
 ];

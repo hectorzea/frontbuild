@@ -17,7 +17,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { JobOffer } from "@/app/(job-search)/types";
+import { JobOffer } from "@/app/(job-offer-ai)/types";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -27,6 +27,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import JobSearchError from "./JobSearchError";
+import { useCreateJobSearchMutation } from "@/lib/features/job-offer-ai/jobOfferAiApiSlice";
 
 const FormSchema = z.object({
   linkedInJobUrl: z.string().min(2, {
@@ -34,10 +35,12 @@ const FormSchema = z.object({
   }),
 });
 
-export function JobCheckForm() {
+export function JobSearchForm() {
   const [data, setData] = useState<JobOffer | null>(null);
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [createJobSearch, { isError, isSuccess }] =
+    useCreateJobSearchMutation();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -50,11 +53,8 @@ export function JobCheckForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true);
-      const jobResponse = await axios.post(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
-        { linkedinJobUrl: data.linkedInJobUrl },
-      );
-      setData(jobResponse.data);
+      // const jobResponse = await createJobSearch();
+      // setData(jobResponse.data);
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
