@@ -6,7 +6,7 @@ import {
 } from "../job-search/types";
 import { jobSearchMockScenarios } from "../job-search/data";
 
-export const jobCheckHandlers = [
+export const jobOfferAiHandler = [
   http.post<
     never,
     CheckJobRequestBody,

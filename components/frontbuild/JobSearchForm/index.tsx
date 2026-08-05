@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import axios from "axios";
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
@@ -28,12 +27,7 @@ import {
 } from "@/components/ui/card";
 import JobSearchError from "./JobSearchError";
 import { useCreateJobSearchMutation } from "@/lib/features/job-offer-ai/jobOfferAiApiSlice";
-
-const FormSchema = z.object({
-  linkedInJobUrl: z.string().min(2, {
-    message: "Must be an valid URL",
-  }),
-});
+import { JobSearch, jobSearchSchema } from "@/app/(job-offer-ai)/schemas";
 
 export function JobSearchForm() {
   const [data, setData] = useState<JobOffer | null>(null);
@@ -42,17 +36,18 @@ export function JobSearchForm() {
   const [createJobSearch, { isError, isSuccess }] =
     useCreateJobSearchMutation();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const jobSearchForm = useForm<JobSearch>({
+    resolver: zodResolver(jobSearchSchema),
     defaultValues: {
-      linkedInJobUrl: "",
+      linkedinJobOfferUrl: "",
     },
   });
 
   //TODO: Transformar en Mutation de RTK
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof jobSearchSchema>) {
     try {
       setLoading(true);
+      const response = await createJobSearch(data);
       // const jobResponse = await createJobSearch();
       // setData(jobResponse.data);
       setLoading(false);
@@ -66,7 +61,7 @@ export function JobSearchForm() {
     setData(null);
     setError(false);
     setLoading(false);
-    form.reset();
+    jobSearchForm.reset();
   };
 
   if (error) {
@@ -100,7 +95,7 @@ export function JobSearchForm() {
                 onClick={() => {
                   setData(null);
                   setLoading(false);
-                  form.reset();
+                  jobSearchForm.reset();
                 }}
                 disabled={loading}
                 data-testid="submit-button"
@@ -200,11 +195,11 @@ export function JobSearchForm() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
+            <Form {...jobSearchForm}>
+              <form onSubmit={jobSearchForm.handleSubmit(onSubmit)}>
                 <FormField
-                  control={form.control}
-                  name="linkedInJobUrl"
+                  control={jobSearchForm.control}
+                  name="linkedinJobOfferUrl"
                   render={({ field }) => (
                     <FormItem className="mt-2">
                       <FormLabel>LinkedIN URL</FormLabel>
