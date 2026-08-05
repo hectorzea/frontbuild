@@ -66,6 +66,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
     "@next/env": "^16.1.1",
     "@playwright/test": "^1.50.1",
     "@testing-library/dom": "^10.4.0",

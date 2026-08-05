@@ -150,6 +150,9 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.6
+        version: 3.3.6(supports-color@8.1.1)
       '@next/env':
         specifier: ^16.1.1
         version: 16.3.0
