@@ -16,10 +16,17 @@ jobs:
         with:
           node-version: lts/*
 
+      # Configura pnpm (con caché automática)
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       # 3. Instala dependencias en /frontend
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: pnpm install
+        working-directory: ./frontend
 
       # 4. Ejecuta el linter
       - name: Run Lint
-        run: npm run lint
+        run: pnpm run lint
+        working-directory: ./frontend
