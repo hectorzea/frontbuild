@@ -9,19 +9,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+
+      # Configuramos pnpm y el caché global
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.20.0
+
+      # Instalamos dependencias (pnpm ya no necesita --legacy-peer-deps)
       - name: Install Dependencies
-        run: npm install --legacy-peer-deps
+        run: pnpm install
+
       - name: Set environment variables
         run: |
           echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL }}" >> $GITHUB_ENV
+
+      # Ejecutamos con pnpm
       - name: Run Tests with Coverage
-        run: npm test -- --coverage
+        run: pnpm test -- --coverage
+
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
