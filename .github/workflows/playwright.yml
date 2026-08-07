@@ -24,7 +24,6 @@ jobs:
       # 3. Instala dependencias en /frontend
       - name: Install dependencies
         run: pnpm install
-        working-directory: ./frontend
 
       # 4. Instala los navegadores de Playwright
       # Usamos 'pnpm playwright' para usar la versión instalada en el proyecto
