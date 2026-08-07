@@ -24,3 +24,5 @@ export interface JobOffer {
   matchPercentage: number;
   matchReasoningKeyPoints: string[];
 }
+
+export interface JobSearchResponse {}

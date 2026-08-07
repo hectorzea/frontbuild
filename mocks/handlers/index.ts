@@ -1,11 +1,11 @@
 import { taskHandlers } from "./taskHandlers";
-import { jobCheckHandlers } from "./jobCheckHandlers";
+import { jobOfferAiHandler } from "./jobOfferAiHandler";
 import { hearthstoneApiHandlers } from "./hearthstoneApiHandlers";
 import { authHandlers } from "./authHandlers";
 
 export const handlers = [
   ...authHandlers,
-  ...jobCheckHandlers,
+  ...jobOfferAiHandler,
   ...taskHandlers,
   ...hearthstoneApiHandlers,
 ];
