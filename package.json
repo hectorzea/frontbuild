@@ -1,15 +1,15 @@
 {
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "update:snapshots": "jest --updateSnapshot",
-    "test": "jest --runTestsByPath",
-    "test:unit": "jest",
-    "test:e2e": "npx playwright test",
-    "test:all": "npm run test:unit && npm run test:e2e",
+    "test": "jest",
+    "test:e2e": "playwright test",
+    "test:all": "pnpm run test:unit && pnpm run test:e2e",
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
@@ -66,6 +66,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
     "@next/env": "^16.1.1",
     "@playwright/test": "^1.50.1",
     "@testing-library/dom": "^10.4.0",
