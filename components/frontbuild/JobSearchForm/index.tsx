@@ -12,11 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import Link from "next/link";
-import { ArrowBigRight, BrushCleaningIcon } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { JobOffer } from "@/app/(job-offer-ai)/types";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -30,10 +25,7 @@ import { useCreateJobSearchMutation } from "@/lib/features/job-offer-ai/jobOffer
 import { JobSearch, jobSearchSchema } from "@/app/(job-offer-ai)/schemas";
 
 export function JobSearchForm() {
-  const [data, setData] = useState<JobOffer | null>(null);
-  // const [error, setError] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [createJobSearch, { isError, isSuccess }] =
+  const [createJobSearch, { data, isError, isSuccess, isLoading }] =
     useCreateJobSearchMutation();
 
   const jobSearchForm = useForm<JobSearch>({
@@ -46,30 +38,20 @@ export function JobSearchForm() {
   //TODO: Transformar en Mutation de RTK
   async function onSubmit(data: z.infer<typeof jobSearchSchema>) {
     try {
-      setLoading(true);
       const response = await createJobSearch(data);
       // const jobResponse = await createJobSearch();
       // setData(jobResponse.data);
-      setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
-      // setError(true);
     }
   }
 
-  const cleanErrors = () => {
-    setData(null);
-    // setError(false);
-    setLoading(false);
-    jobSearchForm.reset();
-  };
-
-  if (loading) {
+  if (isLoading) {
     return <Loading />;
   }
 
   if (isError) {
-    return <JobSearchError cleanErrors={cleanErrors} />;
+    return <JobSearchError cleanErrors={() => {}} />;
   }
 
   if (isSuccess) {
@@ -79,163 +61,47 @@ export function JobSearchForm() {
   }
 
   return (
-    <>
-      {data ? (
-        <div className="mt-4">
-          <h2 className="text-2xl font-semibold mb-3">Job Information</h2>
-          <div className="flex flex-row gap-2 items-center justify-between">
-            <div>Company: {data?.companyName}</div>
-            <div className="flex flex-row gap-2">
-              <Button size={"sm"} data-testid={"download-cv-button"}>
-                <Link
-                  href={data?.jobLink || "#"}
-                  target="_blank"
-                  aria-label="Go to job"
-                >
-                  Apply
-                </Link>
-                <ArrowBigRight />
-              </Button>
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle>Job Lint</CardTitle>
+        <CardDescription>
+          Enter LinkedIN Url and start the research!
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...jobSearchForm}>
+          <form onSubmit={jobSearchForm.handleSubmit(onSubmit)}>
+            <FormField
+              control={jobSearchForm.control}
+              name="linkedinJobOfferUrl"
+              render={({ field }) => (
+                <FormItem className="mt-2">
+                  <FormLabel>LinkedIN URL</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="https://www.linkedin.com/jobs/view/4225517886"
+                      data-testid="job-check-input-field"
+                      {...field}
+                      className="max-w-md"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="flex ">
               <Button
-                size={"sm"}
-                onClick={() => {
-                  setData(null);
-                  setLoading(false);
-                  jobSearchForm.reset();
-                }}
-                disabled={loading}
-                data-testid="submit-button"
+                type="submit"
+                className="mt-4 w-full"
+                disabled={isLoading}
+                data-testid="submit-button-job-check-form"
               >
-                Clean Data
-                <BrushCleaningIcon />
+                Submit
               </Button>
             </div>
-          </div>
-          <div data-testid="job-title">Job Title: {data?.jobTitle}</div>
-          <div>Job Description: {data?.jobDescription}</div>
-          <div>Years of Experience: {data?.yearsOfExperience}</div>
-          <p className="font-bold text-lime-500">
-            Match percentage: {data?.matchPercentage}
-          </p>
-          <Separator className="my-4" />
-          <h2 className="text-2xl font-semibold mt-3">Hard Skills</h2>
-          <h3 className="text-xl font-semibold mt-3">Frontend</h3>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.hardSkills?.frontend?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <h3 className="text-xl font-semibold mt-3">Backend</h3>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.hardSkills?.backend?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <h3 className="text-xl font-semibold mt-3">CI / CD</h3>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.hardSkills?.cicd?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <h3 className="text-xl font-semibold mt-3">Testing</h3>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.hardSkills?.testing?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <h3 className="text-xl font-semibold mt-3">Extras</h3>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.hardSkills?.extras?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <Separator className="my-4" />
-          <h2 className="text-2xl font-semibold mt-3">Soft Skills</h2>
-          <ul className="max-w-md space-y-1 list-disc list-inside">
-            {data?.softSkills?.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
-          <Separator className="my-4" />
-          <div className="mt-3">Salary Range: {data?.salaryRange}</div>
-          <h3 className="text-2xl font-semibold mt-3">Location / Work Model</h3>
-          <div>Work Environment: {data?.workEnvironment}</div>
-          <div>Location: {data?.location}</div>
-          <div>Allow Relocation: {data?.allowRelocation ? "yes" : "no"}</div>
-          <h3 className="text-2xl font-semibold mt-3">
-            Recruitment Process Steps
-          </h3>
-          <ul className="space-y-1 list-disc list-inside">
-            {data?.recruitmentProcessSteps?.map(
-              (skill: string, index: number) => (
-                <li key={index}>{skill}</li>
-              ),
-            )}
-          </ul>
-          <Separator className="my-4" />
-          <h3 className="text-2xl font-semibold my-3">
-            Considerations about the job (IA)
-          </h3>
-          <ul className="space-y-4 list-disc list-inside">
-            {data?.considerations?.map(
-              (consideration: string, index: number) => (
-                <li key={index}>{consideration}</li>
-              ),
-            )}
-          </ul>
-          <h3 className="text-2xl font-semibold my-3">Match Reasoning vs CV</h3>
-          <ul className="space-y-4 list-disc list-inside">
-            {data?.matchReasoningKeyPoints?.map(
-              (matchReasoningKeyPoint: string, index: number) => (
-                <li key={index}>{matchReasoningKeyPoint}</li>
-              ),
-            )}
-          </ul>
-        </div>
-      ) : (
-        <Card className="w-full max-w-md">
-          <CardHeader>
-            <CardTitle>Job Lint</CardTitle>
-            <CardDescription>
-              Enter LinkedIN Url and start the research!
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Form {...jobSearchForm}>
-              <form onSubmit={jobSearchForm.handleSubmit(onSubmit)}>
-                <FormField
-                  control={jobSearchForm.control}
-                  name="linkedinJobOfferUrl"
-                  render={({ field }) => (
-                    <FormItem className="mt-2">
-                      <FormLabel>LinkedIN URL</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="https://www.linkedin.com/jobs/view/4225517886"
-                          data-testid="job-check-input-field"
-                          {...field}
-                          className="max-w-md"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <div className="flex ">
-                  <Button
-                    type="submit"
-                    className="mt-4 w-full"
-                    disabled={loading}
-                    data-testid="submit-button-job-check-form"
-                  >
-                    Submit
-                  </Button>
-                </div>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
-      )}
-    </>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   );
 }
