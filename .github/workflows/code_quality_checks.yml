@@ -17,7 +17,7 @@ jobs:
       # Configuramos pnpm y el caché global
       - uses: pnpm/action-setup@v4
         with:
-          version: 11.20.0
+          version: 11.25.0
 
       # Instalamos dependencias (pnpm ya no necesita --legacy-peer-deps)
       - name: Install Dependencies
