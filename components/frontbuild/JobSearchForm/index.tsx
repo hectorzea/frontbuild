@@ -31,7 +31,7 @@ import { JobSearch, jobSearchSchema } from "@/app/(job-offer-ai)/schemas";
 
 export function JobSearchForm() {
   const [data, setData] = useState<JobOffer | null>(null);
-  const [error, setError] = useState<boolean>(false);
+  // const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [createJobSearch, { isError, isSuccess }] =
     useCreateJobSearchMutation();
@@ -53,23 +53,29 @@ export function JobSearchForm() {
       setLoading(false);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
-      setError(true);
+      // setError(true);
     }
   }
 
   const cleanErrors = () => {
     setData(null);
-    setError(false);
+    // setError(false);
     setLoading(false);
     jobSearchForm.reset();
   };
 
-  if (error) {
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (isError) {
     return <JobSearchError cleanErrors={cleanErrors} />;
   }
 
-  if (loading) {
-    return <Loading />;
+  if (isSuccess) {
+    return (
+      <p>Job lint has been generated, try later until it gets completed</p>
+    );
   }
 
   return (

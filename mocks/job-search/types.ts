@@ -1,14 +1,14 @@
 //Types && Interfaces
 export type CheckJobRequestBody = {
-  linkedinJobUrl: string;
+  linkedinJobOfferUrl: string;
 };
 
-export type SuccessJobSearchResponse = { _id: string };
+export type SuccessJobSearchResponse = { id: string };
 export type ErrorJobSearchResponse = { message: string };
 
 export type SuccessJobSearch = {
   status: 200;
-  response: { _id: string };
+  response: { id: string };
 };
 
 export type ErrorJobSearch = {
