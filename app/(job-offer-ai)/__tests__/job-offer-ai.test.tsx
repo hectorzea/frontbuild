@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import JobCheckPage from "@/app/(job-offer-ai)/job-offer-ai/page";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "@/lib/test-utils";
