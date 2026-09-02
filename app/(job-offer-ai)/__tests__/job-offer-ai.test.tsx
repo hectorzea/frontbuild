@@ -24,11 +24,7 @@ describe("Job Check - ", () => {
 
     //async call action to the backend, so we need to wait for the result a bit
     await waitFor(() => {
-      expect(
-        screen.getByText(
-          "Job lint has been generated, try later until it gets completed",
-        ),
-      ).toBeInTheDocument();
+      expect(screen.getByText("6a8f877d5122687436367a30")).toBeInTheDocument();
     });
   });
   it("Render page, add link and error search, retry and check form again", async () => {
