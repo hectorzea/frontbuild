@@ -1,26 +1,23 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/common/Loading";
 import { Form, FormField } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import axios from "axios";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { CardMatchResult, cardMatchResultSchema } from "@/app/(tasks)/schemas";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 type MulliganCreatorFormProps = {
   route?: string;
 };
 
-export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
+export function MulliganCreatorForm({}: MulliganCreatorFormProps) {
   const router = useRouter();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+  const [loading] = useState<boolean>(false);
+  const [error] = useState<boolean>(false);
   const form = useForm<CardMatchResult>({
     resolver: zodResolver(cardMatchResultSchema),
     defaultValues: {
@@ -29,26 +26,29 @@ export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof cardMatchResultSchema>) {
-    try {
-      setLoading(true);
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
-        data,
-      );
-      toast("Match has been added.");
-      setError(false);
-      if (route) {
-        router.push(route);
-      } else {
-        router.back();
-      }
-    } catch (error) {
-      console.log("Error calling hz-server api:", error);
-      setLoading(false);
-      setError(true);
-    }
-  }
+  async function onSubmit() {}
+
+  //todo axios remove, change for rtk query
+  // async function onSubmit(data: z.infer<typeof cardMatchResultSchema>) {
+  //   try {
+  //     setLoading(true);
+  //     await axios.post(
+  //       `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/hearthstone/card-match-results`,
+  //       data,
+  //     );
+  //     toast("Match has been added.");
+  //     setError(false);
+  //     if (route) {
+  //       router.push(route);
+  //     } else {
+  //       router.back();
+  //     }
+  //   } catch (error) {
+  //     console.log("Error calling hz-server api:", error);
+  //     setLoading(false);
+  //     setError(true);
+  //   }
+  // }
 
   if (loading) {
     return <Loading />;

@@ -6,7 +6,7 @@ import {
 } from "../job-search/types";
 import { jobSearchMockScenarios } from "../job-search/data";
 
-export const jobCheckHandlers = [
+export const jobOfferAiHandler = [
   http.post<
     never,
     CheckJobRequestBody,
@@ -15,7 +15,7 @@ export const jobCheckHandlers = [
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/ai/process-job`,
     async ({ request }) => {
       const requestJobFormData = await request.json();
-      const jobUrl = requestJobFormData.linkedinJobUrl as string;
+      const jobUrl = requestJobFormData.linkedinJobOfferUrl as string;
       const mockResponse = jobSearchMockScenarios[jobUrl];
       return HttpResponse.json(mockResponse.response, {
         status: mockResponse.status,

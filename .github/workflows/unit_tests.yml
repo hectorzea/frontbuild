@@ -19,7 +19,7 @@ jobs:
       # 2. Configura pnpm (esto instala pnpm y configura el caché automáticamente)
       - uses: pnpm/action-setup@v4
         with:
-          version: 11.20.0 # O la versión que tengas instalada localmente
+          version: 11.25.0 # O la versión que tengas instalada localmente
 
       # 3. Instala dependencias con pnpm
       # 'pnpm install' es el equivalente a 'npm ci' (es estricto con el lockfile)

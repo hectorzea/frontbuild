@@ -22,7 +22,7 @@ const layoutComponents: LayoutComponent[] = [
   },
   {
     name: "Job Search",
-    path: "@/app/(job-search)/layout",
+    path: "@/app/(job-offer-ai)/layout",
     layoutProps: { children: <div>Job Search</div> },
   },
   {

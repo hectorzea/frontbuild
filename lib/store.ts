@@ -7,13 +7,16 @@ import { tasksSlice } from "@/lib/features/tasks/tasksSlice";
 import { hearthstoneApiSlice } from "./features/tasks/hearthstoneApiSlice";
 import { authSlice } from "./features/auth/authSlice";
 import { authApiSlice } from "./features/auth/authApiSlice";
+import { jobSearchApiSlice } from "./features/job-offer-ai/jobOfferAiApiSlice";
 
+//tiene que tener los nombres de los reducerPath
 const rootReducer = combineReducers({
   tasks: tasksSlice.reducer,
   tasksApi: tasksApiSlice.reducer,
   auth: authSlice.reducer,
   authApi: authApiSlice.reducer,
   hearthstoneApi: hearthstoneApiSlice.reducer,
+  jobOfferAiApi: jobSearchApiSlice.reducer,
 });
 
 export const setupStore = (preloadedState?: Partial<RootState>) => {
@@ -25,6 +28,7 @@ export const setupStore = (preloadedState?: Partial<RootState>) => {
         tasksApiSlice.middleware,
         hearthstoneApiSlice.middleware,
         authApiSlice.middleware,
+        jobSearchApiSlice.middleware,
       );
     },
   });

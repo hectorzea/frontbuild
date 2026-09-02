@@ -1,7 +1,7 @@
 {
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@11.20.0",
+  "packageManager": "pnpm@11.25.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +9,7 @@
     "update:snapshots": "jest --updateSnapshot",
     "test": "jest",
     "test:e2e": "playwright test",
-    "test:all": "pnpm run test:unit && pnpm run test:e2e",
+    "test:all": "pnpm run test && pnpm run test:e2e",
     "test:watch": "jest --watch",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
@@ -37,7 +37,6 @@
     "@tailwindcss/postcss": "^4.1.14",
     "@tanstack/react-table": "^8.20.6",
     "@testing-library/user-event": "^14.6.1",
-    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",

@@ -15,6 +15,7 @@ export const taskSchema = z.object({
 
 export type Task = z.infer<typeof taskSchema>;
 
+// TODO REMOVE THIS LATER
 export const cardMatchResultSchema = z.object({
   win: z.boolean(),
   matchUrl: z.string().min(5, { error: "Match URL is required" }),

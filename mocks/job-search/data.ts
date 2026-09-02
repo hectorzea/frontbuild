@@ -1,4 +1,4 @@
-import { JobOffer } from "@/app/(job-search)/types";
+import { JobOffer } from "@/app/(job-offer-ai)/types";
 import { JobSearchMockScenarios } from "./types";
 
 export const jobData: JobOffer = {
@@ -95,7 +95,7 @@ export const jobData: JobOffer = {
 export const jobSearchMockScenarios: JobSearchMockScenarios = {
   "https://www.linkedin.com/jobs/view/4382174904": {
     status: 200,
-    response: jobData,
+    response: { id: "6a8f877d5122687436367a30" },
   },
   "https://www.linkedin.com/jobs/view/4382174999": {
     status: 500,
