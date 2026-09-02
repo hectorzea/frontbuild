@@ -1,7 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Loading } from "@/components/common/Loading";
 import { Form, FormField } from "@/components/ui/form";
@@ -9,17 +8,16 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Switch } from "@/components/ui/switch";
 import { CardMatchResult, cardMatchResultSchema } from "@/app/(tasks)/schemas";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 type MulliganCreatorFormProps = {
   route?: string;
 };
 
-export function MulliganCreatorForm({ route }: MulliganCreatorFormProps) {
+export function MulliganCreatorForm({}: MulliganCreatorFormProps) {
   const router = useRouter();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+  const [loading] = useState<boolean>(false);
+  const [error] = useState<boolean>(false);
   const form = useForm<CardMatchResult>({
     resolver: zodResolver(cardMatchResultSchema),
     defaultValues: {

@@ -11,7 +11,7 @@ export const jobSearchApiSlice = createApi({
   // Tag types are used for caching and invalidation.
   tagTypes: ["JobOfferAi"],
   endpoints: (build) => ({
-    createJobSearch: build.mutation<{ _id: string }, JobSearch>({
+    createJobSearch: build.mutation<{ id: string }, JobSearch>({
       query(body) {
         return {
           url: ``,

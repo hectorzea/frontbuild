@@ -25,8 +25,10 @@ import { useCreateJobSearchMutation } from "@/lib/features/job-offer-ai/jobOffer
 import { JobSearch, jobSearchSchema } from "@/app/(job-offer-ai)/schemas";
 
 export function JobSearchForm() {
-  const [createJobSearch, { data, isError, isSuccess, isLoading }] =
-    useCreateJobSearchMutation();
+  const [
+    createJobSearch,
+    { data: jobSearchData, isError, isSuccess, isLoading },
+  ] = useCreateJobSearchMutation();
 
   const jobSearchForm = useForm<JobSearch>({
     resolver: zodResolver(jobSearchSchema),
@@ -35,12 +37,9 @@ export function JobSearchForm() {
     },
   });
 
-  //TODO: Transformar en Mutation de RTK
   async function onSubmit(data: z.infer<typeof jobSearchSchema>) {
     try {
-      const response = await createJobSearch(data);
-      // const jobResponse = await createJobSearch();
-      // setData(jobResponse.data);
+      await createJobSearch(data);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
     }
@@ -54,9 +53,13 @@ export function JobSearchForm() {
     return <JobSearchError cleanErrors={() => {}} />;
   }
 
+  //todo terminar logica para ir a la pagina por id y luego alla hacer la llamada
   if (isSuccess) {
     return (
-      <p>Job lint has been generated, try later until it gets completed</p>
+      <div className="flex flex-col items-center">
+        <p>Job Lint Id</p>
+        <p>{jobSearchData.id}</p>
+      </div>
     );
   }
 

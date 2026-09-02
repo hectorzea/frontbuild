@@ -1,7 +1,6 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import AddNewMatchPage from "@/app/(hs-card-search)/hs-card-search/mulligan/new-match/page";
 import userEvent from "@testing-library/user-event";
-import mockRouter from "next-router-mock";
 import { server } from "@/mocks/server";
 import { http, HttpResponse } from "msw";
 
