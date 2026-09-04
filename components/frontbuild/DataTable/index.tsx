@@ -1,18 +1,27 @@
 "use client";
+
 import * as React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
-  VisibilityState,
-  flexRender,
-  getCoreRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  // VisibilityState,
+  tableFeatures,
+  useTable,
+  // Features individuales para tree-shaking
+  columnVisibilityFeature,
+  columnFilteringFeature,
+  columnFacetingFeature,
+  rowSortingFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  // Factorías de row models
+  createFilteredRowModel,
+  createSortedRowModel,
+  createPaginatedRowModel,
+  createFacetedRowModel,
+  createFacetedUniqueValues,
+  filterFn_includesString,
 } from "@tanstack/react-table";
 
 import {
@@ -27,57 +36,60 @@ import { DataTableToolbar } from "./DataTableToolbar";
 import { DataTablePagination } from "./DataTablePagination";
 import { ColumnMeta } from "./Columns";
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+// Definir features fuera del componente para que no se recreen y tipar correctamente
+export const features = tableFeatures({
+  columnVisibilityFeature,
+  columnFilteringFeature,
+  columnFacetingFeature,
+  rowSortingFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  filterFns: { includesString: filterFn_includesString },
+  filteredRowModel: createFilteredRowModel(),
+  sortedRowModel: createSortedRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  facetedRowModel: createFacetedRowModel(),
+  facetedUniqueValues: createFacetedUniqueValues(),
+});
+
+export type AppTableFeatures = typeof features;
+
+interface DataTableProps<TData extends Record<string, any>> {
+  columns: ColumnDef<AppTableFeatures, TData, any>[];
   data: TData[];
   toolbarEnabled?: boolean;
   testId?: string;
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends Record<string, any>, TValue>({
   columns,
   data,
   testId,
   toolbarEnabled = true,
-}: DataTableProps<TData, TValue>) {
+}: DataTableProps<TData>) {
   const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  // const [columnVisibility, setColumnVisibility] =
+  //   React.useState<VisibilityState>({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  // const [pagination, setPagination] = React.useState({
-  //   pageIndex: 0, //initial page index
-  //   pageSize: 100, //default page size
-  // });
-
-  const table = useReactTable({
+  const table = useTable({
     data,
     columns,
+    features,
     state: {
       sorting,
-      columnVisibility,
+      // columnVisibility,
       rowSelection,
       columnFilters,
-      // pagination: {
-      //   pageIndex: 0,
-      //   pageSize: 500,
-      // },
-      // pagination
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
+    // onColumnVisibilityChange: setColumnVisibility,
   });
 
   return (
@@ -98,12 +110,9 @@ export function DataTable<TData, TValue>({
                           ?.columnClasses
                       }
                     >
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                      {header.isPlaceholder ? null : (
+                        <table.FlexRender header={header} />
+                      )}
                     </TableHead>
                   );
                 })}
@@ -125,10 +134,7 @@ export function DataTable<TData, TValue>({
                           ?.columnClasses
                       }
                     >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <table.FlexRender cell={cell} />
                     </TableCell>
                   ))}
                 </TableRow>
