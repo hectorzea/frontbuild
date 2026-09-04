@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { AppTableFeatures } from ".";
 // import {
 //   Select,
 //   SelectContent,
@@ -15,11 +16,11 @@ import { Button } from "@/components/ui/button";
 //   SelectValue,
 // } from "@/components/ui/select";
 
-interface DataTablePaginationProps<TData> {
-  table: Table<TData>;
+interface DataTablePaginationProps<TData extends Record<string, any>> {
+  table: Table<AppTableFeatures, TData>;
 }
 
-export function DataTablePagination<TData>({
+export function DataTablePagination<TData extends Record<string, any>>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (
@@ -51,7 +52,7 @@ export function DataTablePagination<TData>({
           </Select>
         </div> */}
         <div className="flex w-[100px] items-center justify-center text-xs sm:text-sm font-medium">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          Page {table.store.state.pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}
         </div>
         <div className="flex items-center space-x-2">

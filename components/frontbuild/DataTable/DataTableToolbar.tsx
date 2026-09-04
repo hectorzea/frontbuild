@@ -7,17 +7,18 @@ import { DataTableViewOptions } from "./DataTableViewOptions";
 import { DataTableFacetedFilter } from "./DataTableFacetedFilter";
 import Link from "next/link";
 import { priorities, statuses } from "@/components/frontbuild/TaskForm/data";
+import { AppTableFeatures } from ".";
 
-interface DataTableToolbarProps<TData> {
-  table: Table<TData>;
+interface DataTableToolbarProps<TData extends Record<string, any>> {
+  table: Table<AppTableFeatures, TData>;
   toolbarEnabled: boolean;
 }
 
-export function DataTableToolbar<TData>({
+export function DataTableToolbar<TData extends Record<string, any>>({
   table,
   toolbarEnabled,
 }: DataTableToolbarProps<TData>) {
-  const isFiltered = table.getState().columnFilters.length > 0;
+  const isFiltered = table.store.state.columnFilters.length > 0;
 
   if (!toolbarEnabled) {
     return null;
