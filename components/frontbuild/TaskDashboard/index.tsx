@@ -1,8 +1,6 @@
 "use client";
 import { selectAllTasks } from "@/lib/features/tasks/tasksSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { DataTable } from "../DataTable";
-import { columns } from "../DataTable/Columns";
 import TasksTable from "../Tables/TaskTable";
 
 type TaskDashboardProps = {
