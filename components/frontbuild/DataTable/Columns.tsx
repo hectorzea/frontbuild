@@ -7,12 +7,27 @@ import { DataTableColumnHeader } from "./DataTableColumnHeader";
 import { DataTableRowActions } from "./DataTableRowActions";
 import {
   capitalizeFirstLetter,
+  cn,
   getPriorityIcon,
   getStatusIcon,
 } from "@/lib/utils";
-import { Binary } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUp,
+  Binary,
+  ChevronsUpDown,
+  EyeOff,
+} from "lucide-react";
 import { Priority, Status } from "@/lib/types";
 import { CardMatchResult } from "@/app/(hs-card-search)/types";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 
 export interface ColumnMeta {
   columnClasses: string;
@@ -82,7 +97,7 @@ export const mulliganColumns: ColumnDef<CardMatchResult>[] = [
 ];
 
 //todo ver como mejorar esto para recibir N columnas de T tipos
-export const columns: ColumnDef<Task>[] = [
+export const taskColumns: ColumnDef<Task>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -123,7 +138,41 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <div className={cn("flex items-center space-x-2")}>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="-ml-3 h-8 data-[state=open]:bg-accent"
+            >
+              <span>{title}</span>
+              {column.getIsSorted() === "desc" ? (
+                <ArrowDown />
+              ) : column.getIsSorted() === "asc" ? (
+                <ArrowUp />
+              ) : (
+                <ChevronsUpDown />
+              )}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start">
+            <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
+              <ArrowUp className="h-3.5 w-3.5 text-muted-foreground/70" />
+              Asc
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
+              <ArrowDown className="h-3.5 w-3.5 text-muted-foreground/70" />
+              Desc
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
+              <EyeOff className="h-3.5 w-3.5 text-muted-foreground/70" />
+              Hide
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     ),
     cell: ({ row }) => {
       const badgeVariant: BadgeVariant = row.original.label as BadgeVariant;
