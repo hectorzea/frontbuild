@@ -2,6 +2,7 @@ import {
   ColumnDef,
   columnFilteringFeature,
   createExpandedRowModel,
+  createFacetedUniqueValues,
   createFilteredRowModel,
   createSortedRowModel,
   filterFn_includesString,
@@ -56,6 +57,7 @@ const features = tableFeatures({
   filteredRowModel: createFilteredRowModel(),
   sortedRowModel: createSortedRowModel(),
   expandedRowModel: createExpandedRowModel(),
+  facetedUniqueValues: createFacetedUniqueValues(),
   sortFns: {
     text: sortFn_text,
   },

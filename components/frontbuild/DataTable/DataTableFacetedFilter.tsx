@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Column } from "@tanstack/react-table";
+import { Column, RowData } from "@tanstack/react-table";
 import { Check, PlusCircle } from "lucide-react";
 import { cn, getPriorityIcon, getStatusIcon } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -20,12 +20,13 @@ import {
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Priority, Status } from "@/lib/types";
+import { TaskTableFeatures } from "../Tables/TasksTable";
 
 type FilterType = "status" | "priority";
 
-interface DataTableFacetedFilterProps<TData, TValue> {
+interface DataTableFacetedFilterProps<TData extends RowData, TValue = unknown> {
   filterType: FilterType;
-  column?: Column<TData, TValue>;
+  column?: Column<TaskTableFeatures, TData, TValue>;
   title?: string;
   options: {
     label: string;
@@ -42,7 +43,10 @@ const getIconByKey = (key: string, filterValue: string) => {
   }
 };
 
-export function DataTableFacetedFilter<TData, TValue>({
+export function DataTableFacetedFilter<
+  TData extends RowData,
+  TValue = unknown,
+>({
   filterType,
   column,
   title,
@@ -96,7 +100,7 @@ export function DataTableFacetedFilter<TData, TValue>({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0" align="start">
+      <PopoverContent className="w-50 p-0" align="start">
         <Command>
           <CommandInput placeholder={title} />
           <CommandList>
