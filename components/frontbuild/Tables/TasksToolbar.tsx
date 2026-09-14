@@ -1,23 +1,19 @@
 import { Input } from "@/components/ui/input";
-import { RowData, Table, TableFeatures } from "@tanstack/react-table";
+import { Table } from "@tanstack/react-table";
 import { DataTableFacetedFilter } from "../DataTable/DataTableFacetedFilter";
 import { priorities, statuses } from "../TaskForm/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { DataTableViewOptions } from "../DataTable/DataTableViewOptions";
 import { X } from "lucide-react";
+import { TaskTableFeatures } from "./TasksTable";
+import { Task } from "@/app/(tasks)/schemas";
 
-interface TasksToolbarProps<
-  TFeatures extends TableFeatures,
-  TData extends RowData,
-> {
-  table: Table<TFeatures, TData>;
+interface TasksToolbarProps {
+  table: Table<TaskTableFeatures, Task>;
 }
-// TODO VER QUE ONDA CON GETFILTERVALUE
-export function TasksToolbar<
-  TFeatures extends TableFeatures,
-  TData extends RowData,
->({ table }: TasksToolbarProps<TFeatures, TData>) {
+export function TasksToolbar({ table }: TasksToolbarProps) {
+  const fullState = table.store.state;
+  const isFiltered = fullState.columnFilters.length > 0;
   return (
     <div data-testid={"data-table-toolbar"}>
       <div className="flex flex-col flex-1 items-center sm:flex-row space-x-1 sm:space-x-2">
@@ -27,7 +23,7 @@ export function TasksToolbar<
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="h-8 w-full sm:w-[150px] lg:w-[250px]"
+          className="h-8 w-full sm:w-37.5 lg:w-62.5"
         />
         <div className="flex flex-col w-full sm:flex-row sm:w-auto justify-between sm:justify-start space-x-2">
           {table.getColumn("status") && (
@@ -70,4 +66,3 @@ export function TasksToolbar<
     </div>
   );
 }
-// export default TasksToolbar;

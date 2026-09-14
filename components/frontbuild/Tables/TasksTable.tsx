@@ -4,6 +4,8 @@ import {
   createExpandedRowModel,
   createFilteredRowModel,
   createSortedRowModel,
+  filterFn_includesString,
+  filterFns,
   rowExpandingFeature,
   sortFn_text,
   stockFeatures,
@@ -43,6 +45,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge, BadgeVariant } from "@/components/ui/badge";
 import { Priority, Status } from "@/lib/types";
+import { TasksToolbar } from "./TasksToolbar";
 
 const features = tableFeatures({
   //todas las funcionalidades de table
@@ -56,7 +59,10 @@ const features = tableFeatures({
   sortFns: {
     text: sortFn_text,
   },
+  filterFns: { includesString: filterFn_includesString },
 });
+
+export type TaskTableFeatures = typeof features;
 
 const columns: Array<ColumnDef<typeof features, Task>> = [
   {
@@ -261,7 +267,7 @@ const TasksTable = ({ tasks }: TasksTableProps) => {
   });
   return (
     <div className="space-y-4">
-      TasksToolbar
+      <TasksToolbar table={table} />
       <div className="rounded-md border">
         <Table data-testid={"tasks-table"}>
           <TableHeader>
