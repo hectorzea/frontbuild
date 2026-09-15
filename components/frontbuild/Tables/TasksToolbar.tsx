@@ -7,6 +7,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { TaskTableFeatures } from "./TasksTable";
 import { Task } from "@/app/(tasks)/schemas";
+import { DataTableViewOptions } from "../DataTable/DataTableViewOptions";
 
 interface TasksToolbarProps {
   table: Table<TaskTableFeatures, Task>;
@@ -61,7 +62,7 @@ export function TasksToolbar({ table }: TasksToolbarProps) {
         >
           <Link href={"/tasks/new"}>New Task</Link>
         </Button>
-        {/* <DataTableViewOptions table={table} /> */}
+        <DataTableViewOptions table={table} />
       </div>
     </div>
   );
