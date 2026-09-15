@@ -1,7 +1,7 @@
 "use client";
 import { useGetMulliganCardsMatchResultQuery } from "@/lib/features/tasks/hearthstoneApiSlice";
-import { DataTable } from "../DataTable";
-import { mulliganColumns } from "../DataTable/Columns";
+// import { DataTable } from "../DataTable";
+// import { mulliganColumns } from "../DataTable/Columns";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
@@ -35,23 +35,23 @@ export function MulliganTable() {
       </Button>
       <div>
         <p className="mt-3">Partidas ganadas por carta individual (INICIAL)</p>
-        <DataTable
+        {/* <DataTable
           data={initialCards}
           toolbarEnabled={false}
           columns={mulliganColumns}
           testId={"mulligan-winrate-initial-cards-table"}
-        />
+        /> */}
       </div>
       <div>
         <p className="my-5">
           Partidas ganadas por carta individual (DESCARTADAS / MULLIGAN)
         </p>
-        <DataTable
+        {/* <DataTable
           data={discardedCards}
           toolbarEnabled={false}
           columns={mulliganColumns}
           testId={"mulligan-winrate-discard-cards-table"}
-        />
+        /> */}
       </div>
     </div>
   );

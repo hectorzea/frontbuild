@@ -1,246 +1,66 @@
-"use client";
-import { ColumnDef } from "@tanstack/react-table";
-import { Badge, BadgeVariant } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Task } from "@/app/(tasks)/schemas";
-import { DataTableColumnHeader } from "./DataTableColumnHeader";
-import { DataTableRowActions } from "./DataTableRowActions";
-import {
-  capitalizeFirstLetter,
-  cn,
-  getPriorityIcon,
-  getStatusIcon,
-} from "@/lib/utils";
-import {
-  ArrowDown,
-  ArrowUp,
-  Binary,
-  ChevronsUpDown,
-  EyeOff,
-} from "lucide-react";
-import { Priority, Status } from "@/lib/types";
-import { CardMatchResult } from "@/app/(hs-card-search)/types";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+// export interface ColumnMeta {
+//   columnClasses: string;
+// }
 
-export interface ColumnMeta {
-  columnClasses: string;
-}
-
-export const mulliganColumns: ColumnDef<CardMatchResult>[] = [
-  {
-    accessorKey: "cardName",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Card Name" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate text-xs sm:text-sm">
-            {row.getValue("cardName")}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "totalGames",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Total Games" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate text-xs sm:text-sm">
-            {row.getValue("totalGames")}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "wins",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Wins" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate text-xs sm:text-sm">
-            {row.getValue("wins")}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "winrate",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Win Rate" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate text-xs sm:text-sm">
-            {row.getValue("winrate")}%
-          </span>
-        </div>
-      );
-    },
-  },
-];
-
-//todo ver como mejorar esto para recibir N columnas de T tipos
-// export const taskColumns: ColumnDef<Task>[] = [
+// export const mulliganColumns: ColumnDef<CardMatchResult>[] = [
 //   {
-//     id: "select",
-//     header: ({ table }) => (
-//       <Checkbox
-//         checked={
-//           table.getIsAllPageRowsSelected() ||
-//           (table.getIsSomePageRowsSelected() && "indeterminate")
-//         }
-//         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-//         aria-label="Select all"
-//         className="translate-y-[2px]"
-//       />
-//     ),
-//     cell: ({ row }) => (
-//       <Checkbox
-//         checked={row.getIsSelected()}
-//         onCheckedChange={(value) => row.toggleSelected(!!value)}
-//         aria-label="Select row"
-//         className="translate-y-[2px]"
-//       />
-//     ),
-//     enableSorting: false,
-//     enableHiding: false,
-//   },
-//   //todo generate task_id
-//   // {
-//   //   accessorKey: "_id",
-//   //   header: ({ column }) => (
-//   //     <DataTableColumnHeader column={column} title="Task" />
-//   //   ),
-//   //   cell: ({ row }) => {
-//   //     console.log(row)
-//   //     return <div className="w-[95px]">{row.getValue("_id")}</div>
-//   //   },
-//   //   enableSorting: false,
-//   //   enableHiding: false,
-//   // },
-//   {
-//     accessorKey: "title",
+//     accessorKey: "cardName",
 //     header: ({ column }) => (
-//       <div className={cn("flex items-center space-x-2")}>
-//         <DropdownMenu>
-//           <DropdownMenuTrigger asChild>
-//             <Button
-//               variant="ghost"
-//               size="sm"
-//               className="-ml-3 h-8 data-[state=open]:bg-accent"
-//             >
-//               <span>{title}</span>
-//               {column.getIsSorted() === "desc" ? (
-//                 <ArrowDown />
-//               ) : column.getIsSorted() === "asc" ? (
-//                 <ArrowUp />
-//               ) : (
-//                 <ChevronsUpDown />
-//               )}
-//             </Button>
-//           </DropdownMenuTrigger>
-//           <DropdownMenuContent align="start">
-//             <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-//               <ArrowUp className="h-3.5 w-3.5 text-muted-foreground/70" />
-//               Asc
-//             </DropdownMenuItem>
-//             <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-//               <ArrowDown className="h-3.5 w-3.5 text-muted-foreground/70" />
-//               Desc
-//             </DropdownMenuItem>
-//             <DropdownMenuSeparator />
-//             <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-//               <EyeOff className="h-3.5 w-3.5 text-muted-foreground/70" />
-//               Hide
-//             </DropdownMenuItem>
-//           </DropdownMenuContent>
-//         </DropdownMenu>
-//       </div>
+//       <DataTableColumnHeader column={column} title="Card Name" />
 //     ),
 //     cell: ({ row }) => {
-//       const badgeVariant: BadgeVariant = row.original.label as BadgeVariant;
-
 //       return (
 //         <div className="flex space-x-2">
-//           {
-//             <Badge variant={badgeVariant}>
-//               {capitalizeFirstLetter(row.original.label)}
-//             </Badge>
-//           }
 //           <span className="max-w-[500px] truncate text-xs sm:text-sm">
-//             {row.getValue("title")}
+//             {row.getValue("cardName")}
 //           </span>
 //         </div>
 //       );
 //     },
 //   },
 //   {
-//     meta: { columnClasses: "hidden md:table-cell" } as ColumnMeta,
-//     accessorKey: "status",
+//     accessorKey: "totalGames",
 //     header: ({ column }) => (
-//       <DataTableColumnHeader column={column} title="Status" />
+//       <DataTableColumnHeader column={column} title="Total Games" />
 //     ),
 //     cell: ({ row }) => {
-//       const rowStatus = row.original.status as Status;
-
-//       const Icon = rowStatus ? getStatusIcon(rowStatus) : Binary;
-
 //       return (
-//         <div className="flex w-[100px] items-center">
-//           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-//           <span className="text-xs sm:text-sm">
-//             {capitalizeFirstLetter(row.original.status)}
+//         <div className="flex space-x-2">
+//           <span className="max-w-[500px] truncate text-xs sm:text-sm">
+//             {row.getValue("totalGames")}
 //           </span>
 //         </div>
 //       );
 //     },
-//     filterFn: (row, id, value) => {
-//       return value.includes(row.getValue(id));
-//     },
 //   },
 //   {
-//     //todo adjust correct table values for mobile
-//     meta: { columnClasses: "hidden md:table-cell" } as ColumnMeta,
-//     accessorKey: "priority",
+//     accessorKey: "wins",
 //     header: ({ column }) => (
-//       <DataTableColumnHeader column={column} title="Priority" />
+//       <DataTableColumnHeader column={column} title="Wins" />
 //     ),
 //     cell: ({ row }) => {
-//       const rowPriority = row.original.priority as Priority;
-//       const Icon = rowPriority ? getPriorityIcon(rowPriority) : Binary;
-
 //       return (
-//         <div className="flex items-center">
-//           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
-//           <span className="text-xs sm:text-sm">
-//             {capitalizeFirstLetter(row.original.priority)}
+//         <div className="flex space-x-2">
+//           <span className="max-w-[500px] truncate text-xs sm:text-sm">
+//             {row.getValue("wins")}
 //           </span>
 //         </div>
 //       );
 //     },
-//     filterFn: (row, id, value) => {
-//       return value.includes(row.getValue(id));
-//     },
 //   },
 //   {
-//     id: "actions",
-//     cell: ({ row }) => <DataTableRowActions row={row} />,
+//     accessorKey: "winrate",
+//     header: ({ column }) => (
+//       <DataTableColumnHeader column={column} title="Win Rate" />
+//     ),
+//     cell: ({ row }) => {
+//       return (
+//         <div className="flex space-x-2">
+//           <span className="max-w-[500px] truncate text-xs sm:text-sm">
+//             {row.getValue("winrate")}%
+//           </span>
+//         </div>
+//       );
+//     },
 //   },
 // ];

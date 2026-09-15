@@ -146,7 +146,6 @@ const columns: Array<ColumnDef<typeof features, Task>> = [
       );
     },
   },
-  //todo finalizar
   {
     accessorKey: "status",
     header: ({ column }) => (
@@ -253,6 +252,12 @@ const columns: Array<ColumnDef<typeof features, Task>> = [
         </div>
       );
     },
+  },
+  {
+    id: "actions",
+    // cell: ({ row }) => <DataTableRowActions row={row} />,
+    // TODO seguir mañana
+    // cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
 

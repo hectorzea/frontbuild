@@ -25,7 +25,6 @@ export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
           </p>
         </div>
       </div>
-      {/* <DataTable data={tasks} columns={columns} testId={"tasks-table"} /> */}
       <TasksTable tasks={tasks} />
     </div>
   );
