@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Column, RowData } from "@tanstack/react-table";
 import { Check, PlusCircle } from "lucide-react";
 import { cn, getPriorityIcon, getStatusIcon } from "@/lib/utils";
