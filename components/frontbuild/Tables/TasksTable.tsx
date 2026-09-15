@@ -6,7 +6,6 @@ import {
   createFilteredRowModel,
   createSortedRowModel,
   filterFn_includesString,
-  filterFns,
   rowExpandingFeature,
   sortFn_text,
   stockFeatures,
@@ -193,7 +192,7 @@ const columns: Array<ColumnDef<typeof features, Task>> = [
       const Icon = rowStatus ? getStatusIcon(rowStatus) : Binary;
 
       return (
-        <div className="flex w-[100px] items-center">
+        <div className="flex w-25 items-center">
           <Icon className="mr-2 h-4 w-4 text-muted-foreground" />
           <span className="text-xs sm:text-sm">
             {capitalizeFirstLetter(row.original.status)}
