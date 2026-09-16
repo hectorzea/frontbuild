@@ -16,18 +16,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { taskSchema } from "@/app/(tasks)/schemas";
+import { Task, taskSchema } from "@/app/(tasks)/schemas";
 import { useRouter } from "next/navigation";
 import { labels } from "@/components/frontbuild/TaskForm/data";
 import Link from "next/link";
+import { TaskTableFeatures } from "../Tables/TasksTable";
 
-interface DataTableRowActionsProps<TData> {
-  row: Row<TData>;
+interface DataTableRowActionsProps {
+  row: Row<TaskTableFeatures, Task>;
 }
 
-export function DataTableRowActions<TData>({
-  row,
-}: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions({ row }: DataTableRowActionsProps) {
   const task = taskSchema.parse(row.original);
   const router = useRouter();
 

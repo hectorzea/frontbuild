@@ -46,6 +46,7 @@ import { Button } from "@/components/ui/button";
 import { Badge, BadgeVariant } from "@/components/ui/badge";
 import { Priority, Status } from "@/lib/types";
 import { TasksToolbar } from "./TasksToolbar";
+import { DataTableRowActions } from "../DataTable/DataTableRowActions";
 
 const features = tableFeatures({
   //todas las funcionalidades de table
@@ -255,9 +256,7 @@ const columns: Array<ColumnDef<typeof features, Task>> = [
   },
   {
     id: "actions",
-    // cell: ({ row }) => <DataTableRowActions row={row} />,
-    // TODO seguir mañana
-    // cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
 
