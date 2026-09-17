@@ -2,10 +2,12 @@
 import { useRefreshQuery } from "@/lib/features/auth/authApiSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/store";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getRouteConfig } from "@/lib/routes";
 import { decodeJwt } from "@/lib/utils";
+
+type AuthStatus = { status: "authorized" } | { status: "redirect"; to: string };
 
 export default function LoginSessionWrapper({
   children,
@@ -13,7 +15,6 @@ export default function LoginSessionWrapper({
   children: React.ReactNode;
 }) {
   const token = useSelector((state: RootState) => state.auth.accessToken);
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
 
@@ -26,39 +27,37 @@ export default function LoginSessionWrapper({
     skip: !!token,
   });
 
-  // Guard: Auth + Roles
-  useEffect(() => {
-    if (isLoading) return;
+  // Estado derivado: se calcula, no se guarda
+  const auth = useMemo<AuthStatus>(() => {
     const routeConfig = getRouteConfig(pathname);
 
     // Public Route
-    if (!routeConfig) {
-      setIsAuthorized(true);
-      return;
-    }
+    if (!routeConfig) return { status: "authorized" };
 
     if (!token) {
-      setIsAuthorized(false);
-      router.replace(routeConfig.redirectTo ?? "/login");
-      return;
+      return { status: "redirect", to: routeConfig.redirectTo ?? "/login" };
     }
 
     if (routeConfig.roles && (!role || !routeConfig.roles.includes(role))) {
-      setIsAuthorized(false);
-      router.replace("/unauthorized");
-      return;
+      return { status: "redirect", to: "/unauthorized" };
     }
 
-    setIsAuthorized(true);
-  }, [isLoading, pathname, token, role, router]);
+    return { status: "authorized" };
+  }, [pathname, token, role]);
 
-  // Not yout mounted and loading session
+  // El efecto solo sincroniza con el sistema externo (el router)
+  useEffect(() => {
+    if (isLoading) return;
+    if (auth.status === "redirect") {
+      router.replace(auth.to);
+    }
+  }, [isLoading, auth, router]);
+
   if (isLoading) {
     return <p>Cargando sesión...</p>;
   }
 
-  // Guard evaluated but has no access
-  if (!isAuthorized) {
+  if (auth.status !== "authorized") {
     return null;
   }
 
