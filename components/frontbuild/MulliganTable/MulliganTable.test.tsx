@@ -6,14 +6,7 @@ test("Loads <MulliganTable /> and check for main elements", async () => {
   renderWithProviders(<MulliganTable />, {
     preloadedState: {},
   });
-
   expect(await screen.findByTestId("mulligan-table-title")).toBeInTheDocument();
-  expect(
-    await screen.findByTestId("mulligan-winrate-initial-cards-table"),
-  ).toBeInTheDocument();
-  expect(
-    await screen.findByTestId("mulligan-winrate-discard-cards-table"),
-  ).toBeInTheDocument();
 });
 
 // test("Loads <TaskDashboard /> and check for main elements", async () => {

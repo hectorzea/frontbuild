@@ -12,8 +12,8 @@ test("renderiza tabla con 2 filas", async () => {
     },
   });
   //tests with 3 rows and the header
-  expect(await screen.findByTestId("test-table")).toBeInTheDocument();
-  expect(screen.getAllByRole("row")).toHaveLength(4);
+  expect(await screen.findByTestId("tasks-table")).toBeInTheDocument();
+  expect(screen.getAllByRole("row")).toHaveLength(6);
   expect(screen.getByText("Do something with the tests")).toBeInTheDocument();
 });
 
