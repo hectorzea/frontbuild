@@ -1,28 +1,24 @@
 import { fireEvent, screen } from "@testing-library/react";
-import { columns } from "@/components/frontbuild/DataTable/Columns";
-import { DataTable } from "./";
 import { renderWithProviders } from "@/lib/test-utils";
 import { tasksMock as tasks } from "@/mocks/tasks/data";
+import TasksTable from "./TasksTable";
 
 test("renderiza tabla con 2 filas", async () => {
-  renderWithProviders(
-    <DataTable data={tasks} columns={columns} testId="test-table" />,
-    {
-      preloadedState: {
-        tasks: {
-          tasks: tasks,
-        },
+  renderWithProviders(<TasksTable tasks={tasks} />, {
+    preloadedState: {
+      tasks: {
+        tasks: tasks,
       },
     },
-  );
+  });
   //tests with 3 rows and the header
-  expect(await screen.findByTestId("test-table")).toBeInTheDocument();
-  expect(screen.getAllByRole("row")).toHaveLength(4);
+  expect(await screen.findByTestId("tasks-table")).toBeInTheDocument();
+  expect(screen.getAllByRole("row")).toHaveLength(6);
   expect(screen.getByText("Do something with the tests")).toBeInTheDocument();
 });
 
 test("renderiza tabla sin items", () => {
-  renderWithProviders(<DataTable data={[]} columns={columns} />, {
+  renderWithProviders(<TasksTable tasks={[]} />, {
     preloadedState: {
       tasks: {
         tasks: [],
@@ -33,24 +29,9 @@ test("renderiza tabla sin items", () => {
   expect(screen.getByText("No results.")).toBeInTheDocument();
 });
 
-test("renderiza tabla sin items", () => {
-  renderWithProviders(
-    <DataTable data={[]} columns={columns} toolbarEnabled={false} />,
-    {
-      preloadedState: {
-        tasks: {
-          tasks: [],
-        },
-      },
-    },
-  );
-
-  expect(screen.queryByTestId("data-table-toolbar")).not.toBeInTheDocument();
-});
-
 test("filtra tareas por texto", async () => {
   const { getByPlaceholderText } = renderWithProviders(
-    <DataTable data={tasks} columns={columns} />,
+    <TasksTable tasks={tasks} />,
     {
       preloadedState: {
         tasks: {

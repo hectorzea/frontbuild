@@ -1,8 +1,7 @@
 "use client";
 import { selectAllTasks } from "@/lib/features/tasks/tasksSlice";
 import { useAppSelector } from "@/lib/hooks";
-import { DataTable } from "../DataTable";
-import { columns } from "../DataTable/Columns";
+import TasksTable from "../Tables/TasksTable";
 
 type TaskDashboardProps = {
   title: string;
@@ -26,7 +25,7 @@ export const TaskDashboard = ({ title, subtitle }: TaskDashboardProps) => {
           </p>
         </div>
       </div>
-      <DataTable data={tasks} columns={columns} testId={"tasks-table"} />
+      <TasksTable tasks={tasks} />
     </div>
   );
 };

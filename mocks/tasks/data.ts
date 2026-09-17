@@ -31,6 +31,20 @@ export const tasksMock = [
     label: LabelOptions.Epic,
     priority: PriorityOptions.High,
   },
+  {
+    _id: "67574211b5599f1ebce84322",
+    title: "Zod Handlers",
+    status: StatusOptions.Cancelled,
+    label: LabelOptions.Feature,
+    priority: PriorityOptions.Low,
+  },
+  {
+    _id: "67574211b5599f1ebce84322",
+    title: "Toolkit Functions",
+    status: StatusOptions.InProgress,
+    label: LabelOptions.Feature,
+    priority: PriorityOptions.Medium,
+  },
 ];
 
 export const createTaskMockScenario: CreateTaskMockScenarios = {
