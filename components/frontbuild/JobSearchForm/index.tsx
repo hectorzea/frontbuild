@@ -54,6 +54,7 @@ export function JobSearchForm() {
   }
 
   //todo terminar logica para ir a la pagina por id y luego alla hacer la llamada
+  //TODO hacer navegacion a nueva pagina que llame la info
   if (isSuccess) {
     return (
       <div className="flex flex-col items-center">
