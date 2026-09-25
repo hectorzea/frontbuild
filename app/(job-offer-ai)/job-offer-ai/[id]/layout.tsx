@@ -1,14 +1,11 @@
 import "@/components/common/globals.css";
 import { StoreProvider } from "@/lib/StoreProvider";
 import { ThemeProvider } from "next-themes";
-import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -19,11 +16,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <StoreProvider>
-            <Toaster />
-            {children}
-            {modal}
-          </StoreProvider>
+          <StoreProvider>{children}</StoreProvider>
         </ThemeProvider>
       </body>
     </html>
