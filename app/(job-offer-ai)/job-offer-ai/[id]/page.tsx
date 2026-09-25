@@ -3,23 +3,31 @@ type JobStatus = (typeof JOB_OFFER_STATUS)[number];
 type JobOffer = {
   id: string;
   status: JobStatus;
+  refined_data: [];
 };
 
 async function getJobOffer(id: string): Promise<JobOffer> {
-  const res = await fetch(`https://api.example.com/jobs/${id}`, {
-    cache: "no-store", // o 'force-cache' by needs
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/jobs/${id}`,
+    {
+      cache: "no-store", // o 'force-cache' by needs
+    },
+  );
 
   if (!res.ok) throw new Error("Failed to fetch job");
   return res.json();
 }
 
-export default async function JobOfferPage({
+// todo: armar estructura
+// todo: armar tests
+// todo: ver como devolver la info si trae en be
+export default async function Page({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const jobOffer = await getJobOffer(params.id);
+  const { id } = await params;
+  const jobOffer = await getJobOffer(id);
 
   return <div>{jobOffer.status}</div>;
 }
