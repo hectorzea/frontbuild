@@ -24,3 +24,17 @@ export interface JobOffer {
   matchPercentage: number;
   matchReasoningKeyPoints: string[];
 }
+
+export type JobStatus =
+  "PENDING" | "SCRAPING" | "ANALYZING" | "COMPLETED" | "FAILED";
+
+export interface JobApplicationResponse {
+  id: string;
+  jobLink: string;
+  status: JobStatus;
+  aiResult?: JobOffer;
+  cvUsed?: string;
+  lastError?: string;
+  createdAt: string;
+  updatedAt: string;
+}
