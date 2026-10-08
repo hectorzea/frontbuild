@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ export function ProfileContact() {
                   rel="noopener noreferrer"
                   className="text-lg hover:text-accent transition-colors flex items-center gap-2"
                 >
-                  <Github className="h-5 w-5" />
+                  {/* <Github className="h-5 w-5" /> */}
                   GitHub
                 </a>
                 <a
@@ -73,7 +73,7 @@ export function ProfileContact() {
                   rel="noopener noreferrer"
                   className="text-lg hover:text-accent transition-colors flex items-center gap-2"
                 >
-                  <Linkedin className="h-5 w-5" />
+                  {/* <Linkedin className="h-5 w-5" /> */}
                   LinkedIn
                 </a>
               </div>
