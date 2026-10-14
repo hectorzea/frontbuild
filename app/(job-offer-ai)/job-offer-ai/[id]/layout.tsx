@@ -1,0 +1,24 @@
+import "@/components/common/globals.css";
+import { StoreProvider } from "@/lib/StoreProvider";
+import { ThemeProvider } from "next-themes";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <StoreProvider>{children}</StoreProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
