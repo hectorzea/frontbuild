@@ -2,6 +2,7 @@
 // const JOB_OFFER_STATUS = ["scrapping", "moderator", "administrator"] as const;
 import { JobApplicationResponse } from "@/app/(job-offer-ai)/types/index";
 async function getJobOffer(id: string): Promise<JobApplicationResponse> {
+  // todo probar si esto se puede mockear con msw
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}/api/jobs/${id}`,
     {
