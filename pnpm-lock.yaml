@@ -151,8 +151,8 @@ importers:
         specifier: ^3.3.7
         version: 3.3.7(supports-color@8.1.1)
       '@next/env':
-        specifier: ^16.3.5
-        version: 16.3.5
+        specifier: ^16.4.2
+        version: 16.4.2
       '@playwright/test':
         specifier: ^1.63.0
         version: 1.63.0
@@ -1499,6 +1499,9 @@ packages:
 
   '@next/env@16.3.5':
     resolution: {integrity: sha512-NWEXVDMqoEo0ktmU6u0sE2Vg0LOcsD7NnOTJNo3/fEaTfsg+F1bMIxuDmQbda4e3yTIQwVdUREF2yIuMOusKtg==}
+
+  '@next/env@16.4.2':
+    resolution: {integrity: sha512-nTUTFH7G5/J/fmpkjVLegOkqyKOP0CEsJcMsyO4UCYeN1su+YMW/MfaSErnJskL7XM+UDK6aTvslxsRCyya/sA==}
 
   '@next/eslint-plugin-next@16.4.0':
     resolution: {integrity: sha512-ffeflB/dL8RrvWejQximw01pOpKHN692Y3FjDB82DCd0YVvXvBD6vY7mcZp27yvSVFVM6wA73xVodEKF4spizA==}
@@ -7789,6 +7792,8 @@ snapshots:
   '@next/env@15.5.25': {}
 
   '@next/env@16.3.5': {}
+
+  '@next/env@16.4.2': {}
 
   '@next/eslint-plugin-next@16.4.0(eslint@10.10.0(jiti@2.7.0)(supports-color@8.1.1))':
     dependencies:
