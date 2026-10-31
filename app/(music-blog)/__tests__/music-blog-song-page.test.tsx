@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import SongPage from "@/app/(music-blog)/songs/[id]/page";
+import SongPage, {
+  generateStaticParams,
+} from "@/app/(music-blog)/songs/[id]/page";
 import { getPayload } from "payload";
 
 beforeEach(() => {
@@ -24,6 +26,12 @@ beforeEach(() => {
 });
 
 describe("Page Song By Id", () => {
+  const originalEnv = process.env;
+
+  afterEach(() => {
+    process.env = { ...originalEnv };
+  });
+
   it("is rendering correctly", async () => {
     const paramsPromise = Promise.resolve({ id: "1" });
     render(await SongPage({ params: paramsPromise }));
@@ -32,5 +40,20 @@ describe("Page Song By Id", () => {
     expect(
       screen.getByText("Its nice and progressive song"),
     ).toBeInTheDocument();
+  });
+
+  it("renders mock song when NEXT_PUBLIC_IS_E2E is true", async () => {
+    process.env.NEXT_PUBLIC_IS_E2E = "true";
+    const paramsPromise = Promise.resolve({ id: "1" });
+    render(await SongPage({ params: paramsPromise }));
+    expect(screen.getByTestId("song-page-container")).toBeInTheDocument();
+  });
+
+  it("generates static params for both DB and E2E mode", async () => {
+    process.env.NEXT_PUBLIC_IS_E2E = "false";
+    expect(await generateStaticParams()).toEqual([{ id: "1" }]);
+
+    process.env.NEXT_PUBLIC_IS_E2E = "true";
+    expect(await generateStaticParams()).toEqual([{ id: "1" }]);
   });
 });
