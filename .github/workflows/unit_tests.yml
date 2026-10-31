@@ -19,20 +19,20 @@ jobs:
       # 2. Configura pnpm (esto instala pnpm y configura el caché automáticamente)
       - uses: pnpm/action-setup@v4
         with:
-          version: 11.25.0 # O la versión que tengas instalada localmente
+          version: 11.25.0
 
       # 3. Instala dependencias con pnpm
-      # 'pnpm install' es el equivalente a 'npm ci' (es estricto con el lockfile)
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
+      # 4. Variables de entorno (con fallback por si corre desde Dependabot sin acceso a secrets)
       - name: Set environment variables
         run: |
-          echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL=${{secrets.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL}}" >> $GITHUB_ENV
+          echo "TEST_API_URL=${{ secrets.TEST_API_URL || 'https://api-test.frontbuild.com' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL || 'http://localhost:3000' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW || 'true' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL || 'http://localhost:3001' }}" >> $GITHUB_ENV
 
-      # 4. Ejecuta el linter/test
+      # 5. Ejecuta los tests unitarios
       - name: Run Unit Tests
         run: pnpm run test
