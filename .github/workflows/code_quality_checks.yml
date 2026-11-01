@@ -19,16 +19,17 @@ jobs:
         with:
           version: 11.25.0
 
-      # Instalamos dependencias (pnpm ya no necesita --legacy-peer-deps)
+      # Instalamos dependencias
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
+      # Variables de entorno (con fallback por si corre desde Dependabot sin acceso a secrets)
       - name: Set environment variables
         run: |
-          echo "TEST_API_URL=${{ secrets.TEST_API_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL }}" >> $GITHUB_ENV
+          echo "TEST_API_URL=${{ secrets.TEST_API_URL || 'https://api-test.frontbuild.com' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_API_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_API_URL || 'http://localhost:3000' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_ENABLE_MSW=${{ secrets.NEXT_PUBLIC_ENABLE_MSW || 'true' }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL=${{ secrets.NEXT_PUBLIC_FRONTBUILD_HZ_SERVER_URL || 'http://localhost:3001' }}" >> $GITHUB_ENV
 
       # Ejecutamos con pnpm
       - name: Run Tests with Coverage
@@ -38,3 +39,4 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false

@@ -3,7 +3,21 @@ import configPromise from "@payload-config";
 import { getSpotifyTrackUrl } from "@/lib/utils";
 import { Song } from "@/payload-types";
 
+const getMockSong = (): Song => ({
+  id: "1",
+  songTitle: "Atrevete",
+  spotifyUrl:
+    "https://open.spotify.com/track/4ya8lP9HLt2s6fj9xX4lSZ?si=3JycucfyTRKqGkDUXIaTsw",
+  artist: "Calle 13",
+  whyILike: "Its nice and progressive song",
+  updatedAt: "",
+  createdAt: "",
+});
+
 export async function generateStaticParams() {
+  if (process.env.NEXT_PUBLIC_IS_E2E === "true") {
+    return [{ id: "1" }];
+  }
   const payload = await getPayload({ config: configPromise });
   const songs = await payload.find({
     collection: "songs",
@@ -20,13 +34,20 @@ export default async function SongPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const payload = await getPayload({ config: configPromise });
-  const songCollection = await payload.find({
-    collection: "songs",
-    where: { id: { equals: id } },
-    limit: 1,
-  });
-  const song: Song = { ...songCollection.docs[0] };
+  let song: Song;
+
+  if (process.env.NEXT_PUBLIC_IS_E2E === "true") {
+    song = getMockSong();
+  } else {
+    const payload = await getPayload({ config: configPromise });
+    const songCollection = await payload.find({
+      collection: "songs",
+      where: { id: { equals: id } },
+      limit: 1,
+    });
+    song = { ...songCollection.docs[0] };
+  }
+
   const spotifySongId = getSpotifyTrackUrl(song.spotifyUrl!);
   return (
     <div
