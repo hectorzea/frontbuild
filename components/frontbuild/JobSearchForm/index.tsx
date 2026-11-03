@@ -2,6 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 import { Loading } from "@/components/common/Loading";
 import {
   Form,
@@ -25,9 +26,10 @@ import { useCreateJobSearchMutation } from "@/lib/features/job-offer-ai/jobOffer
 import { JobSearch, jobSearchSchema } from "@/app/(job-offer-ai)/schemas";
 
 export function JobSearchForm() {
+  const router = useRouter();
   const [
     createJobSearch,
-    { data: jobSearchData, isError, isSuccess, isLoading },
+    { data: jobSearchData, isError, isSuccess, isLoading, reset },
   ] = useCreateJobSearchMutation();
 
   const jobSearchForm = useForm<JobSearch>({
@@ -39,7 +41,8 @@ export function JobSearchForm() {
 
   async function onSubmit(data: z.infer<typeof jobSearchSchema>) {
     try {
-      await createJobSearch(data);
+      const result = await createJobSearch(data).unwrap();
+      router.push(`/job-offer-ai/${result.id}`);
     } catch (error) {
       console.error("Error calling google api cloud:", error);
     }
@@ -50,10 +53,9 @@ export function JobSearchForm() {
   }
 
   if (isError) {
-    return <JobSearchError cleanErrors={() => {}} />;
+    return <JobSearchError cleanErrors={() => reset()} />;
   }
 
-  //todo terminar logica para ir a la pagina por id y luego alla hacer la llamada
   if (isSuccess) {
     return (
       <div className="flex flex-col items-center">

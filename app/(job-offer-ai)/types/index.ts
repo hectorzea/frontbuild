@@ -28,10 +28,12 @@ export interface JobOffer {
 export type JobStatus =
   "PENDING" | "SCRAPING" | "ANALYZING" | "COMPLETED" | "FAILED";
 
+// app/(job-offer-ai)/types/index.ts
 export interface JobApplicationResponse {
-  id: string;
+  _id: string;
   jobLink: string;
   status: JobStatus;
+  rawScrapedContent?: string;
   aiResult?: JobOffer;
   cvUsed?: string;
   lastError?: string;
