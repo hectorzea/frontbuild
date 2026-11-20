@@ -24,3 +24,19 @@ export interface JobOffer {
   matchPercentage: number;
   matchReasoningKeyPoints: string[];
 }
+
+export type JobStatus =
+  "PENDING" | "SCRAPING" | "ANALYZING" | "COMPLETED" | "FAILED";
+
+// app/(job-offer-ai)/types/index.ts
+export interface JobApplicationResponse {
+  _id: string;
+  jobLink: string;
+  status: JobStatus;
+  rawScrapedContent?: string;
+  aiResult?: JobOffer;
+  cvUsed?: string;
+  lastError?: string;
+  createdAt: string;
+  updatedAt: string;
+}
